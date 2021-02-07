@@ -1,0 +1,152 @@
+\documentclass[openright,final,fmstyle]{utnfrrotesis}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[authoryear,datebegin,nonamereplace,sort&compress]{flexbib}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{paralist} % it provides the inparaenum environment
+\usepackage{pgfgantt}
+\graphicspath{{imagenes/}} % Necesario para importar las figuras en PDF.
+% (with an optional formatting specification in square brackets): To change the styles of the counter,
+% tokens A, a, I, i, and 1 can be used in the optional argument to produce the counter with one of the styles
+% \Alph, \alph, \Roman, \roman and \arabic. For example:
+%
+% \begin{inparaenum}[(i)]
+%
+% produces the labels (i), (ii), (iii) ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% paquete para comillas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{quotmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% para guionado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyphenat}
+\usepackage{booktabs}
+\usepackage{bm}
+
+\usepackage{multicol}
+\usepackage{supertabular}
+\usepackage{multirow}
+\usepackage[english,vlined,linesnumbered]{algorithm2e}
+\usepackage{pdflscape}
+\usepackage{fullpage,graphicx}
+\usepackage{rotating}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+	pdftitle={Tesis de Maestría en Ingeniería en Sistemas de Información},
+	pdfauthor={Ing. Federico Tesone},
+	pdfsubject={Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering},
+	pdfkeywords={},
+	bookmarksnumbered=true,     
+	bookmarksopen=true,         
+	bookmarksopenlevel=1,       
+	colorlinks=false,            
+	pdfstartview=Fit,
+	allcolors=blue           
+}
+
+\usepackage{nowidow}
+\widowpenalty=5000  
+\clubpenalty=10000
+
+\SetKwIF{If}{ElseIf}{Else}{si}{entonces}{sin\'o, si}{de lo contrario}{fin si}
+\SetKwInput{KwIn}{Entrada}%
+\SetKwInput{KwOut}{Salida}%
+\SetKwInput{KwData}{Datos}%
+\SetKwInput{KwResult}{Resultado}%
+\SetKw{KwTo}{a}%
+\SetKw{KwRet}{devolver}%
+\SetKw{Return}{devolver}%
+\SetKwBlock{Begin}{inicio}{fin}%
+\SetKwRepeat{Repeat}{repetir}{hasta que}%
+\SetKwFor{ForEach}{para cada}{hacer}{fin para cada}
+\SetKwFor{While}{mientras}{hacer}{fin mientras}
+\SetKwFor{For}{para}{hacer}{fin para}%
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para remediar el problema de babel de abreviaciones de teclado para la virgulilla
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addto\shorthandsspanish{\spanishdeactivate{~}}
+
+%para los nombres a lo largo del documento
+\newcommand{\gss}{$\gamma$-AM}
+\newcommand{\disc}{percentil}
+\newcommand{\Disc}{Percentil}
+\newcommand{\Sim}{\text{Sim}}
+\newcommand{\tfill}{1mm}
+\newcommand{\tffill}{-10mm}
+\newcommand{\tftfill}{-6mm}
+\newcommand{\fffill}{-6mm}
+\newcommand{\bfill}{-10mm}
+\newcommand{\clusteryea}{8}
+\newcommand{\clusterara}{9}
+\newcommand{\geneexampleyea}{POP2}
+\newcommand{\geneexampleara}{AT2G19450}
+\newcommand{\classico}{Rhee \emph{et al.} approach \cite{rhee2008use}}
+\newcommand{\classic}{Rhee \emph{et al.} approach}
+\newcommand{\classi}{Rhee \emph{et al.} \cite{rhee2008use}}
+\newcommand{\arafull}{\emph{Arabidopsis thaliana}}
+\newcommand{\ara}{\emph{A. thaliana}}
+\newcommand{\yeafull}{\emph{Saccharomyces cerevisiae}}
+\newcommand{\yea}{\emph{S. cerevisiae}}
+\newcommand{\km}{$k$-medias}
+
+\newcommand{\given}{\Big\vert}
+
+\usepackage[a4paper,footskip=.5in]{geometry}
+
+%subsubsub
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%para quitar de a una línea en algorithm2e
+\makeatletter
+\newcommand{\nosemic}{\renewcommand{\@endalgocfline}{\relax}}% Drop semi-colon ;
+\newcommand{\dosemic}{\renewcommand{\@endalgocfline}{\algocf@endline}}% Reinstate semi-colon ;
+\newcommand{\pushline}{\Indp}% Indent
+\newcommand{\popline}{\Indm\dosemic}% Undent
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+\makeatother
+
+\title{Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering}
+\author{Ing. Federico Tesone \vspace{-6mm} }
+\degree{Maestría en Ingeniería en Sistemas de Información}
+\advisor{Dr.} {Guillermo Leale}
+\coadvisor{Dra.} {Soledad Ayala}
+\institution{Universidad Tecnológica Nacional}
+\faculty{Facultad Regional Rosario}
+
+\renewcommand\thesection{\arabic{section}}
+
+\begin{document}
+	\maketitle
+	
+	\newgeometry{left=4.06cm,top=2.54cm,right=2.54cm,bottom=2.54cm}
+	
+	\input{0_resumen/resumen}
+	\tableofcontents % Tabla de contenidos
+	\sloppy % Indica a LaTex que debe minimizar el corte de las palabras para pasar de una línea a otra.
+	% \mainmatter % para reiniciar numeración.
+	\newpage \chapter*{tesis}\label{ch:plan}\addcontentsline{toc}{chapter}{Plan de tesis}
+
+	\input{1_justificacion/justificacion}
+	\input{2_fundamentacion/fundamentacion}
+	\input{3_objetivos/objetivos}
+	\input{4_metodologia/metodologia}
+	\input{5_cronograma/cronograma}
+	\input{6_condiciones_institucionales/condiciones_institucionales}
+	\newpage
+	
+	\begin{onecolumn}
+		\bibliographystyle{flexbib}
+		\bibliography{7_bibliografia/bibliografia}
+	\end{onecolumn}
+\end{document}
