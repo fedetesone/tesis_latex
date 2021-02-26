@@ -1,0 +1,78 @@
+\subsection{Ensamble de Clustering}
+\subsubsection{Clustering}
+El \textit{Clustering} o \textit{análisis cluster} tiene por objeto agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos. Normalmente se agrupan las observaciones, pero el Clustering puede también aplicarse para agrupar variables. Estos métodos se conocen también con el nombre de métodos de clasificación automática o no supervisada, o de reconocimiento de patrones sin supervisión \citep{pena2013analisis}. Con esta información de clasificación a mano, se puede inferir las propiedades de un objeto específico, basándose en la categoría que pertenece. Básicamente, los sistemas de clasificación son supervisados o no supervisados, dependiendo si asignan nuevos objetos de datos a uno o a un número finito de clases supervisadas discretas o categorías no supervisadas, respectivamente \citep{xu2008clustering}.
+
+\paragraph{Definición de Cluster}
+Los algoritmos de clustering agrupan objetos de datos (patrones, entidades, instancias, observaciones, unidades) en un cierto número de clusters (grupos, sub-conjuntos o categorías).
+\cite{everittcluster} lo define como “Un cluster un conjunto de entidades que son similares, y entidades de clusters diferentes no son similares”, claramente, esta similaridad y disimilaridad debe ser definida con un criterio significativo, tales como medidas de proximidad.
+
+\paragraph{Algoritmos de Clustering}
+Los algoritmos de clustering están generalmente clasificados en \textit{clustering particional} y \textit{clustering jerárquico}, basándose en la la forma que se generan los clusters \citep{xu2008clustering}. Los algoritmos de clustering jerárquico encuentran clusters anidados recursivamente en un modo aglomerativo (empezando con cada uno de los puntos de datos como si fueran clusters y combinandolos con el más similar, sucesivamente para formar una jerarquía de clusters) o en modo divisivo (de arriba hacia abajo - en inglés, top-down -) (empezando con todos los puntos de datos en un cluster y dividiendo recursivamente cada uno de los clusters en clusters más pequeños). Los algoritmos de clustering particional, intentan encontrar todos los clusters simultáneamente como una partición de datos, y no imponen una estructura jerárquica; la base matemática es simple: una \textit{partición}, no existen subconjuntos solapados y la unión de los subconjuntos es el conjunto total. La entrada de un algoritmo jerárquico es una matriz de similaridad \(n \times n\) , donde \(n\) es el número de objetos a ser analizados via clustering. Por otro lado, los algoritmos particionales puede usar una matriz \(n \times d\), representando \(n\) objetos en un espacio d-dimensional o, como un algoritmo jerárquico, una matriz \(n \times n\) \citep{jain2010data}.
+En este trabajo, nos centraremos en algoritmos particionales, utilizando medidas de proximidad de texto para determinar cuáles objetos (cadenas de texto) pertenecerán al mismo cluster y cuáles no. Algunos ejemplos de este tipo de algoritmo son el famoso y ampliamente utilizado \textit{k-medias} \citep{macqueen1967some}, y también el \textit{Particionamiento Alrededor de Medoids (PAM)}.
+
+\paragraph{Particionamiento Alrededor de Medoids (PAM)}
+Particionamiento Alrededor de Medoids (PAM) es un algoritmo de Clustering particional, cuyo funcionamiento es similar al del k-medias, pero en lugar de tomar un conjunto de datos aleatorio como centroides y luego, iterativamente, calcularlo como medias de los clusters, se utilizan puntos llamados medioides, los cuales son puntos “representativos” de un cluster, y tienen la particularidad de estar más centricamente ubicados en el mismo \citep{rdusseeun1987clustering}.
+\bigskip PAM tiene dos etapas, denominadas BUILD (construcción, etapa de formación de los clusters) y SWAP (intercambio, etapa de refinamiento de la partición obtenida). Nos centraremos en la etapa BUILD, ya que será la utilizada en este trabajo:
+\begin{enumerate}
+	\item Establecer el medoide inicial \(m_1\) como el vector de características del conjunto de datos de entrada que minimiza la distancia a todos los demás datos en \(X\).
+\[m_1 = arg \> \underset{\forall x_i}{min} \sum_{j \neq i}d(x_i,x_j),\]
+donde \(d(x_i,x_j)\) es una medida de distancia genérica.
+	\item Considerar un vector previamente no seleccionado \(x_i\).
+	\item Considerar un vector previamente no seleccionado \(x_j\) y calcular la diferencia entre su distancia al medoide previamente seleccionado \(m_1\), y su distancia al vector \(x_i\).
+	\item Calcular la Contribución \(C(x_i,x_j)\) del vector \(x_j\) a la selección del vector \(x_i\).
+\[C(x_i, x_j) = max(d(x_j, m_1) - d(x_j, x_i), 0)\]
+	\item Calcular la Ganancia total obtenida a partir de la selección del vector \(x_i\) como:
+\[G(x_i) = \sum_{j} C(x_j, x_i)\]
+	\item Establecer el siguiente medoide como el vector previamente no seleccionado que maximiza la ganancia total, esto es:
+\[m_l = arg \> \underset{\forall i}{max} \> G(x_i)\]
+	\item Repetir los pasos 2 al 6 hasta llegar a obtener \(k\) medoides.
+\end{enumerate}
+
+\bigskip El método PAM puede aceptar una matriz de distancias como entrada, lo cual lo hace adecuado para utilizar las salidas de los métodos anteriormente mencionados. Como desventaja, se puede mencionar que su complejidad temporal es cuadrática, lo que se traduce como poca eficiencia en grandes conjuntos de datos, sin embargo, se han desarrollado mejoras sobre PAM, para estos problemas de desempeño \citep{kaufman2009finding}.
+
+\subsubsection{Ensamble de clustering}
+Distintos algoritmos de clustering producen distintos grupos de objetos, en forma de particiones de datos. Incluso, el mismo algoritmo con distintos parámetros, también produce distintos datos de salida \citep{xu2008clustering}. Además, las combinaciones de diferentes representaciones de datos, que no pueden ser localizadas en un espacio dimensional, pueden generar particiones de datos completamente diferentes. El \textit{ensamble de clustering}, propone un método para extraer clusters consistentes dadas particiones variadas de entrada.
+
+\bigskip Dado un conjunto de datos de \(n\) objetos o patrones y \(d\) dimensiones, se aplican distintas técnicas de clustering a los mismos. Luego, usando \textit{clustering de acumulación de evidencias (EAC)}, cada partición es vista como una evidencia independiente de organización de datos, las cuales se combinan, generando una nueva matriz de similaridad  \(n \times n\) entre los \(n\) patrones. La partición de datos final entre los \(n\) patrones es obtenida aplicando un algoritmo de clustering en la matriz de similaridad \citep{fred2005combining}.
+
+\bigskip Debido a la existencia de muchos algoritmos de clustering, y a la posibilidad de poder variar los mismos con distintos parámetros de entrada, es difícil encontrar un algoritmo o variación del mismo que produzca los resultados esperados, funcione con distintas formas de clusters y sea adecuado para distintos conjuntos de datos. Por lo contrario, esta variabilidad puede ser aprovechada para encontrar una estructura inter-patrón que represente a todas las técnicas tenidas en cuenta como entrada. Además, este método muestra que la combinación de distintos algoritmos, puede resultar en la identificación de clusters subyacentes con formas arbitrarias, tamaños y densidades.
+
+\paragraph{Definición formal}
+Dado \(X = \{x_1, x_2,... , x_n\}\) un conjunto de n objetos, y dada  \(\chi = \{x_1, x_2,... , x_n\}\) como la representación de esos patrones; \(x_i\) puede ser definida por ejemplo sobre un espacio d-dimensional, \(x_i \in \rm I\!R^2\), tal que, cuando adopten una representación vectorial.
+Un algoritmo de clustering toma  como entrada y organiza los \(n\) patrones en \(k\) clusters, respondiendo a algunas medidas de similaridad entre los patrones, formando una partición de datos \(P\). Diferentes algoritmos de clustering producirán, en general, distintas particiones para el mismo conjunto de datos, tanto como en términos de número de patrones en un mismo cluster o en la cantidad de clusters. También es posible producir distintos resultados con el mismo algoritmo de clustering, ya sea, variando los parámetros de entrada o explorando distintas representaciones en los patrones \citep{fred2005combining}.
+
+\bigskip Considerando \(N\) particiones de datos \(X\), y \(\rm I\!P\) la representación de las \(N\) particiones, definimos Ensamble de Clustering como:
+\[\rm I\!P = \{P^1, P^2, ..., P^N\}\]
+\[P^1 = \{C^1_1, C^1_2, ..., C^1_{k1}\}\]
+\[.\]
+\[.\]
+\[P^N = \{C^N_1, C^N_2, ..., C^N_{kN}\}\]
+donde \(C^i_j\) es el cluster número \(j\) en la partición de datos \(P_i\), la cual tiene \(k_i\) clusters, y \(n^i_j\) es la cardinalidad  \(C^i_j\).
+
+\bigskip El problema es encontrar la partición de datos “óptima”, \(P*\), usando la información disponible en \(N\) particiones de datos \(\rm I\!P = \{P^1, P^2, ..., P^N\}\). Definimos \(k*\), como el número de clusters en \(P*\). Idealmente, \(P*\) debe satisfacer las siguientes propiedades:
+
+\begin{enumerate}
+	\item Consistencia con el Ensamble de Clustering \(\rm I\!P\);
+	\item Robustez con pequeñas variaciones de \(\rm I\!P\);
+	\item Bondad de ajuste con información de verdad de base (verdaderos clusters o patrones), si está disponible.
+\end{enumerate}
+
+\paragraph{Acumulación de Evidencias}
+La idea del Clustering de Acumulación de Evidencias es combinar los resultados de múltiples clusterings dentro de una misma partición de datos viendo cada uno de esos resultados como una evidencia independiente de la organización de datos \citep{fred2005combining}. Para realizar esto, es necesario seguir los siguientes pasos:
+
+\subparagraph{Producir ensambles de Clustering}
+Los ensambles de Clustering generalmente son producidos desde dos enfoques:
+\begin{enumerate*}
+	\item la elección de la representación de datos y
+	\item la elección de los algoritmos de clustering o los parámetros de los mismos.
+\end{enumerate*}
+Ya que la representación de datos de este trabajo es fija, se va a poner énfasis en el segundo enfoque. En el segundo enfoque, es posible generar ensambles de Clustering \begin{enumerate*} [label=(\roman*)] \item aplicando diferentes algoritmos de Clustering, \item usando el mismo algoritmo pero con diferentes parámetros o inicializaciones y \item explorando diferentes medidas de similaridad entre los patrones, dado un algoritmo de Clustering.\end{enumerate*}
+
+\bigskip Desde una perspectiva computacional, los resultados de algoritmos de Clustering son independientes, lo cual permite que sean generados de forma distribuida. Además, los mismos pueden ser reusados, facilitando así un análisis de datos eficiente.
+
+\subparagraph{Combinar evidencias}
+Para lidiar con diferentes particiones con diferente cantidad de clusters, se propone un nuevo mecanismo para combinar resultados que deriva en una nueva medida de similaridad entre patrones. Se supone de antemano, que los patrones que pertenecen a un cluster \textit{natural} son muy probables de ser colocados en el mismo cluster, pero en diferentes particiones de datos. Tomado las co-ocurrencia de pares de patrones en el mismo cluster, las \(N\) particiones de datos para n patrones, son mapeadas en una \textit{matriz de co-asociación} \(n \times n\):
+\[C(i,j)=\frac{n_{ij}}{N}\]
+donde \(n_{ij}\) es el número de veces que el par de patrones \((i,j)\) es asignado al mismo cluster entre las \(N\) particiones de datos.
+
+\bigskip Entonces, el mecanismo de acumulación de evidencias mapea las particiones en el ensamble de Clustering dentro de una nueva medida de similaridad entre patrones (representada por la matriz de co-asociación), realizando, intrínsecamente, una transformación no-lineal de la original a la nueva representación de datos.
