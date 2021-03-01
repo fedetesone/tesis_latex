@@ -6,6 +6,10 @@
 \usepackage{amsmath}
 \usepackage{paralist} % it provides the inparaenum environment
 \usepackage{pgfgantt}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{fancyvrb}
+%\usepackage{import}
 \graphicspath{{imagenes/}} % Necesario para importar las figuras en PDF.
 % (with an optional formatting specification in square brackets): To change the styles of the counter,
 % tokens A, a, I, i, and 1 can be used in the optional argument to produce the counter with one of the styles
@@ -125,28 +129,36 @@
 \faculty{Facultad Regional Rosario}
 
 \renewcommand\thesection{\arabic{section}}
+\interfootnotelinepenalty=10000 %  Para que las footnote no se pasen a la otra pagina.
 
 \begin{document}
 	\maketitle
 	
 	\newgeometry{left=4.06cm,top=2.54cm,right=2.54cm,bottom=2.54cm}
 	
-	\input{0_resumen/resumen}
+	\input{0_dedicatoria/dedicatoria}
+	\input{1_resumen/resumen}
 	\tableofcontents % Tabla de contenidos
 	\sloppy % Indica a LaTex que debe minimizar el corte de las palabras para pasar de una línea a otra.
 	% \mainmatter % para reiniciar numeración.
-	\newpage \chapter*{tesis}\label{ch:plan}\addcontentsline{toc}{chapter}{Plan de tesis}
 
-	\input{1_justificacion/justificacion}
-	\input{2_fundamentacion/fundamentacion}
-	\input{3_objetivos/objetivos}
-	\input{4_metodologia/metodologia}
-	\input{5_cronograma/cronograma}
-	\input{6_condiciones_institucionales/condiciones_institucionales}
+    \acknowledgements
+	\listoftables
+	\listoffigures
+	
+	\pagestyle{plain} % Paginas sin encabezado, pero con numero de pagina.
+	
+	\input{5_introduccion/introduccion}
+	\input{6_fundamentacion/fundamentacion}
+	\input{7_marco_teorico/marco_teorico}
+	\input{8_problema_investigacion/problema_investigacion}
+	\input{9_experimentos/experimentos}
+	\input{10_resultados/resultados}
+	\input{11_conclusiones/conclusiones}
 	\newpage
 	
 	\begin{onecolumn}
 		\bibliographystyle{flexbib}
-		\bibliography{7_bibliografia/bibliografia}
+		\bibliography{12_bibliografia/bibliografia}
 	\end{onecolumn}
 \end{document}
