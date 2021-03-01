@@ -1,30 +1,11 @@
-\newpage \section{Problema de investigación} \label{ch:problema_investigacion}
-\subsection{Hipótesis de trabajo}
-\noindent A partir del relevamiento del estado del arte se infiere que las medidas de rendimiento obtenidas en las entradas de RS no son los suficientemente eficientes para mejorar la experiencia de usuario y reducir las probabilidades de error en sitios CQA.
+\chapter*{Capitulo 4}\label{ch:problemainvestigacion}
+\addcontentsline{toc}{chapter}{Capitulo 4. Problema de investigación y propuesta}
 
-\bigskip Por tal motivo, y como respuesta a la hipótesis planteada, se presentará un método basado en una arquitectura Big Data que posibilite aplicar ensamble de clustering a grandes conjuntos de datos y lograr medidas de rendimiento superadoras.
+\section{Problema de investigación y propuesta}
+\input{8_problema_investigacion/hipotesis}
+\input{8_problema_investigacion/metodologia_investigacion}
+\input{8_problema_investigacion/metodo_propuesto}
+\input{8_problema_investigacion/arquitectura_procesamiento}
+\input{8_problema_investigacion/implementacion_rs}
 
-\subsection{Procedimiento de desarrollo}
-\noindent Este trabajo comenzará con una búsqueda de material científico relacionado a RS en general, RS no personalizados basados en análisis de texto, su aplicación en sitios de CQA, un análisis de algoritmos de comparación de texto del estado del arte y su aplicación a grandes volúmenes de datos mediante métodos de ensamble de clustering y, también, una evaluación de arquitecturas de software adecuadas para un enfoque Big Data e infraestructuras acordes. Esto puede ser realizado mediante sitios o librerías digitales, tales como Google Scholar\footnote{Google Scholar: \url{https://scholar.google.com.ar}. Último acceso Agosto 2018.}, IEEExplore Digital Library\footnote{IEEExplore Digital Library: \url{http://ieeexplore.ieee.org}. Último acceso Agosto 2018.}, ScIELO\footnote{SciELO: \url{http://www.scielo.org}. Último acceso Agosto 2018.}, Harvard Library\footnote{Harvard library: \url{https://library.harvard.edu}. Último acceso Agosto 2018.} o el portal del CAICYT-CONICET\footnote{Centro Argentino de Información Científica y Tecnológica del CONICET: \url{http://www.caicyt-conicet.gov.ar/sitio}. Último acceso Agosto 2018.}, entre otros.
-Definida la hipótesis correctamente y el plan de trabajo, se iniciará el desarrollo de un software de código abierto partiendo del proyecto "text comparison"\footnote{Repositorio GitHub: \url{https://github.com/Departamento-Sistemas-UTNFRRO/text_comparison}.} perteneciente al repositorio Git del departamento de Ingeniería en Sistemas de Información de la UTN FRRo. Se importarán las piezas de software del código del proyecto del estado del arte recientemente mencionado para usarlas mediante un enfoque Big Data, con nuevas herramientas basadas en Cloud Computing, Hadoop y una arquitectura de software completamente nueva que optimice este tipo de desarrollo. Una vez que se inicie el desarrollo del proyecto, serán evaluadas distintas opciones de herramientas y entornos que se utilizarán, Esto incluye:
-\begin{itemize}
-	\item Lenguajes de programación y librerías inherentes al mismo.
-	\item Almacenes de datos, frameworks y proyectos de terceros que puedan ser incorporados en la arquitectura Big Data.
-	\item Arquitecturas de software, patrones, modelos y buenas prácticas.
-	\item Infraestructura: local, distribuida en una red de computadoras físicas, o distribuida y virtualizada en la nube.
-\end{itemize}
 
-Paralelamente al desarrollo, se identificará y documentará la nueva solución de acuerdo con los requerimientos de la Maestría en Ingeniería en Sistemas de Información, a fin de obtener un trabajo de investigación de tesis de maestría de excelencia, y acorde con los parámetros que caracterizan a la institución.
-Por último, una vez finalizado el desarrollo, se realizará un registro con los indicadores resultantes, se validará la propuesta, se explicitarán los resultados obtenidos y se elaborarán las conclusiones, a fin de abrir y/o profundizar en nuevas líneas de investigación. 
-
-\subsubsection{Método propuesto}
-\noindent Se propone el método EQuAL (\textit{Ensemble method for community Question Answering sites based on cLustering}), que mejora la calidad y eficiencia para recomendar preguntas en un sitio de CQA. Este método está basado en una arquitectura Big Data distribuida y tiene en cuenta diversas distancias de texto, combinadas mediante un método de ensamble de clustering.
-\begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
-	\caption{Método EQuAL para la generación de matrices de co-asociación desde el conjunto de datos original.}
-\end{figure}
-
-\bigskip El desarrollo para este trabajo de tesis está basado en dos pasos, como se muestra en la Figura 2. El primer paso es la generación de un conjunto de particiones. El mismo comenzará aplicando los distintos algoritmos de medidas de similaridad de texto del estado del arte al conjunto de datos de entrada. Este procedimiento tendrá como resultado un número $D$ de matrices de distancias. Por cada matriz de distancias, se aplicarán $N$ corridas de algoritmos de clustering, cada uno con un número $k$ de elementos seleccionados al azar, que es un parámetro de entrada del algoritmo de clustering. Esta combinación de $D$ matrices y $N$ clusters, resultará en $D \times N$ corridas del proceso de clustering en total. Esta configuración obtendrá un conjunto de particiones como resultado, con el fin de resumir la estructura de cada una de las particiones generadas por los algoritmos de clustering. El segundo paso es construir una matriz de co-asociación a partir del conjunto de particiones. Para tal fin, se aplica un algoritmo de ensamble de clustering de acumulación de evidencias, que combinará cada una de estas particiones, dando como salida una matriz de co-asociación, que contiene en cada posición la proporción de veces que los elementos $i,j$ caen juntos en el mismo grupo de la salida de clustering, a lo largo de las $D \times N$ particiones. La matriz de co-asociación, que es una representación integrada de las relaciones subyacentes entre los datos originales, será la entrada para RS en sitios CQA. Además, tiene la característica de ser adimensional, insesgada y comprende toda la variabilidad propia de los algoritmos de clustering, por lo cual, mejora la estructura de distancia item-item que es necesaria como entrada para un RS basado en contenido, incorporando varios aspectos de las distancias entre elementos de texto, en lugar de usar solo una simple medida basada individualmente en aspectos de cada una de las medidas de distancia.
-
-\bigskip El armado de matrices, la combinación de las mismas y la aplicación de estrategias estadísticas, implica un aumento significativo del volumen de datos y requiere una capacidad de cálculo intensiva. Una arquitectura Big Data que realice el procesamiento distribuido de los mismos es fundamental para este proceso. Además del volumen de datos con el cual se trabajará, se variarán distintos parámetros, tales como la medida de similaridad y valores de umbral involucrados en procesos de clustering, con el fin de obtener resultados confiables; lo cual redunda en múltiples ejecuciones de toda la solución. Debe destacarse que, en un primer momento, se implementarán experimentos basados en una infraestructura MapReduce aplicados con frameworks basados en Hadoop y cluster computing, desplegados en servidores elásticos en la nube, lo cual provee la ventaja de procesar grandes cantidades de datos en instancias dinámicamente escalables.
