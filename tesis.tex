@@ -30,7 +30,9 @@
 \usepackage{hyphenat}
 \usepackage{booktabs}
 \usepackage{bm}
-
+%\usepackage{bera} % optional: just to have a nice mono-spaced font
+\usepackage{listings}
+\usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{supertabular}
 \usepackage{multirow}
@@ -39,21 +41,22 @@
 \usepackage{fullpage,graphicx}
 \usepackage{rotating}
 \usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
 \hypersetup{
 	pdftitle={Tesis de Maestría en Ingeniería en Sistemas de Información},
 	pdfauthor={Ing. Federico Tesone},
 	pdfsubject={Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering},
 	pdfkeywords={},
-	bookmarksnumbered=true,     
-	bookmarksopen=true,         
-	bookmarksopenlevel=1,       
-	colorlinks=false,            
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	colorlinks=false,
 	pdfstartview=Fit,
-	allcolors=blue           
+	allcolors=blue
 }
 
 \usepackage{nowidow}
-\widowpenalty=5000  
+\widowpenalty=5000
 \clubpenalty=10000
 
 \SetKwIF{If}{ElseIf}{Else}{si}{entonces}{sin\'o, si}{de lo contrario}{fin si}
@@ -131,11 +134,42 @@
 \renewcommand\thesection{\arabic{section}}
 \interfootnotelinepenalty=10000 %  Para que las footnote no se pasen a la otra pagina.
 
+% To write JSON files
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	breaklines=true,
+	tabsize=2,
+	backgroundcolor=\color{background},
+	literate=
+	*{0}{{{\color{numb}0}}}{1}
+	{1}{{{\color{numb}1}}}{1}
+	{2}{{{\color{numb}2}}}{1}
+	{3}{{{\color{numb}3}}}{1}
+	{4}{{{\color{numb}4}}}{1}
+	{5}{{{\color{numb}5}}}{1}
+	{6}{{{\color{numb}6}}}{1}
+	{7}{{{\color{numb}7}}}{1}
+	{8}{{{\color{numb}8}}}{1}
+	{9}{{{\color{numb}9}}}{1}
+	{:}{{{\color{punct}{:}}}}{1}
+	{,}{{{\color{punct}{,}}}}{1}
+	{\{}{{{\color{delim}{\{}}}}{1}
+	{\}}{{{\color{delim}{\}}}}}{1}
+	{[}{{{\color{delim}{[}}}}{1}
+	{]}{{{\color{delim}{]}}}}{1},
+}
+
 \begin{document}
 	\maketitle
-	
+
 	\newgeometry{left=4.06cm,top=2.54cm,right=2.54cm,bottom=2.54cm}
-	
+
 	\input{0_dedicatoria/dedicatoria}
 	\input{1_resumen/resumen}
 	\tableofcontents % Tabla de contenidos
@@ -145,9 +179,9 @@
     \acknowledgements
 	\listoftables
 	\listoffigures
-	
+
 	\pagestyle{plain} % Paginas sin encabezado, pero con numero de pagina.
-	
+
 	\input{5_introduccion/introduccion}
 	\input{6_fundamentacion/fundamentacion}
 	\input{7_marco_teorico/marco_teorico}
@@ -156,7 +190,7 @@
 	\input{10_resultados/resultados}
 	\input{11_conclusiones/conclusiones}
 	\newpage
-	
+
 	\begin{onecolumn}
 		\bibliographystyle{flexbib}
 		\bibliography{12_bibliografia/bibliografia}
