@@ -81,7 +81,23 @@
 \contentsline {subparagraph}{El proceso completo del sistema de recomendación}{63}{subparagraph*.12}%
 \contentsline {subsubsection}{\numberline {4.5.1}Arquitectura general}{64}{subsubsection.0.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.2}Procesamiento batch}{65}{subsubsection.0.4.5.2}%
-\contentsline {section}{\numberline {5}Experimentos}{67}{section.0.5}%
-\contentsline {section}{\numberline {6}Resultados}{68}{section.0.6}%
-\contentsline {section}{\numberline {7}Conclusiones}{69}{section.0.7}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{70}{chapter*.13}%
+\contentsline {subsubsection}{\numberline {4.5.3}Consulta de una pregunta existente}{67}{subsubsection.0.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}Agregar una nueva pregunta}{68}{subsubsection.0.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.5}Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}{69}{subsubsection.0.4.5.5}%
+\contentsline {chapter}{Capitulo 5. Experimentos}{70}{chapter*.13}%
+\contentsline {section}{\numberline {5}Experimentos}{70}{section.0.5}%
+\contentsline {subsection}{\numberline {5.1}Estado del arte}{70}{subsection.0.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Análisis de rendimiento}{70}{subsubsection.0.5.1.1}%
+\contentsline {subparagraph}{Bag of Words}{71}{subparagraph*.14}%
+\contentsline {subparagraph}{TF/IDF}{71}{subparagraph*.15}%
+\contentsline {subparagraph}{FastText}{71}{subparagraph*.16}%
+\contentsline {subparagraph}{Word2Vec}{72}{subparagraph*.17}%
+\contentsline {subparagraph}{Semantic Distance}{72}{subparagraph*.18}%
+\contentsline {subsection}{\numberline {5.2}Preprocesamiento del conjunto de datos}{73}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {5.3}Muestreo del conjunto de datos}{73}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {5.4}Generación de particiones}{73}{subsection.0.5.4}%
+\contentsline {subsection}{\numberline {5.5}Ensamble de clustering}{73}{subsection.0.5.5}%
+\contentsline {subsection}{\numberline {5.6}Método de validación}{73}{subsection.0.5.6}%
+\contentsline {section}{\numberline {6}Resultados}{74}{section.0.6}%
+\contentsline {section}{\numberline {7}Conclusiones}{75}{section.0.7}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{76}{chapter*.19}%
