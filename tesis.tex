@@ -140,6 +140,10 @@
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
 
+%%%%% LANGUAGES AND SNIPPETS
+\renewcommand{\lstlistingname}{Fragmento de código} % Redefinicion de la palabra "Listing" para caption de snippet the codigo.
+
+% JSON
 \lstdefinelanguage{json}{
 	basicstyle=\footnotesize\ttfamily,
 	showstringspaces=false,
@@ -164,6 +168,51 @@
 	{[}{{{\color{delim}{[}}}}{1}
 	{]}{{{\color{delim}{]}}}}{1},
 }
+
+% PYTHON
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		morekeywords={self},              % Add keywords here
+		keywordstyle=\footnotesize\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\footnotesize\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false,
+  		basicstyle=\footnotesize,
+		numbers=left,
+		stepnumber=1
+}}
+
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+%%%%%%%%%%%%%%%%%
 
 \begin{document}
 	\maketitle

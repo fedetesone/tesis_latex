@@ -1,1 +1,5 @@
 \subsection{Muestreo del conjunto de datos}
+
+Se generan muestras del conjunto de datos original en forma de subconjuntos del mismo. Cada uno de los subconjuntos, es generado de forma pseudo-aleatoria utilizando la función sample del paquete random, de la librería Python. De tal forma, se generan listas de tamaño \(N\) de elementos únicos seleccionados del total de la población de pares de preguntas.
+
+\bigskip Cada uno de los subconjuntos de muestreo tiene un criterio de aceptación, la proporción de pares de preguntas iguales (con indicador 1) debe ser parecida a la proporción de preguntas distintas (con indicador 0); por lo cual, un subconjunto de muestreo es aceptado cuando la proporción de preguntas iguales está entre el \(35\%\) y \(75\%\) del total de preguntas del subconjunto. Esto garantiza que cada uno de los subconjuntos sea estadísticamente significativo y posea una variabilidad de datos tal que derive en resultados confiables.
