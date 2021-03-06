@@ -1,1 +1,111 @@
 \subsection{Ensamble de clustering}
+El proceso de ensamble comienza obteniendo todos los archivos de etiquetas generados por el paso anterior. El resultado es una estructura Spark, con la misma estructura que los archivos físicos, pero en memoria y en todos los nodos del cluster Hadoop, con el fin de poder realizar en ensamble de una forma eficiente y escalable.
+
+\bigskip El conjunto de etiquetas es agrupado por ID de pregunta, y aplicando una función de grupo que obtendrá una lista de tuplas \((run\_id, cluster\_id)\). Con el fin de clarificar esta idea, se va a dar un ejemplo: Si se realizan 3 ejecuciones del algoritmo de clustering, cada una de ellas pueden ser representadas como archivos con formato CSV y procesada de manera distribuida. Cada uno de esos archivos generados para cada ejecución, contendrá información del ID de ejecución y la asignación de cada una de las preguntas individuales a un cluster resultado. En el caso de PAM, cada identificador de cluster es un identificador real de una pregunta individual (o medoide desde la perspectiva algorítmica). En caso de que se realicen 3 ejecuciones, a modo de ejemplo, los identificadores de ejecución \(run\_uuid\_1\), \(run\_uuid\_2\) y \(run\_uuid\_3\), pueden representarse como se muestra en las \textbf{tablas \ref{tab:run1}, \ref{tab:run2} y \ref{tab:run3}}.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\ \hline
+		run\_uuid\_1       & 1                     & 1                    \\ \hline
+		run\_uuid\_1       & 2                     & 1                    \\ \hline
+		run\_uuid\_1       & 3                     & 1                    \\ \hline
+		run\_uuid\_1       & 4                     & 4                    \\ \hline
+	\end{tabular}
+	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 1.}
+	\label{tab:run1}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\ \hline
+		run\_uuid\_2       & 1                     & 1                    \\ \hline
+		run\_uuid\_2       & 2                     & 2                    \\ \hline
+		run\_uuid\_2       & 3                     & 1                    \\ \hline
+		run\_uuid\_2       & 4                     & 2                    \\ \hline
+	\end{tabular}
+	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 2.}
+	\label{tab:run2}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\ \hline
+		run\_uuid\_3       & 1                     & 3                    \\ \hline
+		run\_uuid\_3       & 2                     & 2                    \\ \hline
+		run\_uuid\_3       & 3                     & 3                    \\ \hline
+		run\_uuid\_3       & 4                     & 2                    \\ \hline
+	\end{tabular}
+	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 3.}
+	\label{tab:run3}
+\end{table}
+
+Considerando \(run\_uuid\_1\), se puede observar que las preguntas 1, 2 y 3 fueron asignadas al cluster representado por la pregunta 1. En cambio, la pregunta 4 fue asignada a un cluster distinto, representadas por la pregunta 3. La intuición para esta ejecución en particular, es que las preguntas 1, 2 y 3 son “más similares” entre sí, que la pregunta 4.
+
+\bigskip En el siguiente paso, el conjunto de datos es agrupado por \(question\_id\), y se aplica una función de grupo que genere tuplas \((run\_id, cluster\_id)\) para el ejemplo anterior resultaría tal como se muestra en la \textbf{Tabla \ref{tab:tuplas}}.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|}
+		\hline
+		\textbf{question\_id} & \textbf{tuples}                                          \\ \hline
+		1                     & {[}(run\_uuid\_1,1),(run\_uuid\_2,1),(run\_uuid\_3,3){]} \\ \hline
+		2                     & {[}(run\_uuid\_1,1),(run\_uuid\_2,2),(run\_uuid\_3,2){]} \\ \hline
+		3                     & {[}(run\_uuid\_1,1),(run\_uuid\_2,1),(run\_uuid\_3,3){]} \\ \hline
+		4                     & {[}(run\_uuid\_1,4),(run\_uuid\_2,2),(run\_uuid\_3,2){]} \\ \hline
+	\end{tabular}
+	\caption{Conjunto de datos de asignación de clusters agrupados por pregunta individual para generación de tuplas \((run\_id, cluster\_id)\) .}
+	\label{tab:tuplas}
+\end{table}
+
+Hasta ahora, este conjunto de datos muestra, por cada una de las preguntas, a qué cluster fue asignada, por cada ejecución del algoritmo. Este formato de representación, facilita el cálculo de la cantidad de veces que dos preguntas fueron asignadas al mismo cluster, para una misma ejecución. Siguiendo con el ejemplo, la pregunta 1 y la pregunta 2 fueron asignadas al cluster con identificador 1 para \(run\_uuid\_1\) - ya que las dos preguntas poseen la tupla \((run\_uuid\_1,1)\) -. Para obtener el resultado de este cálculo, es necesario realizar una intersección de arreglos para cada una de las combinaciones de preguntas (eliminando las combinaciones en donde los ID de pregunta son iguales). Para este ejemplo, la intersección de arreglos se muestra en la \textbf{Tabla \ref{tab:interseccion}}.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|l|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \multicolumn{1}{c|}{\textbf{tuples}}                     \\ \hline
+		1 & 2 & {[}(run\_uuid\_1,1){]} \\ \hline
+		1                        & 3                        & {[}(run\_uuid\_1,1),(run\_uuid\_2,1),(run\_uuid\_3,3){]} \\ \hline
+		1 & 4 & {[}{]}                 \\ \hline
+		2 & 3 & {[}(run\_uuid\_1,1){]} \\ \hline
+		2 & 4 & {[}(run\_uuid\_2,2){]} \\ \hline
+		3 & 4 & {[}{]}                 \\ \hline
+	\end{tabular}
+	\caption{Conjunto de datos intermedio que indica cuando dos preguntas coinciden en el mismo cluster/ejecución mediante un arreglo de tuplas.}
+	\label{tab:interseccion}
+\end{table}
+
+La longitud de cada una de las listas indica la cantidad de veces que una pregunta coincide con otra pregunta en el mismo cluster para una misma ejecución. Por ejemplo, las preguntas 1 y 3 resultaron en el mismo cluster para todas las ejecuciones, lo que indicaría una gran similaridad entre ellas. Por el contrario, las preguntas 1 y 4 no presentan ninguna intersección, lo cual es interpretado como una similaridad muy baja entre las preguntas en cuestión.
+
+\bigskip La cantidad de veces que una pregunta coincide con otra, dividido la cantidad total de ejecuciones, nos indica, en un rango normalizado \([0,1]\), cuán similares son entre cada una de ellas, de manera adimensional. Aplicando esta teoría, calculamos:
+
+\begin{python}
+len(set(tuples_1).intersection(set(tuples_2))) / total_runs
+\end{python}
+
+Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coincidieron en el mismo cluster para una misma ejecución, y el denominador la cantidad total de ejecuciones, respondiendo a la fórmula:
+\[C(i,j)=\frac{n_{ij}}{N}\]
+
+\bigskip Considerando el ejemplo en cuestión, el conjunto de datos resultado de aplicar la fórmula anterior se muestra en la \textbf{Tabla \ref{tab:coasociacion}}.
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{similarity} \\ \hline
+		1                        & 2                        & 0.3333              \\ \hline
+		1                        & 3                        & 1.0                 \\ \hline
+		1                        & 4                        & 0                   \\ \hline
+		2                        & 3                        & 0.3333              \\ \hline
+		2                        & 4                        & 0.3333              \\ \hline
+		3                        & 4                        & 0                   \\ \hline
+	\end{tabular}
+	\caption{Ejemplo de matriz de co-asociación salida del proceso de ensamble de clustering.}
+	\label{tab:coasociacion}
+\end{table}
+Obteniendo una matriz de co-asociación, que indica que las preguntas 1 y 3 coincidieron en el \(100\%\) de las ejecuciones, mientras que las preguntas 1 y 2 solo en un tercio de las mismas, y las preguntas 1,4 nunca coincidieron.

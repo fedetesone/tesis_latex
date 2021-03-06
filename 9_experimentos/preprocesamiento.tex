@@ -1,1 +1,40 @@
 \subsection{Preprocesamiento del conjunto de datos}
+
+La calidad de un conjunto de datos del mundo real depende del número de errores que contenga. Los errores de entrada de datos, tanto simples como complejos, son muy frecuentes, más allá de las validaciones que se les hayan realizado a los mismos \citep{maletic2000data}. Además de los errores de datos, que es necesario eliminarlos, también es crucial preprocesar los mismos con el fin de estandarizar algunos factores y así obtener mejores resultados.
+
+\bigskip Para el conjunto de datos de preguntas del sitio web Quora, se realizaron los siguientes trabajo de preprocesamiento:
+
+\begin{enumerate}
+	\item Convertir el texto en minúscula; esto habilita a que la comparaciones de texto entre preguntas con algoritmos que son sensibles al cambio entre letras mayúscula y minúscula, sean efectivas.
+	\item Eliminar fórmulas; las cuales están encerradas entre etiquetas [math][/math] y [code][/code] ya que su análisis es muy complejo y contraproducente en términos de rendimiento.
+	\item Reemplazar números por letras; posibilita poner en el mismo plano preguntas que contienen números y otras que no lo hacen. Además, al utilizar palabras del inglés es posible que las mismas se encuentren en taxonomías para comparaciones semánticas.
+	\item Eliminar caracteres especiales, ya que los datos deben ser uniformes. Un signo de exclamación o de pregunta no cambiaría la semántica de la pregunta (desde la perspectiva del análisis de similaridad) y agregaría ruido al momento de procesarlas.
+\end{enumerate}
+
+Para resumir, cada una de las preguntas, será parámetro de una función que aplica las técnicas anteriormente mencionadas, tal como la que se muestra en el fragmento de codigo \ref{lst:funcion-limpieza}
+
+\bigskip
+
+\begin{python}[caption={Ejemplo de función de limpieza.}, captionpos=b,label={lst:funcion-limpieza}]
+def clean_text(text):
+	text = text.lower()
+	text = remove_formulas(text)
+	text = replace_numbers(text)
+	text = remove_special_delimiters(text)
+
+	return text
+\end{python}
+
+\bigskip Ejemplos de la salida de la función de limpieza, pueden ser:
+
+\begin{verbatim}
+i: How do I find the zeros of the polynomial function [math]f(x)=\dfrac{1}{2}x^{3}-3x[/math]?
+o: how do i find the zeros of the polynomial function
+\end{verbatim}
+
+\begin{verbatim}
+i: Would you switch from Canon 6D to Leica D-LUX 109?
+o: would you switch from canon six d to leica d-lux one zero nine
+\end{verbatim}
+
+En la primera, es posible ver cómo se elimina la fórmula polinómica, mientras que en la segunda, todos los números fueron transformados a letras, con espacios entre ellos. En ambas, se puede ver que el signo de interrogación se elimina y todas las letras están en minúscula.

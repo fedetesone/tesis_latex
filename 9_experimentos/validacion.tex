@@ -1,1 +1,226 @@
 \subsection{Método de validación}
+
+\subsubsection{Generación de conjuntos estadísticamente significativos}
+
+Para generar resultados estadísticamente significativos se ejecutara el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate*} [label=(\roman*)] \item el tamaño de la muestra y \item el número de clusters \(k\)\end{enumerate*}. Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios de 100, 500, 1000, 1500 y 2000 pares de preguntas (200, 1000, 2000, 3000 y 4000 preguntas individuales). Para cada tamaño de muestra, se realizaron 10 muestras aleatorias manteniendo un \(k\) fijo. Por ejemplo, para un número de clusters \(k = 5\) y para un tamaño de muestra 100, se realizaron 10 ejecuciones con un conjunto de datos de entrada aleatorio. Dando un total de \(5 \times 10 = 50\) matrices de co-asociación resultado, para un \(k\) fijo.
+
+\paragraph{Elección de los tamaños de muestra}
+El motivo de la elección del tamaño de muestra en el apartado anterior, se basa en que los experimentos en forma local, por la facilidad que éste brinda en la depuración de los mismos. Cuando se aumenta el tamaño de la muestra en forma lineal, la cantidad de cómputos por cada uno de los algoritmos de similaridad aumentan de forma cuadrática. Como se mencionó anteriormente, Siendo \(n\) el número de pares de preguntas de una muestra, se realizarán \(2n^2-n\) cálculos. Además, si, por ejemplo, utilizamos 5 algoritmos de similaridad el número de cálculos de similaridad es de \(5(2n^2-n)\), con el agregado de que al algoritmos de clustering PAM y el ensamble de clustering también aumentan su complejidad de una forma considerable, dependiendo de nuestro número de clusters \(k\).
+
+\paragraph{Elección del número de clusters}
+
+La elección del número de clusters \(k\) en los experimentos realizados sigue una lógica que busca estandarizar los mismos a lo largo de todos los tamaños de muestras, es decir, no variar el número de clusters entre ellas, con fines de comparación. Como regla general (\textit{rule of thumb} o \textit{regla del pulgar}) se considera como número "óptimo" de clusters un valor de alrededor de \(\sqrt{n/2}\) \citep{kodinariya2013review}, siendo \(n\) el tamaño de la muestra. Para el número de muestras elegido (200, 1000, 2000, 3000 y 4000 preguntas individuales), los valores siguiendo esta regla serían \(k = 10\), \(k = 22\), \(k = 31\), \(k = 38\), \(k =44\).
+
+\bigskip Los valores generados por la regla del pulgar se encuentran en un rango \([10, 44]\), por lo cual, finalmente se optó por elegir los valores de \(k\) con una separación uniforme de los mismos, para facilitar su interpretación y visualización, respetando ese rango de cobertura. Los experimentos para este trabajo se realizaron con los valores \(k = 5, 10, 15, 20, 25, 30, 35, 40, 45, 50\).
+
+\bigskip La validación de los valores de \(k\) elegidos para realizar los experimentos serán validados en conjunto mediante el rendimiento de la matriz de co-asociación. Partiendo de la base del \textit{método del codo} para la evaluación de la performance de un algoritmo de clustering, el cual evalúa el porcentaje de variabilidad explicada en función del número de clusters, mediante la idea de encontrar el número mínimo de clusters por el cual agregando un cluster adicional no modelaría mejor los datos. El porcentaje de variabilidad explicado por los clusters es graficado contra el número de clusters. Los primeros clusters agregaran una información considerable al modelo, pero en cierto punto la ganancia marginal caerá dramáticamente, dando un ángulo en el gráfico \citep{bholowalia2014ebk}.
+
+\begin{figure}
+	\def\svgwidth{\linewidth}
+	\input{imagenes/figura2.pdf_tex}
+	\caption{Metodo del codo.}
+\end{figure}
+
+\bigskip Con el fin de dar una aplicación más integral al método del codo, en lugar de calcularlo por cada una de las técnicas de clustering aplicadas, el mismo se aplicará utilizando la matriz de coasociación generada a partir del ensamble. Para cuantificar y evaluar el performance, se utilizarán matrices de confusión denotarán el error entre los resultados obtenidos y la clasificación proveniente del conjunto de datos original, por cada uno de los valores de k anteriormente mencionados.
+
+\subsubsection{Estructura de las matrices de confusión}
+Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la \textbf{Tabla \ref{tab:matriz-confusion}}.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{ll|c|c|}
+		\cline{3-4}
+		&                                 & \multicolumn{2}{c|}{\textbf{Predicho}} \\ \cline{3-4}
+		&                                 & \textbf{0}         & \textbf{1}        \\ \hline
+		\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c|}{\textbf{0}} & a & b \\ \cline{2-4}
+		\multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\textbf{1}} & c                  & d                 \\ \hline
+	\end{tabular}
+	\caption{Matriz de confusión para validación de resultados.}
+	\label{tab:matriz-confusion}
+\end{table}
+
+Los indicadores de desempeño que se evaluarán en los experimentos realizados con fines comparativos, son los siguientes:
+\begin{itemize}
+	\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\)
+	\item \textbf{Error:} \((b+c)/(a+b+c+d)\)
+	\item \textbf{Precisión positivos:} \(d/(d + b)\)
+	\item \textbf{Precisión negativos:} \(a/(a+c)\)
+	\item \textbf{Sensitividad:} \(d/(c+d)\)
+	\item \textbf{Especificidad:} \(a/(a+b)\)
+\end{itemize}
+donde \(a+b+c+d=1\).
+
+\paragraph{Preparación de los datos}
+Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de coasociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, considerando la siguiente muestra de preguntas en la Tabla \ref{tab:muestra-validacion} y la matriz de co-asociación de la Tabla \ref{tab:coasociacion-validacion}, se filtran solo los pares de preguntas de la matriz de coasociación que se encuentran en la muestra de pares de preguntas, ya que son las única con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
+		0                     & 123004                      & question\_10         & question\_20         & 1              \\ \hline
+		1                     & 98776                       & question\_11         & question\_21         & 0              \\ \hline
+	\end{tabular}
+	\caption{Muestras de pares de preguntas que se utilizó como entrada del método EQuAL.}
+	\label{tab:muestra-validacion}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\ \hline
+		question\_10 & question\_11 & contenido & contenido & 0.857 \\ \hline
+		question\_10 & question\_20 & contenido & contenido & 0.210 \\ \hline
+		question\_10 & question\_21 & contenido & contenido & 0.126 \\ \hline
+		question\_11 & question\_20 & contenido & contenido & 0.006 \\ \hline
+		question\_11 & question\_21 & contenido & contenido & 0.368 \\ \hline
+		question\_20 & question\_21 & contenido & contenido & 0.146 \\ \hline
+	\end{tabular}
+	\caption{Matriz de co-asociación generada a partir de la muestra de la tabla \ref{tab:muestra-validacion}.}
+	\label{tab:coasociacion-validacion}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\ \hline
+		question\_10             & question\_11             & contenido            & contenido            & 0.857               \\ \hline
+		question\_11             & question\_21             & contenido            & contenido            & 0.368               \\ \hline
+	\end{tabular}
+	\caption{Filtrado de la tabla \ref{tab:coasociacion-validacion} con los pares de preguntas que se encuentran en la tabla \ref{tab:muestra-validacion}.}
+	\label{tab:filtrado-validacion}
+\end{table}
+
+\bigskip Ya se realizaron los cálculos de similaridad, los algoritmos de clustering y la matriz de co-asociación. En la siguiente sección, se procederá a interpretar los resultados obtenidos.
+
+\paragraph{Construcción y elección del umbral correcto}
+La problemática que se intenta resolver teniendo en cuenta todas las similaridades obtenidas a partir del ensamble de clustering es ¿Cuando consideramos a esas preguntas iguales y cuando no? La respuesta es simple, cuando la similaridad \(S\) entre un par de preguntas (\(q_1,q_2)\) es igual o superior a cierto umbral \(t\) se considera que son iguales (1) y distintas si sucede lo contrario (0), clarificando:
+\[f(x) = \left\{ \begin{array}{lcc} 1 & si & S(q_1, q_2)\geq t
+	\\ 0 & si & S(q_1, q_2) < t
+\end{array} \right.\]
+
+La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor desempeño, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Por ejemplo, tomando valores con intervalos \(0.05\) formando un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\), por cada uno de ellos:
+\begin{enumerate}
+	\item Se iteran todos los pares de preguntas.
+	\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
+	\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
+	\item Se calcula la proporción de pares de preguntas asignadas con true, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{precisión} del método.
+\end{enumerate}
+El valor de umbral que arroje la mayor precisión, será el utilizado para evaluar el desempeño del método, al construir la matriz de confusión.
+
+\bigskip Volviendo al ejemplo anterior, un umbral elegido de \(0.65\) aplicado a la \textbf{Tabla \ref{tab:coasociacion-validacion}}, arrojaría el resultado de la \textbf{Tabla \ref{tab:umbral-validacion-1}} (el único par de preguntas que presenta una similaridad mayor al umbral es \((question\_10, question\_11)\), por lo cual se le asigna el valor 1). Filtrando los pares de preguntas que se encuentran en la muestra de entrada, obtenemos el conjunto de datos de la \textbf{Tabla \ref{tab:umbral-validacion-2}}, Lo cual muestra un resultado idéntico al conjunto de entrada. Lo anterior significa que los pares predichos son iguales a los pares predichos. En otro caso, si el umbral que tiene mejor rendimiento fuese \(0.9\), el resultado obtenido luego del cómputo hubiese sido el de la \textbf{Tabla \ref{tab:umbral-validacion-3}}, el cual expone una diferencia entre el valor real y el predicho del par de preguntas \((question\_10, question\_11)\). Lo anterior denota el mayor rendimiento del umbral \(0.65\) contra el umbral \(0.9\) y su importancia en la elección del valor correcto.
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
+		question\_10 & question\_11 & contenido & contenido & 1 \\ \hline
+		question\_10 & question\_20 & contenido & contenido & 0 \\ \hline
+		question\_10 & question\_21 & contenido & contenido & 0 \\ \hline
+		question\_11 & question\_20 & contenido & contenido & 0 \\ \hline
+		question\_11 & question\_21 & contenido & contenido & 0 \\ \hline
+		question\_20 & question\_21 & contenido & contenido & 0 \\ \hline
+	\end{tabular}
+	\caption{Asignación binaria de los resultados de similaridad obtenidos en la tabla 18, teniendo en cuenta un umbral de 0.65.}
+	\label{tab:umbral-validacion-1}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
+		question\_10             & question\_11             & contenido            & contenido            & 1              \\ \hline
+		question\_11             & question\_21             & contenido            & contenido            & 0              \\ \hline
+	\end{tabular}
+	\caption{Filtrado de la tabla 20 con los pares de preguntas que se encuentran en la tabla 17.}
+	\label{tab:umbral-validacion-2}
+\end{table}
+
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
+		question\_10             & question\_11             & contenido            & contenido            & 0              \\ \hline
+		question\_11             & question\_21             & contenido            & contenido            & 0              \\ \hline
+	\end{tabular}
+	\caption{Utilización de un umbral de 0.9 en la matriz de co-asociación.}
+	\label{tab:umbral-validacion-3}
+\end{table}
+
+\bigskip En conclusión, el rendimiento del algoritmo se medirá comparando la variable de clase (1 o 0) del conjunto de datos de entrada, con la variable de clase construida desde la comparación de las similaridades resultados del método y un umbral apropiado. Cuanto más pares de preguntas coincidan, mejor será el rendimiento del algoritmo, el cual se podrá visualizar mediante matrices de confusión.
+
+\paragraph{Construcción de las matrices de confusión}
+Con el fin de poder ilustrar cómo se construyen las matrices de confusión a partir de la comparación de los conjuntos de datos, se utilizará el siguiente ejemplo. Supongamos que el conjunto de datos de entrada es el que se muestra en la Tabla \ref{tab:validacion-reales}, Y el resultado obtenido luego de la elección del mejor umbral, es la Tabla \ref{tab:validacion-predichos}. Por lo cual, comparando los valores de la columna “equal’, obtendremos el resultado de la Tabla \ref{tab:validacion-comparacion}. Sumarizando los resultados, la matriz de confusión derivada se muestra en la Tabla \ref{tab:validacion-confusion-ejemplo}. La precisión obtenida a partir de este conjunto de datos y la ejecución hipotética del método es \(0.75\) (y por lo tanto, el error es \(0.25\)).
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
+		0 & 123004 & question\_10 & question\_20 & 1 \\ \hline
+		1 & 98776  & question\_11 & question\_21 & 1 \\ \hline
+		2 & 14422  & question\_12 & question\_22 & 1 \\ \hline
+		3 & 12321  & question\_13 & question\_23 & 1 \\ \hline
+		4 & 999    & question\_14 & question\_24 & 0 \\ \hline
+		5 & 7448   & question\_15 & question\_25 & 0 \\ \hline
+		6 & 69553  & question\_16 & question\_26 & 0 \\ \hline
+		7 & 2447   & question\_17 & question\_27 & 1 \\ \hline
+	\end{tabular}
+	\caption{Ejemplo de conjunto de datos de entrada (reales) para validación.}
+	\label{tab:validacion-reales}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
+		question\_10 & question\_20 & contenido & contenido & 1 \\ \hline
+		question\_11 & question\_21 & contenido & contenido & 1 \\ \hline
+		question\_12 & question\_22 & contenido & contenido & 0 \\ \hline
+		question\_13 & question\_23 & contenido & contenido & 1 \\ \hline
+		question\_14 & question\_24 & contenido & contenido & 1 \\ \hline
+		question\_15 & question\_25 & contenido & contenido & 0 \\ \hline
+		question\_16 & question\_26 & contenido & contenido & 0 \\ \hline
+		question\_17 & question\_27 & contenido & contenido & 1 \\ \hline
+	\end{tabular}
+	\caption{Ejemplo de conjunto de datos de predichos por el método EQuAL.}
+	\label{tab:validacion-predichos}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		\textbf{sequence\_id} & \textbf{real} & \textbf{predicho} & \textbf{resultado} & \textbf{equal} \\ \hline
+		0 & 1 & 1 & true  & 1 \\ \hline
+		1 & 1 & 1 & true  & 1 \\ \hline
+		2 & 1 & 0 & false & 0 \\ \hline
+		3 & 1 & 1 & true  & 1 \\ \hline
+		4 & 0 & 1 & false & 1 \\ \hline
+		5 & 0 & 0 & true  & 0 \\ \hline
+		6 & 0 & 0 & true  & 0 \\ \hline
+		7 & 1 & 1 & true  & 1 \\ \hline
+	\end{tabular}
+	\caption{Resultado de comparación de las tablas 24 y 25 para validación y construcción de matrices de confusión.}
+	\label{tab:validacion-comparacion}
+\end{table}
+
+\begin{table}[]
+	\centering
+	\begin{tabular}{ll|c|c|}
+		\cline{3-4}
+		&  & \multicolumn{2}{c|}{\textbf{Predicho}} \\ \cline{3-4}
+		&  & \textbf{0}         & \textbf{1}        \\ \hline
+		\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c|}{\textbf{0}} & 0.25  & 0.125 \\ \cline{2-4}
+		\multicolumn{1}{|c|}{}                               & \multicolumn{1}{c|}{\textbf{1}} & 0.125 & 0.5   \\ \hline
+	\end{tabular}
+	\caption{Matriz de confusión obtenida a partir de la comparación de las tablas 23 y 24.}
+	\label{tab:validacion-confusion-ejemplo}
+\end{table}
