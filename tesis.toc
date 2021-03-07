@@ -113,6 +113,14 @@
 \contentsline {paragraph}{\numberline {5.6.2.1}Preparación de los datos}{87}{paragraph.0.5.6.2.1}%
 \contentsline {paragraph}{\numberline {5.6.2.2}Construcción y elección del umbral correcto}{88}{paragraph.0.5.6.2.2}%
 \contentsline {paragraph}{\numberline {5.6.2.3}Construcción de las matrices de confusión}{90}{paragraph.0.5.6.2.3}%
-\contentsline {section}{\numberline {6}Resultados}{91}{section.0.6}%
-\contentsline {section}{\numberline {7}Conclusiones}{92}{section.0.7}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{93}{chapter*.21}%
+\contentsline {chapter}{Capitulo 6. Resultados}{92}{chapter*.21}%
+\contentsline {section}{\numberline {6}Resultados}{92}{section.0.6}%
+\contentsline {subsection}{\numberline {6.1}Análisis del método propuesto}{92}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Análisis del método propuesto y algoritmos del estado del arte}{96}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Otras observaciones de interés}{98}{subsection.0.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Estabilidad y variabilidad del método de ensamble}{98}{subsubsection.0.6.3.1}%
+\contentsline {paragraph}{\numberline {6.3.1.1}Tamaño de muestra de 100 pares de preguntas}{100}{paragraph.0.6.3.1.1}%
+\contentsline {subparagraph}{Anova}{100}{subparagraph*.22}%
+\contentsline {subparagraph}{Tukey}{100}{subparagraph*.23}%
+\contentsline {section}{\numberline {7}Conclusiones}{102}{section.0.7}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{103}{chapter*.24}%

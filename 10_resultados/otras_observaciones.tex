@@ -1,0 +1,40 @@
+\subsection{Otras observaciones de interés}
+
+\subsubsection{Estabilidad y variabilidad del método de ensamble}
+
+Con el fin de analizar la estabilidad del método y poner en perspectiva sus resultados en comparación con los algoritmos del estado del arte, se realiza un \textit{análisis de varianza} (ANOVA del inglés \textbf{An}alysis \textbf{o}f \textbf{Va}riance) y se aplica el \textit{método de Tukey} a continuación.
+
+\bigskip El análisis de varianza prueba la significancia estadística de la diferencia de medias (o tendencia central) entre los diferentes métodos en análisis. Si la diferencia entre las medias es estadísticamente significativa, significa que la diferencia esperada es probable que reaparezca si los experimentos son realizados nuevamente \citep{tabachnick2007experimental}. El término \textit{estadísticamente significativo} indica que rechazar la hipótesis nula no significa que el hallazgo sea importante, sino que la diferencia media es lo suficientemente grande como para que la muestra vuelva a aparecer si los experimentos son realizados nuevamente. En el caso de estudio, la hipótesis nula sugiere que el método EQuAL no es apto, eficiente y eficaz para ser utilizado en un sistema de recomendación, teniendo en cuenta sus medidas de rendimiento. Para clarificar, la intención de este trabajo es rechazar la hipótesis nula, y en este apartado se usa el análisis de varianza como una herramienta para tal fin. Si los resultados son los esperados, podemos llegar a la conclusión que el método EQuAL puede ser utilizado como medio para generar matrices de similaridad aptas para un RS eficiente y eficaz, mediante pruebas estadísticamente significativas. Se realizó un estudio ANOVA\footnote{El código completo del análisis de varianza se encuentra en este link.} con los datos\footnote{Conjunto de datos fuente para el análisis de varianzas: <insertar link github>} utilizados para generar las tablas resumen del apartado “6.2. Análisis del método propuesto y algoritmos del estado del arte”.
+
+\bigskip Los algoritmos del estado del arte y método EQuAL basado en el ensamble de los mismos, generaron conjuntos de datos que serán utilizados como entrada para el análisis de varianza. Los conjuntos de datos de los métodos del estado del arte se toman como \textit{grupos base}, y el conjunto de datos del método EQuAL es el grupo variable (o también \textit{factor variable}). Se plantean las siguientes hipótesis:
+\begin{itemize}
+	\item \textbf{\(H_0\)}: La media de los valores de error del método EQuAL para un tamaño de muestra determinado, es la misma que la de los métodos del estado del arte.
+	\item \textbf{\(H_1\)}: La media de los valores de error del método EQuAL para un tamaño de muestra determinado, es distinta que la de los métodos del estado del arte.
+\end{itemize}
+
+\bigskip Para clarificar, se va a aplicar la técnica \textit{ANOVA de un factor}, que relaciona dos variables: el método aplicado a la muestra aleatoria (independiente) y el valor de error obtenido (dependiente). La variable dependiente es el llamado \textit{factor}. Sin embargo, el análisis de medias de error a continuación se realizará comparando el método EQuAL contra los métodos del estado del arte (uno a uno), para un tamaño de muestra determinado. Para tal fin, se utiliza el método de Tukey para crear intervalos de confianza para todas las diferencias de medias en parejas. El motivo por el cual es realizado de esta forma es porque el método ANOVA, si bien da un resultado estadísticamente significativo, indica que al menos un grupo (cualquiera de ellos) difiere de los demás y, para un análisis más específico, es necesario el énfasis especial es el método propuesto realizando comparaciones específicas mediante pares \citep{abdi2010tukey}. Por ejemplo, si el método ANOVA arroja que hay diferencias significativas entre las medias en análisis, el método de Tukey puede aplicarse para saber específicamente donde radican las mismas.
+
+\bigskip Filtrando las comparaciones uno a uno en las cuales se encuentra el método EQuAL, es posible saber cómo se comporta. Si las medias de error son iguales en términos estadísticos, significa que el método EQuAL es apto para la generación de medidas de similaridad a partir del conjunto de datos en estudio, y su aplicación en RS.
+
+\bigskip A continuación, se muestran los métodos ANOVA y Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\%\) (\(\alpha = 0.05\)).
+
+\paragraph{Tamaño de muestra de 100 pares de preguntas}
+
+\subparagraph{Anova}
+\begin{rc}
+                 Df  Sum Sq  Mean Sq F value Pr(>F)
+as.factor(metodo)  5 0.00938 0.001875   0.731  0.603
+Residuals         54 0.13851 0.002565
+\end{rc}
+
+\subparagraph{Tukey}
+\begin{rc}
+                 diff        lwr       upr     p adj
+ensemble-bow     0.008 -0.0589175 0.0749175 0.9992360
+ft-ensemble      0.030 -0.0369175 0.0969175 0.7702455
+gtfidf-ensemble  0.007 -0.0599175 0.0739175 0.9996012
+sem-ensemble    -0.003 -0.0699175 0.0639175 0.9999940
+w2v-ensemble     0.013 -0.0539175 0.0799175 0.9923331
+\end{rc}
+
+
