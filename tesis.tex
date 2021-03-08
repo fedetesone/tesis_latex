@@ -33,6 +33,7 @@
 %\usepackage{bera} % optional: just to have a nice mono-spaced font
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{colortbl}
 \usepackage{multicol}
 \usepackage{supertabular}
 \usepackage{multirow}
@@ -42,6 +43,7 @@
 \usepackage{rotating}
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}
+\usepackage{verbatim}
 \hypersetup{
 	pdftitle={Tesis de Maestría en Ingeniería en Sistemas de Información},
 	pdfauthor={Ing. Federico Tesone},
@@ -212,6 +214,19 @@
 
 % Python for inline
 \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+
+
+
+%%%%%%% R Language
+\lstset{commentstyle=\color{red},keywordstyle=\scriptsize\color{black},showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{keywordstyle=\scriptsize,language=R}}{}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstset{keywordstyle=\scriptsize,language=R}             % Set R to default language
+
+
+
 %%%%%%%%%%%%%%%%%
 
 \begin{document}
