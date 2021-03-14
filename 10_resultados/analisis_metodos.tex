@@ -159,17 +159,126 @@ A continuación se muestran distintas ejecuciones del método EQuAL, de forma de
 
 \bigskip En forma de resumen comparativo, se van a analizar los errores cruzando cada uno de los tamaños de muestra con el número de clusters k utilizado. En la \textbf{Tabla \ref{tab:analisis-error-vs-k}}, como así también en las tablas anteriores que se utilizaron como fuentes de datos de esta última, resulta que la media total del error de todas las ejecuciones, para todos los valores de \(k\) y para todos los tamaños de muestra, es \(0.32918\). Además, con el fin de tener documentada la estabilidad del método, se calculó la varianza promedio por tamaño de muestra que resultó tener un valor \(0.0002308676\) y la varianza promedio por valor k con un valor de \(0.0005900664\). Las \textbf{Figuras \ref{fig:errores-k-tamanos-muestra} y \ref{fig:errores-tamanos-muestra-k}} muestran los resultados de la \textbf{Tabla \ref{tab:analisis-error-vs-k}} desde dos perspectivas distintas: los errores de los valores de \(k\) a lo largo de los distintos tamaños de muestra, y los errores de los tamaños de muestra a lo largo de los distintos valores de \(k\), con el fin de poder observar cómo se comporta el método EQuAL en cada perspectiva, teniendo en cuenta variabilidad y valor absoluto de los errores promedio.
 
+\begin{filecontents*}{erroresktamanomuestra.csv}
+100,0.322,0.318,0.314,0.318,0.309,0.304,0.307,0.309,0.311,0.308
+500,0.3366,0.3254,0.325,0.3192,0.3226,0.3218,0.3188,0.317,0.3162,0.314
+1000,0.3463,0.3406,0.3419,0.3393,0.3378,0.3364,0.3366,0.3397,0.3361,0.3324
+1500,0.3486,0.3395,0.341,0.3424,0.3397,0.3384,0.3364,0.3384,0.335,0.3293
+2000,0.3407,0.3389,0.3354,0.3375,0.3354,0.3353,0.3315,0.3296,0.3317,0.3306
+\end{filecontents*}
+
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
-	\caption{Errores de los valores de k en los distintos tamaños de muestra.}
+	\centering
+	\scriptsize
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}
+			\begin{axis}[
+				xlabel={Tamaños de muestra},
+				ylabel={Error},
+				xmin=100, xmax=2000,
+				ymin=0.30, ymax=0.36,
+				xtick={100,500,1000,1500,2000},
+				ytick={0.30,0.31,...,0.36},
+				legend pos=north west,
+				ymajorgrids=true,
+				grid style=dashed,
+				]
+
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k5}
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k10}
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k15}
+				\addplot table [mark=square,x index=0, y index=4, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k20}
+				\addplot table [mark=square,x index=0, y index=5, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k25}
+				\addplot table [mark=square,x index=0, y index=5, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k30}
+				\addplot table [mark=square,x index=0, y index=7, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k35}
+				\addplot table [mark=square,x index=0, y index=8, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k40}
+				\addplot table [mark=square,x index=0, y index=9, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k45}
+				\addplot table [mark=square,x index=0, y index=10, col sep=comma] {erroresktamanomuestra.csv};
+				\label{k50}
+			\end{axis}
+
+			% Primer cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.55,0.2) {\scriptsize\shortstack[l]{
+					\ref{k5} $k = 5$ \\
+					\ref{k10} $k = 10$ \\
+					\ref{k15} $k = 15$ \\
+					\ref{k20} $k = 20$ \\
+					\ref{k25} $k = 25$}};
+
+			% Segundo cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.83,0.2) {\scriptsize\shortstack[l]{
+					\ref{k30} $k = 30$ \\
+					\ref{k35} $k = 35$ \\
+					\ref{k40} $k = 40$ \\
+					\ref{k45} $k = 45$ \\
+					\ref{k50} $k = 50$}};
+		\end{tikzpicture}
+	}
+	\caption{Errores de los valores de \(k\) en los distintos tamaños de muestra.}
 	\label{fig:errores-k-tamanos-muestra}
 \end{figure}
 
+\begin{filecontents*}{errorestamanomuestrak.csv}
+5,0.322,0.3366,0.3463,0.3486,0.3407
+10,0.318,0.3254,0.3406,0.3395,0.3389
+15,0.314,0.325,0.3419,0.341,0.3354
+20,0.318,0.3192,0.3393,0.3424,0.3375
+25,0.309,0.3226,0.3378,0.3397,0.3354
+30,0.304,0.3218,0.3364,0.3384,0.3353
+35,0.307,0.3188,0.3366,0.3364,0.3315
+40,0.309,0.317,0.3397,0.3384,0.3296
+45,0.311,0.3162,0.3361,0.335,0.3317
+50,0.308,0.314,0.3324,0.3293,0.3306
+\end{filecontents*}
+
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
-	\caption{Errores de los valores de k en los distintos tamaños de muestra.}
+	\centering
+	\scriptsize
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}
+			\begin{axis}[
+				xlabel={Valores de k},
+				ylabel={Error},
+				xmin=5, xmax=50,
+				ymin=0.30, ymax=0.37,
+				xtick={5,10,...,50},
+				ytick={0.30,0.31,...,0.37},
+				legend pos=north west,
+				ymajorgrids=true,
+				grid style=dashed,
+				]
+
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {errorestamanomuestrak.csv};
+				\label{t100}
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {errorestamanomuestrak.csv};
+				\label{t500}
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {errorestamanomuestrak.csv};
+				\label{t1000}
+				\addplot table [mark=square,x index=0, y index=4, col sep=comma] {errorestamanomuestrak.csv};
+				\label{t1500}
+				\addplot table [mark=square,x index=0, y index=5, col sep=comma] {errorestamanomuestrak.csv};
+				\label{t2000}
+			\end{axis}
+
+			% Cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.85,0.8) {\scriptsize\shortstack[l]{
+					\ref{t100} $100$ \\
+					\ref{t500} $500$ \\
+					\ref{t1000} $1000$ \\
+					\ref{t1500} $1500$ \\
+					\ref{t2000} $2000$}};
+		\end{tikzpicture}
+	}
+	\caption{Errores de los valores de \(k\) en los distintos tamaños de muestra.}
 	\label{fig:errores-tamanos-muestra-k}
 \end{figure}
 

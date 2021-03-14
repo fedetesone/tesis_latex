@@ -10,20 +10,24 @@ Un sistema de recomendación completo se puede analizar teniendo en cuenta 3 cas
 
 \subsubsection{Arquitectura general}
 La arquitectura del RS embebido en un sitio de CQA colaborativo, consiste básicamente de un microservicio dedicado a recomendación, un proceso de \textit{streaming}\footnote{En computación, un \textit{stream} (en español, \textit{flujo}) es una secuencia de elementos de datos disponibles durante un periodo de tiempo.} que realizará la función de recomendación a tiempo real de forma distribuida utilizando el método EQuAL, una base de datos altamente escalable NoSQL, y un proceso batch que generará una actualización de la misma de forma periódica.
+
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
+	\centering
+	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/implementacion_rs}
 	\caption{Arquitectura de un sistema de recomendación a tiempo real utilizando el método EQuAL.}
+	\label{fig:implementacionrs}
 \end{figure}
 
-La Figura 8 muestra cómo interactúa la totalidad de componentes relativos al RS, divididos fundamentalmente en procesamiento a tiempo real y batch; y además, muestra todas las interacciones posibles entre los componentes. Más adelante, se explicaran cada uno de los 3 casos de uso más importantes e identificables dentro de este sistema.
+La Figura \ref{fig:implementacionrs} muestra cómo interactúa la totalidad de componentes relativos al RS, divididos fundamentalmente en procesamiento a tiempo real y batch; y además, muestra todas las interacciones posibles entre los componentes. Más adelante, se explicaran cada uno de los 3 casos de uso más importantes e identificables dentro de este sistema.
 
 \subsubsection{Procesamiento batch}
-El procesamiento batch para actualización y carga inicial de la base de datos que contendrá la matriz de coasociación en un formato adecuado para consulta, se ejecuta periódicamente pero con una carga inicial del conjunto de datos Quora en una base de datos. A continuación se detallaran cada uno de los casos.
+La Figura \ref{fig:implementacionrsbatch} muestra el procesamiento batch para actualización y carga inicial de la base de datos que contendrá la matriz de coasociación en un formato adecuado para consulta, se ejecuta periódicamente pero con una carga inicial del conjunto de datos Quora en una base de datos. A continuación se detallaran cada uno de los casos.
+
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
-	\caption{Procesamiento batch de actualización de la base de datos de preguntas similares.}
+	\centering
+	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/implementacion_rs_batch}
+	\caption{Arquitectura de un sistema de recomendación a tiempo real utilizando el método EQuAL.}
+	\label{fig:implementacionrsbatch}
 \end{figure}
 
 Como punto de partida y en solo una oportunidad, se carga una base de datos con el conjunto de datos Quora original. Esta base de datos podría ser relacional, o de otro tipo, pero debería tener dos características principales: rápida inserción de registros y debe permitir obtener todos los registros de una tabla mediante una sola consulta. La inserción rápida es importante en el caso del agregado de una nueva pregunta en tiempo real. La capacidad de seleccionar todos los registros de una tabla, tiene importancia para el proceso batch que utilizara el método EQuAL para la actualización periódica del RS.
@@ -81,12 +85,13 @@ Esto permitirá consultar la pregunta mediante su ID de manera muy eficiente y v
 Para este apartado, se supone que la base de datos posee toda la información necesaria y está disponible, una aplicación web que consulta un servicio backend dedicado al sistema de recomendación mediante una API REST\footnote{Representational State Transfer. Es una arquitectura y conjuntos de convenciones basada en servicios web para intercambios de información.}. Este último consultará la base de datos para devolver las preguntas similares a un ID de pregunta dado.
 
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
+	\centering
+	\includegraphics[width=0.6\linewidth]{8_problema_investigacion/imagenes/implementacion_rs_consulta}
 	\caption{Flujo de consulta de una pregunta existente.}
+	\label{fig:implementacionrsconsulta}
 \end{figure}
 
-En el momento que un usuario consulta una pregunta existente en el sitio, el servicio frontend enviará una solicitud GET al servicio backend, con el ID de la pregunta en cuestión. Este último buscará la pregunta en la base de datos utilizando el ID de pregunta y retornando todas las preguntas similares ordenadas por el valor de similaridad en forma decreciente. Esta operación debería ser ejecutada de manera rápida y eficiente, debido a un servicio backend dedicado y a una base de datos con las siguientes características:
+\bigskip La Figura \ref{fig:implementacionrsconsulta} muestra el flujo de la consulta de una pregunta existente. En el momento que un usuario consulta una pregunta existente en el sitio, el servicio frontend enviará una solicitud GET al servicio backend, con el ID de la pregunta en cuestión. Este último buscará la pregunta en la base de datos utilizando el ID de pregunta y retornando todas las preguntas similares ordenadas por el valor de similaridad en forma decreciente. Esta operación debería ser ejecutada de manera rápida y eficiente, debido a un servicio backend dedicado y a una base de datos con las siguientes características:
 \begin{enumerate}
 	\item Una tabla con una clave primaria simple (PK), formada solo por el ID de pregunta. Esta estructura genera un índice por ID de pregunta, lo cual posibilita una búsqueda rápida.
 	\item Utilizando bases de datos como Apache Cassandra,  la tabla podría estar particionada por la PK. Esto significa que se generan particiones de datos a lo largo de los diferentes nodos en el esquema de base de datos, basado en una función hash consistente y generada por el ID de pregunta. Esto es especial para búsquedas rápidas por PK.
@@ -96,12 +101,13 @@ En el momento que un usuario consulta una pregunta existente en el sitio, el ser
 \end{enumerate}
 
 \subsubsection{Agregar una nueva pregunta}
-Agregar un nuevo item a un RS puede ser uno de los desafíos más grandes para los arquitectos de software. El propósito principal es el cálculo en tiempo real de los ítems recomendados para el ítem recién agregado al sistema, y que esto no signifique una sobrecarga del mismo. La arquitectura propuesta a continuación intenta que las preguntas similares estén disponibles, para una pregunta nueva recién agregada, con el fin de que el usuario que realiza una pregunta en el sitio, pueda ser recomendado con otras y, también, para que cualquier otro usuario pueda tener esa información disponible tan pronto como sea posible.
+Agregar un nuevo item a un RS puede ser uno de los desafíos más grandes para los arquitectos de software. El propósito principal es el cálculo en tiempo real de los ítems recomendados para el ítem recién agregado al sistema, y que esto no signifique una sobrecarga del mismo. La arquitectura propuesta a continuación, que se detalla en la Figura \ref{fig:implementacionrsagregar}, intenta que las preguntas similares estén disponibles, para una pregunta nueva recién agregada, con el fin de que el usuario que realiza una pregunta en el sitio, pueda ser recomendado con otras y, también, para que cualquier otro usuario pueda tener esa información disponible tan pronto como sea posible.
 
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
+	\centering
+	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/implementacion_rs_agregar}
 	\caption{Flujo en el RS a tiempo real cuando se agrega una nueva pregunta al sistema.}
+	\label{fig:implementacionrsagregar}
 \end{figure}
 
 \subsubsection{Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}

@@ -1,12 +1,14 @@
 \subsection{Método propuesto}
 Se propone el método EQuAL (\textit{Ensemble method for community Question Answering sites based on cLustering}), que mejora la calidad y eficiencia para recomendar preguntas en un sitio de CQA. Este método está basado en una arquitectura Big Data distribuida y tiene en cuenta diversas distancias de texto, combinadas mediante un método de ensamble de clustering.
+
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
+	\centering
+	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/metodo_equal}
 	\caption{Método EQuAL para la generación de matrices de co-asociación desde el conjunto de datos original.}
+	\label{fig:metodoequal}
 \end{figure}
 
-El desarrollo para este método está basado en dos pasos, como se muestra en la Figura 5: \begin{enumerate*} [label=(\roman*)] \item la generación de conjunto de particiones y \item construir matriz de co-asociación. \end{enumerate*}
+\bigskip El desarrollo para este método está basado en dos pasos, como se muestra en la Figura \ref{fig:metodo_equal}: \begin{enumerate*} [label=(\roman*)] \item la generación de conjunto de particiones y \item construir matriz de co-asociación. \end{enumerate*}
 
 \subsubsection{Generación de conjunto de particiones}
 El primer paso es la generación de un conjunto de particiones\(X = \{x_1, x_2,... , x_n\}\) . Cada una de las particiones será una matriz de similaridad \(x_i\). El procedimiento comenzará aplicando los distintos algoritmos de medidas de similaridad de texto del estado del arte al conjunto de datos de entrada. Por cada algoritmo, este procedimiento tendrá como resultado una matriz de similaridad. Cada una de las matrices de similaridad es el resultado de la combinación de todas las preguntas (individuales) de un muestreo original.

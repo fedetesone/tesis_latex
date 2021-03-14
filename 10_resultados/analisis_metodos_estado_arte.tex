@@ -182,9 +182,55 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 
 \bigskip En forma de resumen, en la tabla \ref{tab:error-arte-equal}, se pueden ver todos los errores por cada uno de los métodos, más la media y la varianza de cada uno de ellos. Esta tabla muestra una media de error a través de las distintas muestras aleatorias para el método EQuAL y las ejecuciones de los algoritmos del estado del arte. El método EQuAL, en este caso, muestra muy buenos resultados para los tamaños de muestra más pequeños (100 y 500), pero manteniéndose en un rango aceptable en todos los tamaños de muestra. El método propuesto en el presente trabajo posee un indicador de medias de error total a lo largo de todas las muestras de \(0.32286\). Adicionalmente, analizando las varianzas de cada uno de los métodos, se observa que el método EQuAL se encuentra en el rango esperado (media \(0.000491712\)) y es muy similar a la varianza de los demás métodos. La varianza del método EQuAL se ve afectada porque los valores tomados para el análisis anterior son los correspondientes a las ejecuciones que poseen error más bajo (variando el número de clusters) para cada tamaño de muestra. Estos indicadores se pueden visualizar en la \textbf{figura \ref{fig:ensamble-vs-medidas}}. Se extiende la explicación de la variabilidad del método más adelante.
 
+\begin{filecontents*}{ensamblevsmedidas.csv}
+100,0.296,0.334,0.317,0.311,0.301,0.308
+500,0.3122,0.3282,0.3246,0.3218,0.3176,0.314
+1000,0.3149,0.3275,0.3169,0.3252,0.3162,0.3324
+1500,0.3202666667,0.3320666667,0.3231333333,0.3322,0.3338,0.3293
+2000,0.31475,0.33445,0.32335,0.33025,0.3249,0.3306
+\end{filecontents*}
+
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura2.pdf_tex}
-	\caption{Errores de los valores de k en los distintos tamaños de muestra.}
+	\centering
+	\scriptsize
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}
+			\begin{axis}[
+				xlabel={Tamaños de muestra},
+				ylabel={Error},
+				xmin=100, xmax=2000,
+				ymin=0.28, ymax=0.35,
+				xtick={100,500,1000,1500,2000},
+				ytick={0.28,0.29,...,0.35},
+				legend pos=north west,
+				ymajorgrids=true,
+				grid style=dashed,
+				]
+
+				\addplot+ [line width=2pt] table [mark=none,x index=0, y index=6, col sep=comma] {ensamblevsmedidas.csv};
+				\label{ensamble}
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {ensamblevsmedidas.csv};
+				\label{bow}
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {ensamblevsmedidas.csv};
+				\label{ft}
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {ensamblevsmedidas.csv};
+				\label{w2v}
+				\addplot table [mark=square,x index=0, y index=4, col sep=comma] {ensamblevsmedidas.csv};
+				\label{tfidf}
+				\addplot table [mark=square,x index=0, y index=5, col sep=comma] {ensamblevsmedidas.csv};
+				\label{sem}
+			\end{axis}
+
+			% Cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.82,0.2) {\scriptsize\shortstack[l]{
+					\ref{bow} $bow$ \\
+					\ref{ft} $ft$ \\
+					\ref{w2v} $w2v$ \\
+					\ref{tfidf} $tfidf$ \\
+					\ref{sem} $sem$ \\
+					\ref{ensamble} $ensamble$}};
+		\end{tikzpicture}
+	}
+	\caption{Errores de los tamaños de muestra para el método EQuAL y los algoritmos del estado del arte.}
 	\label{fig:ensamble-vs-medidas}
 \end{figure}

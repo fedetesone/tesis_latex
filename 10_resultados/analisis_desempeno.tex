@@ -125,23 +125,134 @@ Almacenamiento: APPLE SSD AP0512M
 
 Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para cada uno de los tamaños de muestra de forma sumarizada, se puede ver claramente como el desempeño aumenta hasta cierto nivel de paralelismo. En un cluster Spark, existe una cota superior al número de nodos/ejecutores/CPU en el cual más allá del mismo, el aumento del desempeño es marginal. Este límite depende de la naturaleza de la aplicación y difiere notablemente si la misma hace uso intensivo de CPU o uso intensivo de operaciones de entrada-salida.
 
+\begin{filecontents*}{performance100.csv}
+1,62.9900532,15.978281,88.5538612
+2,46.080726,10.388303,64.830457
+4,33.073601,6.872383,47.60667
+8,31.275526,6.30869,45.023509
+12,32.336151,5.69793,44.428017
+\end{filecontents*}
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/performance_100}
+	\scriptsize
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}
+			\begin{axis}[
+				xlabel={Número de núcleos de CPU},
+				ylabel={Tiempo (Seg.)},
+				xmin=0, xmax=13,
+				ymin=0, ymax=100,
+				xtick={1,2,4,8,12},
+				ytick={0,10,...,100},
+				legend pos=north west,
+				ymajorgrids=true,
+				grid style=dashed,
+				]
+
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance100.csv};
+				\label{similaridad100}
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance100.csv};
+				\label{ensamble100}
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance100.csv};
+				\label{total100}
+			\end{axis}
+
+			% Cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
+					\ref{similaridad100} Cálculo de Similaridad \\
+					\ref{ensamble100} Ensamble de Clustering \\
+					\ref{total100} Total}};
+		\end{tikzpicture}
+	}
 	\caption{Tiempos en segundos para ejecuciones de tamaño de muestra de 100 pares de preguntas y distintos núcleos de CPU.}
 	\label{fig:performance100}
 \end{figure}
 
+\begin{filecontents*}{performance500.csv}
+1,763.888817,15.161685,828.022
+2,576.668802,15.091077,624.102
+4,402.376359,16.416085,446.984
+8,324.825807,14.482088,363.617
+12,328.300206,12.980533,362.982
+\end{filecontents*}
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/performance_500}
+	\scriptsize
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}
+			\begin{axis}[
+				xlabel={Número de núcleos de CPU},
+				ylabel={Tiempo (Seg.)},
+				xmin=0, xmax=13,
+				ymin=0, ymax=1000,
+				xtick={1,2,4,8,12},
+				ytick={0,100,...,1000},
+				legend pos=north west,
+				ymajorgrids=true,
+				grid style=dashed,
+				]
+
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance500.csv};
+				\label{similaridad500}
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance500.csv};
+				\label{ensamble500}
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance500.csv};
+				\label{total500}
+			\end{axis}
+
+			% Cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
+					\ref{similaridad500} Cálculo de Similaridad \\
+					\ref{ensamble500} Ensamble de Clustering \\
+					\ref{total500} Total}};
+		\end{tikzpicture}
+	}
 	\caption{Tiempos en segundos para ejecuciones de tamaño de muestra de 500 pares de preguntas y distintos núcleos de CPU.}
 	\label{fig:performance500}
 \end{figure}
 
+\begin{filecontents*}{performance1000.csv}
+1,2950.810,50.678,3106.846134
+2,2073.179,61.050,2199.751862
+4,1423.896,51.581,1530.309932
+8,1176.593,56.610,1282.804328
+12,1253.434,66.790,1370.473092
+\end{filecontents*}
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/performance_1000}
+	\scriptsize
+	\resizebox{\textwidth}{!}{%
+		\begin{tikzpicture}
+			\begin{axis}[
+				xlabel={Número de núcleos de CPU},
+				ylabel={Tiempo (Seg.)},
+				xmin=0, xmax=13,
+				ymin=0, ymax=3500,
+				xtick={1,2,4,8,12},
+				ytick={0,500,...,3500},
+				legend pos=north west,
+				ymajorgrids=true,
+				grid style=dashed,
+				]
+
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance1000.csv};
+				\label{similaridad1000}
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance1000.csv};
+				\label{ensamble1000}
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance1000.csv};
+				\label{total1000}
+			\end{axis}
+
+			% Cuadro de leyendas.
+			\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
+					\ref{similaridad1000} Cálculo de Similaridad \\
+					\ref{ensamble1000} Ensamble de Clustering \\
+					\ref{total1000} Total}};
+		\end{tikzpicture}
+	}
 	\caption{Tiempos en segundos para ejecuciones de tamaño de muestra de 1000 pares de preguntas y distintos núcleos de CPU.}
 	\label{fig:performance1000}
 \end{figure}
