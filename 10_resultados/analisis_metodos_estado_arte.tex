@@ -1,21 +1,20 @@
 \subsection{Análisis del método propuesto y algoritmos del estado del arte}
 
-Con el fin de realizar una comparación de los resultados del método EQuAL con los algoritmos del estado del arte, se ejecutaron experimentos con la misma metodología: 10 diferentes ejecuciones con una muestra aleatoria para cada una de ellas. En las \textbf{tablas \ref{tab:equal-eda-100}-\ref{tab:equal-eda-2000}}, se muestran los resultados de estos algoritmos y el mejor resultado del método EQuAL para el correspondiente tamaño de muestra, este resultado es el que se va a comparar con los métodos del estado del arte. Para ellos, se generan 10 muestras aleatorias, y ellas servirán como conjunto de datos origen para cada uno de los métodos. Esto posibilita que el cálculo de similaridad y las medidas de desempeño de cada uno de los métodos, se generen con exactamente el mismo conjunto de datos, y los resultados solamente dependan del cálculo de distancia (y del algoritmo de clustering sujeto a aleatoriedad en lo medoides del método EQuAL). Se resalta con color verde el mejor resultado (error más pequeño) por cada una de ellas.
+Con el fin de realizar una comparación de los resultados del método EQuAL con los algoritmos del estado del arte, se ejecutaron experimentos con la misma metodología: 10 diferentes ejecuciones con una muestra aleatoria para cada una de ellas. En las tablas \ref{tab:equal-eda-100}-\ref{tab:equal-eda-2000}, se muestran los resultados de estos algoritmos y el mejor resultado del método EQuAL para el correspondiente tamaño de muestra, este resultado es el que se va a comparar con los métodos del estado del arte. Para ellos, se generan 10 muestras aleatorias, y ellas servirán como conjunto de datos origen para cada uno de los métodos. Esto posibilita que el cálculo de similaridad y las medidas de desempeño de cada uno de los métodos, se generen con exactamente el mismo conjunto de datos, y los resultados solamente dependan del cálculo de distancia (y del algoritmo de clustering sujeto a aleatoriedad en lo medoides del método EQuAL). Se resalta con color verde el mejor resultado (error más pequeño) por cada una de ellas.
 
-\begin{table}[]
-	\centering
+\begin{table}[h!]
 	\footnotesize
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{CFE2F3}
-		\textbf{Técnicas} &
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
+		\toprule
+		&
 		\textbf{k} &
 		\textbf{\% 0/0} &
 		\textbf{\% 0/1} &
 		\textbf{\% 1/0} &
 		\textbf{\% 1/1} &
 		\textbf{Exactitud} &
-		\textbf{Error} \\ \hline
+		\textbf{Error} \\
+		\midrule
 		\textbf{bow} &
 		--- &
 		0.429 &
@@ -23,31 +22,31 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		0.131 &
 		0.275 &
 		\cellcolor[HTML]{D9EAD3}0.704 &
-		\cellcolor[HTML]{D9EAD3}0.296 \\ \hline
-		\textbf{ft}       & --- & 0.413 & 0.181 & 0.153 & 0.253 & 0.666 & 0.334 \\ \hline
-		\textbf{w2v}      & --- & 0.396 & 0.198 & 0.119 & 0.287 & 0.683 & 0.317 \\ \hline
-		\textbf{gtfidf}   & --- & 0.48  & 0.114 & 0.197 & 0.209 & 0.689 & 0.311 \\ \hline
-		\textbf{sem}      & --- & 0.473 & 0.121 & 0.18  & 0.226 & 0.699 & 0.301 \\ \hline
-		\textbf{ensamble} & 30  & 0.463 & 0.131 & 0.177 & 0.229 & 0.692 & 0.308 \\ \hline
-	\end{tabular}
+		\cellcolor[HTML]{D9EAD3}0.296 \\
+		\textbf{ft}       & --- & 0.413 & 0.181 & 0.153 & 0.253 & 0.666 & 0.334 \\
+		\textbf{w2v}      & --- & 0.396 & 0.198 & 0.119 & 0.287 & 0.683 & 0.317 \\
+		\textbf{gtfidf}   & --- & 0.48  & 0.114 & 0.197 & 0.209 & 0.689 & 0.311 \\
+		\textbf{sem}      & --- & 0.473 & 0.121 & 0.18  & 0.226 & 0.699 & 0.301 \\
+		\textbf{ensamble} & 30  & 0.463 & 0.131 & 0.177 & 0.229 & 0.692 & 0.308 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 100 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-100}
 \end{table}
 
-\begin{table}[]
-	\centering
+\begin{table}[h!]
 	\footnotesize
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{CFE2F3}
-		\textbf{Técnicas} &
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
+		\toprule
+		&
 		\textbf{k} &
 		\textbf{\% 0/0} &
 		\textbf{\% 0/1} &
 		\textbf{\% 1/0} &
 		\textbf{\% 1/1} &
 		\textbf{Exactitud} &
-		\textbf{Error} \\ \hline
+		\textbf{Error} \\
+		\midrule
 		\textbf{bow} &
 		--- &
 		0.3948 &
@@ -55,31 +54,31 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		0.105 &
 		0.293 &
 		\cellcolor[HTML]{D9EAD3}0.6878 &
-		\cellcolor[HTML]{D9EAD3}0.3122 \\ \hline
-		\textbf{ft}       & --- & 0.4724 & 0.1296 & 0.1986 & 0.1994 & 0.6718 & 0.3282 \\ \hline
-		\textbf{w2v}      & --- & 0.3758 & 0.2262 & 0.0984 & 0.2996 & 0.6754 & 0.3246 \\ \hline
-		\textbf{gtfidf}   & --- & 0.4346 & 0.1674 & 0.1544 & 0.2436 & 0.6782 & 0.3218 \\ \hline
-		\textbf{sem}      & --- & 0.4648 & 0.1372 & 0.1804 & 0.2176 & 0.6824 & 0.3176 \\ \hline
-		\textbf{ensamble} & 50  & 0.4378 & 0.1686 & 0.1454 & 0.2482 & 0.686  & 0.314  \\ \hline
-	\end{tabular}
+		\cellcolor[HTML]{D9EAD3}0.3122 \\
+		\textbf{ft}       & --- & 0.4724 & 0.1296 & 0.1986 & 0.1994 & 0.6718 & 0.3282 \\
+		\textbf{w2v}      & --- & 0.3758 & 0.2262 & 0.0984 & 0.2996 & 0.6754 & 0.3246 \\
+		\textbf{gtfidf}   & --- & 0.4346 & 0.1674 & 0.1544 & 0.2436 & 0.6782 & 0.3218 \\
+		\textbf{sem}      & --- & 0.4648 & 0.1372 & 0.1804 & 0.2176 & 0.6824 & 0.3176 \\
+		\textbf{ensamble} & 50  & 0.4378 & 0.1686 & 0.1454 & 0.2482 & 0.686  & 0.314  \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 500 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-500}
 \end{table}
 
-\begin{table}[]
-	\centering
+\begin{table}[h!]
 	\footnotesize
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{CFE2F3}
-		\textbf{Técnicas} &
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
+		\toprule
+		&
 		\textbf{k} &
 		\textbf{\% 0/0} &
 		\textbf{\% 0/1} &
 		\textbf{\% 1/0} &
 		\textbf{\% 1/1} &
 		\textbf{Exactitud} &
-		\textbf{Error} \\ \hline
+		\textbf{Error} \\
+		\midrule
 		\textbf{bow} &
 		--- &
 		0.386 &
@@ -87,63 +86,63 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		0.096 &
 		0.2991 &
 		\cellcolor[HTML]{D9EAD3}0.6851 &
-		\cellcolor[HTML]{D9EAD3}0.3149 \\ \hline
-		\textbf{ft}       & --- & 0.4322 & 0.1727 & 0.1548 & 0.2403 & 0.6725 & 0.3275 \\ \hline
-		\textbf{w2v}      & --- & 0.4134 & 0.1915 & 0.1254 & 0.2697 & 0.6831 & 0.3169 \\ \hline
-		\textbf{gtfidf}   & --- & 0.4161 & 0.1888 & 0.1364 & 0.2587 & 0.6748 & 0.3252 \\ \hline
-		\textbf{sem}      & --- & 0.4639 & 0.141  & 0.1752 & 0.2199 & 0.6838 & 0.3162 \\ \hline
-		\textbf{ensamble} & 50  & 0.4521 & 0.152  & 0.1804 & 0.2155 & 0.6676 & 0.3324 \\ \hline
-	\end{tabular}
+		\cellcolor[HTML]{D9EAD3}0.3149 \\
+		\textbf{ft}       & --- & 0.4322 & 0.1727 & 0.1548 & 0.2403 & 0.6725 & 0.3275 \\
+		\textbf{w2v}      & --- & 0.4134 & 0.1915 & 0.1254 & 0.2697 & 0.6831 & 0.3169 \\
+		\textbf{gtfidf}   & --- & 0.4161 & 0.1888 & 0.1364 & 0.2587 & 0.6748 & 0.3252 \\
+		\textbf{sem}      & --- & 0.4639 & 0.141  & 0.1752 & 0.2199 & 0.6838 & 0.3162 \\
+		\textbf{ensamble} & 50  & 0.4521 & 0.152  & 0.1804 & 0.2155 & 0.6676 & 0.3324 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 1000 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-1000}
 \end{table}
 
-\begin{table}[]
-	\centering
+\begin{table}[h!]
 	\footnotesize
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{CFE2F3}
-		\textbf{Técnicas} &
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
+		\toprule
+		&
 		\textbf{k} &
 		\textbf{\% 0/0} &
 		\textbf{\% 0/1} &
 		\textbf{\% 1/0} &
 		\textbf{\% 1/1} &
 		\textbf{Exactitud} &
-		\textbf{Error} \\ \hline
+		\textbf{Error} \\
+		\midrule
 		\textbf{bow} &
 		--- &
-		0.4070666667 &
+		0.4070667 &
 		0.198 &
-		0.1222666667 &
-		0.2726666667 &
-		\cellcolor[HTML]{D9EAD3}0.6797333333 &
-		\cellcolor[HTML]{D9EAD3}0.3202666667 \\ \hline
-		\textbf{ft}       & --- & 0.4736666667 & 0.1314       & 0.2006666667 & 0.1942666667 & 0.6679333333 & 0.3320666667 \\ \hline
-		\textbf{w2v}      & --- & 0.4266       & 0.1784666667 & 0.1446666667 & 0.2502666667 & 0.6768666667 & 0.3231333333 \\ \hline
-		\textbf{gtfidf}   & --- & 0.4217333333 & 0.1833333333 & 0.1488666667 & 0.2460666667 & 0.6678       & 0.3322       \\ \hline
-		\textbf{sem}      & --- & 0.463        & 0.1420666667 & 0.1917333333 & 0.2032       & 0.6662       & 0.3338       \\ \hline
-		\textbf{ensamble} & 50  & 0.451        & 0.156        & 0.1733       & 0.2197       & 0.6707       & 0.3293       \\ \hline
-	\end{tabular}
+		0.1222667 &
+		0.2726667 &
+		\cellcolor[HTML]{D9EAD3}0.6797333 &
+		\cellcolor[HTML]{D9EAD3}0.3202667 \\
+		\textbf{ft}       & --- & 0.4736666 & 0.1314       & 0.2006667 & 0.1942667 & 0.6679333 & 0.3320667 \\
+		\textbf{w2v}      & --- & 0.4266       & 0.1784667 & 0.1446667 & 0.2502667 & 0.6768667 & 0.3231337 \\
+		\textbf{gtfidf}   & --- & 0.4217333 & 0.1833333 & 0.1488667 & 0.2460667 & 0.6678       & 0.3322       \\
+		\textbf{sem}      & --- & 0.463        & 0.1420667 & 0.1917333 & 0.2032       & 0.6662       & 0.3338       \\
+		\textbf{ensamble} & 50  & 0.451        & 0.156        & 0.1733       & 0.2197       & 0.6707       & 0.3293       \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 1500 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-1500}
 \end{table}
 
-\begin{table}[]
-	\centering
+\begin{table}[h!]
 	\footnotesize
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{CFE2F3}
-		\textbf{Técnicas} &
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
+		\toprule
+		&
 		\textbf{k} &
 		\textbf{\% 0/0} &
 		\textbf{\% 0/1} &
 		\textbf{\% 1/0} &
 		\textbf{\% 1/1} &
 		\textbf{Exactitud} &
-		\textbf{Error} \\ \hline
+		\textbf{Error} \\
+		\midrule
 		\textbf{bow} &
 		--- &
 		0.402 &
@@ -151,36 +150,37 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		0.1102 &
 		0.28325 &
 		\cellcolor[HTML]{D9EAD3}0.68525 &
-		\cellcolor[HTML]{D9EAD3}0.31475 \\ \hline
-		\textbf{ft}       & --- & 0.46865 & 0.1379  & 0.19655 & 0.1969 & 0.66555 & 0.33445 \\ \hline
-		\textbf{w2v}      & --- & 0.40985 & 0.1967  & 0.12665 & 0.2668 & 0.67665 & 0.32335 \\ \hline
-		\textbf{gtfidf}   & --- & 0.43255 & 0.174   & 0.15625 & 0.2372 & 0.66975 & 0.33025 \\ \hline
-		\textbf{sem}      & --- & 0.4887  & 0.11785 & 0.20705 & 0.1864 & 0.6751  & 0.3249  \\ \hline
-		\textbf{ensamble} & 50  & 0.449   & 0.1587  & 0.1719  & 0.2204 & 0.6694  & 0.3306  \\ \hline
-	\end{tabular}
+		\cellcolor[HTML]{D9EAD3}0.31475 \\
+		\textbf{ft}       & --- & 0.46865 & 0.1379  & 0.19655 & 0.1969 & 0.66555 & 0.33445 \\
+		\textbf{w2v}      & --- & 0.40985 & 0.1967  & 0.12665 & 0.2668 & 0.67665 & 0.32335 \\
+		\textbf{gtfidf}   & --- & 0.43255 & 0.174   & 0.15625 & 0.2372 & 0.66975 & 0.33025 \\
+		\textbf{sem}      & --- & 0.4887  & 0.11785 & 0.20705 & 0.1864 & 0.6751  & 0.3249  \\
+		\textbf{ensamble} & 50  & 0.449   & 0.1587  & 0.1719  & 0.2204 & 0.6694  & 0.3306  \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 2000 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-2000}
 \end{table}
 
-\begin{table}[]
-	\centering
+\begin{table}[h!]
 	\footnotesize
-	\begin{tabular}{|c|c|c|c|c|c|c|c|}
-		\hline
-		\rowcolor[HTML]{FFE599}
-		\textbf{\begin{tabular}[c]{@{}c@{}}Tamaño\\ muestra\end{tabular}} & \textbf{100} & \textbf{500} & \textbf{1000} & \textbf{1500} & \textbf{2000} & \textbf{Media} & \textbf{Varianza} \\ \hline
-		\textbf{bow}      & 0.296 & 0.3122 & 0.3149 & 0.3202666667 & 0.31475 & \cellcolor[HTML]{D9EAD3}0.3116233333 & 0.0003396408889                          \\ \hline
-		\textbf{ft}       & 0.334 & 0.3282 & 0.3275 & 0.3320666667 & 0.33445 & 0.3312433333                         & \cellcolor[HTML]{D9EAD3}0.00004183422222 \\ \hline
-		\textbf{w2v}      & 0.317 & 0.3246 & 0.3169 & 0.3231333333 & 0.32335 & 0.3209966667                         & 0.00005584355556                         \\ \hline
-		\textbf{gtfidf}   & 0.311 & 0.3218 & 0.3252 & 0.3322       & 0.33025 & 0.32409                              & 0.000281542                              \\ \hline
-		\textbf{sem}      & 0.301 & 0.3176 & 0.3162 & 0.3338       & 0.3249  & 0.3187                               & 0.0005872                                \\ \hline
-		\textbf{ensamble} & 0.308 & 0.314  & 0.3324 & 0.3293       & 0.3306  & 0.32286                              & 0.000491712                              \\ \hline
-	\end{tabular}
+	\begin{tabularx}{\textwidth}{XXXXXXXX}
+		\toprule
+		& \textbf{100} & \textbf{500} & \textbf{1000} & \textbf{1500} & \textbf{2000} & \textbf{Media} & \textbf{Varianza} \\
+		\midrule
+		\textbf{bow}      & 0.296 & 0.3122 & 0.3149 & 0.3202667 & 0.31475 & \cellcolor[HTML]{D9EAD3}0.3116233 & 0.0003396                          \\
+		\textbf{ft}       & 0.334 & 0.3282 & 0.3275 & 0.3320667 & 0.33445 & 0.3312433                         & \cellcolor[HTML]{D9EAD3}0.0000418 \\
+		\textbf{w2v}      & 0.317 & 0.3246 & 0.3169 & 0.3231333 & 0.32335 & 0.3209967                         & 0.0000558                         \\
+		\textbf{gtfidf}   & 0.311 & 0.3218 & 0.3252 & 0.3322       & 0.33025 & 0.32409                              & 0.0002815                              \\
+		\textbf{sem}      & 0.301 & 0.3176 & 0.3162 & 0.3338       & 0.3249  & 0.3187                               & 0.0005872                                \\
+		\textbf{ensamble} & 0.308 & 0.314  & 0.3324 & 0.3293       & 0.3306  & 0.32286                              & 0.0004917                              \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Error en los algoritmos del estado del arte vs. método EQuAL por tamaño de muestra, media y varianza.}
 	\label{tab:error-arte-equal}
 \end{table}
 
-\bigskip En forma de resumen, en la tabla \ref{tab:error-arte-equal}, se pueden ver todos los errores por cada uno de los métodos, más la media y la varianza de cada uno de ellos. Esta tabla muestra una media de error a través de las distintas muestras aleatorias para el método EQuAL y las ejecuciones de los algoritmos del estado del arte. El método EQuAL, en este caso, muestra muy buenos resultados para los tamaños de muestra más pequeños (100 y 500), pero manteniéndose en un rango aceptable en todos los tamaños de muestra. El método propuesto en el presente trabajo posee un indicador de medias de error total a lo largo de todas las muestras de \(0.32286\). Adicionalmente, analizando las varianzas de cada uno de los métodos, se observa que el método EQuAL se encuentra en el rango esperado (media \(0.000491712\)) y es muy similar a la varianza de los demás métodos. La varianza del método EQuAL se ve afectada porque los valores tomados para el análisis anterior son los correspondientes a las ejecuciones que poseen error más bajo (variando el número de clusters) para cada tamaño de muestra. Estos indicadores se pueden visualizar en la \textbf{figura \ref{fig:ensamble-vs-medidas}}. Se extiende la explicación de la variabilidad del método más adelante.
+\bigskip En forma de resumen, en la Tabla \ref{tab:error-arte-equal}, se pueden ver todos los errores por cada uno de los métodos, más la media y la varianza de cada uno de ellos. Esta tabla muestra una media de error a través de las distintas muestras aleatorias para el método EQuAL y las ejecuciones de los algoritmos del estado del arte. El método EQuAL, en este caso, muestra muy buenos resultados para los tamaños de muestra más pequeños (100 y 500), pero manteniéndose en un rango aceptable en todos los tamaños de muestra. El método propuesto en el presente trabajo posee un indicador de medias de error total a lo largo de todas las muestras de \(0.32286\). Adicionalmente, analizando las varianzas de cada uno de los métodos, se observa que el método EQuAL se encuentra en el rango esperado (media \(0.000491712\)) y es muy similar a la varianza de los demás métodos. La varianza del método EQuAL se ve afectada porque los valores tomados para el análisis anterior son los correspondientes a las ejecuciones que poseen error más bajo (variando el número de clusters) para cada tamaño de muestra. Estos indicadores se pueden visualizar en la Figura \ref{fig:ensamble-vs-medidas}. Se extiende la explicación de la variabilidad del método más adelante.
 
 \begin{filecontents*}{ensamblevsmedidas.csv}
 100,0.296,0.334,0.317,0.311,0.301,0.308
@@ -190,7 +190,7 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 2000,0.31475,0.33445,0.32335,0.33025,0.3249,0.3306
 \end{filecontents*}
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\scriptsize
 	\resizebox{\textwidth}{!}{%

@@ -92,111 +92,112 @@ Progress: 100.0% words/sec/thread:  147553 lr:  0.000000 loss:  1.791601 ETA:   
 [17:31:06] Script finished. Total time: 1:26:32.941992
 \end{verbatim}
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		& \textbf{Tiempo total (segundos)} & \textbf{Velocidad aproximada (calc/seg)} \\ \hline
-		\textbf{Bag of words} & 12.895492 & 31351.26601 \\ \hline
-		\textbf{TF/IDF} & 213.66542 & 1892.163926 \\ \hline
-		\textbf{FastText} & 120.335008  & 3359.703936 \\ \hline
-		\textbf{Word2Vec}  & 10.719605 & 37715.00909 \\ \hline
-		\textbf{Semantic Distance} & 5192.941992 & 77.85374853 \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		& \textbf{Tiempo total (segundos)} & \textbf{Velocidad aproximada (calc/seg)} \\
+		\midrule
+		\textbf{Bag of words} & 12.895492 & 31351.26601 \\
+		\textbf{TF/IDF} & 213.66542 & 1892.163926 \\
+		\textbf{FastText} & 120.335008  & 3359.703936 \\
+		\textbf{Word2Vec}  & 10.719605 & 37715.00909 \\
+		\textbf{Semantic Distance} & 5192.941992 & 77.85374853 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Análisis de rendimiento de los algoritmos de similaridad del estado del arte.}
 	\label{tab:performance-estado-del-arte}
 \end{table}
 
-Los resultados en \textbf{Tabla \ref{tab:performance-estado-del-arte}}  muestran una clara ventaja en términos de rendimiento para el algoritmo de similaridad Word2Vec, inmediatamente seguido por Bag of Words. TF/IDF y FastText, muestran un rendimiento aceptable pero, en comparación, aproximadamente diez veces más lentos que los anteriormente mencionados. El rendimiento del algoritmo de similaridad Semantic Distance, es muy bajo y representa un gran problema al momento de analizar grandes conjuntos de datos, pero puede ser necesario utilizarlo debido a sus buenas medidas de desempeño y error y su análisis de similaridad desde una perspectiva distinta.
+Los resultados en Tabla \ref{tab:performance-estado-del-arte} muestran una clara ventaja en términos de rendimiento para el algoritmo de similaridad Word2Vec, inmediatamente seguido por Bag of Words. TF/IDF y FastText, muestran un rendimiento aceptable pero, en comparación, aproximadamente diez veces más lentos que los anteriormente mencionados. El rendimiento del algoritmo de similaridad Semantic Distance, es muy bajo y representa un gran problema al momento de analizar grandes conjuntos de datos, pero puede ser necesario utilizarlo debido a sus buenas medidas de desempeño y error y su análisis de similaridad desde una perspectiva distinta.
 
 \subsubsection{Medidas de desempeño y error}
-Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad. Como se puede ver en la \textbf{Tabla \ref{tab:desempeno-estado-del-arte}}.
+Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
 
-\begin{table}[]
-	\small
-	\centering
-	\begin{tabular}{|c|c|c|c|c|c|c|}
-		\hline
-		\multicolumn{3}{|l|}{\multirow{2}{*}{}} &
-		\multicolumn{2}{c|}{\textbf{Predicho}} &
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\multicolumn{3}{l}{\multirow{2}{*}{}} &
+		\multicolumn{2}{c}{\textbf{Predicho}} &
 		\multirow{2}{*}{\textbf{Precisión}} &
-		\multirow{2}{*}{\textbf{Error}} \\ \cline{4-5}
-		\multicolumn{3}{|l|}{} &
-		\textbf{0} &
-		\textbf{1} &
+		\multirow{2}{*}{\textbf{Error}} \\ \cmidrule(lr){4-5}
+		\multicolumn{3}{l}{} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{\textbf{1}} &
 		&
-		\\ \hline
-		\multirow{2}{*}{\textbf{TF}} &
-		\multirow{2}{*}{\textbf{Real}} &
-		\textbf{0} &
-		0.4355 &
-		0.1953 &
-		\multirow{2}{*}{0.6776} &
-		\multirow{2}{*}{0.3224} \\ \cline{3-5}
-		&
-		&
-		\textbf{1} &
-		0.1271 &
-		0.2421 &
-		&
-		\\ \hline
-		\multirow{2}{*}{\textbf{TF/IDF}} &
-		\multirow{2}{*}{\textbf{Real}} &
-		\textbf{0} &
-		0.4477 &
-		0.1831 &
-		\multirow{2}{*}{0.6685} &
-		\multirow{2}{*}{0.3315} \\ \cline{3-5}
-		&
-		&
-		\textbf{1} &
-		0.1484 &
-		0.2208 &
-		&
-		\\ \hline
-		\multirow{2}{*}{\textbf{Word2Vec}} &
-		\multirow{2}{*}{\textbf{Real}} &
-		\textbf{0} &
-		0.4343 &
-		0.1965 &
-		\multirow{2}{*}{0.6788} &
-		\multirow{2}{*}{0.3212} \\ \cline{3-5}
-		&
-		&
-		\textbf{1} &
-		0.1247 &
-		0.2445 &
-		&
-		\\ \hline
-		\multirow{2}{*}{\textbf{FastText}} &
-		\multirow{2}{*}{\textbf{Real}} &
-		\textbf{0} &
-		0.5033 &
-		0.1275 &
-		\multirow{2}{*}{0.6725} &
-		\multirow{2}{*}{0.3275} \\ \cline{3-5}
-		&
-		&
-		\textbf{1} &
-		0.2 &
-		0.1692 &
-		&
-		\\ \hline
-		\multirow{2}{*}{\textbf{Semantic Distance}} &
-		\multirow{2}{*}{\textbf{Real}} &
-		\textbf{0} &
-		0.4877 &
-		0.1431 &
-		\multirow{2}{*}{\textbf{0.6797}} &
-		\multirow{2}{*}{\textbf{0.3203}} \\ \cline{3-5}
-		&
-		&
-		\textbf{1} &
-		0.1772 &
-		0.192 &
-		&
-		\\ \hline
-	\end{tabular}
+		\\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4355} &
+		\multicolumn{1}{c}{0.1953} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6776}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.3224}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.1271} &
+		\multicolumn{1}{c}{0.2421} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF/IDF}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4477} &
+		\multicolumn{1}{c}{0.1831} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6685}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.3315}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.1484} &
+		\multicolumn{1}{c}{0.2208} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Word2Vec}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4343} &
+		\multicolumn{1}{c}{0.1965} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6788}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.3212}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.1247} &
+		\multicolumn{1}{c}{0.2445} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{FastText}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.5033} &
+		\multicolumn{1}{c}{0.1275} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6725}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.3275}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.2} &
+		\multicolumn{1}{c}{0.1692} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Semantic Distance}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4877} &
+		\multicolumn{1}{c}{0.1431} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.6797}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.3203}}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{l}{1} &
+		\multicolumn{1}{l}{0.1772} &
+		\multicolumn{1}{l}{0.192} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \bottomrule
+	\end{tabularx}
 	\caption{Matrices de confusión para los cinco algoritmos de medidas de similaridad.}
 	\label{tab:desempeno-estado-del-arte}
 \end{table}

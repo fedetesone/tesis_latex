@@ -8,22 +8,24 @@ Un sistema de recomendación completo se puede analizar teniendo en cuenta 3 cas
 
 \bigskip Se dará una propuesta de implementación de un RS completo, para dar contexto y tener una idea de funcionamiento en conjunto del mismo. En el mismo, se incluye como parte componente el método propuesto en esta Tesis y su arquitectura subyacente.
 
-\subsubsection{Arquitectura general}
-La arquitectura del RS embebido en un sitio de CQA colaborativo, consiste básicamente de un microservicio dedicado a recomendación, un proceso de \textit{streaming}\footnote{En computación, un \textit{stream} (en español, \textit{flujo}) es una secuencia de elementos de datos disponibles durante un periodo de tiempo.} que realizará la función de recomendación a tiempo real de forma distribuida utilizando el método EQuAL, una base de datos altamente escalable NoSQL, y un proceso batch que generará una actualización de la misma de forma periódica.
-
-\begin{figure}
+\bigskip
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/implementacion_rs}
 	\caption{Arquitectura de un sistema de recomendación a tiempo real utilizando el método EQuAL.}
 	\label{fig:implementacionrs}
 \end{figure}
 
+\subsubsection{Arquitectura general}
+La arquitectura del RS embebido en un sitio de CQA colaborativo, consiste básicamente de un microservicio dedicado a recomendación, un proceso de \textit{streaming}\footnote{En computación, un \textit{stream} (en español, \textit{flujo}) es una secuencia de elementos de datos disponibles durante un periodo de tiempo.} que realizará la función de recomendación a tiempo real de forma distribuida utilizando el método EQuAL, una base de datos altamente escalable NoSQL, y un proceso batch que generará una actualización de la misma de forma periódica.
+
 La Figura \ref{fig:implementacionrs} muestra cómo interactúa la totalidad de componentes relativos al RS, divididos fundamentalmente en procesamiento a tiempo real y batch; y además, muestra todas las interacciones posibles entre los componentes. Más adelante, se explicaran cada uno de los 3 casos de uso más importantes e identificables dentro de este sistema.
 
 \subsubsection{Procesamiento batch}
 La Figura \ref{fig:implementacionrsbatch} muestra el procesamiento batch para actualización y carga inicial de la base de datos que contendrá la matriz de coasociación en un formato adecuado para consulta, se ejecuta periódicamente pero con una carga inicial del conjunto de datos Quora en una base de datos. A continuación se detallaran cada uno de los casos.
 
-\begin{figure}
+\bigskip
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/implementacion_rs_batch}
 	\caption{Arquitectura de un sistema de recomendación a tiempo real utilizando el método EQuAL.}
@@ -34,23 +36,27 @@ Como punto de partida y en solo una oportunidad, se carga una base de datos con 
 
 \bigskip De forma periódica, proceso batch en el cual se basa este trabajo, obtendrá todas las preguntas de la base de datos de preguntas individuales para crear la matriz de coasociación. La periodicidad podrá variar dependiendo del número de clusters elegidos para el método de clustering y la arquitectura en la cual se ejecuta, mientras más rápido sea, más frecuente podría ser programado. Podría ejecutarse diariamente, en momentos de bajo tráfico en el sitio en cuestión.
 
-\bigskip Se agrega un proceso ETL\footnote{Siglas para Extract, Transform and Load «extraer, transformar y cargar».} que tendrá como origen la matriz de coasociación y lo cargará en la base de datos que guardará la información de similaridad entre preguntas.  Las características que debe tener esta base de datos será descrita en el apartado siguiente, pero la clave principal debe ser el ID de una pregunta individual para poder ser consultada fácilmente. El proceso ETL podrá ser lanzado mediante un evento que indique que la nueva matriz de coasociación ha sido generada, o bien podría ser una extensión del proceso EQuAL. Un ejemplo de la entrada y salida de este procesamiento puede ser el que se muestra en la \textbf{Tabla \ref{tab:table-co-asociation}}. Luego del proceso ETL, los registros de la base de datos para el RS podrían tener la estructura que se muestra en la \textbf{Tabla \ref{tab:table-similar-questions}}.
-
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\ \hline
-		1 & 2 & question\_desc\_1 & question\_desc\_2 & 0.34 \\ \hline
-		1 & 3 & question\_desc\_1 & question\_desc\_3 & 0.67 \\ \hline
-		1 & 4 & question\_desc\_1 & question\_desc\_4 & 0.92 \\ \hline
-	\end{tabular}
+\bigskip
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
+		\midrule
+		1 & 2 & question\_desc\_1 & question\_desc\_2 & 0.34 \\
+		1 & 3 & question\_desc\_1 & question\_desc\_3 & 0.67 \\
+		1 & 4 & question\_desc\_1 & question\_desc\_4 & 0.92 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Matriz de coasociación salida del proceso EQuAL.}
 	\label{tab:table-co-asociation}
 \end{table}
 
-\begin{table}[]
+Se agrega un proceso ETL\footnote{Siglas para Extract, Transform and Load «extraer, transformar y cargar».} que tendrá como origen la matriz de coasociación y lo cargará en la base de datos que guardará la información de similaridad entre preguntas.  Las características que debe tener esta base de datos será descrita en el apartado siguiente, pero la clave principal debe ser el ID de una pregunta individual para poder ser consultada fácilmente. El proceso ETL podrá ser lanzado mediante un evento que indique que la nueva matriz de coasociación ha sido generada, o bien podría ser una extensión del proceso EQuAL. Un ejemplo de la entrada y salida de este procesamiento puede ser el que se muestra en la Tabla \ref{tab:table-co-asociation}. Luego del proceso ETL, los registros de la base de datos para el RS podrían tener la estructura que se muestra en la Tabla \ref{tab:table-similar-questions}.
+
+\begin{table}[h!]
 	\centering
+	\footnotesize
 	\begin{tabular}{|c|l|}
 		\hline
 		\textbf{question\_id} &
@@ -79,19 +85,19 @@ Como punto de partida y en solo una oportunidad, se carga una base de datos con 
 	\label{tab:table-similar-questions}
 \end{table}
 
-Esto permitirá consultar la pregunta mediante su ID de manera muy eficiente y veloz. Por otro lado, la carga de la tabla también será muy eficiente, y que la cantidad de registros será igual a la cantidad de preguntas individuales, en lugar de la cantidad de registros de la matriz de coasociación. La columna “similar\_questions” será en formato JSON, la cual permite cargar datos con una estructura definida, y la posibilidad de serializar y deserializar los mismos de una forma estándar.
+\bigskip Esto permitirá consultar la pregunta mediante su ID de manera muy eficiente y veloz. Por otro lado, la carga de la tabla también será muy eficiente, y que la cantidad de registros será igual a la cantidad de preguntas individuales, en lugar de la cantidad de registros de la matriz de coasociación. La columna “similar\_questions” será en formato JSON, la cual permite cargar datos con una estructura definida, y la posibilidad de serializar y deserializar los mismos de una forma estándar.
 
 \subsubsection{Consulta de una pregunta existente}
 Para este apartado, se supone que la base de datos posee toda la información necesaria y está disponible, una aplicación web que consulta un servicio backend dedicado al sistema de recomendación mediante una API REST\footnote{Representational State Transfer. Es una arquitectura y conjuntos de convenciones basada en servicios web para intercambios de información.}. Este último consultará la base de datos para devolver las preguntas similares a un ID de pregunta dado.
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{8_problema_investigacion/imagenes/implementacion_rs_consulta}
 	\caption{Flujo de consulta de una pregunta existente.}
 	\label{fig:implementacionrsconsulta}
 \end{figure}
 
-\bigskip La Figura \ref{fig:implementacionrsconsulta} muestra el flujo de la consulta de una pregunta existente. En el momento que un usuario consulta una pregunta existente en el sitio, el servicio frontend enviará una solicitud GET al servicio backend, con el ID de la pregunta en cuestión. Este último buscará la pregunta en la base de datos utilizando el ID de pregunta y retornando todas las preguntas similares ordenadas por el valor de similaridad en forma decreciente. Esta operación debería ser ejecutada de manera rápida y eficiente, debido a un servicio backend dedicado y a una base de datos con las siguientes características:
+La Figura \ref{fig:implementacionrsconsulta} muestra el flujo de la consulta de una pregunta existente. En el momento que un usuario consulta una pregunta existente en el sitio, el servicio frontend enviará una solicitud GET al servicio backend, con el ID de la pregunta en cuestión. Este último buscará la pregunta en la base de datos utilizando el ID de pregunta y retornando todas las preguntas similares ordenadas por el valor de similaridad en forma decreciente. Esta operación debería ser ejecutada de manera rápida y eficiente, debido a un servicio backend dedicado y a una base de datos con las siguientes características:
 \begin{enumerate}
 	\item Una tabla con una clave primaria simple (PK), formada solo por el ID de pregunta. Esta estructura genera un índice por ID de pregunta, lo cual posibilita una búsqueda rápida.
 	\item Utilizando bases de datos como Apache Cassandra,  la tabla podría estar particionada por la PK. Esto significa que se generan particiones de datos a lo largo de los diferentes nodos en el esquema de base de datos, basado en una función hash consistente y generada por el ID de pregunta. Esto es especial para búsquedas rápidas por PK.
@@ -103,7 +109,7 @@ Para este apartado, se supone que la base de datos posee toda la información ne
 \subsubsection{Agregar una nueva pregunta}
 Agregar un nuevo item a un RS puede ser uno de los desafíos más grandes para los arquitectos de software. El propósito principal es el cálculo en tiempo real de los ítems recomendados para el ítem recién agregado al sistema, y que esto no signifique una sobrecarga del mismo. La arquitectura propuesta a continuación, que se detalla en la Figura \ref{fig:implementacionrsagregar}, intenta que las preguntas similares estén disponibles, para una pregunta nueva recién agregada, con el fin de que el usuario que realiza una pregunta en el sitio, pueda ser recomendado con otras y, también, para que cualquier otro usuario pueda tener esa información disponible tan pronto como sea posible.
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{8_problema_investigacion/imagenes/implementacion_rs_agregar}
 	\caption{Flujo en el RS a tiempo real cuando se agrega una nueva pregunta al sistema.}

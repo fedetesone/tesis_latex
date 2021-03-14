@@ -1,15 +1,17 @@
 \subsection{Generación de particiones}
 \subsubsection{Cálculo de similaridades}
-Se generan particiones desde los subconjuntos de muestreos generados desde el conjunto de datos original. Teniendo en cuenta que se va a utilizar un método de clustering para desarrollar el método de este trabajo, es necesario descomponer la estructura de los archivo de entrada, el cual contiene un identificador por par de preguntas, en preguntas individuales, con el fin de poder identificarlas unívocamente y poder utilizarlas como los objectos entrada del análisis de clustering. La estructura de los subconjuntos de muestreo se clarifican en la \textbf{Tabla \ref{tab:archivo-entrada}}.
+Se generan particiones desde los subconjuntos de muestreos generados desde el conjunto de datos original. Teniendo en cuenta que se va a utilizar un método de clustering para desarrollar el método de este trabajo, es necesario descomponer la estructura de los archivo de entrada, el cual contiene un identificador por par de preguntas, en preguntas individuales, con el fin de poder identificarlas unívocamente y poder utilizarlas como los objectos entrada del análisis de clustering. La estructura de los subconjuntos de muestreo se clarifican en la Tabla \ref{tab:archivo-entrada}.
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} \\ \hline
-		0                     & 123004                      & question\_10         & question\_20         \\ \hline
-		1                     & 98776                       & question\_11         & question\_21         \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+	\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} \\
+		\midrule
+		0                     & 123004                      & question\_10         & question\_20         \\
+		1                     & 98776                       & question\_11         & question\_21         \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de la estructura de los subconjuntos de muestreo.}
 	\label{tab:archivo-entrada}
 \end{table}
@@ -20,40 +22,44 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 	\item Se realiza una combinación de cada una de las filas contra la matriz en sí misma (eliminando resultados repetidos), generando como resultado una estructura de matriz triangular como se muestra en la Tabla \ref{tab:matriz-triangular}.
 \end{enumerate}
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|}
-		\hline
-		\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} \\ \hline
-		0 & question\_0 & 1 & question\_1 \\ \hline
-		0 & question\_0 & 2 & question\_2 \\ \hline
-		0 & question\_0 & 3 & question\_3 \\ \hline
-		1 & question\_1 & 2 & question\_2 \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+	\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} \\
+		\midrule
+		0 & question\_0 & 1 & question\_1 \\
+		0 & question\_0 & 2 & question\_2 \\
+		0 & question\_0 & 3 & question\_3 \\
+		1 & question\_1 & 2 & question\_2 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de la estructura de matriz triangular en formato de tabla.}
 	\label{tab:matriz-triangular}
 \end{table}
 
 \bigskip La estructura de matriz triangular sirve de entrada para el cálculo de similaridad por cada una de las técnicas previamente mencionadas. Por lo cual, es posible realizar un cálculo de similaridad entre las dos preguntas que pertenecen a una misma fila, y agregar esta información a la estructura de datos anterior, tal como se muestra en la Tabla \ref{tab:matriz-similaridad}.
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} & \textbf{similarity} \\ \hline
-		0 & question\_0 & 1 & question\_1 & similarity\_01 \\ \hline
-		0 & question\_0 & 2 & question\_2 & similarity\_02 \\ \hline
-		0 & question\_0 & 3 & question\_3 & similarity\_03 \\ \hline
-		1 & question\_1 & 2 & question\_2 & similarity\_12 \\ \hline
-		1 & question\_1 & 3 & question\_3 & similarity\_13 \\ \hline
-		2 & question\_2 & 3 & question\_3 & similarity\_23 \\ \hline
-	\end{tabular}
+\bigskip
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} & \textbf{similarity} \\
+		\midrule
+		0 & question\_0 & 1 & question\_1 & similarity\_01 \\
+		0 & question\_0 & 2 & question\_2 & similarity\_02 \\
+		0 & question\_0 & 3 & question\_3 & similarity\_03 \\
+		1 & question\_1 & 2 & question\_2 & similarity\_12 \\
+		1 & question\_1 & 3 & question\_3 & similarity\_13 \\
+		2 & question\_2 & 3 & question\_3 & similarity\_23 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de la estructura de matriz de similaridad en formato de tabla.}
 	\label{tab:matriz-similaridad}
 \end{table}
 
 \bigskip Si se piensa el subconjunto de datos anterior como en forma de matriz, en lugar de estructura de tabla, al calcular la distancia de cada una de las filas, se estaría formando una matriz triangular superior, en la cual cada uno de los elementos es la distancia entre un par de preguntas:
-
 \[\begin{bmatrix}0 & similarity\_01 & similarity\_02 & similarity\_03 \\ 0 & 0 & similarity\_12 & similarity\_13  \\ 0 & 0  & 0 & similarity\_23  \\ 0 & 0 & 0 & 0 \end{bmatrix}\]
 
 \bigskip La estructura de tabla, en lugar de una estructura matricial como la anterior, es utilizada por cuestiones de tecnología. Al utilizarse Python, Apache Spark y el sistema de archivos, es posible generar archivos delimitados por comas (archivos CSV) utilizando el soporte nativo que poseen las tecnologías anteriormente mencionadas. Adicionalmente, esto posibilita crear particiones de datos de manera sencilla y procesarlas de forma distribuida. Por ejemplo, si tuviésemos un archivo CSV con \(1.000.000\) (un millón) de filas y un cluster con \(8\) nodos ejecutores, cada uno procesaría \(125.000\) filas, es decir, \(1/8\) del conjunto de datos total.
@@ -64,23 +70,25 @@ Una vez que las similaridades son calculadas en forma distribuida los resultados
 \bigskip El algoritmo elegido es Clustering de Partición Alrededor de Medoids (PAM) como forma de “etiquetar” cada una de las preguntas en un determinado cluster, por cada una de las ejecuciones. Se implementó de la forma que se describe a continuación.
 
 \paragraph{Entrada y configuración inicial}
-Como entrada es utilizada la matriz de similaridades que es resultado del paso anterior, y que servirán para obtener las distancias precalculadas entre cada uno de los elementos que participan en el proceso clustering. Además, en otro arreglo en memoria, el conjunto de preguntas individuales con un identificador secuencial, con el fin de facilitar el algoritmo, tal como se muestra en la \textbf{Tabla \ref{tab:preguntas-individuales}}.
+Como entrada es utilizada la matriz de similaridades que es resultado del paso anterior, y que servirán para obtener las distancias precalculadas entre cada uno de los elementos que participan en el proceso clustering. Además, en otro arreglo en memoria, el conjunto de preguntas individuales con un identificador secuencial, con el fin de facilitar el algoritmo, tal como se muestra en la Tabla \ref{tab:preguntas-individuales}.
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|}
-		\hline
-		\textbf{sequence\_id} & \textbf{question} \\ \hline
-		0                     & question\_0       \\ \hline
-		1                     & question\_1       \\ \hline
-		2                     & question\_2       \\ \hline
-		3                     & question\_3       \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{sequence\_id} & \textbf{question} \\
+		\midrule
+		0                     & question\_0       \\
+		1                     & question\_1       \\
+		2                     & question\_2       \\
+		3                     & question\_3       \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de la estructura del conjunto de preguntas individuales de la muestra en curso.}
 	\label{tab:preguntas-individuales}
 \end{table}
 
-\bigskip Por cada una de las corridas de clustering (parametro de configuracion) se proporcionará un \(k\) inicial, que representa al número de clusters (o medoides) que definirá el algoritmo, y en los cuales las preguntas serán distribuidas (proceso de etiquetado); y además, son identificadas con un identificador único universal (UUID\footnote{Identificador único universal \url{https://es.wikipedia.org/wiki/Identificador\_\%C3\%BAnico_universal}} por sus siglas en inglés) con el fin de poder recuperar cada uno de los resultados cuando se realice el ensamble de Clustering de cada una de estas ejecuciones.
+Por cada una de las corridas de clustering (parametro de configuracion) se proporcionará un \(k\) inicial, que representa al número de clusters (o medoides) que definirá el algoritmo, y en los cuales las preguntas serán distribuidas (proceso de etiquetado); y además, son identificadas con un identificador único universal (UUID\footnote{Identificador único universal \url{https://es.wikipedia.org/wiki/Identificador\_\%C3\%BAnico_universal}} por sus siglas en inglés) con el fin de poder recuperar cada uno de los resultados cuando se realice el ensamble de Clustering de cada una de estas ejecuciones.
 
 \paragraph{Proceso de clustering}
 Como se mencionó anteriormente, el algoritmo PAM tiene dos etapas, denominadas BUILD y SWAP. Por un motivos de rendimiento y simplicidad, los experimentos son realizados solo utilizando la etapa BUILD para construir cada uno de los clusters. El algoritmo realiza una cantidad de iteraciones máxima (parámetro configurable), y por cada una de ellas se realiza el proceso descrito a continuación.
@@ -107,17 +115,19 @@ Se busca actualizar los medoides con el fin de evaluar si, luego del cambio, se 
 La \textit{generación de etiquetas} y la \textit{actualización de medoides} se realiza de forma iterativa hasta que \begin{enumerate*} [label=(\roman*)] \item los medoides convergen o; \item se llega al límite máximo de iteraciones.\end{enumerate*} La convergencia de medoides significa que los medoides calculados por la iteración actual, son exactamente los mismos que la iteración anterior, lo que indica que el resultado es óptimo (dentro de los parámetros y las capacidades del algoritmo). Por otro lado, en caso de que no se haya conseguido la convergencia, el último conjunto de clusters generado el que se tomará como válido.
 
 \paragraph{Estructura de los resultados}
-Los resultados son almacenados en un archivo CSV que posee la estructura de la \textbf{Tabla \ref{tab:salida-clustering}}.
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|}
-		\hline
-		\textbf{run\_id}                       & \textbf{question\_id} & \textbf{assigned\_medoid} \\ \hline
-		63815467136575428551131593057064980770 & 336                   & 856                       \\ \hline
-		63815467136575428551131593057064980770 & 342                   & 856                       \\ \hline
-		63815467136575428551131593057064980770 & 26                    & 358                       \\ \hline
-		63815467136575428551131593057064980770 & 1364                  & 437                       \\ \hline
-	\end{tabular}
+Los resultados son almacenados en un archivo CSV que posee la estructura de la Tabla \ref{tab:salida-clustering}.
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{ccc}
+		\toprule
+		\textbf{run\_id}                       & \textbf{question\_id} & \textbf{assigned\_medoid} \\
+		\midrule
+		63815467136575428551131593057064980770 & 336 & 856  \\
+		63815467136575428551131593057064980770 & 342& 856 \\
+		63815467136575428551131593057064980770 & 26 & 358 \\
+		63815467136575428551131593057064980770 & 1364 & 437 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de la estructura del resultado de la ejecución del algoritmo de clustering.}
 	\label{tab:salida-clustering}
 \end{table}

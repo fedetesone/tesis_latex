@@ -19,8 +19,8 @@ En lenguajes de programación funcionales así como también lenguajes de alto n
 La librería de software Apache Hadoop es un framework que posibilita el procesamiento de grandes conjuntos de datos entre clusters de computadoras usando modelos de programación simples. Para posibilitar esto, Hadoop se basa en una arquitectura de archivos propia, llamada HDFS\footnote{Siglas en inglés para Hadoop Distributed File System.} (Sistema de Archivos Distribuido Hadoop). En la mayoría de los procesos basados en Hadoop, HDFS es utilizado para almacenar la entrada del paso \textit{map} y la salida del paso \textit{reduce}, pero no los resultados intermedios, ya que ellos se almacenan en el sistema de archivo de cada uno de los nodos \citep{condie2010mapreduce}. Según el sitio oficial\footnote{Arquitectura HDFS: https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html. Último acceso: Febrero 2021.}, HSFS es altamente tolerante a fallos y es diseñado para ser ejecutado en computadoras de bajo costo. Además, HDFS provee una gran productividad accediendo a los datos de una aplicación y es posible usarlo en grandes conjuntos de datos.
 
 \bigskip HDFS tiene una arquitectura maestro-nodo\footnote{Del inglés, master-node architecture.}. Un cluster HDFS (conjunto de nodos maestro-nodos) consiste en un \textit{NameNode}, que es un servidor maestro que maneja el espacio de nombres del sistema de archivos y regula el acceso a archivos. Además, hay un número de \textit{DataNodes}, usualmente uno por cada nodo en el cluster, que maneja el almacenamiento de datos en archivos. Internamente, un archivo es dividido en uno o más bloques, y esos bloques son almacenados en DataNodes. Por otro lado, el NameNode ejecuta operaciones tales como abrir, cerrar, y renombrar archivos y directorios.
-
-\begin{figure}
+\bigskip
+\begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.9\linewidth]{7_marco_teorico/imagenes/arquitectura_hdfs}
 	\caption{Arquitectura HDFS.}

@@ -60,17 +60,19 @@ La elección del número de clusters \(k\) en los experimentos realizados sigue 
 \bigskip Con el fin de dar una aplicación más integral al método del codo, en lugar de calcularlo por cada una de las técnicas de clustering aplicadas, el mismo se aplicará utilizando la matriz de coasociación generada a partir del ensamble. Para cuantificar y evaluar el performance, se utilizarán matrices de confusión denotarán el error entre los resultados obtenidos y la clasificación proveniente del conjunto de datos original, por cada uno de los valores de k anteriormente mencionados.
 
 \subsubsection{Estructura de las matrices de confusión}
-Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la \textbf{Tabla \ref{tab:matriz-confusion}}.
+Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la Tabla \ref{tab:matriz-confusion}.
 
-\begin{table}[]
+\bigskip
+\begin{table}[h!]
+	\footnotesize
 	\centering
-	\begin{tabular}{ll|c|c|}
-		\cline{3-4}
-		&                                 & \multicolumn{2}{c|}{\textbf{Predicho}} \\ \cline{3-4}
-		&                                 & \textbf{0}         & \textbf{1}        \\ \hline
-		\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c|}{\textbf{0}} & a & b \\ \cline{2-4}
-		\multicolumn{1}{|c|}{} & \multicolumn{1}{c|}{\textbf{1}} & c                  & d                 \\ \hline
-	\end{tabular}
+	\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
+		\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{b} \\ \cmidrule(l){2-4}
+		\multicolumn{1}{c}{}  & \textbf{1}  & c                               & d                               \\ \bottomrule
+	\end{tabularx}
 	\caption{Matriz de confusión para validación de resultados.}
 	\label{tab:matriz-confusion}
 \end{table}
@@ -89,47 +91,54 @@ donde \(a+b+c+d=1\).
 \paragraph{Preparación de los datos}
 Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de coasociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, considerando la siguiente muestra de preguntas en la Tabla \ref{tab:muestra-validacion} y la matriz de co-asociación de la Tabla \ref{tab:coasociacion-validacion}, se filtran solo los pares de preguntas de la matriz de coasociación que se encuentran en la muestra de pares de preguntas, ya que son las única con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
 
-\begin{table}[]
+\begin{table}[h!]
+	\footnotesize
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
-		0                     & 123004                      & question\_10         & question\_20         & 1              \\ \hline
-		1                     & 98776                       & question\_11         & question\_21         & 0              \\ \hline
-	\end{tabular}
+	\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+		\toprule
+		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+		\midrule
+		0                     & 123004                      & question\_10         & question\_20         & 1              \\
+		1                     & 98776                       & question\_11         & question\_21         & 0              \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Muestras de pares de preguntas que se utilizó como entrada del método EQuAL.}
 	\label{tab:muestra-validacion}
 \end{table}
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\ \hline
-		question\_10 & question\_11 & contenido & contenido & 0.857 \\ \hline
-		question\_10 & question\_20 & contenido & contenido & 0.210 \\ \hline
-		question\_10 & question\_21 & contenido & contenido & 0.126 \\ \hline
-		question\_11 & question\_20 & contenido & contenido & 0.006 \\ \hline
-		question\_11 & question\_21 & contenido & contenido & 0.368 \\ \hline
-		question\_20 & question\_21 & contenido & contenido & 0.146 \\ \hline
-	\end{tabular}
-	\caption{Matriz de co-asociación generada a partir de la muestra de la tabla \ref{tab:muestra-validacion}.}
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
+		\midrule
+		question\_10 & question\_11 & contenido & contenido & 0.857 \\
+		question\_10 & question\_20 & contenido & contenido & 0.210 \\
+		question\_10 & question\_21 & contenido & contenido & 0.126 \\
+		question\_11 & question\_20 & contenido & contenido & 0.006 \\
+		question\_11 & question\_21 & contenido & contenido & 0.368 \\
+		question\_20 & question\_21 & contenido & contenido & 0.146 \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Matriz de co-asociación generada a partir de la muestra de la Tabla \ref{tab:muestra-validacion}.}
 	\label{tab:coasociacion-validacion}
 \end{table}
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\ \hline
-		question\_10             & question\_11             & contenido            & contenido            & 0.857               \\ \hline
-		question\_11             & question\_21             & contenido            & contenido            & 0.368               \\ \hline
-	\end{tabular}
-	\caption{Filtrado de la tabla \ref{tab:coasociacion-validacion} con los pares de preguntas que se encuentran en la tabla \ref{tab:muestra-validacion}.}
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
+		\midrule
+		question\_10             & question\_11             & contenido            & contenido            & 0.857               \\
+		question\_11             & question\_21             & contenido            & contenido            & 0.368               \\
+		\bottomrule
+	\end{tabularx}
+	\caption{Filtrado de la Tabla \ref{tab:coasociacion-validacion} con los pares de preguntas que se encuentran en la Tabla \ref{tab:muestra-validacion}.}
 	\label{tab:filtrado-validacion}
 \end{table}
 
-\bigskip Ya se realizaron los cálculos de similaridad, los algoritmos de clustering y la matriz de co-asociación. En la siguiente sección, se procederá a interpretar los resultados obtenidos.
+Ya se realizaron los cálculos de similaridad, los algoritmos de clustering y la matriz de co-asociación. En la siguiente sección, se procederá a interpretar los resultados obtenidos.
 
 \paragraph{Construcción y elección del umbral correcto}
 La problemática que se intenta resolver teniendo en cuenta todas las similaridades obtenidas a partir del ensamble de clustering es ¿Cuando consideramos a esas preguntas iguales y cuando no? La respuesta es simple, cuando la similaridad \(S\) entre un par de preguntas (\(q_1,q_2)\) es igual o superior a cierto umbral \(t\) se considera que son iguales (1) y distintas si sucede lo contrario (0), clarificando:
@@ -146,45 +155,51 @@ La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0
 \end{enumerate}
 El valor de umbral que arroje la mayor precisión, será el utilizado para evaluar el desempeño del método, al construir la matriz de confusión.
 
-\bigskip Volviendo al ejemplo anterior, un umbral elegido de \(0.65\) aplicado a la \textbf{Tabla \ref{tab:coasociacion-validacion}}, arrojaría el resultado de la \textbf{Tabla \ref{tab:umbral-validacion-1}} (el único par de preguntas que presenta una similaridad mayor al umbral es \((question\_10, question\_11)\), por lo cual se le asigna el valor 1). Filtrando los pares de preguntas que se encuentran en la muestra de entrada, obtenemos el conjunto de datos de la \textbf{Tabla \ref{tab:umbral-validacion-2}}, Lo cual muestra un resultado idéntico al conjunto de entrada. Lo anterior significa que los pares predichos son iguales a los pares predichos. En otro caso, si el umbral que tiene mejor rendimiento fuese \(0.9\), el resultado obtenido luego del cómputo hubiese sido el de la \textbf{Tabla \ref{tab:umbral-validacion-3}}, el cual expone una diferencia entre el valor real y el predicho del par de preguntas \((question\_10, question\_11)\). Lo anterior denota el mayor rendimiento del umbral \(0.65\) contra el umbral \(0.9\) y su importancia en la elección del valor correcto.
+\bigskip Volviendo al ejemplo anterior, un umbral elegido de \(0.65\) aplicado a la Tabla \ref{tab:coasociacion-validacion}, arrojaría el resultado de la Tabla \ref{tab:umbral-validacion-1} (el único par de preguntas que presenta una similaridad mayor al umbral es \((question\_10, question\_11)\), por lo cual se le asigna el valor 1). Filtrando los pares de preguntas que se encuentran en la muestra de entrada, obtenemos el conjunto de datos de la Tabla \ref{tab:umbral-validacion-2}, Lo cual muestra un resultado idéntico al conjunto de entrada. Lo anterior significa que los pares predichos son iguales a los pares predichos. En otro caso, si el umbral que tiene mejor rendimiento fuese \(0.9\), el resultado obtenido luego del cómputo hubiese sido el de la Tabla \ref{tab:umbral-validacion-3}, el cual expone una diferencia entre el valor real y el predicho del par de preguntas \((question\_10, question\_11)\). Lo anterior denota el mayor rendimiento del umbral \(0.65\) contra el umbral \(0.9\) y su importancia en la elección del valor correcto.
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
-		question\_10 & question\_11 & contenido & contenido & 1 \\ \hline
-		question\_10 & question\_20 & contenido & contenido & 0 \\ \hline
-		question\_10 & question\_21 & contenido & contenido & 0 \\ \hline
-		question\_11 & question\_20 & contenido & contenido & 0 \\ \hline
-		question\_11 & question\_21 & contenido & contenido & 0 \\ \hline
-		question\_20 & question\_21 & contenido & contenido & 0 \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+		\midrule
+		question\_10 & question\_11 & contenido & contenido & 1 \\
+		question\_10 & question\_20 & contenido & contenido & 0 \\
+		question\_10 & question\_21 & contenido & contenido & 0 \\
+		question\_11 & question\_20 & contenido & contenido & 0 \\
+		question\_11 & question\_21 & contenido & contenido & 0 \\
+		question\_20 & question\_21 & contenido & contenido & 0 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Asignación binaria de los resultados de similaridad obtenidos en la tabla 18, teniendo en cuenta un umbral de 0.65.}
 	\label{tab:umbral-validacion-1}
 \end{table}
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
-		question\_10             & question\_11             & contenido            & contenido            & 1              \\ \hline
-		question\_11             & question\_21             & contenido            & contenido            & 0              \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+		\midrule
+		question\_10             & question\_11             & contenido            & contenido            & 1              \\
+		question\_11             & question\_21             & contenido            & contenido            & 0              \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Filtrado de la tabla 20 con los pares de preguntas que se encuentran en la tabla 17.}
 	\label{tab:umbral-validacion-2}
 \end{table}
 
 
-\begin{table}[]
-	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
-		question\_10             & question\_11             & contenido            & contenido            & 0              \\ \hline
-		question\_11             & question\_21             & contenido            & contenido            & 0              \\ \hline
-	\end{tabular}
+\begin{table}[h!]
+	\footnotesize
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+		\midrule
+		question\_10             & question\_11             & contenido            & contenido            & 0              \\
+		question\_11             & question\_21             & contenido            & contenido            & 0              \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Utilización de un umbral de 0.9 en la matriz de co-asociación.}
 	\label{tab:umbral-validacion-3}
 \end{table}
@@ -194,69 +209,79 @@ El valor de umbral que arroje la mayor precisión, será el utilizado para evalu
 \paragraph{Construcción de las matrices de confusión}
 Con el fin de poder ilustrar cómo se construyen las matrices de confusión a partir de la comparación de los conjuntos de datos, se utilizará el siguiente ejemplo. Supongamos que el conjunto de datos de entrada es el que se muestra en la Tabla \ref{tab:validacion-reales}, Y el resultado obtenido luego de la elección del mejor umbral, es la Tabla \ref{tab:validacion-predichos}. Por lo cual, comparando los valores de la columna “equal’, obtendremos el resultado de la Tabla \ref{tab:validacion-comparacion}. Sumarizando los resultados, la matriz de confusión derivada se muestra en la Tabla \ref{tab:validacion-confusion-ejemplo}. La precisión obtenida a partir de este conjunto de datos y la ejecución hipotética del método es \(0.75\) (y por lo tanto, el error es \(0.25\)).
 
-\begin{table}[]
+\begin{table}[h!]
+	\footnotesize
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
-		0 & 123004 & question\_10 & question\_20 & 1 \\ \hline
-		1 & 98776  & question\_11 & question\_21 & 1 \\ \hline
-		2 & 14422  & question\_12 & question\_22 & 1 \\ \hline
-		3 & 12321  & question\_13 & question\_23 & 1 \\ \hline
-		4 & 999    & question\_14 & question\_24 & 0 \\ \hline
-		5 & 7448   & question\_15 & question\_25 & 0 \\ \hline
-		6 & 69553  & question\_16 & question\_26 & 0 \\ \hline
-		7 & 2447   & question\_17 & question\_27 & 1 \\ \hline
-	\end{tabular}
+	\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+		\toprule
+		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+		\midrule
+		0 & 123004 & question\_10 & question\_20 & 1 \\
+		1 & 98776  & question\_11 & question\_21 & 1 \\
+		2 & 14422  & question\_12 & question\_22 & 1 \\
+		3 & 12321  & question\_13 & question\_23 & 1 \\
+		4 & 999    & question\_14 & question\_24 & 0 \\
+		5 & 7448   & question\_15 & question\_25 & 0 \\
+		6 & 69553  & question\_16 & question\_26 & 0 \\
+		7 & 2447   & question\_17 & question\_27 & 1 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de conjunto de datos de entrada (reales) para validación.}
 	\label{tab:validacion-reales}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
+	\footnotesize
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\ \hline
-		question\_10 & question\_20 & contenido & contenido & 1 \\ \hline
-		question\_11 & question\_21 & contenido & contenido & 1 \\ \hline
-		question\_12 & question\_22 & contenido & contenido & 0 \\ \hline
-		question\_13 & question\_23 & contenido & contenido & 1 \\ \hline
-		question\_14 & question\_24 & contenido & contenido & 1 \\ \hline
-		question\_15 & question\_25 & contenido & contenido & 0 \\ \hline
-		question\_16 & question\_26 & contenido & contenido & 0 \\ \hline
-		question\_17 & question\_27 & contenido & contenido & 1 \\ \hline
-	\end{tabular}
+	\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+		\toprule
+		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+		\midrule
+		question\_10 & question\_20 & contenido & contenido & 1 \\
+		question\_11 & question\_21 & contenido & contenido & 1 \\
+		question\_12 & question\_22 & contenido & contenido & 0 \\
+		question\_13 & question\_23 & contenido & contenido & 1 \\
+		question\_14 & question\_24 & contenido & contenido & 1 \\
+		question\_15 & question\_25 & contenido & contenido & 0 \\
+		question\_16 & question\_26 & contenido & contenido & 0 \\
+		question\_17 & question\_27 & contenido & contenido & 1 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Ejemplo de conjunto de datos de predichos por el método EQuAL.}
 	\label{tab:validacion-predichos}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
+	\footnotesize
 	\centering
-	\begin{tabular}{|c|c|c|c|c|}
-		\hline
-		\textbf{sequence\_id} & \textbf{real} & \textbf{predicho} & \textbf{resultado} & \textbf{equal} \\ \hline
-		0 & 1 & 1 & true  & 1 \\ \hline
-		1 & 1 & 1 & true  & 1 \\ \hline
-		2 & 1 & 0 & false & 0 \\ \hline
-		3 & 1 & 1 & true  & 1 \\ \hline
-		4 & 0 & 1 & false & 1 \\ \hline
-		5 & 0 & 0 & true  & 0 \\ \hline
-		6 & 0 & 0 & true  & 0 \\ \hline
-		7 & 1 & 1 & true  & 1 \\ \hline
-	\end{tabular}
+	\begin{tabularx}{0.6\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+		\toprule
+		\textbf{sequence\_id} & \textbf{real} & \textbf{predicho} & \textbf{resultado} & \textbf{equal} \\
+		\midrule
+		0 & 1 & 1 & true  & 1 \\
+		1 & 1 & 1 & true  & 1 \\
+		2 & 1 & 0 & false & 0 \\
+		3 & 1 & 1 & true  & 1 \\
+		4 & 0 & 1 & false & 1 \\
+		5 & 0 & 0 & true  & 0 \\
+		6 & 0 & 0 & true  & 0 \\
+		7 & 1 & 1 & true  & 1 \\
+		\bottomrule
+	\end{tabularx}
 	\caption{Resultado de comparación de las tablas 24 y 25 para validación y construcción de matrices de confusión.}
 	\label{tab:validacion-comparacion}
 \end{table}
 
-\begin{table}[]
+\begin{table}[h!]
+	\footnotesize
 	\centering
-	\begin{tabular}{ll|c|c|}
-		\cline{3-4}
-		&  & \multicolumn{2}{c|}{\textbf{Predicho}} \\ \cline{3-4}
-		&  & \textbf{0}         & \textbf{1}        \\ \hline
-		\multicolumn{1}{|c|}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c|}{\textbf{0}} & 0.25  & 0.125 \\ \cline{2-4}
-		\multicolumn{1}{|c|}{}                               & \multicolumn{1}{c|}{\textbf{1}} & 0.125 & 0.5   \\ \hline
-	\end{tabular}
+	\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\toprule
+		\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
+		\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{0.25} & \multicolumn{1}{c}{0.125} \\ \cmidrule(l){2-4}
+		\multicolumn{1}{c}{}  & \textbf{1}  & 0.125                               & 0.5                               \\ \bottomrule
+	\end{tabularx}
 	\caption{Matriz de confusión obtenida a partir de la comparación de las tablas 23 y 24.}
 	\label{tab:validacion-confusion-ejemplo}
 \end{table}
