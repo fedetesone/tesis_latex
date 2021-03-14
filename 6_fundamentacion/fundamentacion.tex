@@ -1,6 +1,10 @@
 \chapter*{Fundamentación}\label{ch:fundamentacion}
 \addcontentsline{toc}{chapter}{Capitulo 2. Fundamentación}
-\section{Fundamentación}
+
+\section*{Fundamentación}
+\addtocounter{section}{1}
+\setcounter{subsection}{0}
+
 \subsection{Motivación de la tesis}
  La calidad de un RS tiene una relación directa con los datos de entrada que se han generado para alimentarlo. Con el fin de generar una entrada basada en medidas de similaridad, es necesaria la comparación de preguntas formuladas en sitios de CQA usando técnicas de análisis de texto. Un problema importante inherente al análisis de texto, con el fin de cuantificar relaciones entre distintos fragmentos o documentos, es encontrar la medida apropiada de representación (González y otros, 2017). Algunas medidas de similaridad resultantes de algoritmos de recomendación en análisis de texto, son obtenidas mediante algoritmos puramente sintácticos, léxicos, tales como: Term Frequency \citep{salton5mcgill}, Term Frequency/Inverse Document Frequency \citep{baeza1999modern}, basados en ventanas como FastText \citep{joulin2016fasttext} o Word2Vec \citep{mikolov2013efficient}, o semánticos, como Semantic Distance \citep{li2006sentence}. Los algoritmos puramente sintácticos como Term Frequency y Term Frequency/Inverse Document Frequency tienen conocidos problemas, tales como ser invariantes respecto al orden de las palabras o ser sensibles a stopwords, por lo cual, necesitan un gran trabajo de pre-procesamiento. FastText y Word2Vec están fuertemente afectados en el orden en el cual aparecen las palabras. Adicionalmente, ninguna de estas técnicas tiene en cuenta la semántica de las palabras y sus relaciones, como si lo hace Semantic Distance. Sin embargo, esta última técnica, según el trabajo tomado como estado del arte, tampoco alcanza medidas de rendimiento apropiadas para un RS en un sitio de CQA, como por ejemplo: buen desempeño debido a su complejidad inherente.
 
