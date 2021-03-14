@@ -8,7 +8,7 @@ Information retrieval (IR) se define como encontrar material (generalmente docum
 \bigskip Los Sistemas de Recomendación a los cuales se hace foco en este trabajo, aplican técnicas que no son más que conceptos derivados del IR y algunos del ML. Técnicas probabilísticas y determinísticas son utilizadas para extraer información relevante desde diferentes orígenes de datos, así como también generar información valiosa a partir de ellos. Para este último propósito, se han desarrollado métodos basados en el aprendizaje inductivo que demostraron ser muy efectivos y, en algunos casos, tener modelos simples y aplicables que permiten desarrollar RS eficaces y escalables.
 
 \paragraph{Unidad de documento}
-Una \textit{unidad de documento}, es una secuencia de caracteres de longitud fija con las cuales se va a trabajar. Estas secuencias de caracteres pueden estar codificadas por uno o varios bytes o esquemas de codificación multibyte, como UTF-8 o varios estándares específicos de algún país o compañía. Una vez que la codificación esté determinada, se debe decodificar la secuencia de bytes a una secuencia de caracteres. 
+Una \textit{unidad de documento}, es una secuencia de caracteres de longitud fija con las cuales se va a trabajar. Estas secuencias de caracteres pueden estar codificadas por uno o varios bytes o esquemas de codificación multibyte, como UTF-8 o varios estándares específicos de algún país o compañía. Una vez que la codificación esté determinada, se debe decodificar la secuencia de bytes a una secuencia de caracteres.
 
 \paragraph{Stopwords}
 En informática, se llama stopword a palabras que se filtran antes o después del procesamiento de datos del lenguaje natural \citep{leskovec2014mining}. Generalmente, este tipo de palabras son extremadamente comunes, y podrían tener poco valor en el momento de seleccionar documentos que coincidan con las necesidades de un usuario \citep{schutze2008introduction}.
@@ -25,7 +25,7 @@ Output: [Friends] [Romans] [Countrymen] [lend] [me] [your] [ears]
 
 Estos tokens, son frecuentemente confundidos con palabras, pero es importante hacer la distinción entre token y tipo. Un token es una instancia de una secuencia de caracteres en un documento en particular que están agrupados juntos como una unidad semántica útil para procesamiento. Un \textit{tipo} es la clase de todos los tokens que contienen la misma secuencia de caracteres. Un \textit{término} es un tipo, que es incluido en un diccionario de un sistema de IR. Por ejemplo, si un documento a ser indexado es “to sleep perchance to dream”, existen 5 tokens, pero solo 4 tipos (ya que hay dos instancias del token “to”). Sin embargo, si “to” es desechada por ser un stopword, habrá entonces 3 términos: “sleep”, “perchance” y “dream”.
 
-\paragraph{Similaridad}
+\paragraph{Similaridad}\label{paragraph:similaridad}
 Es de interés poder cuantificar la relación entre los objetos de texto. Existen distintas maneras de medir esa relación. En general se habla de medidas de proximidad \citep{xu2008clustering}. Las medidas de proximidad son una generalización para las medidas de similaridad y disimilaridad. En este trabajo utilizaremos medidas de similaridad comúnmente encontradas en la literatura \citep{resnik1995using, lin1998information, gomaa2013survey, harispe2015semantic}. Debido al propósito de este trabajo, es de interés, en particular, la similaridad semántica en taxonomías \citep{resnik1995using}, que se basa en el contenido de información de las unidades documentales.
 
 \bigskip Las medidas basadas en contenido de información de una unidad de documento (o concepto) en una taxonomía, utilizan el siguiente enfoque. Se define \(p(t)\) como:
@@ -36,7 +36,7 @@ Es de interés poder cuantificar la relación entre los objetos de texto. Existe
 
 \bigskip Aplicando el logaritmo negativo a \(p(t) =0\) se logra que los nodos hoja, siendo conceptos muy específicos, contengan mucha información, y que los nodos más genéricos que se encuentran cerca de la raíz contengan un contenido de información que, por lo contrario, tienda a cero.
 
-\bigskip \cite{resnik1995using} define, en un conjunto de conceptos \(C\) en una taxonomía \textit{es-un}, que permite herencia múltiple, que la similaridad entre dos conceptos es la medida en que ellos comparten información en común, indicado, en este tipo de taxonomías, por el nodo inmediato de más alto nivel que los subsume a ambos, el \textit{subsumidor mínimo} (minimum subsumer o ms por sus siglas en inglés). 
+\bigskip \cite{resnik1995using} define, en un conjunto de conceptos \(C\) en una taxonomía \textit{es-un}, que permite herencia múltiple, que la similaridad entre dos conceptos es la medida en que ellos comparten información en común, indicado, en este tipo de taxonomías, por el nodo inmediato de más alto nivel que los subsume a ambos, el \textit{subsumidor mínimo} (minimum subsumer o ms por sus siglas en inglés).
 
 \bigskip Considerando dos términos \(t_i\) y \(t_j\), y a \(S(t_i, t_j\)) al conjunto de ancestros comunes de \(t_i\) y \(t_j\), se define al subsumidor mínimo, \(ms(t_i, t_j)\), como al término de \(S(t_i, t_j)\) que contiene el máximo contenido de información:
 
@@ -48,7 +48,7 @@ Es de interés poder cuantificar la relación entre los objetos de texto. Existe
 
 \bigskip El enfoque anterior, posee la siguiente particularidad: no tiene en cuenta la similaridad de los nodos con respecto a su subsumidor mínimo. Es intuitivo pensar que dos conceptos abstractos (nodos ubicados en posiciones más cercanas al subsumidor mínimo) son más parecidos entre sí que dos conceptos específicos (más alejados del subsumidor mínimo) \citep{lin1998information}. Para solucionar esto, \cite{lin1998information} tiene en cuenta dos aspectos para calcular la similaridad entre dos conceptos en este tipo de taxonomías: \begin{enumerate*} [label=(\roman*)] \item La cantidad de información; y \item La ubicación relativa entre los nodos hijos respecto al subsumidor mínimo. Definida como la similaridad de \cite{resnik1995using}. \end{enumerate*}
 
-\bigskip La medida de Lin es: 
+\bigskip La medida de Lin es:
 
 \[S_L(t_i, t_j)=\frac{2S_R(t_i,t_j)}{I(t_i)+I(t_j)}\]
 
@@ -60,7 +60,7 @@ Proximidad es la generalización de similaridad y disimilaridad. La función dis
 \begin{enumerate}
 	\item Simetría,
 	\[D(x_i,x_j)=D(x_j,x_i);\]
-	
+
 	\item Positividad,
 	\[D(x_i,x_j) \geq 0 \quad \forall x_i,x_j;\]
 \end{enumerate}
@@ -69,7 +69,7 @@ De forma, análoga la función de similaridad es definida satisfaciendo las cond
 \begin{enumerate}
 	\item Simetría,
 	\[S(x_i,x_j)=S(x_j,x_i);\]
-	
+
 	\item Positividad,
 	\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j\]
 \end{enumerate}
@@ -77,7 +77,7 @@ De forma, análoga la función de similaridad es definida satisfaciendo las cond
 Si bien el término matemático de distancia exige una serie de supuestos rigurosos \citep{xu2008clustering}, en este trabajo utilizaremos la noción de distancia y de disimilaridad en forma indistinta, y nos basaremos en las medidas de proximidad habitualmente utilizadas para comparación de texto. Por lo tanto, Para transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), haremos la normalización de la misma en el intervalo \([0,1]\) y luego aplicaremos el cálculo \(D(x_i,x_j) = 1 - S(x_i,x_j)\) y recíprocamente \citep{leale2013novel}.
 
 \paragraph{Modelo de espacio vectorial}
-En el modelo de espacio vectorial, un texto es representado como un vector de términos. Si las palabras son elegidas como términos, entonces cada palabra del vocabulario sería una dimensión independiente en el espacio vectorial \citep{singhal2001modern}. Todo texto puede ser representado por un vector en este espacio dimensional. Si un término pertenece a un documento, éste obtiene un valor distinto de cero en el vector, junto con la dimensión correspondiente al término. Como un documento contiene un conjunto limitado de términos (el vocabulario puede contener millones de términos), muchos de los vectores pueden ser muy dispersos. La mayoría de los sistemas basados en vectores trabajan en el cuadrante positivo, es decir, a ningún término se le asigna un valor positivo. 
+En el modelo de espacio vectorial, un texto es representado como un vector de términos. Si las palabras son elegidas como términos, entonces cada palabra del vocabulario sería una dimensión independiente en el espacio vectorial \citep{singhal2001modern}. Todo texto puede ser representado por un vector en este espacio dimensional. Si un término pertenece a un documento, éste obtiene un valor distinto de cero en el vector, junto con la dimensión correspondiente al término. Como un documento contiene un conjunto limitado de términos (el vocabulario puede contener millones de términos), muchos de los vectores pueden ser muy dispersos. La mayoría de los sistemas basados en vectores trabajan en el cuadrante positivo, es decir, a ningún término se le asigna un valor positivo.
 
 \bigskip Para asignar un valor numérico a un documento en una consulta, el modelo mide la similaridad entre el vector ingresado en ella y el vector del documento al cual se quiere consultar. La similaridad entre dos vectores no es inherente al modelo. Típicamente, el ángulo entre los dos vectores es usado como medida de divergencia entre los mismos, y el coseno del ángulo es usado como similaridad numérica, ya que el coseno tiene la propiedad de ser tener resultado 1 cuando los vectores son idénticos y 0 cuando los vectores son ortogonales (explicado en detalle más adelante). Como una alternativa, el producto escalar entre dos vectores, es también usado como medida de similaridad. Si todos los vectores están forzados a tener longitud 1, es decir, vectores unitarios, entonces el coseno del ángulo entre los vectores, tiene el mismo resultado que el producto escalar.
 
@@ -148,13 +148,15 @@ Los vectores adhieren muy bien a nuestra intuición, por ejemplo, palabras que s
 \bigskip Las arquitecturas propuestas por W2V se basan en dos modelos, \textit{Skip-Gram} y \textit{CBOW} (Continuous Bag of Words). Ambos modelos son simples redes neuronales con una capa oculta, y los vectores son resultados de propagación hacia atrás y \textit{descenso de gradiente estocástico} (SDG por sus siglas en inglés de Stochastic Gradient Descent).
 
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura1.pdf_tex}
+	\centering
+	\includegraphics[width=0.7\linewidth]{7_marco_teorico/imagenes/cbow_skipgram.jpg}
 	\caption{La arquitectura CBOW predice la palabra actual basado en el contexto, mientras que la arquitectura Skip-gram predice palabras vecinas dada una palabra como entrada \citep{mikolov2013efficient}.}
+	\label{fig:cbowskipgram}
 \end{figure}
 
+
 \paragraph{Modelo Skip-Gram}
-El modelo Skip-gram se basa en lo siguiente: dado un conjunto de frases (llamado \textit{corpus}) el modelo analiza las palabras de cada sentencia y utiliza cada palabras para predecir las palabras que serán vecinas. La entrada para este modelo es una sola palabra \(w_I\) y la salida, su contexto \(\{w_{0,1},..., w_{0,C}\}\) definido por una ventana de tamaño \(C\). Una potencial instancia de entrenamiento podría ser la palabra “auto” como entrada y las palabras \{"Manejé","mi","hacia","la","tienda"\} las salidas. El objetivo es, mediante el entrenamiento, generar los pesos de la capa oculta de la red neuronal y usarlos como los vectores que representarán las palabras. Mediante la palabra que es usada como entrada, el modelo busca palabras “vecinas” pertenecientes a su contexto y elige una de forma aleatoria. La red neuronal dará como resultado la probabilidad de cada palabra en nuestro vocabulario de ser \textit{palabra vecina}. El concepto de palabra vecina, viene dado por el tamaño de ventana que hayamos elegido, si el tamaño de ventana es 5, significa que son tomadas en cuenta 5 palabras adelante y 5 palabras atrás (10 en total) \citep{skipgrammodel}. 
+El modelo Skip-gram se basa en lo siguiente: dado un conjunto de frases (llamado \textit{corpus}) el modelo analiza las palabras de cada sentencia y utiliza cada palabras para predecir las palabras que serán vecinas. La entrada para este modelo es una sola palabra \(w_I\) y la salida, su contexto \(\{w_{0,1},..., w_{0,C}\}\) definido por una ventana de tamaño \(C\). Una potencial instancia de entrenamiento podría ser la palabra “auto” como entrada y las palabras \{"Manejé","mi","hacia","la","tienda"\} las salidas. El objetivo es, mediante el entrenamiento, generar los pesos de la capa oculta de la red neuronal y usarlos como los vectores que representarán las palabras. Mediante la palabra que es usada como entrada, el modelo busca palabras “vecinas” pertenecientes a su contexto y elige una de forma aleatoria. La red neuronal dará como resultado la probabilidad de cada palabra en nuestro vocabulario de ser \textit{palabra vecina}. El concepto de palabra vecina, viene dado por el tamaño de ventana que hayamos elegido, si el tamaño de ventana es 5, significa que son tomadas en cuenta 5 palabras adelante y 5 palabras atrás (10 en total) \citep{skipgrammodel}.
 
 \bigskip La entrada de la red neuronal será una palabra representada como \textit{one-hot vector}, un vector con tantas posiciones como tamaño tenga el vocabulario; esto es, si tenemos un vocabulario de 10000 palabras, el vector tendrá el valor 1 en la posición donde se encuentre la palabra representada, y 0 en las 9999 restantes. La salida de la red neuronal, es otro vector con las mismas 10000 posiciones, que en cada posición contiene las probabilidades de que cada una de las palabras sean vecinas de la palabra representada en la entrada. Las probabilidades son calculadas de la siguiente forma. Dado un one-hot vector \(x\) de tamaño \(V\) (cantidad de palabras del vocabulario) correspondiente a la palabra de entrada, y un conjunto de redes neuronales de la capa oculta de tamaño \(N\). Dado una ventana de tamaño \(C\), tendrémos \(\{y_1,...,y_C\}\) vectores one-hot correspondientes a las palabras de salida en la instancia de entrenamiento. La matriz \(W=V \times N\) es la matriz de pesos entre la capa de entrada y la capa oculta, cuya fila \(i^{th}\) representa los pesos correspondientes a la palabra \(i^{th}\) del vocabulario. Esta matriz \(W\) contiene entonces, la codificación como vector de cada una de las palabras del vocabulario (como filas), las cuales serán entrenadas mediante la red neuronal. El siguiente ejemplo ilustra, cómo la matriz \(W\) multiplicada por el vector de entrada, resulta en el vector que la representa.
 \[\begin{bmatrix}0 & 0 & 0 & 1 & 0 \end{bmatrix} \times  \begin{bmatrix}12 & 14 & 2 \\ 6 & 19 & 74 \\ 22 & 33 & 96 \\ 36 & 85 & 2 \\ 95 & 1 & 56 \end{bmatrix} = \begin{bmatrix} 36 & 85 & 2 \end{bmatrix}\]
@@ -166,7 +168,7 @@ Se puede ver, cómo el vector resultado de tamaño \(1 \times N\) es la 4 fila d
 \paragraph{Modelo Continuous Bag of Works (CBOW)}
 Es similar al modelo Skip-gram pero con las salidas y las entradas invertidas: dado un conjunto de palabras que definen un contexto, CBOW predice la palabra actual. La capa de entrada consiste en \(C\) palabras del contexto, codificadas como vectores one-hot, es decir un conjunto\( \{x_1,..., x_C\}\) cada uno de dimensión \(V\). La capa oculta es un vector hde tamaño \(N\). Finalmente, la salida es una palabra y también codificada como un vector one-hot. Los vectores de entrada son conectados con la capa oculta por una matriz \(W=V \times N\), y esta capa oculta a su vez es conectada con la capa de salida vía otra matriz \(W'=V \times N\) \citep{cbowmodel}.
 
-\bigskip La salida de la capa oculta \(h\) de la red neuronal es el promedio de los vectores de entrada, ponderados por la matriz \(W\). 
+\bigskip La salida de la capa oculta \(h\) de la red neuronal es el promedio de los vectores de entrada, ponderados por la matriz \(W\).
 \[h = \frac{1}{C}W \cdot (\sum_{i=1}^{C}{x_i})\]
 Este cómputo es una de las diferencias principales con el modelo skip-gram. Luego, se calculan las entradas de cada nodo de la capa de salida.
 \[u_j = {v'_{w_j}}^{T} \cdot h\]
@@ -174,8 +176,8 @@ donde \(v'_{w_j}\) es la \(j^{th}\) columna de la matriz \(W'\). Y finalmente se
 \[y_j=p(w_{y_j}|w_1,...,w_C)=\frac{exp(u_j))}{\sum_{V}^{j=1}exp(u_j')}\]
 
 \subsubsection{FastText}
-Fastext\footnote{Sitio de FastText \url{https://fasttext.cc}. Último acceso: Febrero 2021.} es una librería open-source que permite generar representaciones de texto y clasificadores de texto. Está basada en una técnica representación continua de palabras, que tiene en cuenta la morfología\footnote{Parte de la lingüística que estudia las reglas que rigen la flexión, la composición y la derivación de las palabras. Por ejemplo, las distintas conjugaciones de los verbos en español.} de las mismas \citep{bojanowski2017enriching}. 
-El modelo de FastText está basado en el modelo Skip-gram, donde cada palabra es representada como una bolsa de caracteres \(n-gramas\). Y a cada uno de los n-gramas, se le asignará un vector, que luego, sumados, representarán cada palabra. Dos características muy importantes son, \begin{enumerate*} [label=(\roman*)] \item el método el muy rápido, permitiendo entrenar grandes conjuntos de datos; y \item permite calcular representación de palabras que no aparecen en el conjunto de entrenamiento.  \end{enumerate*} 
+Fastext\footnote{Sitio de FastText \url{https://fasttext.cc}. Último acceso: Febrero 2021.} es una librería open-source que permite generar representaciones de texto y clasificadores de texto. Está basada en una técnica representación continua de palabras, que tiene en cuenta la morfología\footnote{Parte de la lingüística que estudia las reglas que rigen la flexión, la composición y la derivación de las palabras. Por ejemplo, las distintas conjugaciones de los verbos en español.} de las mismas \citep{bojanowski2017enriching}.
+El modelo de FastText está basado en el modelo Skip-gram, donde cada palabra es representada como una bolsa de caracteres \(n-gramas\). Y a cada uno de los n-gramas, se le asignará un vector, que luego, sumados, representarán cada palabra. Dos características muy importantes son, \begin{enumerate*} [label=(\roman*)] \item el método el muy rápido, permitiendo entrenar grandes conjuntos de datos; y \item permite calcular representación de palabras que no aparecen en el conjunto de entrenamiento.  \end{enumerate*}
 
 \bigskip Repasando el modelo skip-gram, introducido por \cite{mikolov2013efficient}, dado un vocabulario \(W\), donde una palabra es identificada por su índice \(w \in \{1,... , W\}\) , el objetivos es aprender la representación vectorial de cada palabra \(w\). Dado un documento grande representado como una secuencia de palabras \(w1, ..., wt\), el objetivo del modelo skip-gram es que las representaciones de la palabras sean entrenadas para predecir bien, otras palabras que aparecen en el contexto, es decir, minimizar la siguiente probabilidad logarítmica:
 \[\sum_{t=1}^{T}\sum_{c \in C_t}^{T}{\log p(w_c | w_t)}\]
@@ -188,7 +190,7 @@ Cada palabra wes representada como una bolsa de n-gramas. Se agregan los símbol
 \begin{verbatim}
 '<wh', 'whe', 'her', 'ere', 're>' y '<where>'
 \end{verbatim}
-	
+
 Dado un diccionario de n-gramas de tamaño \(G\) y una palabra \(w\), el set de n-gramas que aparecen en wes \(G_w \in \{1,..., G\}\). Se asocia un vector \(z_g\) a cada n-grama \(g\). Se representa una palabra, como la suma de todas las representaciones vectoriales de sus n-gramas. Entonces, la función scoring, es:
 \[s(w,c) = \sum_{g \in G_w}^{}{}z_g^T v_c\]\footnote{Los símbolos \("<"\) y \(">"\) también son considerados como caracteres a la hora de construir los n-gramas. Por ejemplo, \("<wh"\) es un trigrama con un delimitador de inicio de palabra.}
 
@@ -201,25 +203,27 @@ La \textit{distancia semántica} usada en este trabajo está basada en redes sem
 
 \paragraph{El método}
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura1.pdf_tex}
+	\centering
+	\includegraphics[width=0.9\linewidth]{7_marco_teorico/imagenes/similaridad_sematinca_metodo}
 	\caption{Diagrama de cálculo de similaridad semántica.}
+	\label{fig:similaridadsematincametodo}
 \end{figure}
 
-El procedimiento de cálculo de similaridad entre dos frases, como se muestra en la Figura 3, utiliza un conjunto de palabras en común usando todas las palabras distintas en el par de frases (en lugar de usar un conjunto fijo como vocabulario). De cada una de las frases, un vector semántico sin procesar es derivado, utilizando la base de datos léxica. También, un vector de orden de palabras es generado a partir de cada frase utilizando la base de datos. Como cada palabra en una frase, contribuye de forma diferente al significado de la misma, la importancia de cada una de ellas es ponderada utilizando información de contenido derivado del corpus. Combinando la información de corpus con los vectores semánticos sin procesar, se obtienen nuevos vectores semánticos los cuales servirán para calcular la \textit{similaridad semántica}. Una \textit{similaridad de orden} es calculada usando los dos vectores de orden previamente generados. Finalmente, la similaridad entre frases es calculada combinando la similaridad semántica y la similaridad de orden.
+El procedimiento de cálculo de similaridad entre dos frases, como se muestra en la Figura \ref{fig:similaridadsematincametodo}, utiliza un conjunto de palabras en común usando todas las palabras distintas en el par de frases (en lugar de usar un conjunto fijo como vocabulario). De cada una de las frases, un vector semántico sin procesar es derivado, utilizando la base de datos léxica. También, un vector de orden de palabras es generado a partir de cada frase utilizando la base de datos. Como cada palabra en una frase, contribuye de forma diferente al significado de la misma, la importancia de cada una de ellas es ponderada utilizando información de contenido derivado del corpus. Combinando la información de corpus con los vectores semánticos sin procesar, se obtienen nuevos vectores semánticos los cuales servirán para calcular la \textit{similaridad semántica}. Una \textit{similaridad de orden} es calculada usando los dos vectores de orden previamente generados. Finalmente, la similaridad entre frases es calculada combinando la similaridad semántica y la similaridad de orden.
 
 \paragraph{Similaridad semántica entre palabras}
 Las bases de conocimiento tienden a representar el sentido común humano con una estructura jerárquica para un dominio específico o para un lenguaje en general. Existen varios proyectos lingüísticos disponibles en la web, tales como WordNet \citep{miller1995wordnet}, Spatial Date Transfer Standard de la USGS\footnote{United States Geological Survey. https://www.usgs.gov/. Último acceso: Febrero 2021.}, y Gene Ontology\footnote{Gene Ontology. http://geneontology.org/. Último acceso: Febrero 2021.}. Esta estructura jerárquica, se puede modelar como una taxonomía de conceptos.
 
-\bigskip Dadas dos palabras \(w_1\) y \(w_2\), es necesario encontrar la similaridad \(S(w_1,w_2)\) entre ellas. Esto es posible analizando la base de datos léxica (en este caso WordNet si se cuenta con palabras en el idioma inglés) de la siguiente forma: Las palabras están organizadas como conjuntos de sinónimos (llamados \textit{synsets}), con relaciones semánticas a otros synsets. Un método directo para calcular la similaridad es encontrar el camino más corto que conecta dos palabras. Por ejemplo, si tomamos la estructura detallada en la Figura 4, el camino más corto para conectar \textit{boy} y \textit{girl} sería \textit{boy-male-person-female-girl}, y tiene una longitud de \(4\). El synset de personas es llamado \textit{subsumidor mínimo de palabras}, tal como se menciona en la sección 3.4.1.5, ya que sirve de anclaje entre los dos conceptos para los cuales se quiere calcular la distancia semántica.
+\bigskip Dadas dos palabras \(w_1\) y \(w_2\), es necesario encontrar la similaridad \(S(w_1,w_2)\) entre ellas. Esto es posible analizando la base de datos léxica (en este caso WordNet si se cuenta con palabras en el idioma inglés) de la siguiente forma: Las palabras están organizadas como conjuntos de sinónimos (llamados \textit{synsets}), con relaciones semánticas a otros synsets. Un método directo para calcular la similaridad es encontrar el camino más corto que conecta dos palabras. Por ejemplo, si tomamos la estructura detallada en la Figura \ref{fig:taxonomiasemantica}, el camino más corto para conectar \textit{niño} y \textit{niña} sería \textit{niño-persona masculina-humano-persona femenina-niña}, y tiene una longitud de \(4\). El synset de personas es llamado \textit{subsumidor mínimo de palabras}, tal como se menciona en la sección \ref{paragraph:similaridad}, ya que sirve de anclaje entre los dos conceptos para los cuales se quiere calcular la distancia semántica.
 
 \begin{figure}
-	\def\svgwidth{\linewidth}
-	\input{imagenes/figura1.pdf_tex}
+	\centering
+	\includegraphics[width=0.9\linewidth]{7_marco_teorico/imagenes/taxonomia_semantica}
 	\caption{Base de datos semántica de forma jerárquica.}
+	\label{fig:taxonomiasemantica}
 \end{figure}
 
-\bigskip También, se puede ver que la distancia entre \textit{boy} y \textit{teacher} es 6, mientras la distancia entre \textit{boy} y \textit{animal} es 4, lo cual es contraintuitivo e indica que el proceso es mejorable agregando más información de estas estructuras jerárquicas. Es evidente que los synsets pertenecientes a capas altas de la estructura tienen conceptos semánticos más generales y menos similaridad entre ellos y en capas inferiores, sucede lo contrario, conceptos más particulares y similares. Lo anterior sugiere tomar en cuenta la profundidad en jerarquía. Para resumir, la similaridad entre palabras es determinada, no solo por el camino más corto entre ellas, sino también por la profundidad jerárquica, es decir:
+\bigskip También, se puede ver que la distancia entre \textit{niño} y \textit{profesor} es 6, mientras la distancia entre \textit{niño} y \textit{animal} es 4, lo cual es contraintuitivo e indica que el proceso es mejorable agregando más información de estas estructuras jerárquicas. Es evidente que los synsets pertenecientes a capas altas de la estructura tienen conceptos semánticos más generales y menos similaridad entre ellos y en capas inferiores, sucede lo contrario, conceptos más particulares y similares. Lo anterior sugiere tomar en cuenta la profundidad en jerarquía. Para resumir, la similaridad entre palabras es determinada, no solo por el camino más corto entre ellas, sino también por la profundidad jerárquica, es decir:
 \[S(w_1,w_2)=f(l,h)\]
 
 donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumer de las mismas en la jerarquía de la red semántica.
@@ -245,9 +249,14 @@ Consideremos dos frases \(T_1\) y \(T_2\), por ejemplo:
 \end{itemize}
 
 Estas frases tienen exactamente las mismas palabras, pero dos de ellas, ubicadas en orden inverso. Como las dos frases contienen las mismas palabras, un método basado en Bag of Words, resultará en que las frases son idénticas, pero para un intérprete humano, es claro que las frases sólo son similares en cierto grado. Por lo cual, un método computacional de similaridad entre frases debe tener en cuenta el orden de las palabras. En el ejemplo, el conjunto de palabras comunes es:
-\begin{verbatim}
-	T = {A quick brown dog jumps over the lazy fox}
-\end{verbatim}
+
+\begin{center}\ttfamily\sbox{0}{a}%
+\begin{minipage}{45\wd0}% 45 characters here
+	\begin{verbatim}
+T = {A quick brown dog jumps over the lazy fox}
+	\end{verbatim}
+\end{minipage}
+\end{center}
 
 Para lograr esto, este método asigna un índice único por cada palabra en \(T_1\) y \(T_2\), en orden, armando un arreglo de palabras. Un vector de orden \(r\) es formado para \(T_1\) y \(T_2\), respectivamente, basado en el conjunto de palabras comunes. Tomando \(T_1\) como ejemplo, por cada palabra \(w_i\) en \(T\), se intenta encontrar la palabra más similar en \(T_1\) de la siguiente forma:
 \begin{enumerate}

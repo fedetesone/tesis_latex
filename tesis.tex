@@ -44,6 +44,9 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{graphicx}
 \usepackage{verbatim}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
 \hypersetup{
 	pdftitle={Tesis de Maestría en Ingeniería en Sistemas de Información},
 	pdfauthor={Ing. Federico Tesone},
@@ -226,6 +229,27 @@
 \lstset{keywordstyle=\scriptsize,language=R}             % Set R to default language
 
 
+%%%%%%%%%%%%% Custom chapters
+%\usepackage{lipsum}
+%\usepackage{tcolorbox}
+%\tcbuselibrary{skins}
+%
+%% custom chapter
+%\titleformat{\chapter}
+%{\normalfont\Large\filleft\bfseries}                    % format applied to label+text
+%{}                                                      % label
+%{1pc}                                                   % horizontal separation between label and title body
+%{%
+%	% draw a box around the chapter number
+%	\begin{tcolorbox}[
+%		enhanced,flushright upper,
+%		boxrule=1.4pt,
+%		colback=white,colframe=black!50!yellow,
+%		drop fuzzy midday shadow=black!50!yellow,
+%		width=2.8cm]
+%		\resizebox{2cm}{!}{\color{gray!80}\thechapter}%
+%	\end{tcolorbox}\Huge} % before the title body
+%[]
 
 %%%%%%%%%%%%%%%%%
 
@@ -240,9 +264,9 @@
 	\sloppy % Indica a LaTex que debe minimizar el corte de las palabras para pasar de una línea a otra.
 	% \mainmatter % para reiniciar numeración.
 
-    \acknowledgements
 	\listoftables
 	\listoffigures
+    \acknowledgements
 
 	\pagestyle{plain} % Paginas sin encabezado, pero con numero de pagina.
 
@@ -253,10 +277,7 @@
 	\input{9_experimentos/experimentos}
 	\input{10_resultados/resultados}
 	\input{11_conclusiones/conclusiones}
-	\newpage
 
-	\begin{onecolumn}
-		\bibliographystyle{flexbib}
-		\bibliography{12_bibliografia/bibliografia}
-	\end{onecolumn}
+	\bibliographystyle{flexbib}
+	\bibliography{12_bibliografia/bibliografia}
 \end{document}
