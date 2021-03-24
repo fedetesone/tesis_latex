@@ -4,17 +4,15 @@
 
 Con el fin de analizar la estabilidad del método y poner en perspectiva sus resultados en comparación con los algoritmos del estado del arte, se realiza un \textit{análisis de varianza} (ANOVA del inglés \textbf{An}alysis \textbf{o}f \textbf{Va}riance) y se aplica el \textit{método de Tukey} a continuación.
 
-\bigskip El análisis de varianza prueba la significancia estadística de la diferencia de medias (o tendencia central) entre los diferentes métodos en análisis. Si la diferencia entre las medias es estadísticamente significativa, significa que la diferencia esperada es probable que reaparezca si los experimentos son realizados nuevamente \citep{tabachnick2007experimental}. El término \textit{estadísticamente significativo} indica que rechazar la hipótesis nula no significa que el hallazgo sea importante, sino que la diferencia media es lo suficientemente grande como para que la muestra vuelva a aparecer si los experimentos son realizados nuevamente. En el caso de estudio, la hipótesis nula sugiere que el método EQuAL no es apto, eficiente y eficaz para ser utilizado en un sistema de recomendación, teniendo en cuenta sus medidas de rendimiento. Para clarificar, la intención de este trabajo es rechazar la hipótesis nula, y en este apartado se usa el análisis de varianza como una herramienta para tal fin. Si los resultados son los esperados, podemos llegar a la conclusión que el método EQuAL puede ser utilizado como medio para generar matrices de similaridad aptas para un RS eficiente y eficaz, mediante pruebas estadísticamente significativas. Se realizó un estudio ANOVA\footnote{El código completo del análisis de varianza se encuentra en este link.} con los datos\footnote{Conjunto de datos fuente para el análisis de varianzas: <insertar link github>} utilizados para generar las tablas resumen del apartado “6.2. Análisis del método propuesto y algoritmos del estado del arte”.
+\bigskip El análisis de varianza prueba la significancia estadística de la diferencia de medias (o tendencia central) entre los diferentes métodos en análisis. Si la diferencia entre las medias es estadísticamente significativa, significa que la diferencia esperada es probable que reaparezca si los experimentos son realizados nuevamente \citep{tabachnick2007experimental}. El término \textit{estadísticamente significativo} indica que rechazar la hipótesis nula no significa que el hallazgo sea importante, sino que la diferencia media es lo suficientemente grande como para que la muestra vuelva a aparecer si los experimentos son realizados nuevamente. En el caso de estudio, considerando la media de error como variable en analisis, la hipótesis nula sugiere que el método EQuAL es apto, eficiente y eficaz para ser utilizado en un sistema de recomendación, en comparación con métodos aptos y reconocidos por la comunidad. Para clarificar, la intención de este trabajo es aceptar la hipótesis nula o, aun mejor, rechazar la hipótesis nula con una medida de rendimiento que demuestre que el método EQuAL es estadísticamente mejor. En este apartado se usa el análisis de varianza como una herramienta para tal fin. Si los resultados son los esperados, podemos llegar a la conclusión que el método EQuAL puede ser utilizado como medio para generar matrices de similaridad aptas para un RS eficiente y eficaz, mediante pruebas estadísticamente significativas. Se realizó un estudio ANOVA\footnote{El código completo del análisis de varianza se encuentra en este repositorio GitHub \url{https://github.com/fedetesone/anova_equal}.} con los datos\footnote{Conjunto de datos fuente para el análisis de varianzas: \url{https://github.com/fedetesone/anova_equal/blob/main/resultados.csv}.} utilizados para generar las tablas resumen del apartado “6.2. Análisis del método propuesto y algoritmos del estado del arte”.
 
 \bigskip Los algoritmos del estado del arte y método EQuAL basado en el ensamble de los mismos, generaron conjuntos de datos que serán utilizados como entrada para el análisis de varianza. Los conjuntos de datos de los métodos del estado del arte se toman como \textit{grupos base}, y el conjunto de datos del método EQuAL es el grupo variable (o también \textit{factor variable}). Se plantean las siguientes hipótesis:
 \begin{itemize}
-	\item \textbf{\(H_0\)}: La media de los valores de error del método EQuAL para un tamaño de muestra determinado, es la misma que la de los métodos del estado del arte.
-	\item \textbf{\(H_1\)}: La media de los valores de error del método EQuAL para un tamaño de muestra determinado, es distinta que la de los métodos del estado del arte.
+	\item \textbf{\(H_0\)}: La media de los valores de error de los métodos en estudio para un tamaño de muestra determinado, es estadísticamente igual.
+	\item \textbf{\(H_1\)}: La media de los valores de error de los métodos en estudio para un tamaño de muestra determinado, es significativamente diferente.
 \end{itemize}
 
-\bigskip Para clarificar, se va a aplicar la técnica \textit{ANOVA de un factor}, que relaciona dos variables: el método aplicado a la muestra aleatoria (independiente) y el valor de error obtenido (dependiente). La variable dependiente es el llamado \textit{factor}. Sin embargo, el análisis de medias de error a continuación se realizará comparando el método EQuAL contra los métodos del estado del arte (uno a uno), para un tamaño de muestra determinado. Para tal fin, se utiliza el método de Tukey para crear intervalos de confianza para todas las diferencias de medias en parejas. El motivo por el cual es realizado de esta forma es porque el método ANOVA, si bien da un resultado estadísticamente significativo, indica que al menos un grupo (cualquiera de ellos) difiere de los demás y, para un análisis más específico, es necesario el énfasis especial es el método propuesto realizando comparaciones específicas mediante pares \citep{abdi2010tukey}. Por ejemplo, si el método ANOVA arroja que hay diferencias significativas entre las medias en análisis, el método de Tukey puede aplicarse para saber específicamente donde radican las mismas.
-
-\bigskip Filtrando las comparaciones uno a uno en las cuales se encuentra el método EQuAL, es posible saber cómo se comporta. Si las medias de error son iguales en términos estadísticos, significa que el método EQuAL es apto para la generación de medidas de similaridad a partir del conjunto de datos en estudio, y su aplicación en RS.
+\bigskip Se va a aplicar la técnica \textit{ANOVA de un factor}, que relaciona dos variables: el método aplicado a la muestra aleatoria (independiente) y el valor de error obtenido (dependiente). La variable dependiente es el llamado \textit{factor}. Sin embargo, el análisis de medias de error a continuación se realizará comparando el método EQuAL contra los métodos del estado del arte (uno a uno), para un tamaño de muestra determinado. Para tal fin, se utiliza el método de Tukey para crear intervalos de confianza para todas las diferencias de medias, en parejas. El motivo por el cual es realizado de esta forma es porque el método ANOVA indica que al menos un grupo (cualquiera de ellos) difiere de los demás. Por lo anterior, para un análisis más específico, es necesario el énfasis especial es el método propuesto realizando comparaciones específicas mediante pares \citep{abdi2010tukey}. Por ejemplo, si el método ANOVA arroja que hay diferencias significativas entre las medias en análisis, el método de Tukey puede aplicarse para saber específicamente donde radican las mismas. Filtrando las comparaciones uno a uno en las cuales se encuentra el método EQuAL, es posible saber cómo se comporta. Si las medias de error son iguales en términos estadísticos, significa que el método EQuAL es, al menos, apto para la generación de medidas de similaridad a partir del conjunto de datos en estudio, y su aplicación en RS.
 
 \bigskip A continuación, se muestran los métodos ANOVA y Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\%\) (\(\alpha = 0.05\)).
 
@@ -43,8 +41,8 @@ w2v-ensemble     0.013 -0.0539175 0.0799175 0.9923331
 \end{figure}
 
 \begin{itemize}
-	\item \(P_r(F) = 0.603 > \alpha\) indica que no hay una diferencia significativa en el conjunto total. No se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media estadísticamente igual a todos los metodos menos a FastText. Pero es significativamente mejor que el método FastText.
+	\item \(P_r(F) = 0.603 > \alpha, \alpha = 0.05\) indica que no hay una diferencia significativa en el conjunto total. No se rechaza la hipótesis nula.
+	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
 	\item El método EQuAL posee el menor valor de error para una ejecución en particular, representado por el bigote inferior.
 \end{itemize}
 
@@ -73,8 +71,8 @@ w2v-ensemble     0.0106 -0.007871384 0.029071384 0.5407045
 \end{figure}
 
 \begin{itemize}
-	\item \(P_r(F) = 0.0959 < \alpha\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media estadísticamente igual a los métodos Bow y Semántico. Siendo significativamente mejor que FastText, TFIDF y Word2Vec en cuanto a media de error.
+	\item \(P_r(F) = 0.0959 < \alpha, \alpha = 0.05\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
+	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
 	\item El método EQuAL posee el menor valor de error para una ejecución en particular, representado por el bigote inferior.
 \end{itemize}
 
@@ -103,8 +101,8 @@ w2v-ensemble    -0.0155 -0.037161633 0.006161633 0.2956972
 \end{figure}
 
 \begin{itemize}
-	\item \(Pr_(F) = 0.105 > \alpha\) indica que no hay una diferencia significativa en el conjunto total. No se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media estadísticamente igual a los métodos Bow y Semántico. Siendo significativamente mejor que FastText, TFIDF y Word2Vec en cuanto a media de error.
+	\item \(Pr_(F) = 0.105 > \alpha, \alpha = 0.05\) indica que no hay una diferencia significativa en el conjunto total. No se rechaza la hipótesis nula.
+	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
 \end{itemize}
 
 \paragraph{Tamaño de muestra de 1500 pares de preguntas}
@@ -132,8 +130,9 @@ w2v-ensemble    -0.0062000000 -2.269419e-02 0.010294187 0.8729702
 \end{figure}
 
 \begin{itemize}
-	\item \(P_r(F)= 0.0214 < \alpha\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media estadísticamente igual a los métodos FastText, TFIDF y Semántico. En este caso, el método EQuAL posee un error significativamente más alto que Bow y Word2Vec.
+	\item \(P_r(F)= 0.0214 < \alpha, \alpha = 0.05\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
+	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
+	\item En este caso, es de vital importancia la comparación en parejas, teniendo como foco el método EQuAL; ya que, si bien la hipótesis nula fue rechazada, la comparación individual del mismo con los algoritmos del estado del arte, no muestra una diferencia significativa.
 \end{itemize}
 
 \paragraph{Tamaño de muestra de 2000 pares de preguntas}
@@ -161,9 +160,8 @@ w2v-ensemble    -0.00725 -0.021451 0.0069516 0.657185
 \end{figure}
 
 \begin{itemize}
-	\item \(P_r(F)= 0.000117 < \alpha\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media estadísticamente igual a los métodos FastText y TFIDF. En este caso, el método EQuAL es superado por los restantes.
-	\item El método Bow tuvo muy buenos indicadores en este tamaño de muestra. Si, el mismo no fuese tenido en cuenta para este tamaño de muestra, el indicadorPr(F) hubiese sido \(P_r(F)= 0.056 > \alpha\) que indicaría que no hay diferencia entre los métodos analizados.
+	\item \(P_r(F)= 0.000117 < \alpha, \alpha = 0.05\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
+	\item En este caso, el rechazo de la hipótesis nula es causado por el método Bow, que tuvo muy buenos indicadores en este tamaño de muestra. Si el mismo no fuese tenido en cuenta para este tamaño de muestra, el indicador \(P_r(F)\) hubiese sido  \(P_r(F)= 0.056 > \alpha\) que indicaría que no hay diferencia entre los métodos analizados. Por lo anterior, el método EQuAL tiene una diferencia significativa solo con el método bow, siendo estadísticamente igual a los restantes.
 \end{itemize}
 
 \bigskip En general, el método EQuAL tiene un comportamiento aceptable en cuanto a medias de error a lo largo de todos los tamaños de muestra. Esto significa que las medias de error del mismo son significativamente comparables con los métodos del estado del arte, los cuales son utilizados por la comunidad en el cálculo de similaridad y análisis de texto, e inclusive superador en algunos casos.
