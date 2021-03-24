@@ -2,7 +2,7 @@
 
 El objetivo del análisis de desempeño es evaluar si el mismo es afectado por el paralelismo que otorga Apache Spark. El cluster de prueba consiste en un cluster local, por lo cual el paralelismo será realizado modificando la cantidad de núcleos CPU que se le provee al cluster Hadoop local. Esta configuración puede ser extrapolada fácilmente a un cluster de computadoras con más de un nodo, y con varios ejecutores por nodo.
 
-\bigskip Las pruebas son realizadas ejecutando los experimentos de forma local y variando la configuración del contexto Spark. Ya que en este trabajo, la etapa de clustering no se realizó utilizando Apache Spark, no es detallada en esta sección. Se analizan entonces, la etapa de cálculo de similaridad, el ensamble de clustering y luego la ejecución total de los experimentos, con tamaños de muestra 100, 500 y 1000 pares de preguntas. Cada una de las ejecuciones, se realizan utilizando dos técnicas de similaridad (TF y TFIDF), para luego ensamblarlas. Además, con cada una de ellas, se realizó un algoritmo de clustering con \(k = 5\) y \(20\) ejecuciones del mismo. Las pruebas de rendimiento se realizaron con el siguiente equipo:
+\bigskip Las pruebas son realizadas ejecutando los experimentos de forma local y variando la configuración del contexto Spark. Ya que en este trabajo, la etapa de clustering no se realizó utilizando Apache Spark, no es detallada en esta sección. Se analizan entonces, la etapa de cálculo de similaridad, el ensamble de clustering, y la ejecución total de los experimentos. El análisis será realizado con tamaños de muestra 100, 500 y 1000 pares de preguntas. Cada una de las ejecuciones, se realizan utilizando dos técnicas de similaridad (TF y TFIDF), para luego ensamblarlas. Además, con cada una de ellas, se realizó un algoritmo de clustering con \(k = 5\) y \(20\) ejecuciones del mismo. Las pruebas de rendimiento se realizaron con el siguiente equipo:
 
 \begin{verbatim}
 Modelo: MacBook Pro
@@ -16,7 +16,7 @@ Memoria: 16 GB RAM
 Almacenamiento: APPLE SSD AP0512M
 \end{verbatim}
 
-\bigskip La cantidad de núcleos de CPU asignados al contexto Spark variará de 1 a 12. La Tabla \ref{tab:calc-matrices-sim} 0 muestra los el tiempo total para la etapa de cálculo de matrices de similaridad, y una estimación de cálculos/segundo siendo la cantidad de cálculos total de \(2n^2-n\) por cada una de las matrices de similaridad generadas (dos en total en las pruebas de desempeño). La Tabla \ref{tab:calc-ensamble} muestra los tiempos para la etapa de ensamble de clustering, y una estimación de cálculos/segundo siendo la cantidad de cálculos total de \(N^2n^2\) siendo \(N\) la cantidad de ejecuciones del algoritmo de clustering en total. Para finalizar, la Tabla \ref{tab:calc-total}  muestra los tiempos totales de cada una de las ejecuciones. El tiempo total está compuesto un tiempo de preprocesamiento, cálculos de similaridades, algoritmos de clustering y ensamble de clustering\footnote{Detalles de los tiempos de ejecución en la tabla X.X.X.}. La cantidad estimada de calculos total, es la sumatoria de los dos explicados anteriormente más una cantidad estimada para las ejecuciones del algoritmo de clustering \(Nnki\), donde \(N=40\) ejecuciones, \(k=5\) clusters para \(i=300\) iteraciones.
+\bigskip La cantidad de núcleos de CPU asignados al contexto Spark variará de 1 a 12. La Tabla \ref{tab:calc-matrices-sim} 0 muestra los el tiempo total para la etapa de cálculo de matrices de similaridad, y una estimación de cálculos/segundo siendo la cantidad de cálculos total de \(2n^2-n\) por cada una de las matrices de similaridad generadas (dos en total en las pruebas de desempeño). La Tabla \ref{tab:calc-ensamble} muestra los tiempos para la etapa de ensamble de clustering, y una estimación de cálculos/segundo siendo la cantidad de cálculos total de \(N^2n^2\) siendo \(N\) la cantidad de ejecuciones del algoritmo de clustering en total. Para finalizar, la Tabla \ref{tab:calc-total}  muestra los tiempos totales de cada una de las ejecuciones. El tiempo total está compuesto un tiempo de preprocesamiento, cálculos de similaridades, algoritmos de clustering y ensamble de clustering\footnote{Detalles de los tiempos de ejecución en la tabla \ref{tab:anexo-performance}}. La cantidad estimada de calculos total, es la sumatoria de los dos explicados anteriormente más una cantidad estimada para las ejecuciones del algoritmo de clustering \(Nnki\), donde \(N=40\) ejecuciones, \(k=5\) clusters para \(i=300\) iteraciones.
 
 \begin{table}[h!]
 	\footnotesize
@@ -113,7 +113,7 @@ Almacenamiento: APPLE SSD AP0512M
 
 Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para cada uno de los tamaños de muestra de forma sumarizada, se puede ver claramente como el desempeño aumenta hasta cierto nivel de paralelismo. En un cluster Spark, existe una cota superior al número de nodos/ejecutores/CPU en el cual más allá del mismo, el aumento del desempeño es marginal. Este límite depende de la naturaleza de la aplicación y difiere notablemente si la misma hace uso intensivo de CPU o uso intensivo de operaciones de entrada-salida.
 
-\begin{filecontents*}{performance100.csv}
+\begin{filecontents*}{performance-100.csv}
 1,62.9900532,15.978281,88.5538612
 2,46.080726,10.388303,64.830457
 4,33.073601,6.872383,47.60667
@@ -138,11 +138,11 @@ Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para
 				grid style=dashed,
 				]
 
-				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance100.csv};
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-100.csv};
 				\label{similaridad100}
-				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance100.csv};
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-100.csv};
 				\label{ensamble100}
-				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance100.csv};
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-100.csv};
 				\label{total100}
 			\end{axis}
 
@@ -157,12 +157,12 @@ Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para
 	\label{fig:performance100}
 \end{figure}
 
-\begin{filecontents*}{performance500.csv}
-1,763.888817,15.161685,828.022
-2,576.668802,15.091077,624.102
-4,402.376359,16.416085,446.984
-8,324.825807,14.482088,363.617
-12,328.300206,12.980533,362.982
+\begin{filecontents*}{performance-500.csv}
+1,763.888817,40.430,828.022
+2,576.668802,25.684,624.102
+4,402.376359,21.511,446.984
+8,324.825807,18.017,363.617
+12,328.300206,15.737,362.982
 \end{filecontents*}
 
 \begin{figure}[h!]
@@ -182,11 +182,11 @@ Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para
 				grid style=dashed,
 				]
 
-				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance500.csv};
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-500.csv};
 				\label{similaridad500}
-				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance500.csv};
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-500.csv};
 				\label{ensamble500}
-				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance500.csv};
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-500.csv};
 				\label{total500}
 			\end{axis}
 
@@ -201,12 +201,12 @@ Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para
 	\label{fig:performance500}
 \end{figure}
 
-\begin{filecontents*}{performance1000.csv}
-1,2950.810,50.678,3106.846134
-2,2073.179,61.050,2199.751862
-4,1423.896,51.581,1530.309932
-8,1176.593,56.610,1282.804328
-12,1253.434,66.790,1370.473092
+\begin{filecontents*}{performance-1000.csv}
+1,2950.810,95.886,3106.846134
+2,2073.179,58.053,2199.751862
+4,1423.896,47.732525,1530.309932
+8,1176.593,43.265526,1282.804328
+12,1253.434,43.699182,1370.473092
 \end{filecontents*}
 
 \begin{figure}[h!]
@@ -226,11 +226,11 @@ Graficando las tablas \ref{tab:calc-matrices-sim} y \ref{tab:calc-ensamble} para
 				grid style=dashed,
 				]
 
-				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance1000.csv};
+				\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-1000.csv};
 				\label{similaridad1000}
-				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance1000.csv};
+				\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-1000.csv};
 				\label{ensamble1000}
-				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance1000.csv};
+				\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-1000.csv};
 				\label{total1000}
 			\end{axis}
 
