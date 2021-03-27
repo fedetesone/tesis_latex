@@ -47,12 +47,12 @@
 \contentsline {paragraph}{\numberline {3.4.4.2}Modelo Skip-Gram}{44}{paragraph.0.3.4.4.2}%
 \contentsline {paragraph}{\numberline {3.4.4.3}Modelo Continuous Bag of Works (CBOW)}{46}{paragraph.0.3.4.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.5}FastText}{47}{subsubsection.0.3.4.5}%
-\contentsline {paragraph}{\numberline {3.4.5.1}Modelo sub-palabra}{47}{paragraph.0.3.4.5.1}%
+\contentsline {paragraph}{\numberline {3.4.5.1}Modelo sub-palabra}{48}{paragraph.0.3.4.5.1}%
 \contentsline {subsubsection}{\numberline {3.4.6}Semantic Distance}{48}{subsubsection.0.3.4.6}%
 \contentsline {paragraph}{\numberline {3.4.6.1}El método}{49}{paragraph.0.3.4.6.1}%
-\contentsline {paragraph}{\numberline {3.4.6.2}Similaridad semántica entre palabras}{49}{paragraph.0.3.4.6.2}%
+\contentsline {paragraph}{\numberline {3.4.6.2}Similaridad semántica entre palabras}{50}{paragraph.0.3.4.6.2}%
 \contentsline {paragraph}{\numberline {3.4.6.3}Similaridad semántica entre frases}{51}{paragraph.0.3.4.6.3}%
-\contentsline {paragraph}{\numberline {3.4.6.4}Similaridad de orden entre frases}{51}{paragraph.0.3.4.6.4}%
+\contentsline {paragraph}{\numberline {3.4.6.4}Similaridad de orden entre frases}{52}{paragraph.0.3.4.6.4}%
 \contentsline {paragraph}{\numberline {3.4.6.5}Similaridad total entre frases}{53}{paragraph.0.3.4.6.5}%
 \contentsline {subsection}{\numberline {3.5}Ensamble de Clustering}{53}{subsection.0.3.5}%
 \contentsline {subsubsection}{\numberline {3.5.1}Clustering}{53}{subsubsection.0.3.5.1}%
@@ -126,4 +126,4 @@
 \contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{119}{subsection.0.7.1}%
 \contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{120}{subsection.0.7.2}%
 \contentsline {chapter}{Anexos}{123}{chapter*.88}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{126}{chapter*.91}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{130}{chapter*.90}%

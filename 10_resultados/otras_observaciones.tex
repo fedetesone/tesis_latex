@@ -175,7 +175,12 @@ En el análisis de varianza de las medias de error realizado anteriormente, se p
 Si bien es una medida adimensional y propone mejorar las medidas de rendimiento en ciertos aspectos, los métodos de ensamble de clustering son dependientes de sus algoritmos subyacentes y, por lo tanto, las medidas de desempeño son similares en cuanto a, por ejemplo, el valor de error obtenido. Los análisis de varianza realizados ponen en evidencia la dependencia del método equal con los algoritmos ensamblados. La media de error es la misma (estadísticamente hablando) en la mayoría de los casos, lo cual indica que la media de error arrojada por el método de ensamble es directamente proporcional a las medias subyacentes, dando la posibilidad de mejorar los indicadores de rendimiento utilizando algoritmos de similaridad de texto que tengan mejor comportamiento.
 
 \subsubsection{Influencia del conjunto de datos Quora}
-El conjunto de datos utilizado para este trabajo, no posibilita que el método EQuAL posea ventajas claras sobre los métodos del estado del arte en algunas medidas de rendimiento en particular. Sin embargo, es posible obtener resultados que son aptos para la utilización en un sistema de recomendación.
+En las secciones anteriores se demostró que el método EQuAL es apto para obtener resultados que son aptos para la utilización en un sistema de recomendación. No obstante, no posee ventajas claras sobre los métodos del estado del arte en algunas medidas de rendimiento en particular.
+
+\bigskip El conjunto de datos Quora y la naturaleza del mismo, no permite realizar un diagrama de dispersión que posibilite ver la forma de los clusters generados. Dicho esto, y sabiendo que la técnica de Ensamble de Clustering es particularmente efectiva en la detección de clusters con formas no convencionales, no es posible identificar fácilmente cuál es la forma de los clusters en cuestión, y verificar si el conjunto de datos se adapta perfectamente al método EQuAL.
+
+\bigskip El método EQuAL, no es únicamente efectivo para algoritmos subyacentes basados en análisis de texto, sino que también es posible utilizarlo para cualquier conjunto de datos y técnica que generen matrices de distancia como salida. Tal es así, que podría funcionar de manera excepcional con conjuntos de datos que puedan ser graficados y tengan clusters identificables visualmente, con formas que sean convenientes para métodos basados en Ensamble de Clustering.
+
 
 \bigskip Analizando el conjunto de datos y la naturaleza del mismo, no fue posible realizar un diagrama de dispersión que permita ver la forma de los clusters generados.
 (terminar o borrar seccion)
