@@ -5,6 +5,7 @@ El proceso de ensamble comienza obteniendo todos los archivos de etiquetas gener
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 1.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
@@ -15,12 +16,12 @@ El proceso de ensamble comienza obteniendo todos los archivos de etiquetas gener
 		run\_uuid\_1       & 4                     & 4                    \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 1.}
 	\label{tab:run1}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 2.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
@@ -31,12 +32,12 @@ El proceso de ensamble comienza obteniendo todos los archivos de etiquetas gener
 		run\_uuid\_2       & 4                     & 2                    \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 2.}
 	\label{tab:run2}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 3.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
@@ -47,7 +48,6 @@ El proceso de ensamble comienza obteniendo todos los archivos de etiquetas gener
 		run\_uuid\_3       & 4                     & 2                    \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de asignación de clusters a preguntas individuales para la ejecución 3.}
 	\label{tab:run3}
 \end{table}
 
@@ -57,6 +57,7 @@ Considerando \(run\_uuid\_1\), se puede observar que las preguntas 1, 2 y 3 fuer
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Conjunto de datos de asignación de clusters agrupados por pregunta individual para generación de tuplas \((run\_id, cluster\_id)\) .}
 	\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{2.0cm}>{\centering\arraybackslash}p{15cm}}
 		\toprule
 		\textbf{question\_id} & \textbf{tuples}                                          \\
@@ -67,7 +68,6 @@ Considerando \(run\_uuid\_1\), se puede observar que las preguntas 1, 2 y 3 fuer
 		4                     & {[}(run\_uuid\_1,4),(run\_uuid\_2,2),(run\_uuid\_3,2){]} \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Conjunto de datos de asignación de clusters agrupados por pregunta individual para generación de tuplas \((run\_id, cluster\_id)\) .}
 	\label{tab:tuplas}
 \end{table}
 
@@ -75,6 +75,7 @@ Hasta ahora, este conjunto de datos muestra, por cada una de las preguntas, a qu
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Conjunto de datos intermedio que indica cuando dos preguntas coinciden en el mismo cluster/ejecución mediante un arreglo de tuplas.}
 	\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{2.5cm}>{\centering\arraybackslash}p{10cm}}
 		\toprule
 		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \multicolumn{1}{c|}{\textbf{tuples}}                     \\
@@ -87,7 +88,6 @@ Hasta ahora, este conjunto de datos muestra, por cada una de las preguntas, a qu
 		3 & 4 & {[}{]}                 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Conjunto de datos intermedio que indica cuando dos preguntas coinciden en el mismo cluster/ejecución mediante un arreglo de tuplas.}
 	\label{tab:interseccion}
 \end{table}
 
@@ -105,6 +105,7 @@ Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coi
 \bigskip Considerando el ejemplo en cuestión, el conjunto de datos resultado de aplicar la fórmula anterior se muestra en la Tabla \ref{tab:coasociacion}.
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de matriz de co-asociación salida del proceso de ensamble de clustering.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{similarity} \\
@@ -117,7 +118,6 @@ Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coi
 		3                        & 4                        & 0                   \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de matriz de co-asociación salida del proceso de ensamble de clustering.}
 	\label{tab:coasociacion}
 \end{table}
 Obteniendo una matriz de co-asociación, que indica que las preguntas 1 y 3 coincidieron en el \(100\%\) de las ejecuciones, mientras que las preguntas 1 y 2 solo en un tercio de las mismas, y las preguntas 1,4 nunca coincidieron.

@@ -4,7 +4,8 @@ Se generan particiones desde los subconjuntos de muestreos generados desde el co
 
 \begin{table}[h!]
 	\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+	\caption{Ejemplo de la estructura de los subconjuntos de muestreo.}
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} \\
 		\midrule
@@ -12,7 +13,6 @@ Se generan particiones desde los subconjuntos de muestreos generados desde el co
 		1                     & 98776                       & question\_11         & question\_21         \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de la estructura de los subconjuntos de muestreo.}
 	\label{tab:archivo-entrada}
 \end{table}
 
@@ -24,7 +24,8 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 
 \begin{table}[h!]
 	\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+	\caption{Ejemplo de la estructura de matriz triangular en formato de tabla.}
+	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} \\
 		\midrule
@@ -34,7 +35,6 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 		1 & question\_1 & 2 & question\_2 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de la estructura de matriz triangular en formato de tabla.}
 	\label{tab:matriz-triangular}
 \end{table}
 
@@ -43,6 +43,7 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 \bigskip
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de la estructura de matriz de similaridad en formato de tabla.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} & \textbf{similarity} \\
@@ -55,7 +56,6 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 		2 & question\_2 & 3 & question\_3 & similarity\_23 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de la estructura de matriz de similaridad en formato de tabla.}
 	\label{tab:matriz-similaridad}
 \end{table}
 
@@ -74,6 +74,7 @@ Como entrada es utilizada la matriz de similaridades que es resultado del paso a
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de la estructura del conjunto de preguntas individuales de la muestra en curso.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{sequence\_id} & \textbf{question} \\
@@ -84,7 +85,6 @@ Como entrada es utilizada la matriz de similaridades que es resultado del paso a
 		3                     & question\_3       \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de la estructura del conjunto de preguntas individuales de la muestra en curso.}
 	\label{tab:preguntas-individuales}
 \end{table}
 
@@ -118,6 +118,7 @@ La \textit{generación de etiquetas} y la \textit{actualización de medoides} se
 Los resultados son almacenados en un archivo CSV que posee la estructura de la Tabla \ref{tab:salida-clustering}.
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ejemplo de la estructura del resultado de la ejecución del algoritmo de clustering.}
 	\begin{tabularx}{\textwidth}{ccc}
 		\toprule
 		\textbf{run\_id}                       & \textbf{question\_id} & \textbf{assigned\_medoid} \\
@@ -128,7 +129,6 @@ Los resultados son almacenados en un archivo CSV que posee la estructura de la T
 		63815467136575428551131593057064980770 & 1364 & 437 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ejemplo de la estructura del resultado de la ejecución del algoritmo de clustering.}
 	\label{tab:salida-clustering}
 \end{table}
 Cada uno de los archivos almacena un UUID único (identico en cada una de las filas, para facilitar el algoritmo de ensamble), todas las preguntas individuales del muestreo en cuestión, y el cluster a la cual pertenecen, el cual es representado por el ID de la pregunta que fue tomada como medoide para ese cluster. Se generan tantos archivos por la cantidad de ejecuciones configuradas para cada una de las técnicas de similaridad del estado del arte. Por ejemplo, si utilizamos Word2Vec, TF, TFIDF, FastText y Semántica (5 técnicas) y se configuraron 100 ejecuciones por cada una de ellas, se obtendrán 500 archivos de etiquetas; los cuales serán la única entrada del algoritmo de ensamble de clustering.

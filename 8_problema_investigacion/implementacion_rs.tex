@@ -39,6 +39,7 @@ Como punto de partida y en solo una oportunidad, se carga una base de datos con 
 \bigskip
 \begin{table}[h!]
 	\footnotesize
+	\caption{Matriz de coasociación salida del proceso EQuAL.}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
@@ -48,7 +49,6 @@ Como punto de partida y en solo una oportunidad, se carga una base de datos con 
 		1 & 4 & question\_desc\_1 & question\_desc\_4 & 0.92 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Matriz de coasociación salida del proceso EQuAL.}
 	\label{tab:table-co-asociation}
 \end{table}
 
@@ -57,6 +57,7 @@ Adicionalmente, un proceso ETL\footnote{Siglas para Extract, Transform and Load 
 \begin{table}[h!]
 	\centering
 	\footnotesize
+	\caption{Ejemplo de un registro de la base de datos de similaridad entre preguntas.}
 	\begin{tabular}{|c|l|}
 		\hline
 		\textbf{question\_id} &
@@ -81,7 +82,6 @@ Adicionalmente, un proceso ETL\footnote{Siglas para Extract, Transform and Load 
 ]
 		\end{lstlisting} \\ \hline
 	\end{tabular}
-	\caption{Ejemplo de un registro de la base de datos de similaridad entre preguntas.}
 	\label{tab:table-similar-questions}
 \end{table}
 

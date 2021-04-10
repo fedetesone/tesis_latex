@@ -1,6 +1,6 @@
 \subsection{Ensamble de Clustering}
 \subsubsection{Clustering}
-El \textit{Clustering} o \textit{análisis cluster} tiene por objeto agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos. Normalmente se agrupan las observaciones, pero el Clustering puede también aplicarse para agrupar variables. Estos métodos se conocen también con el nombre de métodos de clasificación automática o no supervisada, o de reconocimiento de patrones sin supervisión \citep{pena2013analisis}. Con esta información de clasificación a mano, se puede inferir las propiedades de un objeto específico, basándose en la categoría que pertenece. Básicamente, los sistemas de clasificación son supervisados o no supervisados, dependiendo si asignan nuevos objetos de datos a uno o a un número finito de clases supervisadas discretas o categorías no supervisadas, respectivamente \citep{xu2008clustering}.
+El \textit{Clustering} o \textit{análisis cluster} tiene por objetivo agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos. Normalmente se agrupan las observaciones, pero el Clustering puede también aplicarse para agrupar variables. Estos métodos se conocen también con el nombre de métodos de clasificación automática o no supervisada, o de reconocimiento de patrones sin supervisión \citep{pena2013analisis}. Con esta información de clasificación a mano, se puede inferir las propiedades de un objeto específico, basándose en la categoría que pertenece. Básicamente, los sistemas de clasificación son supervisados o no supervisados, dependiendo si asignan nuevos objetos de datos a uno o a un número finito de clases supervisadas discretas o categorías no supervisadas, respectivamente \citep{xu2008clustering}.
 
 \paragraph{Definición de Cluster}
 Los algoritmos de clustering agrupan objetos de datos (patrones, entidades, instancias, observaciones, unidades) en un cierto número de clusters (grupos, sub-conjuntos o categorías).
@@ -8,10 +8,11 @@ Los algoritmos de clustering agrupan objetos de datos (patrones, entidades, inst
 
 \paragraph{Algoritmos de Clustering}
 Los algoritmos de clustering están generalmente clasificados en \textit{clustering particional} y \textit{clustering jerárquico}, basándose en la la forma que se generan los clusters \citep{xu2008clustering}. Los algoritmos de clustering jerárquico encuentran clusters anidados recursivamente en un modo aglomerativo (empezando con cada uno de los puntos de datos como si fueran clusters y combinandolos con el más similar, sucesivamente para formar una jerarquía de clusters) o en modo divisivo (de arriba hacia abajo - en inglés, top-down -) (empezando con todos los puntos de datos en un cluster y dividiendo recursivamente cada uno de los clusters en clusters más pequeños). Los algoritmos de clustering particional, intentan encontrar todos los clusters simultáneamente como una partición de datos, y no imponen una estructura jerárquica; la base matemática es simple: una \textit{partición}, no existen subconjuntos solapados y la unión de los subconjuntos es el conjunto total. La entrada de un algoritmo jerárquico es una matriz de similaridad \(n \times n\) , donde \(n\) es el número de objetos a ser analizados via clustering. Por otro lado, los algoritmos particionales puede usar una matriz \(n \times d\), representando \(n\) objetos en un espacio d-dimensional o, como un algoritmo jerárquico, una matriz \(n \times n\) \citep{jain2010data}.
-En este trabajo, nos centraremos en algoritmos particionales, utilizando medidas de proximidad de texto para determinar cuáles objetos (cadenas de texto) pertenecerán al mismo cluster y cuáles no. Algunos ejemplos de este tipo de algoritmo son el famoso y ampliamente utilizado \textit{k-medias} \citep{macqueen1967some}, y también el \textit{Particionamiento Alrededor de Medoids (PAM)}.
+En este trabajo, nos centraremos en algoritmos particionales, utilizando medidas de proximidad de texto para determinar cuáles objetos (cadenas de texto) pertenecerán al mismo cluster y cuáles no. Algunos ejemplos de este tipo de algoritmo son el famoso y ampliamente utilizado \textit{k-medias} \citep{macqueen1967some}, y también el \textit{Particionamiento Alrededor de Medoids (PAM)} o \textit{k-medoids} (el cual se utilizará en este trabajo).
 
 \paragraph{Particionamiento Alrededor de Medoids (PAM)}
 Particionamiento Alrededor de Medoids (PAM) es un algoritmo de Clustering particional, cuyo funcionamiento es similar al del k-medias, pero en lugar de tomar un conjunto de datos aleatorio como centroides y luego, iterativamente, calcularlo como medias de los clusters, se utilizan puntos llamados medioides, los cuales son puntos “representativos” de un cluster, y tienen la particularidad de estar más centricamente ubicados en el mismo \citep{rdusseeun1987clustering}.
+
 \bigskip PAM tiene dos etapas, denominadas BUILD (construcción, etapa de formación de los clusters) y SWAP (intercambio, etapa de refinamiento de la partición obtenida). Nos centraremos en la etapa BUILD, ya que será la utilizada en este trabajo:
 \begin{enumerate}
 	\item Establecer el medoide inicial \(m_1\) como el vector de características del conjunto de datos de entrada que minimiza la distancia a todos los demás datos en \(X\).
@@ -38,7 +39,8 @@ Distintos algoritmos de clustering producen distintos grupos de objetos, en form
 \bigskip Debido a la existencia de muchos algoritmos de clustering, y a la posibilidad de poder variar los mismos con distintos parámetros de entrada, es difícil encontrar un algoritmo o variación del mismo que produzca los resultados esperados, funcione con distintas formas de clusters y sea adecuado para distintos conjuntos de datos. Por lo contrario, esta variabilidad puede ser aprovechada para encontrar una estructura inter-patrón que represente a todas las técnicas tenidas en cuenta como entrada. Además, este método muestra que la combinación de distintos algoritmos, puede resultar en la identificación de clusters subyacentes con formas arbitrarias, tamaños y densidades.
 
 \paragraph{Definición formal}
-Dado \(X = \{x_1, x_2,... , x_n\}\) un conjunto de n objetos, y dada  \(\chi = \{x_1, x_2,... , x_n\}\) como la representación de esos patrones; \(x_i\) puede ser definida por ejemplo sobre un espacio d-dimensional, \(x_i \in \rm I\!R^2\), tal que, cuando adopten una representación vectorial.
+Dado \(X = \{x_1, x_2,... , x_n\}\) un conjunto de n objetos, y dada \(\chi = \{x_1, x_2,... , x_n\}\) como la representación de esos patrones; \(x_i\) puede ser definida por ejemplo sobre un espacio d-dimensional \(x_i \in \rm I\!R^2\), en el caso que adopte una representación vectorial, o \(X = x_{i1}, x_{i2},... , x_{im_i}\) en el caso que adopte una representación de cadena de texto, donde \(m_i\) es la longitud del mismo.
+
 Un algoritmo de clustering toma  como entrada y organiza los \(n\) patrones en \(k\) clusters, respondiendo a algunas medidas de similaridad entre los patrones, formando una partición de datos \(P\). Diferentes algoritmos de clustering producirán, en general, distintas particiones para el mismo conjunto de datos, tanto como en términos de número de patrones en un mismo cluster o en la cantidad de clusters. También es posible producir distintos resultados con el mismo algoritmo de clustering, ya sea, variando los parámetros de entrada o explorando distintas representaciones en los patrones \citep{fred2005combining}.
 
 \bigskip Considerando \(N\) particiones de datos \(X\), y \(\rm I\!P\) la representación de las \(N\) particiones, definimos Ensamble de Clustering como:
@@ -49,7 +51,7 @@ Un algoritmo de clustering toma  como entrada y organiza los \(n\) patrones en \
 \[P^N = \{C^N_1, C^N_2, ..., C^N_{kN}\}\]
 donde \(C^i_j\) es el cluster número \(j\) en la partición de datos \(P_i\), la cual tiene \(k_i\) clusters, y \(n^i_j\) es la cardinalidad  \(C^i_j\).
 
-\bigskip El problema es encontrar la partición de datos “óptima”, \(P*\), usando la información disponible en \(N\) particiones de datos \(\rm I\!P = \{P^1, P^2, ..., P^N\}\). Definimos \(k*\), como el número de clusters en \(P*\). Idealmente, \(P*\) debe satisfacer las siguientes propiedades:
+\bigskip El problema es encontrar la partición de datos “óptima”, \(P^*\), usando la información disponible en \(N\) particiones de datos \(\rm I\!P = \{P^1, P^2, ..., P^N\}\). Definimos \(k^*\), como el número de clusters en \(P^*\). Idealmente, \(P^*\) debe satisfacer las siguientes propiedades:
 
 \begin{enumerate}
 	\item Consistencia con el Ensamble de Clustering \(\rm I\!P\);
@@ -58,7 +60,7 @@ donde \(C^i_j\) es el cluster número \(j\) en la partición de datos \(P_i\), l
 \end{enumerate}
 
 \paragraph{Acumulación de Evidencias}
-La idea del Clustering de Acumulación de Evidencias es combinar los resultados de múltiples clusterings dentro de una misma partición de datos viendo cada uno de esos resultados como una evidencia independiente de la organización de datos \citep{fred2005combining}. Para realizar esto, es necesario seguir los siguientes pasos:
+La idea del Clustering de Acumulación de Evidencias es combinar los resultados de múltiples clusterings dentro de una misma partición de datos viendo cada uno de esos resultados como una evidencia independiente de la organización de los mismos \citep{fred2005combining}. Para realizar esto, es necesario seguir los siguientes pasos:
 
 \subparagraph{Producir ensambles de Clustering}
 Los ensambles de Clustering generalmente son producidos desde dos enfoques:
