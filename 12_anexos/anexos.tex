@@ -1,16 +1,17 @@
 \chapter*{Anexos}\label{ch:anexos}
 \addcontentsline{toc}{chapter}{Anexos}
 
-\section*{Anexos}
+\section*{}
 \addtocounter{section}{1}
 \setcounter{subsection}{0}
 
-\begin{table}[h!]
-	\footnotesize
-	\begin{tabularx}{\textwidth}{cccccccc}
+\begin{scriptsize}
+	\begin{longtable}{cccccccc}
+		\caption{Anexo de matrices de confusión utilizados para construir las secciones \ref{ss:analisismetodo} and \ref{ss:analisismetodoestado}.} \\
 		\toprule
-		\textbf{Técnica} & \textbf{Tam. muestra} & \textbf{0/0} & \textbf{0/1} & \textbf{1/0} & \textbf{1/1} & \textbf{Precisión} & \textbf{Error} \\
+		\textbf{Técnica} & \textbf{Tam. muestra} & \textbf{0/0} & \textbf{0/1} & \textbf{1/0} & \textbf{1/1} & \textbf{Precisión} & \textbf{Error}\\
 		\midrule
+		\endhead
 		bow      & 100  & 0.3800 & 0.1900 & 0.0700 & 0.3600 & 0.7400 & 0.2600 \\
 		bow      & 100  & 0.5400 & 0.0700 & 0.2100 & 0.1800 & 0.7200 & 0.2800 \\
 		bow      & 100  & 0.5600 & 0.0300 & 0.3100 & 0.1000 & 0.6600 & 0.3400 \\
@@ -302,14 +303,14 @@
 		ensemble & 2000 & 0.3940 & 0.2140 & 0.1165 & 0.2755 & 0.6695 & 0.3305 \\
 		ensemble & 2000 & 0.4865 & 0.1230 & 0.2170 & 0.1735 & 0.6600 & 0.3400 \\
 		\bottomrule
-	\end{tabularx}
-	\caption{Anexo de matrices de confusión utilizados para construir las secciones \ref{ss:analisismetodo} and \ref{ss:analisismetodoestado}.}
-	\label{tab:anexo-confusion}
-\end{table}
+		\label{tab:anexo-confusion}
+	\end{longtable}
+\end{scriptsize}
 
 \begin{landscape}
 \begin{table}[h!]
 	\tiny
+	\caption{Anexo de detalles de tiempos de ejecución para análisis de rendimiento. Clustering con \(k = 5\) y dos medidas de similaridad.}
 	\begin{tabularx}{\hsize}{cccccccccccccccc}
 	\toprule
 	\multirow{2}{*}{\begin{tabular}[c]{@{}c@{}}Cores/\\ CPU\end{tabular}} &
@@ -353,7 +354,6 @@
 	12 & 1000 & 40 & 6.5500 & 3999996 & 1253.43 & 3191.23 & 240000000 & 66.79 & 3593355.74  & 1600000000 & 43.70 & 36613957.67 & 1843999996 & 1370.47 & 1345520.76 \\
 	\bottomrule
 	\end{tabularx}
-	\caption{Anexo de detalles de tiempos de ejecución para análisis de rendimiento. Clustering con \(k = 5\) y dos medidas de similaridad.}
 	\label{tab:anexo-performance}
 	\end{table}
 \end{landscape}

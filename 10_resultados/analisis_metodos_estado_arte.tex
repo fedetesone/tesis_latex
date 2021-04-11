@@ -1,9 +1,10 @@
 \subsection{Análisis del método propuesto y algoritmos del estado del arte}\label{ss:analisismetodoestado}
 
-Con el fin de realizar una comparación de los resultados del método EQuAL con los algoritmos del estado del arte, se ejecutaron experimentos con la misma metodología: 10 diferentes ejecuciones con una muestra aleatoria para cada una de ellas. En las tablas \ref{tab:equal-eda-100}-\ref{tab:equal-eda-2000}, se muestran los resultados de estos algoritmos y el mejor resultado del método EQuAL para el correspondiente tamaño de muestra, este resultado es el que se va a comparar con los métodos del estado del arte. Para ellos, se generan 10 muestras aleatorias, y ellas servirán como conjunto de datos origen para cada uno de los métodos. Esto posibilita que el cálculo de similaridad y las medidas de desempeño de cada uno de los métodos, se generen con exactamente el mismo conjunto de datos, y los resultados solamente dependan del cálculo de distancia (y del algoritmo de clustering sujeto a aleatoriedad en lo medoides del método EQuAL). Se resalta con color verde el mejor resultado (error más pequeño) por cada una de ellas.
+Con el fin de realizar una comparación de los resultados del método EQuAL con los algoritmos del estado del arte, se ejecutaron experimentos con la misma metodología: 10 diferentes ejecuciones con una muestra aleatoria para cada una de ellas. En las Tablas \ref{tab:equal-eda-100} a \ref{tab:equal-eda-2000}, se muestran los resultados de estos algoritmos y el mejor resultado del método EQuAL para el correspondiente tamaño de muestra, en forma de matrices de confusión para cada una de las técnicas. Para ellos, se generan 10 muestras aleatorias, y ellas servirán como conjunto de datos origen para cada uno de los métodos. Esto posibilita que el cálculo de similaridad y las medidas de desempeño de cada uno de los métodos, se generen con exactamente el mismo conjunto de datos, y los resultados solamente dependan del cálculo de similaridad (en el caso del método EQuAL también dependen del algoritmo de clustering). Se resalta con color verde el mejor resultado (error más pequeño) por cada una de ellas.
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 100 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 		\toprule
 		&
@@ -30,12 +31,12 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		\textbf{ensamble} & 30  & 0.463 & 0.131 & 0.177 & 0.229 & 0.696	& 0.304 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 100 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-100}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 500 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 		\toprule
 		&
@@ -62,12 +63,12 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		\textbf{ensamble} & 50  & 0.4378 & 0.1686 & 0.1454 & 0.2482 & 0.686  & 0.314  \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 500 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-500}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 1000 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 		\toprule
 		&
@@ -94,12 +95,12 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		\textbf{ensamble} & 50  & 0.4521 & 0.152  & 0.1804 & 0.2155 & 0.6676 & 0.3324 \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 1000 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-1000}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 1500 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 		\toprule
 		&
@@ -126,12 +127,12 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		\textbf{ensamble} & 50  & 0.451        & 0.156        & 0.1733       & 0.2197       & 0.6707       & 0.3293       \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 1500 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-1500}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 2000 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 		\toprule
 		&
@@ -158,12 +159,12 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		\textbf{ensamble} & 50  & 0.449   & 0.1587  & 0.1719  & 0.2204 & 0.6694  & 0.3306  \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Ensamble vs. técnicas del estado del arte. Tamaño de muestra 2000 pares de preguntas y 10 ejecuciones en cada una de las técnicas.}
 	\label{tab:equal-eda-2000}
 \end{table}
 
 \begin{table}[h!]
 	\footnotesize
+	\caption{Error en los algoritmos del estado del arte vs. método EQuAL por tamaño de muestra, media y varianza.}
 	\begin{tabularx}{\textwidth}{XXXXXXXX}
 		\toprule
 		& \textbf{100} & \textbf{500} & \textbf{1000} & \textbf{1500} & \textbf{2000} & \textbf{Media} & \textbf{Varianza} \\
@@ -176,11 +177,10 @@ Con el fin de realizar una comparación de los resultados del método EQuAL con 
 		\textbf{ensamble} & 0.308 & 0.314  & 0.3324 & 0.3293       & 0.3306  & 0.32286                              & 0.0004917                              \\
 		\bottomrule
 	\end{tabularx}
-	\caption{Error en los algoritmos del estado del arte vs. método EQuAL por tamaño de muestra, media y varianza.}
 	\label{tab:error-arte-equal}
 \end{table}
 
-\bigskip En forma de resumen, en la Tabla \ref{tab:error-arte-equal}, se pueden ver todos los errores por cada uno de los métodos, más la media y la varianza de cada uno de ellos. Esta tabla muestra una media de error a través de las distintas muestras aleatorias para el método EQuAL y las ejecuciones de los algoritmos del estado del arte. El método EQuAL, en este caso, muestra muy buenos resultados para los tamaños de muestra más pequeños (100 y 500), pero manteniéndose en un rango aceptable en todos los tamaños de muestra. El método propuesto en el presente trabajo posee un indicador de medias de error total a lo largo de todas las muestras de \(0.32286\). Adicionalmente, analizando las varianzas de cada uno de los métodos, se observa que el método EQuAL se encuentra en el rango esperado (media \(0.000491712\)) y es muy similar a la varianza de los demás métodos. La varianza del método EQuAL se ve afectada porque los valores tomados para el análisis anterior son los correspondientes a las ejecuciones que poseen error más bajo (variando el número de clusters) para cada tamaño de muestra. Estos indicadores se pueden visualizar en la Figura \ref{fig:ensamble-vs-medidas}. Se extiende la explicación de la variabilidad del método más adelante.
+\bigskip En forma de resumen, en la Tabla \ref{tab:error-arte-equal}, se pueden ver todos los errores por cada uno de los métodos, más la media y la varianza de cada uno de ellos. Esta tabla muestra una media de error a través de las distintas muestras aleatorias para el método EQuAL y las ejecuciones de los algoritmos del estado del arte. El método EQuAL, en este caso, muestra muy buenos resultados para los tamaños de muestra más pequeños (100 y 500), pero manteniéndose en un rango aceptable en todos los tamaños de muestra. El método propuesto en el presente trabajo posee un indicador de medias de error total a lo largo de todas las muestras de \(0.32286\). Adicionalmente, analizando las varianzas de cada uno de los métodos, se observa que el método EQuAL se encuentra en el rango esperado (media \(0.000491712\)) y es muy similar a la varianza de los demás métodos. La varianza del método EQuAL se ve afectada porque los valores tomados para el análisis anterior son los correspondientes a las ejecuciones que poseen error más bajo (variando el número de clusters) para cada tamaño de muestra. Estos indicadores se pueden visualizar en la Figura \ref{fig:ensamble-vs-medidas}: los valores de error promedio (en ordenadas) a lo largo de los tamaños de muestra estudiados en este trabajo (en abscisas).
 
 \begin{filecontents*}{ensamble-vs-medidas.csv}
 100,0.296,0.334,0.317,0.311,0.301,0.304

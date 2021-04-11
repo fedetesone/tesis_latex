@@ -8,7 +8,7 @@ Se propone el método EQuAL (\textit{Ensemble method for community Question Answ
 	\label{fig:metodoequal}
 \end{figure}
 
- El desarrollo para este método está basado en dos pasos, como se muestra en la Figura \ref{fig:metodoequal}: \begin{enumerate*} [label=(\roman*)] \item la generación de conjunto de particiones y \item construir matriz de co-asociación. \end{enumerate*}
+ El desarrollo para este método está basado en dos pasos, como se muestra en la Figura \ref{fig:metodoequal}: \begin{enumerate*} [label=(\roman*)] \item la generación de conjunto de particiones y \item construir matriz de co-asociación. \end{enumerate*} La primera etapa muestra 4 matrices de distancias procesadas a través de un algoritmo de clustering, formando un conjunto de particiones, para luego, en la segunda etapa, ser ensambladas para formar la matriz de coasociación.
 
 \subsubsection{Generación de conjunto de particiones}
 El primer paso es la generación de un conjunto de particiones\(X = \{x_1, x_2,... , x_n\}\) . Cada una de las particiones será una matriz de similaridad \(x_i\). El procedimiento comenzará aplicando los distintos algoritmos de medidas de similaridad de texto del estado del arte al conjunto de datos de entrada. Por cada algoritmo, este procedimiento tendrá como resultado una matriz de similaridad. Cada una de las matrices de similaridad es el resultado de la combinación de todas las preguntas (individuales) de un muestreo original.
