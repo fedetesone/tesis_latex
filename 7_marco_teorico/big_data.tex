@@ -27,7 +27,7 @@ La librería de software Apache Hadoop es un framework que posibilita el procesa
 	\label{fig:arquitectura_hdfs}
 \end{figure}
 
-\bigskip Tanto el NameNode como el DataNode son piezas de software diseñadas para correr, típicamente, en sistemas operativos GNU/Linux. Además, como HDFS está construido utilizando el lenguaje de programación Java, puede ser desplegado en un rango amplio de máquinas.
+\bigskip Tanto el NameNode como el DataNode son piezas de software diseñadas para correr, típicamente, en sistemas operativos GNU/Linux. Además, como HDFS está construido utilizando el lenguaje de programación Java, puede ser desplegado en un rango amplio de máquinas. La Figura \ref{fig:arquitectura_hdfs} muestra como un programa cliente interactúa con los nodos de datos para escritura y lectura, mientras que también interactúa con el NameNode para realizar operaciones de metadata.
 
 \paragraph{Apache Spark}
 Apache Spark es una plataforma de código abierto escrita en Scala\footnote{Sitio oficial del lenguaje de programación Scala: https://www.scala-lang.org/. Último acceso: Febrero 2021.}, para procesamiento de datos a gran escala y preparado para tareas de Machine Learning iterativas \citep{meng2016mllib}. En alto nivel, una aplicación Spark consiste en un programa “driver” que ejecuta la función “main” y varias operaciones en paralelo en un cluster de computadoras\footnote{Red de computadoras de alta velocidad que se comportan como si fuesen un único servidor. No confundir con la definición de “cluster” en algoritmos de clustering.}.

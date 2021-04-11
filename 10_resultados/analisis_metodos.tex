@@ -1,13 +1,13 @@
 \subsection{Análisis del método propuesto}\label{ss:analisismetodo}
 
-A continuación se muestran distintas ejecuciones del método EQuAL, de forma de generar resultados estadísticamente significativos, como se explicó en el apartado 5.6 (Método de validación). Se presentan tablas correspondientes a un tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas; y en cada una de ellas, las filas corresponden a un número de clusters \(k\) distinto. Además, en todas las ejecuciones se realizaron 100 ejecuciones de clustering, es decir, teniendo en cuenta que se ensamblaron 5 algoritmos del estado del arte, cada una de las ejecuciones de un valor \(k\) en particular, se realizaron un total de \(500\) ejecuciones de clustering. Como método de evaluación del rendimiento de método EQuAL, se utilizan matrices de confusión. En la tabla, se muestran, por cada fila, una matriz de confusión promedio de cada una de las 10 ejecuciones para ese tamaño de muestra y número de clusters k. Como indicador de rendimiento final, se suman las columnas “\% 0/0” y “\% 1/1” para obtener la precisión, y el error es derivado de \(1 - precisi\acute{o}n\) o sumando “\% 0/1” y “\% 1/0”. Para finalizar, se resalta el mejor resultado correspondiente a un valor k para cada tamaño de muestra.
+A continuación se muestran distintas ejecuciones del método EQuAL, de forma de generar resultados estadísticamente significativos, como se explicó en el apartado \ref{metodo-validacion}. Se presentan tablas correspondientes a un tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas; y en cada una de ellas, las filas corresponden a un número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50. Además, en todas las ejecuciones se realizaron 100 repeticiones del método de clustering, es decir, teniendo en cuenta que se ensamblaron 5 algoritmos del estado del arte, cada una de las ejecuciones de un valor \(k\) en particular, se realizaron un total de \(500\) repeticiones del método de clustering. Como método de evaluación del rendimiento de método EQuAL, se utilizan matrices de confusión. En las Tablas de \ref{tab:analisis-100-100} a \ref{tab:analisis-100-2000}, se muestran, por cada fila, una matriz de confusión promedio de cada una de las 10 ejecuciones para ese tamaño de muestra y número de clusters k. Como indicador de rendimiento final, se suman las columnas “\% 0/0” y “\% 1/1” para obtener la exactitud, y el error es derivado de \(1 - exactitud\) o sumando “\% 0/1” y “\% 1/0”. Para finalizar, se resalta, en verde, el resultado con error más pequeño correspondiente a un valor \(k\) para cada tamaño de muestra.
 
 \begin{table}[h!]
 	\footnotesize
 	\caption{Matrices de confusión promedio del método EQuAL. 100 muestras de 100 pares de preguntas cada una. }
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
-		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Precisión} & \textbf{Error} \\
+		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Exactitud} & \textbf{Error} \\
 		\midrule
 		5  & 0.475 & 0.119 & 0.203 & 0.203 & 0.678 & 0.322 \\
 		10 & 0.491 & 0.103 & 0.215 & 0.191 & 0.682 & 0.318 \\
@@ -30,7 +30,7 @@ A continuación se muestran distintas ejecuciones del método EQuAL, de forma de
 	\caption{Matrices de confusión promedio del método EQuAL. 100 muestras de 500 pares de preguntas cada una. }
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
-		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Precisión} & \textbf{Error} \\
+		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Exactitud} & \textbf{Error} \\
 		\midrule
 		5  & 0.4562 & 0.1458 & 0.1908 & 0.2072 & 0.6634 & 0.3366 \\
 		10 & 0.4468 & 0.1596 & 0.1658 & 0.2278 & 0.6746 & 0.3254 \\
@@ -53,7 +53,7 @@ A continuación se muestran distintas ejecuciones del método EQuAL, de forma de
 	\caption{Matrices de confusión promedio del método EQuAL. 100 muestras de 1000 pares de preguntas cada una. }
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
-		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Precisión} & \textbf{Error} \\
+		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Exactitud} & \textbf{Error} \\
 		\midrule
 		5  & 0.4488 & 0.1561 & 0.1902 & 0.2049 & 0.6537 & 0.3463 \\
 		10 & 0.4482 & 0.1559 & 0.1847 & 0.2112 & 0.6594 & 0.3406 \\
@@ -76,7 +76,7 @@ A continuación se muestran distintas ejecuciones del método EQuAL, de forma de
 	\caption{Matrices de confusión promedio del método EQuAL. 100 muestras de 1500 pares de preguntas cada una. }
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
-		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Precisión} & \textbf{Error} \\
+		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Exactitud} & \textbf{Error} \\
 		\midrule
 		5  & 0.4297 & 0.1773 & 0.1713 & 0.2217 & 0.6514 & 0.3486 \\
 		10 & 0.4709 & 0.136  & 0.2035 & 0.1896 & 0.6605 & 0.3395 \\
@@ -99,7 +99,7 @@ A continuación se muestran distintas ejecuciones del método EQuAL, de forma de
 	\caption{Matrices de confusión promedio del método EQuAL. 100 muestras de 2000 pares de preguntas cada una. }
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
-		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Precisión} & \textbf{Error} \\
+		\textbf{Número de Clusters (k)} & \textbf{\% 0/0} & \textbf{\% 0/1} & \textbf{\% 1/0} & \textbf{\% 1/1} & \textbf{Exactitud} & \textbf{Error} \\
 		\midrule
 		5  & 0.4409 & 0.1668 & 0.1739 & 0.2184 & 0.6593 & 0.3407 \\
 		10 & 0.4496 & 0.1581 & 0.1808 & 0.2115 & 0.6611 & 0.3389 \\
@@ -160,7 +160,7 @@ A continuación se muestran distintas ejecuciones del método EQuAL, de forma de
 	\label{tab:analisis-error-vs-k}
 \end{table}
 
-\bigskip En forma de resumen comparativo, se van a analizar los errores cruzando cada uno de los tamaños de muestra con el número de clusters k utilizado. En la Tabla \ref{tab:analisis-error-vs-k}, como así también en las tablas anteriores que se utilizaron como fuentes de datos de esta última, resulta que la media total del error de todas las ejecuciones, para todos los valores de \(k\) y para todos los tamaños de muestra, es \(0.32918\). Además, con el fin de tener documentada la estabilidad del método, se calculó la varianza promedio por tamaño de muestra que resultó tener un valor \(0.0002308676\) y la varianza promedio por valor k con un valor de \(0.0005900664\). Las figuras \ref{fig:errores-k-tamanos-muestra} y \ref{fig:errores-tamanos-muestra-k} muestran los resultados de la Tabla \ref{tab:analisis-error-vs-k} desde dos perspectivas distintas: los errores de los valores de \(k\) a lo largo de los distintos tamaños de muestra, y los errores de los tamaños de muestra a lo largo de los distintos valores de \(k\), con el fin de poder observar cómo se comporta el método EQuAL en cada perspectiva, teniendo en cuenta variabilidad y valor absoluto de los errores promedio.
+\bigskip En forma de resumen comparativo, se van a analizar los errores cruzando cada uno de los tamaños de muestra con el número de clusters k utilizado, en la Tabla \ref{tab:analisis-error-vs-k}. La media mínima de error fue obtenida para el tamaño de muestra \(100\), con \(0.312\) y para el valor \(k = 50\), con \(0.32286\). Además, con el fin de tener documentada la estabilidad del método, se calculó la varianza promedio por tamaño de muestra que resultó tener un valor mínimo de \(0.000124864\) y la varianza promedio por valor k con un valor mínimo de \(0.000416228\). Las Figuras \ref{fig:errores-k-tamanos-muestra} y \ref{fig:errores-tamanos-muestra-k} muestran el análisis de los resultados de la Tabla \ref{tab:analisis-error-vs-k} desde dos perspectivas distintas: los errores de los valores de \(k\) a lo largo de los distintos tamaños de muestra, y los errores de los tamaños de muestra a lo largo de los distintos valores de \(k\), con el fin de poder observar cómo se comporta el método EQuAL en cada perspectiva, teniendo en cuenta variabilidad y valor absoluto de los errores promedio.
 
 \begin{filecontents*}{erroresktamanomuestra.csv}
 100,0.322,0.318,0.314,0.318,0.309,0.304,0.307,0.309,0.311,0.308

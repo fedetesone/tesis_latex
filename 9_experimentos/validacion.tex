@@ -1,4 +1,4 @@
-\subsection{Método de validación}
+\subsection{Método de validación}\label{metodo-validacion}
 
 \subsubsection{Generación de conjuntos estadísticamente significativos}
 
@@ -12,7 +12,7 @@ La elección del número de clusters \(k\) en los experimentos realizados sigue 
 
 \bigskip Los valores generados por la regla del pulgar se encuentran en un rango \([10, 44]\), por lo cual, finalmente se optó por elegir los valores de \(k\) con una separación uniforme de los mismos, para facilitar su interpretación y visualización, respetando ese rango de cobertura. Los experimentos para este trabajo se realizaron con los valores \(k = 5, 10, 15, 20, 25, 30, 35, 40, 45, 50\).
 
-\bigskip La validación de los valores de \(k\) elegidos para realizar los experimentos serán validados en conjunto mediante el rendimiento de la matriz de co-asociación. Partiendo de la base del \textit{método del codo} para la evaluación de la performance de un algoritmo de clustering, el cual evalúa el porcentaje de variabilidad (suma de cuadrados de distancias) explicada en función del número de clusters, mediante la idea de encontrar el número mínimo de clusters por el cual agregando un cluster adicional no modelaría mejor los datos. El porcentaje de variabilidad explicado por los clusters es graficado contra el número de clusters. Los primeros clusters agregaran una información considerable al modelo, pero en cierto punto la ganancia marginal caerá dramáticamente, dando un ángulo en el gráfico \citep{bholowalia2014ebk}, como se muestra en la Figura \ref{fig:codo}.
+\bigskip La validación de los valores de \(k\) elegidos para realizar los experimentos serán validados en conjunto mediante el rendimiento de la matriz de co-asociación. Partiendo de la base del \textit{método del codo} para la evaluación de la performance de un algoritmo de clustering, el cual evalúa el porcentaje de variabilidad (suma de cuadrados de distancias) explicada en función del número de clusters, mediante la idea de encontrar el número mínimo de clusters por el cual agregando un cluster adicional no modelaría mejor los datos. El porcentaje de variabilidad explicado por los clusters es graficado contra el número de clusters. Los primeros clusters agregaran una información considerable al modelo, pero en cierto punto la ganancia marginal caerá dramáticamente, dando un ángulo en el gráfico \citep{bholowalia2014ebk}. La Figura \ref{fig:codo} muestra un gráfico bidimensional en el cual se compara el número de clusters (en abscisas) y la suma de cuadrados de distancias (en ordenadas) como medida de variabilidad de los clusters. En este gráfico se puede ver como luego de \(k = 5\), la suma de cuadrados de distancias varía muy poco, ya que los valores esbozan una curva con valores aproximadamente constantes luego de este punto.
 
 \begin{filecontents*}{codo.csv}
 1,400
@@ -60,7 +60,7 @@ La elección del número de clusters \(k\) en los experimentos realizados sigue 
 \bigskip Con el fin de dar una aplicación más integral al método del codo, en lugar de calcularlo por cada una de las técnicas de clustering aplicadas, el mismo se aplicará utilizando la matriz de coasociación generada a partir del ensamble. Para cuantificar y evaluar el performance, se utilizarán matrices de confusión denotarán el error entre los resultados obtenidos y la clasificación proveniente del conjunto de datos original, por cada uno de los valores de k anteriormente mencionados.
 
 \subsubsection{Estructura de las matrices de confusión}
-Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la Tabla \ref{tab:matriz-confusion}.
+Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la Tabla \ref{tab:matriz-confusion}. Los valores “a” y “d” representan el porcentaje de veces que los valores predichos fueron iguales a los reales, es decir, los casos en que las preguntas fueron predichas, respectivamente, iguales o distintas y realmente lo eran. Por otro lado, “c” es la proporción de preguntas predichas distintas, que en realidad son iguales; y “d” la proporción de preguntas predichas iguales, pero son realmente distintas. El objetivo de un algoritmo con buen desempeño entonces, es maximizar “a” y “d” y, por lo tanto, minimizar “b” y “c”.
 
 \bigskip
 \begin{table}[h!]
@@ -89,7 +89,7 @@ Los indicadores de desempeño que se evaluarán en los experimentos realizados c
 donde \(a+b+c+d=1\).
 
 \paragraph{Preparación de los datos}
-Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de coasociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, considerando la siguiente muestra de preguntas en la Tabla \ref{tab:muestra-validacion} y la matriz de co-asociación de la Tabla \ref{tab:coasociacion-validacion}, se filtran solo los pares de preguntas de la matriz de coasociación que se encuentran en la muestra de pares de preguntas, ya que son las única con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
+Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de coasociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, se considera la muestra de preguntas de la Tabla \ref{tab:muestra-validacion}, la cual muestra dos pares de preguntas (\(123004\) y \(98776\) - 4 preguntas en total) con su identificador de par y un indicador, en la columna \(equal\), que tiene dos valores posibles: 1 (preguntas iguales) y 0 (preguntas distintas). Por otro lado, en la Tabla \ref{tab:coasociacion-validacion}, se muestra la matriz de coasociación generada, por el método EQuAL, a partir de la Tabla \ref{tab:muestra-validacion}, teniendo en cuenta todas las combinaciones tomadas de a 2 de las 4 preguntas originales, para las cuales se agrega la similaridad entre pares, en la columna similarity. Por último, se filtran solo los pares de preguntas de la matriz de coasociación que se encuentran en la Tabla \ref{tab:muestra-validacion}, ya que son las únicas con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
 
 \begin{table}[h!]
 	\footnotesize
@@ -151,35 +151,17 @@ La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0
 	\item Se iteran todos los pares de preguntas.
 	\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
 	\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
-	\item Se calcula la proporción de pares de preguntas asignadas con true, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{precisión} del método.
+	\item Se calcula la proporción de pares de preguntas asignadas con true, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.
 \end{enumerate}
-El valor de umbral que arroje la mayor precisión, será el utilizado para evaluar el desempeño del método, al construir la matriz de confusión.
+El valor de umbral que arroje la mayor exactitud, será el utilizado para evaluar el desempeño del método, al construir la matriz de confusión.
 
-\bigskip Volviendo al ejemplo anterior, un umbral elegido de \(0.65\) aplicado a la Tabla \ref{tab:coasociacion-validacion}, arrojaría el resultado de la Tabla \ref{tab:umbral-validacion-1} (el único par de preguntas que presenta una similaridad mayor al umbral es \((question\_10, question\_11)\), por lo cual se le asigna el valor 1). Filtrando los pares de preguntas que se encuentran en la muestra de entrada, obtenemos el conjunto de datos de la Tabla \ref{tab:umbral-validacion-2}, Lo cual muestra un resultado idéntico al conjunto de entrada. Lo anterior significa que los pares predichos son iguales a los pares predichos. En otro caso, si el umbral que tiene mejor rendimiento fuese \(0.9\), el resultado obtenido luego del cómputo hubiese sido el de la Tabla \ref{tab:umbral-validacion-3}, el cual expone una diferencia entre el valor real y el predicho del par de preguntas \((question\_10, question\_11)\). Lo anterior denota el mayor rendimiento del umbral \(0.65\) contra el umbral \(0.9\) y su importancia en la elección del valor correcto.
+\bigskip Volviendo al ejemplo anterior, un umbral elegido de \(0.65\) aplicado a la Tabla \ref{tab:filtrado-validacion}, arrojaría el resultado de la Tabla \ref{tab:umbral-validacion-1} (el único par de preguntas que presenta una similaridad mayor al umbral es \((question\_10, question\_11)\), por lo cual se le asigna el valor 1). La Tabla \ref{tab:umbral-validacion-1}, muestra un resultado idéntico al conjunto de entrada, es decir, a la Tabla \ref{tab:muestra-validacion}. Lo anterior significa que los pares predichos son iguales a los pares reales. En otro caso, si el umbral que tiene mejor rendimiento fuese \(0.9\), el resultado obtenido luego del cómputo hubiese sido el de la Tabla \ref{tab:umbral-validacion-2}, el cual expone una diferencia entre el valor real y el predicho del par de preguntas \((question\_10, question\_11)\). Lo anterior denota el mayor rendimiento del umbral \(0.65\) contra el umbral \(0.9\) y su importancia en la elección del valor correcto.
 
 \bigskip
 
 \begin{table}[h!]
 	\footnotesize
-	\caption{Asignación binaria de los resultados de similaridad obtenidos en la tabla 18, teniendo en cuenta un umbral de 0.65.}
-	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-		\toprule
-		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
-		\midrule
-		question\_10 & question\_11 & contenido & contenido & 1 \\
-		question\_10 & question\_20 & contenido & contenido & 0 \\
-		question\_10 & question\_21 & contenido & contenido & 0 \\
-		question\_11 & question\_20 & contenido & contenido & 0 \\
-		question\_11 & question\_21 & contenido & contenido & 0 \\
-		question\_20 & question\_21 & contenido & contenido & 0 \\
-		\bottomrule
-	\end{tabularx}
-	\label{tab:umbral-validacion-1}
-\end{table}
-
-\begin{table}[h!]
-	\footnotesize
-	\caption{Filtrado de la tabla 20 con los pares de preguntas que se encuentran en la tabla 17.}
+	\caption{Asignación binaria de los resultados de similaridad obtenidos en la Tabla \ref{tab:filtrado-validacion}, teniendo en cuenta un umbral de \(0.65\).}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
@@ -188,13 +170,13 @@ El valor de umbral que arroje la mayor precisión, será el utilizado para evalu
 		question\_11             & question\_21             & contenido            & contenido            & 0              \\
 		\bottomrule
 	\end{tabularx}
-	\label{tab:umbral-validacion-2}
+	\label{tab:umbral-validacion-1}
 \end{table}
 
 
 \begin{table}[h!]
 	\footnotesize
-	\caption{Utilización de un umbral de 0.9 en la matriz de co-asociación.}
+	\caption{Asignación binaria de los resultados de similaridad obtenidos en la Tabla \ref{tab:filtrado-validacion}, teniendo en cuenta un umbral de \(0.9\).}
 	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
@@ -203,13 +185,13 @@ El valor de umbral que arroje la mayor precisión, será el utilizado para evalu
 		question\_11             & question\_21             & contenido            & contenido            & 0              \\
 		\bottomrule
 	\end{tabularx}
-	\label{tab:umbral-validacion-3}
+	\label{tab:umbral-validacion-2}
 \end{table}
 
 \bigskip En conclusión, el rendimiento del algoritmo se medirá comparando la variable de clase (1 o 0) del conjunto de datos de entrada, con la variable de clase construida desde la comparación de las similaridades resultados del método y un umbral apropiado. Cuanto más pares de preguntas coincidan, mejor será el rendimiento del algoritmo, el cual se podrá visualizar mediante matrices de confusión.
 
 \paragraph{Construcción de las matrices de confusión}
-Con el fin de poder ilustrar cómo se construyen las matrices de confusión a partir de la comparación de los conjuntos de datos, se utilizará el siguiente ejemplo. Supongamos que el conjunto de datos de entrada es el que se muestra en la Tabla \ref{tab:validacion-reales}, Y el resultado obtenido luego de la elección del mejor umbral, es la Tabla \ref{tab:validacion-predichos}. Por lo cual, comparando los valores de la columna “equal’, obtendremos el resultado de la Tabla \ref{tab:validacion-comparacion}. Sumarizando los resultados, la matriz de confusión derivada se muestra en la Tabla \ref{tab:validacion-confusion-ejemplo}. La precisión obtenida a partir de este conjunto de datos y la ejecución hipotética del método es \(0.75\) (y por lo tanto, el error es \(0.25\)).
+Con el fin de poder ilustrar cómo se construyen las matrices de confusión a partir de la comparación de los conjuntos de datos, se utilizará el siguiente ejemplo. Supongamos que el conjunto de datos de entrada es el que se muestra en la Tabla \ref{tab:validacion-reales}, Y el resultado obtenido luego de la elección del mejor umbral, es la Tabla \ref{tab:validacion-predichos}. Por lo cual, comparando los valores de la columna “equal", obtendremos el resultado de la Tabla \ref{tab:validacion-comparacion}. Sumarizando los resultados, la matriz de confusión derivada se muestra en la Tabla \ref{tab:validacion-confusion-ejemplo}. La exactitud obtenida a partir de este conjunto de datos y la ejecución hipotética del método es \(0.75\) (y por lo tanto, el error es \(0.25\)).
 
 \begin{table}[h!]
 	\footnotesize
@@ -256,7 +238,7 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 \begin{table}[h!]
 	\footnotesize
 	\centering
-	\caption{Resultado de comparación de las tablas 24 y 25 para validación y construcción de matrices de confusión.}
+	\caption{Resultado de comparación de las tablas \ref{tab:validacion-reales} y \ref{tab:validacion-predichos} para validación y construcción de matrices de confusión.}
 	\begin{tabularx}{0.6\textwidth}{*{7}{>{\centering\arraybackslash}c}}
 		\toprule
 		\textbf{sequence\_id} & \textbf{real} & \textbf{predicho} & \textbf{resultado} & \textbf{equal} \\
@@ -277,7 +259,7 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 \begin{table}[h!]
 	\footnotesize
 	\centering
-	\caption{Matriz de confusión obtenida a partir de la comparación de las tablas 23 y 24.}
+	\caption{Matriz de confusión obtenida a partir de la comparación de las tablas \ref{tab:validacion-reales} y \ref{tab:validacion-predichos}.}
 	\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 		\toprule
 		\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
