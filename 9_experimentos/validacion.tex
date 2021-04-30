@@ -59,7 +59,7 @@ La elección del número de clusters \(k\) en los experimentos realizados sigue 
 
 \bigskip Con el fin de dar una aplicación más integral al método del codo, en lugar de calcularlo por cada una de las técnicas de clustering aplicadas, el mismo se aplicará utilizando la matriz de coasociación generada a partir del ensamble. Para cuantificar y evaluar el performance, se utilizarán matrices de confusión denotarán el error entre los resultados obtenidos y la clasificación proveniente del conjunto de datos original, por cada uno de los valores de k anteriormente mencionados.
 
-\subsubsection{Estructura de las matrices de confusión}
+\subsubsection{Estructura de las matrices de confusión}\label{estructurasconfusion}
 Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la Tabla \ref{tab:matriz-confusion}. Los valores “a” y “d” representan el porcentaje de veces que los valores predichos fueron iguales a los reales, es decir, los casos en que las preguntas fueron predichas, respectivamente, iguales o distintas y realmente lo eran. Por otro lado, “c” es la proporción de preguntas predichas distintas, que en realidad son iguales; y “d” la proporción de preguntas predichas iguales, pero son realmente distintas. El objetivo de un algoritmo con buen desempeño entonces, es maximizar “a” y “d” y, por lo tanto, minimizar “b” y “c”.
 
 \bigskip

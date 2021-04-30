@@ -112,7 +112,7 @@ Progress: 100.0% words/sec/thread:  147553 lr:  0.000000 loss:  1.791601 ETA:   
 Los resultados en Tabla \ref{tab:performance-estado-del-arte} muestran una clara ventaja en términos de rendimiento para el algoritmo de similaridad Word2Vec (con un tiempo total de \(10.719605\) segundos, marcado en negrita), inmediatamente seguido por Bag of Words. TF/IDF y FastText, muestran un rendimiento aceptable pero, en comparación, aproximadamente diez veces más lentos que los anteriormente mencionados. El rendimiento del algoritmo de similaridad Semantic Distance, es muy bajo y representa un gran problema al momento de analizar grandes conjuntos de datos, pero puede ser necesario utilizarlo debido a sus buenas medidas de desempeño y error y su análisis de similaridad desde una perspectiva distinta.
 
 \subsubsection{Medidas de desempeño y error}
-Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
+Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad, a través del método de validación explicado en la sección \ref{estructurasconfusion}. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
 
 \begin{table}[h!]
 	\footnotesize
