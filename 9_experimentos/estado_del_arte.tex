@@ -18,7 +18,7 @@ Memoria: 16 GB RAM
 Almacenamiento: APPLE SSD AP0512M
 \end{verbatim}
 
-El cual también será utilizado para las pruebas de la nueva arquitectura. Se utilizará, como parámetro de rendimiento, el cálculo de similaridad para cada uno de los 404290 pares de preguntas. Luego de varias pruebas, se llega a una configuración de 8 hilos de ejecución y lotes de 10000 pares de preguntas, para obtener los tiempos más bajos posibles con cada uno de los algoritmos, los mismos fueron:
+El cual también es utilizado para las pruebas de la nueva arquitectura. Se utilizó, como parámetro de rendimiento, el cálculo de similaridad para cada uno de los 404290 pares de preguntas. Luego de varias pruebas, se llegó a una configuración de 8 hilos de ejecución y lotes de 10000 pares de preguntas, para obtener los tiempos más bajos posibles con cada uno de los algoritmos, los mismos fueron:
 
 \subparagraph{Bag of Words}
 \begin{verbatim}
@@ -109,10 +109,10 @@ Progress: 100.0% words/sec/thread:  147553 lr:  0.000000 loss:  1.791601 ETA:   
 	\label{tab:performance-estado-del-arte}
 \end{table}
 
-Los resultados en Tabla \ref{tab:performance-estado-del-arte} muestran una clara ventaja en términos de rendimiento para el algoritmo de similaridad Word2Vec (con un tiempo total de \(10.719605\) segundos, marcado en negrita), inmediatamente seguido por Bag of Words. TF/IDF y FastText, muestran un rendimiento aceptable pero, en comparación, aproximadamente diez veces más lentos que los anteriormente mencionados. El rendimiento del algoritmo de similaridad Semantic Distance, es muy bajo y representa un gran problema al momento de analizar grandes conjuntos de datos, pero puede ser necesario utilizarlo debido a sus buenas medidas de desempeño y error y su análisis de similaridad desde una perspectiva distinta.
+Los resultados en Tabla \ref{tab:performance-estado-del-arte} muestran una clara ventaja en términos de rendimiento para el algoritmo de similaridad Word2Vec (con un tiempo total de \(10.719605\) segundos, marcado en negrita), inmediatamente seguido por Bag of Words. TF/IDF y FastText, muestran un rendimiento aceptable pero, en comparación, aproximadamente diez veces más lentos que los anteriormente mencionados. El rendimiento del algoritmo de similaridad Semantic Distance, es muy bajo y representa un gran problema al momento de analizar grandes conjuntos de datos, pero puede ser necesario utilizarlo debido a sus buenas medidas de desempeño y error y, también, a su análisis de similaridad desde una perspectiva distinta.
 
 \subsubsection{Medidas de desempeño y error}
-Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
+Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad, a través del método de validación explicado en la sección \ref{estructurasconfusion}. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
 
 \begin{table}[h!]
 	\footnotesize
@@ -203,9 +203,9 @@ Utilizando cada para de preguntas del conjunto de datos original, se calculó la
 \end{table}
 
 \bigskip Los resultados porcentuales de las matrices de confusión se muestran en cada intersección de filas y columnas. Los resultados reales se muestran en las filas, siendo los dos posibles 0, cuando las preguntas son distintas y 1 cuando las preguntas son iguales. Los resultados predichos, se muestran en las columnas.
-La exactitud obtenida de las matrices de confusión, que se calcula como la suma de los resultados acertados entre los valores predichos y reales, en todos los casos exceden el \(66\%\), alcanzando un máximo de \(68\% \) para Word2Vec. Por otro lado, con respecto al error promedio, se llega a un valor máximo de \(33\%\) en el caso de TF/IDF.
+La exactitud obtenida de las matrices de confusión, que se calcula como la suma de los resultados acertados entre los valores predichos y reales, en todos los casos exceden el \(66\%\), alcanzando un máximo de \(67.88\% \) para Semantic Distance. Por otro lado, con respecto al error promedio, se llega a un valor máximo de \(33.15\%\) en el caso de TF/IDF.
 
-\bigskip Observando las matrices de confusión, se presenta un desbalance en los dos valores tomados para calcular la exactitud, siendo que los resultados obtenidos para la clase “0” considerablemente mejores que para la clase “1”. Por ejemplo, el desbalance más grande se encuentra en la matriz de confusión de FastText, el cual es \(0,504 – 0,170 = 0,334\). Este tipo de desbalance puede ser originado por la distribución del conjunto de datos de entrada (\(36,9\%\) pares de preguntas son clase 1 y el \(63,1\%\) restante es clase 0), el cual pretende ser corregido con un método de muestreo explicado más adelante.
+\bigskip Observando las matrices de confusión, se presenta un desbalance en los dos valores tomados para calcular la exactitud, siendo que los resultados obtenidos para la clase “0” considerablemente mejores que para la clase “1”. Por ejemplo, el desbalance más grande se encuentra en la matriz de confusión de FastText, el cual es \(0.5033 – 0.1692 = 0.334\). Este tipo de desbalance puede ser originado por la distribución del conjunto de datos de entrada (\(36.9\%\) pares de preguntas son clase 1 y el \(63.1\%\) restante es clase 0), el cual pretende ser corregido con un método de muestreo explicado más adelante.
 
 
 

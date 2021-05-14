@@ -2,17 +2,17 @@
 
 \subsubsection{Generación de conjuntos estadísticamente significativos}
 
-Para generar resultados estadísticamente significativos se ejecutara el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate*} [label=(\roman*)] \item el tamaño de la muestra y \item el número de clusters \(k\)\end{enumerate*}. Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios de 100, 500, 1000, 1500 y 2000 pares de preguntas (200, 1000, 2000, 3000 y 4000 preguntas individuales). Para cada tamaño de muestra, se realizaron 10 muestras aleatorias manteniendo un \(k\) fijo. Por ejemplo, para un número de clusters \(k = 5\) y para un tamaño de muestra 100, se realizaron 10 ejecuciones con un conjunto de datos de entrada aleatorio. Dando un total de \(5 \times 10 = 50\) matrices de co-asociación resultado, para un \(k\) fijo.
+Para generar resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate*} [label=(\roman*)] \item el tamaño de la muestra y \item el número de clusters \(k\)\end{enumerate*}. Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios de 100, 500, 1000, 1500 y 2000 pares de preguntas (200, 1000, 2000, 3000 y 4000 preguntas individuales). Para cada tamaño de muestra, se realizaron 10 muestras aleatorias manteniendo un \(k\) fijo. Por ejemplo, para un número de clusters \(k = 5\) y para un tamaño de muestra 100, se realizaron 10 ejecuciones con un conjunto de datos de entrada aleatorio. Dando un total de \(5 \times 10 = 50\) matrices de co-asociación resultado, para un \(k\) fijo.
 
 \paragraph{Elección de los tamaños de muestra}
-El motivo de la elección del tamaño de muestra en el apartado anterior, se basa en que los experimentos en forma local, por la facilidad que éste brinda en la depuración de los mismos. Cuando se aumenta el tamaño de la muestra en forma lineal, la cantidad de cómputos por cada uno de los algoritmos de similaridad aumentan de forma cuadrática. Como se mencionó anteriormente, Siendo \(n\) el número de pares de preguntas de una muestra, se realizarán \(2n^2-n\) cálculos. Además, si, por ejemplo, utilizamos 5 algoritmos de similaridad el número de cálculos de similaridad es de \(5(2n^2-n)\), con el agregado de que al algoritmos de clustering PAM y el ensamble de clustering también aumentan su complejidad de una forma considerable, dependiendo de nuestro número de clusters \(k\).
+EEn cuanto a la elección del tamaño de muestra en el apartado anterior, se tomó en cuenta que los conjuntos de datos sean lo suficientemente grandes como para generar resultados estadísticamente significativos, pero con un tamaño apropiado para la ejecución de los experimentos de forma local, en favor de la facilidad que para la depuración de los mismos. Cuando se aumenta el tamaño de la muestra en forma lineal, la cantidad de cómputos por cada uno de los algoritmos de similaridad aumentan de forma cuadrática. Como se mencionó anteriormente, Siendo \(n\) el número de pares de preguntas de una muestra, se realizarán \(2n^2-n\) cálculos. Además, si, por ejemplo, utilizamos 5 algoritmos de similaridad el número de cálculos de similaridad es de \(5(2n^2-n)\), con el agregado de que al algoritmos de clustering PAM y el ensamble de clustering también aumentan su complejidad de una forma considerable, dependiendo de nuestro número de clusters \(k\).
 
 \paragraph{Elección del número de clusters}
-La elección del número de clusters \(k\) en los experimentos realizados sigue una lógica que busca estandarizar los mismos a lo largo de todos los tamaños de muestras, es decir, no variar el número de clusters entre ellas, con fines de comparación. Como regla general (\textit{rule of thumb} o \textit{regla del pulgar}) se considera como número "óptimo" de clusters un valor de alrededor de \(\sqrt{n/2}\) \citep{kodinariya2013review}, siendo \(n\) el tamaño de la muestra. Para el número de muestras elegido (200, 1000, 2000, 3000 y 4000 preguntas individuales), los valores siguiendo esta regla serían \(k = 10\), \(k = 22\), \(k = 31\), \(k = 38\), \(k =44\).
+La elección del número de clusters \(k\) en los experimentos realizados sigue una lógica que busca estandarizar a los mismos a lo largo de todos los tamaños de muestras, es decir, no variar el número de clusters entre ellas, con fines de comparación. Como regla general (\textit{rule of thumb} o \textit{regla del pulgar}) se considera como número ``óptimo'' de clusters un valor de alrededor de \(\sqrt{n/2}\) \citep{kodinariya2013review}, siendo \(n\) el tamaño de la muestra. Para el número de muestras elegido (200, 1000, 2000, 3000 y 4000 preguntas individuales), los valores siguiendo esta regla serían \(k = 10\), \(k = 22\), \(k = 31\), \(k = 38\), \(k =44\).
 
 \bigskip Los valores generados por la regla del pulgar se encuentran en un rango \([10, 44]\), por lo cual, finalmente se optó por elegir los valores de \(k\) con una separación uniforme de los mismos, para facilitar su interpretación y visualización, respetando ese rango de cobertura. Los experimentos para este trabajo se realizaron con los valores \(k = 5, 10, 15, 20, 25, 30, 35, 40, 45, 50\).
 
-\bigskip La validación de los valores de \(k\) elegidos para realizar los experimentos serán validados en conjunto mediante el rendimiento de la matriz de co-asociación. Partiendo de la base del \textit{método del codo} para la evaluación de la performance de un algoritmo de clustering, el cual evalúa el porcentaje de variabilidad (suma de cuadrados de distancias) explicada en función del número de clusters, mediante la idea de encontrar el número mínimo de clusters por el cual agregando un cluster adicional no modelaría mejor los datos. El porcentaje de variabilidad explicado por los clusters es graficado contra el número de clusters. Los primeros clusters agregaran una información considerable al modelo, pero en cierto punto la ganancia marginal caerá dramáticamente, dando un ángulo en el gráfico \citep{bholowalia2014ebk}. La Figura \ref{fig:codo} muestra un gráfico bidimensional en el cual se compara el número de clusters (en abscisas) y la suma de cuadrados de distancias (en ordenadas) como medida de variabilidad de los clusters. En este gráfico se puede ver como luego de \(k = 5\), la suma de cuadrados de distancias varía muy poco, ya que los valores esbozan una curva con valores aproximadamente constantes luego de este punto.
+\bigskip La validación de los valores de \(k\) elegidos para realizar los experimentos fueron validados en conjunto mediante el rendimiento de la matriz de co-asociación. Partiendo de la base del \textit{método del codo} para la evaluación del rendimiento de un algoritmo de clustering, el cual evalúa el porcentaje de variabilidad (suma de cuadrados de distancias) explicada en función del número de clusters, mediante la idea de encontrar el número mínimo de clusters por el cual agregando un cluster adicional no modelaría mejor los datos. El porcentaje de variabilidad explicado por los clusters es graficado contra el número de clusters. Los primeros clusters agregaran una información considerable al modelo, pero en cierto punto la ganancia marginal caerá dramáticamente, dando un ángulo en el gráfico \citep{bholowalia2014ebk}. La Figura \ref{fig:codo} muestra un gráfico bidimensional en el cual se compara el número de clusters (en abscisas) y la suma de cuadrados de distancias (en ordenadas) como medida de variabilidad de los clusters. En este gráfico se puede ver como luego de \(k = 5\), la suma de cuadrados de distancias varía muy poco, ya que los valores esbozan una curva con valores aproximadamente constantes a partir de este punto.
 
 \begin{filecontents*}{codo.csv}
 1,400
@@ -57,9 +57,9 @@ La elección del número de clusters \(k\) en los experimentos realizados sigue 
 	\label{fig:codo}
 \end{figure}
 
-\bigskip Con el fin de dar una aplicación más integral al método del codo, en lugar de calcularlo por cada una de las técnicas de clustering aplicadas, el mismo se aplicará utilizando la matriz de coasociación generada a partir del ensamble. Para cuantificar y evaluar el performance, se utilizarán matrices de confusión denotarán el error entre los resultados obtenidos y la clasificación proveniente del conjunto de datos original, por cada uno de los valores de k anteriormente mencionados.
+\bigskip Con el fin de dar una aplicación más integral al método del codo, en lugar de calcularlo por cada una de las técnicas de clustering aplicadas, el mismo se aplicó utilizando la matriz de co-asociación generada a partir del ensamble. Para cuantificar y evaluar el rendimiento, se utilizó matrices de confusión que indican el error entre los resultados obtenidos y la clasificación proveniente del conjunto de datos original, por cada uno de los valores de \(k\) anteriormente mencionados.
 
-\subsubsection{Estructura de las matrices de confusión}
+\subsubsection{Estructura de las matrices de confusión}\label{estructurasconfusion}
 Una matriz de confusión, es una matriz que muestra clasificaciones predichas y reales. Una matriz de confusión puede ser de tamaño \(L \times L\) donde \(L\) es el número de diferentes valores de etiqueta o clase \citep{provost1998glossary}. En este trabajo, las clases son: 0 (las preguntas comparadas no son iguales) y 1 (las preguntas son iguales). Por lo cual, la matriz de confusión que se deriva, se muestra en la Tabla \ref{tab:matriz-confusion}. Los valores “a” y “d” representan el porcentaje de veces que los valores predichos fueron iguales a los reales, es decir, los casos en que las preguntas fueron predichas, respectivamente, iguales o distintas y realmente lo eran. Por otro lado, “c” es la proporción de preguntas predichas distintas, que en realidad son iguales; y “d” la proporción de preguntas predichas iguales, pero son realmente distintas. El objetivo de un algoritmo con buen desempeño entonces, es maximizar “a” y “d” y, por lo tanto, minimizar “b” y “c”.
 
 \bigskip
@@ -77,7 +77,7 @@ Una matriz de confusión, es una matriz que muestra clasificaciones predichas y 
 	\label{tab:matriz-confusion}
 \end{table}
 
-Los indicadores de desempeño que se evaluarán en los experimentos realizados con fines comparativos, son los siguientes:
+Los indicadores de desempeño que se evaluaron en los experimentos realizados con fines comparativos, son los siguientes:
 \begin{itemize}
 	\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\)
 	\item \textbf{Error:} \((b+c)/(a+b+c+d)\)
@@ -89,7 +89,7 @@ Los indicadores de desempeño que se evaluarán en los experimentos realizados c
 donde \(a+b+c+d=1\).
 
 \paragraph{Preparación de los datos}
-Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de coasociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, se considera la muestra de preguntas de la Tabla \ref{tab:muestra-validacion}, la cual muestra dos pares de preguntas (\(123004\) y \(98776\) - 4 preguntas en total) con su identificador de par y un indicador, en la columna \(equal\), que tiene dos valores posibles: 1 (preguntas iguales) y 0 (preguntas distintas). Por otro lado, en la Tabla \ref{tab:coasociacion-validacion}, se muestra la matriz de coasociación generada, por el método EQuAL, a partir de la Tabla \ref{tab:muestra-validacion}, teniendo en cuenta todas las combinaciones tomadas de a 2 de las 4 preguntas originales, para las cuales se agrega la similaridad entre pares, en la columna similarity. Por último, se filtran solo los pares de preguntas de la matriz de coasociación que se encuentran en la Tabla \ref{tab:muestra-validacion}, ya que son las únicas con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
+Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de co-asociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, se considera la muestra de preguntas de la Tabla \ref{tab:muestra-validacion}, la cual muestra dos pares de preguntas (\(123004\) y \(98776\) - 4 preguntas en total) con su identificador de par y un indicador en la columna \(equal\), que tiene dos valores posibles: 1 (preguntas iguales) y 0 (preguntas distintas). Por otro lado, en la Tabla \ref{tab:coasociacion-validacion}, se muestra la matriz de co-asociación generada, por el método EQuAL, a partir de la Tabla \ref{tab:muestra-validacion}, teniendo en cuenta todas las combinaciones tomadas de a 2 de las 4 preguntas originales, para las cuales se agrega la similaridad entre pares, en la columna similarity. Por último, se filtran solo los pares de preguntas de la matriz de coasociación que se encuentran en la Tabla \ref{tab:muestra-validacion}, ya que son las únicas con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
 
 \begin{table}[h!]
 	\footnotesize
@@ -146,7 +146,7 @@ La problemática que se intenta resolver teniendo en cuenta todas las similarida
 	\\ 0 & si & S(q_1, q_2) < t
 \end{array} \right.\]
 
-La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor desempeño, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Por ejemplo, tomando valores con intervalos \(0.05\) formando un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\), por cada uno de ellos:
+La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor rendimiento, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Por ejemplo, tomando valores con intervalos \(0.05\) se forma un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\). Se itera cada uno de los valores de umbral en el arreglo generado y por cada uno de ellos:
 \begin{enumerate}
 	\item Se iteran todos los pares de preguntas.
 	\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
@@ -241,16 +241,16 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 	\caption{Resultado de comparación de las tablas \ref{tab:validacion-reales} y \ref{tab:validacion-predichos} para validación y construcción de matrices de confusión.}
 	\begin{tabularx}{0.6\textwidth}{*{7}{>{\centering\arraybackslash}c}}
 		\toprule
-		\textbf{sequence\_id} & \textbf{real} & \textbf{predicho} & \textbf{resultado} & \textbf{equal} \\
+		\textbf{sequence\_id} & \textbf{real} & \textbf{predicho} & \textbf{resultado} \\
 		\midrule
-		0 & 1 & 1 & true  & 1 \\
-		1 & 1 & 1 & true  & 1 \\
-		2 & 1 & 0 & false & 0 \\
-		3 & 1 & 1 & true  & 1 \\
-		4 & 0 & 1 & false & 1 \\
-		5 & 0 & 0 & true  & 0 \\
-		6 & 0 & 0 & true  & 0 \\
-		7 & 1 & 1 & true  & 1 \\
+		0 & 1 & 1 & true \\
+		1 & 1 & 1 & true \\
+		2 & 1 & 0 & false \\
+		3 & 1 & 1 & true \\
+		4 & 0 & 1 & false \\
+		5 & 0 & 0 & true \\
+		6 & 0 & 0 & true \\
+		7 & 1 & 1 & true \\
 		\bottomrule
 	\end{tabularx}
 	\label{tab:validacion-comparacion}
