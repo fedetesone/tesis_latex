@@ -7,7 +7,7 @@ El procesamiento de datos se realizó con una infraestructura que permita el pro
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=1\linewidth]{8_problema_investigacion/imagenes/equal_distribuido}
-	\caption{Infraestructura de la solución para generar una matriz de coasociación para un RS.}
+	\caption{Infraestructura de la solución para generar una matriz de co-asociación para un RS.}
 	\label{fig:equaldistribuido}
 \end{figure}
 
@@ -18,7 +18,7 @@ El procesamiento de datos se realizó con una infraestructura que permita el pro
 	\item Evitar \textit{data-shuffling} excesivo entre entre nodos de datos. El data-shuffling es una operación que simplemente re-organiza y re-distribuye datos entre las particiones de datos apropiadas \citep{zhang2012optimizing}. Esto es un problema cuando se realiza de forma excesiva en un cluster de computadoras, provocando demasiada transferencia de datos entre cada uno de los nodos. Por ejemplo, antes de aplicar una función personalizada, en cuando se realiza shuffling puede ser necesario realizar un ordenamiento local en cada partición, re-particionar los datos en cada una de las computadoras para luego redistribuir las mismas dependiendo, por ejemplo, en una clave primaria. Dicho esto, queda en evidencia que este procedimiento conlleva un procesamiento de red y disco rígido (entrada/salida) que deriva en el incremento de tiempo de ejecución comparado con un ambiente que use una sola computadora y el intercambio de datos entre particiones se realice en la memoria local.
 \end{itemize}
 
-El algoritmo de clustering realizado en forma centralizada produce como resultados archivos persistidos en el almacenamiento local que posibiliten aplicar un paralelismo basado en datos en el cuando el ensamble de clustering es aplicado. El formato de salida de cada una de las ejecuciones del algoritmo de clustering aplicado, posibilita que sea muy simple aplicar una función personalizada de ensamble de clustering distribuyendo los datos entre todas las particiones del cluster de computadoras y obteniendo una matriz de coasociación.
+El algoritmo de clustering realizado en forma centralizada produce como resultados archivos persistidos en el almacenamiento local que posibiliten aplicar un paralelismo basado en datos en el cuando el ensamble de clustering es aplicado. El formato de salida de cada una de las ejecuciones del algoritmo de clustering aplicado, posibilita que sea muy simple aplicar una función personalizada de ensamble de clustering distribuyendo los datos entre todas las particiones del cluster de computadoras y obteniendo una matriz de co-asociación.
 
 \subsubsection{Escalabilidad horizontal}
 Es sabido que una computadora con una mejor configuración puede realizar más tareas que una con una configuración más débil, pero eso tiene una limitante. El costo de producir una computadora con buen rendimiento es alto, y no lo suficiente para justificar el costo. Por lo cual, la arquitectura elegida utiliza un cluster de computadoras para lograr un gran desempeño.
