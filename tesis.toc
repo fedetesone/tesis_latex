@@ -115,16 +115,17 @@
 \contentsline {subsubsection}{\numberline {6.3.1}Análisis de varianza del método propuesto}{108}{subsubsection.0.6.3.1}%
 \contentsline {paragraph}{\numberline {6.3.1.1}Tamaño de muestra de 100 pares de preguntas}{110}{paragraph.0.6.3.1.1}%
 \contentsline {paragraph}{\numberline {6.3.1.2}Tamaño de muestra de 500 pares de preguntas}{111}{paragraph.0.6.3.1.2}%
-\contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{112}{paragraph.0.6.3.1.3}%
+\contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{111}{paragraph.0.6.3.1.3}%
 \contentsline {paragraph}{\numberline {6.3.1.4}Tamaño de muestra de 1500 pares de preguntas}{112}{paragraph.0.6.3.1.4}%
-\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{113}{paragraph.0.6.3.1.5}%
-\contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{114}{subsubsection.0.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{115}{subsubsection.0.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{115}{subsubsection.0.6.3.4}%
-\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{116}{subsection.0.6.4}%
-\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{120}{subsection.0.6.5}%
-\contentsline {chapter}{Capitulo 7. Conclusiones}{123}{chapter*.86}%
-\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{123}{subsection.0.7.1}%
-\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{124}{subsection.0.7.2}%
-\contentsline {chapter}{Anexos}{127}{chapter*.87}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{135}{chapter*.89}%
+\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{112}{paragraph.0.6.3.1.5}%
+\contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{113}{paragraph.0.6.3.1.6}%
+\contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{113}{subsubsection.0.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{114}{subsubsection.0.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{114}{subsubsection.0.6.3.4}%
+\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{115}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{119}{subsection.0.6.5}%
+\contentsline {chapter}{Capitulo 7. Conclusiones}{122}{chapter*.86}%
+\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{122}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{123}{subsection.0.7.2}%
+\contentsline {chapter}{Anexos}{126}{chapter*.87}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{134}{chapter*.89}%
