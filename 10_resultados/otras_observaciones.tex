@@ -2,28 +2,22 @@
 
 \subsubsection{Análisis de varianza del método propuesto}
 
-Con el fin de analizar la estabilidad del método y poner en perspectiva sus resultados en comparación con los algoritmos del estado del arte, se realiza un \textit{análisis de varianza} (ANOVA del inglés \textbf{An}alysis \textbf{o}f \textbf{Va}riance) y se aplica el \textit{método de Tukey} a continuación.
+Con el fin de analizar si el método EQuAL es apto para su aplicación en RSs y poner en perspectiva sus resultados en comparación con los algoritmos del estado del arte, se realiza un \textit{análisis de varianza} con la aplicación del \textit{método de Tukey}.
 
-\bigskip El análisis de varianza prueba la significancia estadística de la diferencia de medias (o tendencia central) entre los diferentes métodos en análisis. Si la diferencia entre las medias es estadísticamente significativa, significa que la diferencia esperada es probable que reaparezca si los experimentos son realizados nuevamente \citep{tabachnick2007experimental}. El término \textit{estadísticamente significativo} indica que rechazar la hipótesis nula no significa que el hallazgo sea importante, sino que la diferencia media es lo suficientemente grande como para que la muestra vuelva a aparecer si los experimentos son realizados nuevamente. En el caso de estudio, considerando la media de error como variable en análisis, la hipótesis nula sugiere que el método EQuAL es apto, eficiente y eficaz para ser utilizado en un sistema de recomendación, en comparación con métodos aptos y reconocidos por la comunidad. Para clarificar, la intención de este trabajo es aceptar la hipótesis nula o, aun mejor, rechazar la hipótesis nula con una medida de rendimiento que demuestre que el método EQuAL es estadísticamente mejor. En este apartado se usa el análisis de varianza como una herramienta para tal fin. Si los resultados son los esperados, podemos llegar a la conclusión que el método EQuAL puede ser utilizado como medio para generar matrices de similaridad aptas para un RS eficiente y eficaz, mediante pruebas estadísticamente significativas. Se realizó un estudio ANOVA\footnote{El código completo del análisis de varianza se encuentra en este repositorio GitHub \url{https://github.com/fedetesone/anova_equal}.} con los datos\footnote{Conjunto de datos fuente para el análisis de varianzas: \url{https://github.com/fedetesone/anova_equal/blob/main/resultados.csv}.} utilizados para generar las tablas resumen del apartado “\ref{ss:analisismetodoestado} Análisis del método propuesto y algoritmos del estado del arte”.
+\bigskip El análisis de varianza prueba la significancia estadística de la diferencia de medias (o tendencia central) entre los diferentes métodos en análisis. El término\textit{ estadísticamente significativo} indica que rechazar la hipótesis nula no significa que el hallazgo sea importante, sino que la diferencia media es lo suficientemente grande como para que la muestra vuelva a aparecer si los experimentos son realizados nuevamente \citep{tabachnick2007experimental}. En el caso de estudio, considerando la esperanza de error como variable en análisis, la hipótesis nula sugiere que el método EQuAL es apto, eficiente y eficaz para ser utilizado en un sistema de recomendación, en comparación con métodos ampliamente utilizados y reconocidos por la comunidad. Para clarificar, la intención de este trabajo es aceptar la hipótesis nula o, aún mejor, rechazar la hipótesis nula con una medida de rendimiento que demuestre que el método EQuAL es significativamente mejor. En este apartado se usa el análisis de varianza como una herramienta para tal fin. Si los resultados son los esperados, podemos llegar a la conclusión que el método EQuAL puede ser utilizado como medio para generar matrices de similaridad aptas para un RS eficiente y eficaz, mediante pruebas estadísticamente significativas. Se realizó un análisis de varianza\footnote{El código completo del análisis de varianza se encuentra en este repositorio GitHub \url{https://github.com/fedetesone/anova_equal}.} con los datos\footnote{Conjunto de datos fuente para el análisis de varianzas: \url{https://github.com/fedetesone/anova_equal/blob/main/resultados.csv}.} utilizados para generar las tablas resumen del apartado “\ref{ss:analisismetodoestado} Análisis del método propuesto y algoritmos del estado del arte”.
 
-\bigskip Los algoritmos del estado del arte y método EQuAL basado en el ensamble de los mismos, generaron conjuntos de datos que son utilizados como entrada para el análisis de varianza. Los conjuntos de datos de los métodos del estado del arte se toman como \textit{grupos base}, y el conjunto de datos del método EQuAL es el grupo variable (o también \textit{factor variable}). Se plantean las siguientes hipótesis:
+\bigskip Los algoritmos del estado del arte y método EQuAL basado en el ensamble de los mismos, generaron conjuntos de datos que son utilizados como entrada para el análisis. Se denomina \(\mu_0\) a la esperanza de los errores del método EQuAL y se denominan  \(\mu_i, i = 1,..., 5\) a las esperanzas de los errores de los métodos, TF, TFIDF, FastText, Word2Vec y Semantic Distance, respectivamente. Se plantean las siguientes hipótesis:
 \begin{itemize}
-	\item \textbf{\(H_0\)}: La media de los valores de error de los métodos en estudio para un tamaño de muestra determinado, es estadísticamente igual.
-	\item \textbf{\(H_1\)}: La media de los valores de error de los métodos en estudio para un tamaño de muestra determinado, es significativamente diferente.
+	\item \textbf{\(H_0\)}: \(\mu_0 - \mu_i = 0, i = 1,..., 5\)
+	\item \textbf{\(H_1\)}: \(\mu_0 - \mu_i \neq  0, i = 1,..., 5\)
 \end{itemize}
+Por lo mencionado, se plantean estos test de hipótesis para cada variable en forma separada.
 
-\bigskip Se va a aplicar la técnica \textit{ANOVA de un factor}, que relaciona dos variables: el método aplicado a la muestra aleatoria (independiente) y el valor de error obtenido (dependiente). La variable dependiente es el llamado \textit{factor}. Sin embargo, el análisis de medias de error a continuación se realizará comparando el método EQuAL contra los métodos del estado del arte (uno a uno), para un tamaño de muestra determinado. Para tal fin, se utiliza el método de Tukey para crear intervalos de confianza para todas las diferencias de medias, en parejas. El motivo por el cual es realizado de esta forma es porque el método ANOVA indica que al menos un grupo (cualquiera de ellos) difiere de los demás. Por lo anterior, para un análisis más específico, es necesario el énfasis especial es el método propuesto realizando comparaciones específicas mediante pares \citep{abdi2010tukey}. Por ejemplo, si el método ANOVA arroja que hay diferencias significativas entre las medias en análisis, el método de Tukey puede aplicarse para saber específicamente donde radican las mismas. Filtrando las comparaciones uno a uno en las cuales se encuentra el método EQuAL, es posible saber cómo se comporta. Si las medias de error son iguales en términos estadísticos, significa que el método EQuAL es, al menos, apto para la generación de medidas de similaridad a partir del conjunto de datos en estudio, y su aplicación en RS.
+\bigskip El análisis de medias de error a continuación se realizará comparando el método EQuAL contra los métodos del estado del arte (uno a uno), para un tamaño de muestra determinado. Para tal fin, se utiliza el método de Tukey para crear intervalos de confianza para todas las diferencias de medias, en parejas. Por lo anterior, es necesario el énfasis especial es el método EQuAL realizando comparaciones específicas mediante pares, contra cada una de las técnicas del estado del arte \citep{abdi2010tukey}. Filtrando las comparaciones uno a uno en las cuales se encuentra el método EQuAL, es posible saber cómo se comporta. Si las medias de error no tienen diferencias significativas en términos estadísticos, significa que el método EQuAL es, al menos, apto para la generación de medidas de similaridad a partir del conjunto de datos en estudio, y su aplicación en RS.
 
-\bigskip A continuación, se muestran los métodos ANOVA y Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\%\) (\(\alpha = 0.05\)).
+\bigskip A continuación, se muestran los métodos Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\% (\alpha=0.05)\).
 
 \paragraph{Tamaño de muestra de 100 pares de preguntas}
-
-\begin{rc}
-                 Df  Sum Sq  Mean Sq F value Pr(>F)
-as.factor(metodo)  5 0.00938 0.001875   0.731  0.603
-Residuals         54 0.13851 0.002565
-\end{rc}
-
 \begin{rc}
                  diff        lwr       upr     p adj
 ensemble-bow     0.008 -0.0589175 0.0749175 0.9992360
@@ -33,27 +27,17 @@ sem-ensemble    -0.003 -0.0699175 0.0639175 0.9999940
 w2v-ensemble     0.013 -0.0539175 0.0799175 0.9923331
 \end{rc}
 
-\begin{figure}
+\begin{figure}[!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/anova_100}
 	\caption{Gráfico de caja y bigote para las medias de error de los métodos en estudio para tamaño de muestra de 100 pares de preguntas.}
 	\label{fig:anova100}
 \end{figure}
 
-\begin{itemize}
-	\item \(P_r(F) = 0.603 > \alpha, \alpha = 0.05\) indica que no hay una diferencia significativa en el conjunto total. No se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
-	\item El método EQuAL posee el menor valor de error para una ejecución en particular, representado por el bigote inferior.
-\end{itemize}
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova100} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 100. En la misma, se puede visualizar que el método EQuAL posee el menor valor de error para una ejecución individual en particular, representado por el bigote inferior.
 
+\bigskip
 \paragraph{Tamaño de muestra de 500 pares de preguntas}
-
-\begin{rc}
-                 Df   Sum Sq   Mean Sq F value Pr(>F)
-as.factor(metodo)  5 0.001938 0.0003876   1.983 0.0959 .
-Residuals         54 0.010554 0.0001954
-\end{rc}
-
 \begin{rc}
                   diff          lwr         upr     p adj
 ensemble-bow     0.0018 -0.016671384 0.020271384 0.9997181
@@ -70,20 +54,10 @@ w2v-ensemble     0.0106 -0.007871384 0.029071384 0.5407045
 	\label{fig:anova500}
 \end{figure}
 
-\begin{itemize}
-	\item \(P_r(F) = 0.0959 < \alpha, \alpha = 0.05\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
-	\item El método EQuAL posee el menor valor de error para una ejecución en particular, representado por el bigote inferior.
-\end{itemize}
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova500} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 500. En la misma, se puede visualizar que el método EQuAL posee el menor valor de error para una ejecución individual en particular, representado por el bigote inferior.
 
+\bigskip
 \paragraph{Tamaño de muestra de 1000 pares de preguntas}
-
-\begin{rc}
-                 Df   Sum Sq   Mean Sq F value Pr(>F)
-as.factor(metodo)  5 0.002585 0.0005170   1.924  0.105
-Residuals         54 0.014514 0.0002688
-\end{rc}
-
 \begin{rc}
                   diff          lwr         upr     p adj
 ensemble-bow     0.0175 -0.004161633 0.039161633 0.1791584
@@ -100,19 +74,10 @@ w2v-ensemble    -0.0155 -0.037161633 0.006161633 0.2956972
 	\label{fig:anova1000}
 \end{figure}
 
-\begin{itemize}
-	\item \(Pr_(F) = 0.105 > \alpha, \alpha = 0.05\) indica que no hay una diferencia significativa en el conjunto total. No se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
-\end{itemize}
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova1000} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 1000.
 
+\bigskip
 \paragraph{Tamaño de muestra de 1500 pares de preguntas}
-
-\begin{rc}
-                 Df   Sum Sq   Mean Sq F value Pr(>F)
-as.factor(metodo)  5 0.001514 0.0003027   2.936 0.0214 *
-Residuals         49 0.005053 0.0001031
-\end{rc}
-
 \begin{rc}
                         diff           lwr         upr     p adj
 ensemble-bow     0.0090666667 -7.427521e-03 0.025560854 0.5832109
@@ -129,20 +94,10 @@ w2v-ensemble    -0.0062000000 -2.269419e-02 0.010294187 0.8729702
 	\label{fig:anova1500}
 \end{figure}
 
-\begin{itemize}
-	\item \(P_r(F)= 0.0214 < \alpha, \alpha = 0.05\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
-	\item El método EQuAL posee una media de error estadísticamente igual a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\)
-	\item En este caso, es de vital importancia la comparación en parejas, teniendo como foco el método EQuAL; ya que, si bien la hipótesis nula fue rechazada, la comparación individual del mismo con los algoritmos del estado del arte, no muestra una diferencia significativa.
-\end{itemize}
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova1500} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 1500.
 
+\bigskip
 \paragraph{Tamaño de muestra de 2000 pares de preguntas}
-
-\begin{rc}
-                 Df   Sum Sq   Mean Sq F value   Pr(>F)
-as.factor(metodo)  5 0.002348 0.0004697   6.144 0.000171 ***
-Residuals         49 0.003746 0.0000765
-\end{rc}
-
 \begin{rc}
                   diff       lwr       upr      p adj
 ensemble-bow     0.01585  0.001648 0.0300516 0.020523
@@ -159,12 +114,11 @@ w2v-ensemble    -0.00725 -0.021451 0.0069516 0.657185
 	\label{fig:anova2000}
 \end{figure}
 
-\begin{itemize}
-	\item \(P_r(F)= 0.000117 < \alpha, \alpha = 0.05\) indica que hay una diferencia significativa en el conjunto total. Se rechaza la hipótesis nula.
-	\item En este caso, el rechazo de la hipótesis nula es causado por el método Bow, que tuvo muy buenos indicadores en este tamaño de muestra. Si el mismo no fuese tenido en cuenta para este tamaño de muestra, el indicador \(P_r(F)\) hubiese sido  \(P_r(F)= 0.056 > \alpha\) que indicaría que no hay diferencia entre los métodos analizados. Por lo anterior, el método EQuAL tiene una diferencia significativa solo con el método bow, siendo estadísticamente igual a los restantes.
-\end{itemize}
+\bigskip En este caso, el intervalo de confianza contra el método bow no incluye al cero, ya que este método tuvo muy buenos indicadores en este tamaño de muestra. No obstante, el método EQuAL tiene una diferencia significativa solo con el método bow, no habiendo diferencias significativas con los métodos restantes, ya que en esos casos, los intervalos de confianza incluyen al valor \(0\) y \(p-adj > \alpha\). La Figura \ref{fig:anova2000} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 2000.
 
-\bigskip En general, el método EQuAL tiene un comportamiento aceptable en cuanto a medias de error a lo largo de todos los tamaños de muestra. Esto significa que las medias de error del mismo son significativamente comparables con los métodos del estado del arte, los cuales son utilizados por la comunidad en el cálculo de similaridad y análisis de texto, e inclusive superador en algunos casos.
+\bigskip
+\paragraph{Resumen de resultados del análisis de varianza}
+En general, el método EQuAL tiene un buen comportamiento en cuanto a medias de error a lo largo de todos los tamaños de muestra. Esto significa que las esperanzas de error no tienen diferencias significativas con los métodos del estado del arte (los cuales son utilizados por la comunidad en el cálculo de similaridad y análisis de texto) y son, incluso, superadoras en algunos casos. Teniendo en cuenta este indicador, se puede concluir que el método EQuAL es apto para su implementación en RSs.
 
 \subsubsection{Desempeño con tamaños de muestra pequeños}
 En el análisis de varianza de las medias de error realizado anteriormente, se puede observar que el método EQuAL se comporta muy bien en los tamaños de muestra de 100 y 500 pares de preguntas: el método propuesto fue estadísticamente igual o superior a los métodos del estado del arte. Sin embargo, para tamaños de muestra más grandes, fue superado en algunas oportunidades.
