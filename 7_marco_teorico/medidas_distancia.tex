@@ -166,7 +166,7 @@ Este cómputo es una de las diferencias principales con el modelo Skip-gram. Lue
 donde \(v'_{w_j}\) es la \(j^{th}\) columna de la matriz \(W'\). Y finalmente se calcula el resultado de la capa de salida. Dicha salida \(y_j\) es obtenida pasando la entrada \(u_j\) por la función Softmax.
 \[y_j=p(w_{y_j}|w_1,...,w_C)=\frac{exp(u_j))}{\sum_{V}^{j=1}exp(u_j')}\]
 
-\bigskip Entonces, la capa de salida es una palabra \(y_j\) codificada como un vector one-hot de dimensión \(V\). Este tipo de técnica se llama \textit{propagación hacia adelante}.
+\bigskip Entonces, la capa de salida es una palabra \(y_j\) codificada como un vector one-hot de dimensión \(V\).
 
 \subsubsection{FastText}
 Fastext\footnote{Sitio de FastText \url{https://fasttext.cc}. Último acceso: Febrero 2021.} es una librería open-source que permite generar representaciones de texto y clasificadores de texto. Está basada en una técnica representación continua de palabras, que tiene en cuenta la morfología\footnote{Parte de la lingüística que estudia las reglas que rigen la flexión, la composición y la derivación de las palabras. Por ejemplo, las distintas conjugaciones de los verbos en español.} de las mismas \citep{bojanowski2017enriching}.
