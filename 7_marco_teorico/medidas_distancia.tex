@@ -213,7 +213,7 @@ El procedimiento de cálculo de similaridad entre dos frases, como se muestra en
 \paragraph{Similaridad semántica entre palabras}
 Las bases de conocimiento tienden a representar el sentido común humano con una estructura jerárquica para un dominio específico o para un lenguaje en general. Existen varios proyectos lingüísticos disponibles en la web, tales como WordNet \citep{miller1995wordnet}, Spatial Date Transfer Standard de la USGS\footnote{United States Geological Survey. https://www.usgs.gov/. Último acceso: Febrero 2021.}, y Gene Ontology\footnote{Gene Ontology. http://geneontology.org/. Último acceso: Febrero 2021.}. Esta estructura jerárquica, se puede modelar como una taxonomía de conceptos.
 
-\bigskip Dadas dos palabras \(w_1\) y \(w_2\), es necesario encontrar la similaridad \(S(w_1,w_2)\) entre ellas. Esto es posible analizando la base de datos léxica (en este caso WordNet si se cuenta con palabras en el idioma inglés) de la siguiente forma: Las palabras están organizadas como conjuntos de sinónimos (llamados \textit{synsets}), con relaciones semánticas a otros synsets. Un método directo para calcular la similaridad es encontrar el camino más corto que conecta dos palabras. Por ejemplo, si tomamos la estructura detallada en la Figura \ref{fig:taxonomiasemantica}, la cual muestra un esquema de base de datos semántica en forma jerárquica que tiene como raíz al synset ``entidad'', el camino más corto para conectar \textit{niño} y \textit{niña} sería \textit{niño-persona masculina-humano-persona femenina-niña}, y tiene una longitud de \(4\). El synset ``persona, humano'', en este caso, es llamado \textit{subsumidor mínimo de palabras}, tal como se menciona en la sección \ref{paragraph:similaridad}, ya que sirve de anclaje entre los dos conceptos para los cuales se quiere calcular la distancia semántica.
+\bigskip Dadas dos palabras \(w_1\) y \(w_2\), es necesario encontrar la similaridad \(S(w_1,w_2)\) entre ellas. Esto es posible analizando la base de datos léxica (en este caso WordNet si se cuenta con palabras en el idioma inglés) de la siguiente forma: Las palabras están organizadas como conjuntos de sinónimos (llamados \textit{synsets}), con relaciones semánticas a otros synsets. Un método directo para calcular la similaridad es encontrar el camino más corto que conecta dos palabras. Por ejemplo, si tomamos la estructura detallada en la Figura \ref{fig:taxonomiasemantica}, la cual muestra un esquema de base de datos semántica en forma jerárquica que tiene como raíz al synset ``entidad'', el camino más corto para conectar ``niño'' y ``niña'' sería ``niño-persona masculina-humano-persona femenina-niña'', y tiene una longitud de \(4\). El synset ``persona, humano'', en este caso, es llamado \textit{subsumidor mínimo de palabras}, tal como se menciona en la sección \ref{paragraph:similaridad}, ya que sirve de anclaje entre los dos conceptos para los cuales se quiere calcular la distancia semántica.
 
 \begin{figure}[h!]
 	\centering
@@ -222,8 +222,7 @@ Las bases de conocimiento tienden a representar el sentido común humano con una
 	\label{fig:taxonomiasemantica}
 \end{figure}
 
-También, se puede ver que la distancia entre \textit{niño} y \textit{profesor} es 6, mientras la distancia entre \textit{niño} y \textit{animal} es 4, lo cual es contra intuitivo e indica que el proceso es mejorable agregando más información de estas estructuras jerárquicas. Es evidente que los synsets pertenecientes a capas altas de la estructura tienen conceptos semánticos más generales y menos similaridad entre ellos y en capas inferiores, sucede lo contrario, conceptos más particulares y similares. Lo anterior sugiere tomar en cu
-enta la profundidad en jerarquía. Para resumir, la similaridad entre palabras es determinada, no solo por el camino más corto entre ellas, sino también por la profundidad jerárquica, es decir:
+También, se puede ver que la distancia entre ``niño'' y ``profesor'' es 6, mientras la distancia entre ``niño'' y ``animal'' es 4, lo cual es contra intuitivo e indica que el proceso es mejorable agregando más información de estas estructuras jerárquicas. Es evidente que los synsets pertenecientes a capas altas de la estructura tienen conceptos semánticos más generales y menos similaridad entre ellos, y en capas inferiores, sucede lo contrario, conceptos más particulares y similares. Lo anterior sugiere tomar en cuenta la profundidad en jerarquía. Para resumir, la similaridad entre palabras es determinada, no solo por el camino más corto entre ellas, sino también por la profundidad jerárquica, es decir:
 \[S(w_1,w_2)=f(l,h)\]
 
 donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumer de las mismas en la jerarquía de la red semántica.
@@ -239,7 +238,7 @@ Luego, es necesario ponderar cada una de las palabras basadas en su contenido de
 \[s_i = \check{s} \cdot I(w_i) \cdot I(\widetilde{w}_i)\]
 
 donde \(w_i\) es una palabra en el conjunto de palabras comunes, y \(I(\widetilde{w}_i)\) es su palabra asociada en la frase. Entonces, la similaridad semántica entre dos frases es definida como el coeficiente del coseno entre los dos vectores:
-\[S_s = \frac{s_1.s_2}{||s_1||.||s_2||}\]
+\[S_s = \frac{s_1. s_2}{||s_1||.||s_2||}\]
 
 \paragraph{Similaridad de orden entre frases}
 Consideremos dos frases \(T_1\) y \(T_2\), por ejemplo:
@@ -274,7 +273,7 @@ Esto significa que la similaridad de orden de palabras es determinada por la dif
 \paragraph{Similaridad total entre frases}
 La similaridad semántica y la información sintáctica (en términos del orden de las palabras) convergen en el significado de la oración. Entonces, la similaridad total entre frases es definida como la combinación de la similaridad semántica y la similaridad del orden de palabras:
 \[S(T_1, T_2)=\delta S_s + (1 - \delta)S_r\]
-\[S(T_1, T_2)=\delta \frac{s_1.s.2}{\left \| s_1 \right \|\left \| s_2 \right \|} + (1 - \delta)\frac{\left \|r_1-r_2  \right \|}{\left \| r_1+r_2 \right \|}\]
+\[S(T_1, T_2)=\delta \frac{s_1.s_2}{\left \| s_1 \right \|\left \| s_2 \right \|} + (1 - \delta)\frac{\left \|r_1-r_2  \right \|}{\left \| r_1+r_2 \right \|}\]
 
 \bigskip donde \(\delta \leq 1\) decide la contribución relativa de cada una de las medidas de similaridad. Como el orden de palabras cumple un rol subordinado, se recomienda que \(\delta\) tenga un valor mayor a \(0.5\).
 
