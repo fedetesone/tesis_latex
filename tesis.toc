@@ -25,7 +25,7 @@
 \contentsline {paragraph}{\numberline {3.2.3.4}Basados en conocimiento}{28}{paragraph.0.3.2.3.4}%
 \contentsline {paragraph}{\numberline {3.2.3.5}Basados en comunidades}{28}{paragraph.0.3.2.3.5}%
 \contentsline {paragraph}{\numberline {3.2.3.6}Sistemas Híbridos}{29}{paragraph.0.3.2.3.6}%
-\contentsline {subsection}{\numberline {3.3}Big Data}{29}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {3.3}Big Data y Arquitecturas}{29}{subsection.0.3.3}%
 \contentsline {subsubsection}{\numberline {3.3.1}Contexto Histórico}{29}{subsubsection.0.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Map-Reduce}{31}{subsubsection.0.3.3.2}%
 \contentsline {paragraph}{\numberline {3.3.2.1}Arquitectura Hadoop}{32}{paragraph.0.3.3.2.1}%
@@ -85,50 +85,44 @@
 \contentsline {subsubsection}{\numberline {4.5.5}Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}{78}{subsubsection.0.4.5.5}%
 \contentsline {chapter}{Capitulo 5. Experimentos}{79}{chapter*.30}%
 \contentsline {subsection}{\numberline {5.1}Estado del arte}{79}{subsection.0.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Análisis de rendimiento}{80}{subsubsection.0.5.1.1}%
-\contentsline {subparagraph}{Bag of Words}{80}{subparagraph*.31}%
-\contentsline {subparagraph}{TF/IDF}{81}{subparagraph*.32}%
-\contentsline {subparagraph}{FastText}{81}{subparagraph*.33}%
-\contentsline {subparagraph}{Word2Vec}{81}{subparagraph*.34}%
-\contentsline {subparagraph}{Semantic Distance}{82}{subparagraph*.35}%
-\contentsline {subsubsection}{\numberline {5.1.2}Medidas de desempeño y error}{82}{subsubsection.0.5.1.2}%
-\contentsline {subsection}{\numberline {5.2}Preprocesamiento del conjunto de datos}{84}{subsection.0.5.2}%
-\contentsline {subsection}{\numberline {5.3}Muestreo del conjunto de datos}{85}{subsection.0.5.3}%
-\contentsline {subsection}{\numberline {5.4}Generación de particiones}{85}{subsection.0.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Cálculo de similaridades}{85}{subsubsection.0.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Clustering y etiquetado}{87}{subsubsection.0.5.4.2}%
-\contentsline {paragraph}{\numberline {5.4.2.1}Entrada y configuración inicial}{88}{paragraph.0.5.4.2.1}%
-\contentsline {paragraph}{\numberline {5.4.2.2}Proceso de clustering}{88}{paragraph.0.5.4.2.2}%
-\contentsline {subparagraph}{Generación de etiquetas}{89}{subparagraph*.42}%
-\contentsline {subparagraph}{Actualización de medoides}{89}{subparagraph*.43}%
-\contentsline {paragraph}{\numberline {5.4.2.3}Estructura de los resultados}{90}{paragraph.0.5.4.2.3}%
-\contentsline {subsection}{\numberline {5.5}Ensamble de Clustering}{90}{subsection.0.5.5}%
-\contentsline {subsection}{\numberline {5.6}Método de validación}{93}{subsection.0.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Generación de conjuntos estadísticamente significativos}{93}{subsubsection.0.5.6.1}%
-\contentsline {paragraph}{\numberline {5.6.1.1}Elección de los tamaños de muestra}{94}{paragraph.0.5.6.1.1}%
-\contentsline {paragraph}{\numberline {5.6.1.2}Elección del número de clusters}{94}{paragraph.0.5.6.1.2}%
-\contentsline {subsubsection}{\numberline {5.6.2}Estructura de las matrices de confusión}{95}{subsubsection.0.5.6.2}%
-\contentsline {paragraph}{\numberline {5.6.2.1}Preparación de los datos}{97}{paragraph.0.5.6.2.1}%
-\contentsline {paragraph}{\numberline {5.6.2.2}Construcción y elección del umbral correcto}{98}{paragraph.0.5.6.2.2}%
-\contentsline {paragraph}{\numberline {5.6.2.3}Construcción de las matrices de confusión}{99}{paragraph.0.5.6.2.3}%
-\contentsline {chapter}{Capitulo 6. Resultados}{101}{chapter*.62}%
-\contentsline {subsection}{\numberline {6.1}Análisis del método propuesto}{101}{subsection.0.6.1}%
-\contentsline {subsection}{\numberline {6.2}Análisis del método propuesto y algoritmos del estado del arte}{105}{subsection.0.6.2}%
-\contentsline {subsection}{\numberline {6.3}Otras observaciones de interés}{108}{subsection.0.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Análisis de varianza del método propuesto}{108}{subsubsection.0.6.3.1}%
-\contentsline {paragraph}{\numberline {6.3.1.1}Tamaño de muestra de 100 pares de preguntas}{110}{paragraph.0.6.3.1.1}%
-\contentsline {paragraph}{\numberline {6.3.1.2}Tamaño de muestra de 500 pares de preguntas}{111}{paragraph.0.6.3.1.2}%
-\contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{111}{paragraph.0.6.3.1.3}%
-\contentsline {paragraph}{\numberline {6.3.1.4}Tamaño de muestra de 1500 pares de preguntas}{112}{paragraph.0.6.3.1.4}%
-\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{112}{paragraph.0.6.3.1.5}%
-\contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{113}{paragraph.0.6.3.1.6}%
-\contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{113}{subsubsection.0.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{114}{subsubsection.0.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{114}{subsubsection.0.6.3.4}%
-\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{115}{subsection.0.6.4}%
-\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{119}{subsection.0.6.5}%
-\contentsline {chapter}{Capitulo 7. Conclusiones}{122}{chapter*.89}%
-\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{122}{subsection.0.7.1}%
-\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{123}{subsection.0.7.2}%
-\contentsline {chapter}{Anexos}{126}{chapter*.90}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{134}{chapter*.92}%
+\contentsline {subsubsection}{\numberline {5.1.1}Medidas de desempeño y error}{80}{subsubsection.0.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}Preprocesamiento del conjunto de datos}{81}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {5.3}Muestreo del conjunto de datos}{82}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {5.4}Generación de particiones}{83}{subsection.0.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Cálculo de similaridades}{83}{subsubsection.0.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Clustering y etiquetado}{85}{subsubsection.0.5.4.2}%
+\contentsline {paragraph}{\numberline {5.4.2.1}Entrada y configuración inicial}{85}{paragraph.0.5.4.2.1}%
+\contentsline {paragraph}{\numberline {5.4.2.2}Proceso de clustering}{86}{paragraph.0.5.4.2.2}%
+\contentsline {subparagraph}{Generación de etiquetas}{86}{subparagraph*.36}%
+\contentsline {subparagraph}{Actualización de medoides}{86}{subparagraph*.37}%
+\contentsline {paragraph}{\numberline {5.4.2.3}Estructura de los resultados}{87}{paragraph.0.5.4.2.3}%
+\contentsline {subsection}{\numberline {5.5}Ensamble de Clustering}{88}{subsection.0.5.5}%
+\contentsline {subsection}{\numberline {5.6}Método de validación}{91}{subsection.0.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Generación de conjuntos estadísticamente significativos}{91}{subsubsection.0.5.6.1}%
+\contentsline {paragraph}{\numberline {5.6.1.1}Elección de los tamaños de muestra}{91}{paragraph.0.5.6.1.1}%
+\contentsline {paragraph}{\numberline {5.6.1.2}Elección del número de clusters}{92}{paragraph.0.5.6.1.2}%
+\contentsline {subsubsection}{\numberline {5.6.2}Estructura de las matrices de confusión}{93}{subsubsection.0.5.6.2}%
+\contentsline {paragraph}{\numberline {5.6.2.1}Preparación de los datos}{94}{paragraph.0.5.6.2.1}%
+\contentsline {paragraph}{\numberline {5.6.2.2}Construcción y elección del umbral correcto}{95}{paragraph.0.5.6.2.2}%
+\contentsline {paragraph}{\numberline {5.6.2.3}Construcción de las matrices de confusión}{97}{paragraph.0.5.6.2.3}%
+\contentsline {chapter}{Capitulo 6. Resultados}{99}{chapter*.56}%
+\contentsline {subsection}{\numberline {6.1}Análisis del método propuesto}{99}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Análisis del método propuesto y algoritmos del estado del arte}{103}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Otras observaciones de interés}{106}{subsection.0.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Análisis de varianza del método propuesto}{106}{subsubsection.0.6.3.1}%
+\contentsline {paragraph}{\numberline {6.3.1.1}Tamaño de muestra de 100 pares de preguntas}{108}{paragraph.0.6.3.1.1}%
+\contentsline {paragraph}{\numberline {6.3.1.2}Tamaño de muestra de 500 pares de preguntas}{109}{paragraph.0.6.3.1.2}%
+\contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{109}{paragraph.0.6.3.1.3}%
+\contentsline {paragraph}{\numberline {6.3.1.4}Tamaño de muestra de 1500 pares de preguntas}{110}{paragraph.0.6.3.1.4}%
+\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{110}{paragraph.0.6.3.1.5}%
+\contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{111}{paragraph.0.6.3.1.6}%
+\contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{112}{subsubsection.0.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{112}{subsubsection.0.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{112}{subsubsection.0.6.3.4}%
+\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{113}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{116}{subsection.0.6.5}%
+\contentsline {chapter}{Capitulo 7. Conclusiones}{120}{chapter*.83}%
+\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{120}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{121}{subsection.0.7.2}%
+\contentsline {chapter}{Anexos}{124}{chapter*.84}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{132}{chapter*.86}%

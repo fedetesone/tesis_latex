@@ -118,7 +118,9 @@ w2v-ensemble    -0.00725 -0.021451 0.0069516 0.657185
 
 \bigskip
 \paragraph{Resumen de resultados del análisis de varianza}
-En general, el método EQuAL tiene un buen comportamiento en cuanto a medias de error a lo largo de todos los tamaños de muestra. Esto significa que las esperanzas de error no tienen diferencias significativas con los métodos del estado del arte (los cuales son utilizados por la comunidad en el cálculo de similaridad y análisis de texto) y son, incluso, superadoras en algunos casos. Teniendo en cuenta este indicador, se puede concluir que el método EQuAL es apto para su implementación en RSs.
+En todos los tamaños de muestra, el método EQuAL no muestra diferencias significativas con ninguno de los algoritmos del estado del arte, ya que todos los intervalos de confianza contienen al valor cero, exceptuando la comparación EQuAL-bow para el tamaño de muestra de 2000 pares de preguntas. En este último caso, el método bow muestra una media de error significativamente más baja. En total, se realizaron 25 intervalos de confianza, y en solo uno el método EQuAL se obtuvo una media de error más alta, ya que el método bow fue significativamente mejor al resto.
+
+\bigskip En general, el método EQuAL tiene un buen comportamiento en cuanto a medias de error a lo largo de todos los tamaños de muestra. Esto significa que las esperanzas de error no tienen diferencias significativas con los métodos del estado del arte (los cuales son utilizados por la comunidad en el cálculo de similaridad y análisis de texto) y son, incluso, superadoras en algunos casos. Teniendo en cuenta este indicador, se puede concluir que el método EQuAL es apto para su implementación en RSs.
 
 \subsubsection{Desempeño con tamaños de muestra pequeños}
 En el análisis de varianza de las medias de error realizado anteriormente, se puede observar que el método EQuAL se comporta muy bien en los tamaños de muestra de 100 y 500 pares de preguntas: el método propuesto fue estadísticamente igual o superior a los métodos del estado del arte. Sin embargo, para tamaños de muestra más grandes, fue superado en algunas oportunidades.
