@@ -3,116 +3,8 @@ El proyecto en el cual se realizaron los experimentos que este trabajo tiene com
 
 \bigskip Tiene como características principales la utilización de los 5 algoritmos de similaridad mencionados anteriormente (y evaluados a continuación) y la ejecución de cada uno de ellos en el marco de un patrón master-worker en un solo microprocesador. Este patrón es utilizado para el procesamiento paralelo, en el cual una tarea es enviada a cada uno de los “workers” para ser procesada. En este caso en particular, la cantidad de “workers” es fija y especificada como un parámetro en tiempo de ejecución.
 
-\subsubsection{Análisis de rendimiento}
-Se muestra al análisis de rendimiento para el cálculo de distancias con los el proyecto del estado del arte, con el fin de tener un punto comparativo para los experimentos que se realizarán con la nueva arquitectura. Las pruebas de los algoritmos de similaridad de rendimiento se realizaron con el siguiente equipo:
-
-\begin{verbatim}
-Modelo: MacBook Pro
-Procesador: Intel Core i7
-Velocidad del procesador: 2.6 GHz
-Número de núcleos: 6
-Caché L2 (por núcleo): 256 KB
-Caché L3: 12 MB
-Tecnología Hyper-Threading: Habilitada
-Memoria: 16 GB RAM
-Almacenamiento: APPLE SSD AP0512M
-\end{verbatim}
-
-El cual también es utilizado para las pruebas de la nueva arquitectura. Se utilizó, como parámetro de rendimiento, el cálculo de similaridad para cada uno de los 404290 pares de preguntas. Luego de varias pruebas, se llegó a una configuración de 8 hilos de ejecución y lotes de 10000 pares de preguntas, para obtener los tiempos más bajos posibles con cada uno de los algoritmos, los mismos fueron:
-
-\subparagraph{Bag of Words}
-\begin{verbatim}
-[13:34:51] Starting script.
-[13:34:51] Loading Quora questions file...
-[13:34:52] ----- Run number 1 ------
-[13:34:56] First 100000 distances calculated.
-[13:34:58] First 200000 distances calculated.
-[13:35:01] First 300000 distances calculated.
-[13:35:03] First 400000 distances calculated.
-[13:35:04] First 404290 distances calculated.
-[13:35:04] Script finished. Total time: 0:00:12.895492
-\end{verbatim}
-
-\subparagraph{TF/IDF}
-\begin{verbatim}
-[13:31:05] Starting script.
-[13:31:05] Loading Quora questions file...
-[13:31:07] ----- Run number 1 ------
-[13:31:07] Generating a sample of 0 questions.
-[13:31:08] Training model...
-[13:32:43] First 100000 distances calculated.
-[13:33:20] First 200000 distances calculated.
-[13:33:58] First 300000 distances calculated.
-[13:34:38] First 400000 distances calculated.
-[13:34:39] First 404290 distances calculated.
-[13:34:39] Script finished. Total time: 0:03:33.665420
-\end{verbatim}
-
-\subparagraph{FastText}
-\begin{verbatim}
-[13:39:25] Starting script.
-[13:39:25] Loading Quora questions file...
-[13:39:26] ----- Run number 1 ------
-[13:39:28] Training model...
-Read 9M words
-Number of words:  30823
-Number of labels: 0
-Progress: 100.0% words/sec/thread:  147553 lr:  0.000000 loss:  1.791601 ETA:   0h 0m
-[13:40:29] First 100000 distances calculated.
-[13:40:47] First 200000 distances calculated.
-[13:41:06] First 300000 distances calculated.
-[13:41:24] First 400000 distances calculated.
-[13:41:25] First 404290 distances calculated.
-[13:41:25] Script finished. Total time: 0:02:00.335008
-\end{verbatim}
-
-\subparagraph{Word2Vec}
-\begin{verbatim}
-[13:42:29] Starting script.
-[13:42:29] Loading Quora questions file...
-[13:42:30] ----- Run number 1 ------
-[13:42:34] First 100000 distances calculated.
-[13:42:36] First 200000 distances calculated.
-[13:42:38] First 300000 distances calculated.
-[13:42:39] First 400000 distances calculated.
-[13:42:40] First 404290 distances calculated.
-[13:42:40] Script finished. Total time: 0:00:10.719605
-\end{verbatim}
-
-\subparagraph{Semantic Distance}
-\begin{verbatim}
-[16:04:34] Starting script.
-[16:04:34] Loading Quora questions file...
-[16:04:35] ----- Run number 1 ------
-[16:26:11] First 100000 distances calculated.
-[16:47:20] First 200000 distances calculated.
-[17:08:41] First 300000 distances calculated.
-[17:30:08] First 400000 distances calculated.
-[17:31:06] First 404290 distances calculated.
-[17:31:06] Script finished. Total time: 1:26:32.941992
-\end{verbatim}
-
-\begin{table}[h!]
-		\footnotesize
-		\caption{Análisis de rendimiento de los algoritmos de similaridad del estado del arte.}
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-		\toprule
-		& \textbf{Tiempo total (segundos)} & \textbf{Velocidad aproximada (calc/seg)} \\
-		\midrule
-		\textbf{Bag of words} & 12.895492 & 31351.26601 \\
-		\textbf{TF/IDF} & 213.66542 & 1892.163926 \\
-		\textbf{FastText} & 120.335008  & 3359.703936 \\
-		\textbf{Word2Vec}  & \textbf{10.719605} & \textbf{37715.00909} \\
-		\textbf{Semantic Distance} & 5192.941992 & 77.85374853 \\
-		\bottomrule
-	\end{tabularx}
-	\label{tab:performance-estado-del-arte}
-\end{table}
-
-Los resultados en Tabla \ref{tab:performance-estado-del-arte} muestran una clara ventaja en términos de rendimiento para el algoritmo de similaridad Word2Vec (con un tiempo total de \(10.719605\) segundos, marcado en negrita), inmediatamente seguido por Bag of Words. TF/IDF y FastText, muestran un rendimiento aceptable pero, en comparación, aproximadamente diez veces más lentos que los anteriormente mencionados. El rendimiento del algoritmo de similaridad Semantic Distance, es muy bajo y representa un gran problema al momento de analizar grandes conjuntos de datos, pero puede ser necesario utilizarlo debido a sus buenas medidas de desempeño y error y, también, a su análisis de similaridad desde una perspectiva distinta.
-
 \subsubsection{Medidas de desempeño y error}
-Utilizando cada para de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad, a través del método de validación explicado en la sección \ref{estructurasconfusion}. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
+Utilizando cada par de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad, a través del método de validación explicado en la sección \ref{estructurasconfusion}. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
 
 \begin{table}[h!]
 	\footnotesize
@@ -203,7 +95,7 @@ Utilizando cada para de preguntas del conjunto de datos original, se calculó la
 \end{table}
 
 \bigskip Los resultados porcentuales de las matrices de confusión se muestran en cada intersección de filas y columnas. Los resultados reales se muestran en las filas, siendo los dos posibles 0, cuando las preguntas son distintas y 1 cuando las preguntas son iguales. Los resultados predichos, se muestran en las columnas.
-La exactitud obtenida de las matrices de confusión, que se calcula como la suma de los resultados acertados entre los valores predichos y reales, en todos los casos exceden el \(66\%\), alcanzando un máximo de \(67.88\% \) para Semantic Distance. Por otro lado, con respecto al error promedio, se llega a un valor máximo de \(33.15\%\) en el caso de TF/IDF.
+La exactitud obtenida de las matrices de confusión, que se calcula como la suma de los resultados acertados entre los valores predichos y reales, en todos los casos exceden el \(66\%\), alcanzando un máximo de \(67.97\% \) para Semantic Distance. Por otro lado, con respecto al error promedio, se llega a un valor máximo de \(33.15\%\) en el caso de TF/IDF.
 
 \bigskip Observando las matrices de confusión, se presenta un desbalance en los dos valores tomados para calcular la exactitud, siendo que los resultados obtenidos para la clase “0” considerablemente mejores que para la clase “1”. Por ejemplo, el desbalance más grande se encuentra en la matriz de confusión de FastText, el cual es \(0.5033 – 0.1692 = 0.334\). Este tipo de desbalance puede ser originado por la distribución del conjunto de datos de entrada (\(36.9\%\) pares de preguntas son clase 1 y el \(63.1\%\) restante es clase 0), el cual pretende ser corregido con un método de muestreo explicado más adelante.
 

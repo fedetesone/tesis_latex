@@ -1,7 +1,7 @@
 \subsection{Ensamble de Clustering}
 El proceso de ensamble comienza obteniendo todos los archivos de etiquetas generados por el paso anterior. El resultado es una estructura Spark, con la misma estructura que los archivos físicos, pero en memoria y en todos los nodos del cluster Hadoop, con el fin de poder realizar el procesamiento de una forma eficiente y escalable.
 
-\bigskip El conjunto de etiquetas es agrupado por ID de pregunta, y se aplica una función de grupo que obtendrá una lista de tuplas o parejas  \((run\_id, cluster\_id)\). Con el fin de clarificar esta idea, se va a dar un ejemplo: Si se realizan 3 ejecuciones del algoritmo de clustering, cada una de ellas son representadas como archivos con formato CSV y procesada de manera distribuida. Cada uno de esos archivos generados para cada ejecución, contiene información del ID de ejecución y la asignación de cada una de las preguntas individuales a un cluster resultado. En el caso de PAM, cada identificador de cluster es un identificador real de una pregunta individual (o medoide desde la perspectiva algorítmica). En caso de que se realicen 3 ejecuciones, a modo de ejemplo, los archivos de etiqueta generados pueden representarse como se muestra en las Tablas \ref{tab:run1}, \ref{tab:run2} y \ref{tab:run3}, con identificadores de ejecución \(run\_uuid\_1\), \(run\_uuid\_2\) y \(run\_uuid\_3\), respectivamente.
+\bigskip El conjunto de etiquetas es agrupado por ID de pregunta, y se aplica una función de grupo que obtendrá una lista de tuplas o parejas  \((run\_uuid, cluster\_id)\). Con el fin de clarificar esta idea, se va a dar un ejemplo: Si se realizan 3 ejecuciones del algoritmo de clustering, cada una de ellas son representadas como archivos con formato CSV y procesada de manera distribuida. Cada uno de esos archivos generados para cada ejecución, contiene información del UUID de ejecución y la asignación de cada una de las preguntas individuales a un cluster resultado. En el caso de PAM, cada identificador de cluster es un identificador real de una pregunta individual (o medoide desde la perspectiva algorítmica). En caso de que se realicen 3 ejecuciones, a modo de ejemplo, los archivos de etiqueta generados pueden representarse como se muestra en las Tablas \ref{tab:run1}, \ref{tab:run2} y \ref{tab:run3}, con identificadores de ejecución \(run\_uuid\_1\), \(run\_uuid\_2\) y \(run\_uuid\_3\), respectivamente.
 
 \begin{table}[h!]
 	\footnotesize
@@ -51,13 +51,13 @@ El proceso de ensamble comienza obteniendo todos los archivos de etiquetas gener
 	\label{tab:run3}
 \end{table}
 
-Considerando \(run\_uuid\_1\), se puede observar que las preguntas 1, 2 y 3 fueron asignadas al cluster representado por la pregunta 1. En cambio, la pregunta 4 fue asignada a un cluster distinto, representado por la pregunta 3. La intuición para esta ejecución en particular, es que las preguntas 1, 2 y 3 son “más similares” entre sí, que la pregunta 4.
+Considerando \(run\_uuid\_1\), se puede observar que las preguntas 1, 2 y 3 fueron asignadas al cluster representado por la pregunta 1. En cambio, la pregunta 4 fue asignada a un cluster distinto, representado por ella misma. La intuición para esta ejecución en particular, es que las preguntas 1, 2 y 3 son “más similares” entre sí, que la pregunta 4.
 
-\bigskip En el siguiente paso, el conjunto de datos es agrupado por \(question\_id\), y se aplica una función de grupo que genera tuplas \((run\_id, cluster\_id)\). Para el ejemplo anterior resultaría tal como se muestra en la Tabla \ref{tab:tuplas}. La columna \(tuples\), contiene un arreglo de tuplas que indica, por cada pregunta individual, el conjunto de ocurrencias ejecución-cluster que fueron generadas a lo largo del experimento.
+\bigskip En el siguiente paso, el conjunto de datos es agrupado por \(question\_id\), y se aplica una función de grupo que genera tuplas \((run\_uuid, cluster\_id)\). Para el ejemplo anterior resultaría tal como se muestra en la Tabla \ref{tab:tuplas}. La columna \(tuples\), contiene un arreglo de tuplas que indica, por cada pregunta individual, el conjunto de ocurrencias ejecución-cluster que fueron generadas a lo largo del experimento.
 
 \begin{table}[h!]
 	\footnotesize
-	\caption{Conjunto de datos de asignación de clusters agrupados por pregunta individual para generación de tuplas \((run\_id, cluster\_id)\) .}
+	\caption{Conjunto de datos de asignación de clusters agrupados por pregunta individual para generación de tuplas \((run\_uuid, cluster\_id)\) .}
 	\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{2.0cm}>{\centering\arraybackslash}p{15cm}}
 		\toprule
 		\textbf{question\_id} & \textbf{tuples}                                          \\
@@ -99,10 +99,10 @@ La longitud de cada una de las listas indica la cantidad de veces que una pregun
 len(set(tuples_1).intersection(set(tuples_2))) / total_runs
 \end{python}
 
-Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coincidieron en el mismo cluster para una misma ejecución, y el denominador la cantidad total de ejecuciones, respondiendo a la fórmula:
+Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coincidieron en el mismo cluster para una misma ejecución, y el denominador la cantidad total de ejecuciones, respondiendo a la fórmula de Ensamble de Clustering de Acumulacion de Evidencias:
 \[C(i,j)=\frac{n_{ij}}{N}\]
 
-\bigskip Considerando el ejemplo en cuestión, el conjunto de datos resultado de aplicar la fórmula anterior se muestra en la Tabla \ref{tab:coasociacion}, que muestra la matriz de co-asociación de salida del proceso de ensamble de clustering. Esta matriz se compone de tres columnas, las dos primeras identifican a las preguntas y la tercera es la información de similaridad entre ellas.
+\bigskip Considerando el ejemplo en cuestión, el conjunto de datos resultado de aplicar la fórmula anterior se muestra en la Tabla \ref{tab:coasociacion}, que representa a la matriz de co-asociación de salida del proceso de ensamble de clustering. Esta matriz se compone de tres columnas, las dos primeras identifican a las preguntas y la tercera es la información de similaridad entre ellas.
 
 \begin{table}[h!]
 	\footnotesize
@@ -121,4 +121,4 @@ Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coi
 	\end{tabularx}
 	\label{tab:coasociacion}
 \end{table}
-Particularmente, la matriz de co-asociación mostrada en la Tabla \ref{tab:coasociacion}, indica que las preguntas 1 y 3 coincidieron en el \(100\%\) de las ejecuciones, mientras que las preguntas 1 y 2 solo en un tercio de las mismas, y las preguntas 1 y 4 nunca coincidieron.
+Particularmente, la matriz de co-asociación mostrada en la Tabla \ref{tab:coasociacion}, indica que las preguntas 1 y 3 coincidieron en el \(100\%\) de las ejecuciones, mientras que las preguntas 1 y 2 solo en un tercio de las mismas, y las preguntas 1 y 4 nunca coincidieron, indicadores que son tomados como la similaridad resultante del método propuesto.
