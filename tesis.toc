@@ -76,7 +76,7 @@
 \contentsline {subsection}{\numberline {4.5}Implementación en un sistema de recomendación de tiempo real}{69}{subsection.0.4.5}%
 \contentsline {subparagraph}{El proceso completo del sistema de recomendación}{70}{subparagraph*.20}%
 \contentsline {subsubsection}{\numberline {4.5.1}Arquitectura general}{70}{subsubsection.0.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Procesamiento batch}{71}{subsubsection.0.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.2}Procesamiento fuera de línea}{71}{subsubsection.0.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}Consulta de una pregunta existente}{74}{subsubsection.0.4.5.3}%
 \contentsline {subsubsection}{\numberline {4.5.4}Agregar una nueva pregunta}{75}{subsubsection.0.4.5.4}%
 \contentsline {subparagraph}{Cálculo de similaridad contra todas las preguntas del sitio}{76}{subparagraph*.27}%
@@ -118,11 +118,11 @@
 \contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{111}{paragraph.0.6.3.1.6}%
 \contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{112}{subsubsection.0.6.3.2}%
 \contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{112}{subsubsection.0.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{112}{subsubsection.0.6.3.4}%
+\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{113}{subsubsection.0.6.3.4}%
 \contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{113}{subsection.0.6.4}%
-\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{116}{subsection.0.6.5}%
-\contentsline {chapter}{Capitulo 7. Conclusiones}{120}{chapter*.83}%
-\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{120}{subsection.0.7.1}%
-\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{121}{subsection.0.7.2}%
-\contentsline {chapter}{Anexos}{124}{chapter*.84}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{132}{chapter*.86}%
+\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{117}{subsection.0.6.5}%
+\contentsline {chapter}{Capitulo 7. Conclusiones}{121}{chapter*.83}%
+\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{121}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{122}{subsection.0.7.2}%
+\contentsline {chapter}{Anexos}{125}{chapter*.84}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{133}{chapter*.86}%

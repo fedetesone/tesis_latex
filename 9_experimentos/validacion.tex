@@ -142,14 +142,14 @@ La problemática que se intenta resolver teniendo en cuenta todas las similarida
 	\\ 0 & si & S(q_1, q_2) < t
 \end{array} \right.\]
 
-La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor rendimiento, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Por ejemplo, tomando valores con intervalos \(0.05\) se forma un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\). Se itera cada uno de los valores de umbral en el arreglo generado y por cada uno de ellos:
+La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor rendimiento, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Por ejemplo, tomando valores potenciales de umbral con intervalos \(0.05\) se forma un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\) y se itera cada uno de ellos. Por cada uno de los valores en el arreglo:
 \begin{enumerate}
-	\item Se iteran todos los pares de preguntas.
+	\item Se iteran todos los pares de preguntas tomadas en cuenta, provenientes de la matriz de co-asociación.
 	\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
 	\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
-	\item Se calcula la proporción de pares de preguntas asignadas con true, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.
+	\item Se calcula la proporción de pares de preguntas asignadas con \textit{true}, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.
 \end{enumerate}
-El valor de umbral que arroje la mayor exactitud, será el utilizado para evaluar el desempeño del método, al construir la matriz de confusión.
+El valor de umbral que arroje la mayor exactitud, será el utilizado para evaluar el desempeño del método al construir la matriz de confusión.
 
 \bigskip Volviendo al ejemplo anterior, un umbral elegido de \(0.65\) aplicado a la Tabla \ref{tab:filtrado-validacion}, arrojaría el resultado de la Tabla \ref{tab:umbral-validacion-1} (el único par de preguntas que presenta una similaridad mayor al umbral es \((question\_10, question\_11)\), por lo cual se le asigna el valor 1). La Tabla \ref{tab:umbral-validacion-1}, muestra un resultado idéntico al conjunto de entrada, es decir, a la Tabla \ref{tab:muestra-validacion}. Lo anterior significa que los pares predichos son iguales a los pares reales. En otro caso, si el umbral que tiene mejor rendimiento fuese \(0.9\), el resultado obtenido luego del cómputo hubiese sido el de la Tabla \ref{tab:umbral-validacion-2}, el cual expone una diferencia entre el valor real y el predicho del par de preguntas \((question\_10, question\_11)\). Lo anterior denota el mayor rendimiento del umbral \(0.65\) contra el umbral \(0.9\) y su importancia en la elección del valor correcto.
 
@@ -218,14 +218,14 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 		\toprule
 		\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
 		\midrule
-		question\_10 & question\_20 & contenido & contenido & 1 \\
-		question\_11 & question\_21 & contenido & contenido & 1 \\
-		question\_12 & question\_22 & contenido & contenido & 0 \\
-		question\_13 & question\_23 & contenido & contenido & 1 \\
-		question\_14 & question\_24 & contenido & contenido & 1 \\
-		question\_15 & question\_25 & contenido & contenido & 0 \\
-		question\_16 & question\_26 & contenido & contenido & 0 \\
-		question\_17 & question\_27 & contenido & contenido & 1 \\
+		question\_id\_10 & question\_id\_20 &question\_10 & question\_20 & 1 \\
+		question\_id\_11 & question\_id\_21 & question\_11 & question\_21 & 1 \\
+		question\_id\_12 & question\_id\_22 & question\_12 & question\_22 & 0 \\
+		question\_id\_13 & question\_id\_23 & question\_13 & question\_23 & 1 \\
+		question\_id\_14 & question\_id\_24 & question\_14 & question\_24 & 1 \\
+		question\_id\_15 & question\_id\_25 & question\_15 & question\_25 & 0 \\
+		question\_id\_16 & question\_id\_26 & question\_16 & question\_26 & 0 \\
+		question\_id\_17 & question\_id\_27 & question\_17 & question\_27 & 1 \\
 		\bottomrule
 	\end{tabularx}
 	\label{tab:validacion-predichos}
