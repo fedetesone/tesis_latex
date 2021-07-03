@@ -49,6 +49,7 @@
 \usepackage{filecontents}
 \usepackage{tabularx,ragged2e,booktabs,caption}
 \usepackage{longtable}
+\usepackage{varwidth}
 
 \newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
 
@@ -240,6 +241,17 @@
 
 \renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
 
+\newenvironment{centerverbatim}{%
+	\par
+	\centering
+	\varwidth{\linewidth}%
+	\verbatim
+}{%
+	\endverbatim
+	\endvarwidth
+	\par
+}
+
 \begin{document}
 	\maketitle
 
@@ -248,6 +260,7 @@
 	\input{0_dedicatoria/dedicatoria}
 	\input{1_resumen/resumen}
 
+	\setcounter{tocdepth}{3}
 	\tableofcontents % Tabla de contenidos
 	\sloppy % Indica a LaTex que debe minimizar el corte de las palabras para pasar de una línea a otra.
 	% \mainmatter % para reiniciar numeración.

@@ -98,9 +98,8 @@ La longitud de cada una de las listas indica la cantidad de veces que una pregun
 \begin{python}
 len(set(tuples_1).intersection(set(tuples_2))) / total_runs
 \end{python}
-
-Siendo el numerador de la expresión, la cantidad de veces que dos preguntas coincidieron en el mismo cluster para una misma ejecución, y el denominador la cantidad total de ejecuciones, respondiendo a la fórmula de Ensamble de Clustering de Acumulacion de Evidencias:
-\[C(i,j)=\frac{n_{ij}}{N}\]
+El numerador de la expresión es la cantidad de veces que dos preguntas coincidieron en el mismo cluster para una misma ejecución, y el denominador la cantidad total de ejecuciones, respondiendo a la fórmula de Ensamble de Clustering de Acumulacion de Evidencias:
+\[C(i,j)=\frac{n_{ij}}{N}.\]
 
 \bigskip Considerando el ejemplo en cuestión, el conjunto de datos resultado de aplicar la fórmula anterior se muestra en la Tabla \ref{tab:coasociacion}, que representa a la matriz de co-asociación de salida del proceso de ensamble de clustering. Esta matriz se compone de tres columnas, las dos primeras identifican a las preguntas y la tercera es la información de similaridad entre ellas.
 
