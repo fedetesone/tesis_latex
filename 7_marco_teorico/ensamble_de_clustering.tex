@@ -34,14 +34,14 @@ donde \(d(x_i,x_j)\) es una medida de distancia genérica.
 \subsubsection{Ensamble de clustering}
 Distintos algoritmos de clustering producen distintos grupos de objetos, en forma de particiones de datos. Incluso, el mismo algoritmo con distintos parámetros, también produce distintos datos de salida \citep{xu2008clustering}. Además, las combinaciones de diferentes representaciones de datos, que no pueden ser localizadas en un espacio dimensional, pueden generar particiones de datos completamente diferentes. El Ensamble de Clustering, propone un método para extraer clusters consistentes dadas particiones variadas de entrada.
 
-\bigskip Dado un conjunto de datos de \(n\) objetos o patrones y \(d\) dimensiones, se aplican distintas técnicas de clustering a los mismos. Luego, usando Clustering de Acumulación de Evidencias (EAC), cada partición es vista como una evidencia independiente de organización de datos, las cuales se combinan, generando una nueva matriz de similaridad  \(n \times n\) entre los \(n\) patrones. La partición de datos final entre los \(n\) patrones es obtenida aplicando un algoritmo de clustering en la matriz de similaridad \citep{fred2005combining}.
+\bigskip Dado un conjunto de datos de \(n\) objetos o patrones y \(d\) dimensiones, se aplican distintas técnicas de clustering a los mismos. Luego, usando Clustering de Acumulación de Evidencias (EAC), cada partición es vista como una evidencia independiente de organización de datos, las cuales se combinan, generando una nueva matriz de similaridad \(n \times n\) entre los \(n\) patrones. La partición de datos final entre los \(n\) patrones es obtenida aplicando un algoritmo de clustering en la matriz de similaridad \citep{fred2005combining}.
 
 \bigskip Debido a la existencia de muchos algoritmos de clustering, y a la posibilidad de poder variar los mismos con distintos parámetros de entrada, es difícil encontrar un algoritmo o variación del mismo que produzca los resultados esperados, funcione con distintas formas de clusters y sea adecuado para distintos conjuntos de datos. Por lo contrario, esta variabilidad puede ser aprovechada para encontrar una estructura inter-patrón que represente a todas las técnicas tenidas en cuenta como entrada. Además, este método muestra que la combinación de distintos algoritmos, puede resultar en la identificación de clusters subyacentes con formas arbitrarias, tamaños y densidades.
 
 \paragraph{Definición formal}
 Dado \(X = \{x_1, x_2,... , x_n\}\) un conjunto de n objetos, y dada \(\chi = \{x_1, x_2,... , x_n\}\) como la representación de esos patrones; \(x_i\) puede ser definida por ejemplo sobre un espacio d-dimensional \(x_i \in \rm I\!R^2\), en el caso que adopte una representación vectorial, o \(X = x_{i1}, x_{i2},... , x_{im_i}\) en el caso que adopte una representación de cadena de texto, donde \(m_i\) es la longitud del mismo.
 
-Un algoritmo de clustering toma  como entrada y organiza los \(n\) patrones en \(k\) clusters, respondiendo a algunas medidas de similaridad entre los patrones, formando una partición de datos \(P\). Diferentes algoritmos de clustering producirán, en general, distintas particiones para el mismo conjunto de datos, tanto como en términos de número de patrones en un mismo cluster o en la cantidad de clusters. También es posible producir distintos resultados con el mismo algoritmo de clustering, ya sea, variando los parámetros de entrada o explorando distintas representaciones en los patrones \citep{fred2005combining}.
+\bigskip Un algoritmo de clustering toma  como entrada y organiza los \(n\) patrones en \(k\) clusters, respondiendo a algunas medidas de similaridad entre los patrones, formando una partición de datos \(P\). Diferentes algoritmos de clustering producirán, en general, distintas particiones para el mismo conjunto de datos, tanto como en términos de número de patrones en un mismo cluster o en la cantidad de clusters. También es posible producir distintos resultados con el mismo algoritmo de clustering, ya sea, variando los parámetros de entrada o explorando distintas representaciones en los patrones \citep{fred2005combining}.
 
 \bigskip Considerando \(N\) particiones de datos \(X\), y \(\rm I\!P\) la representación de las \(N\) particiones, definimos Ensamble de Clustering como:
 \[\rm I\!P = \{P^1, P^2, ..., P^N\}\]
@@ -49,7 +49,7 @@ Un algoritmo de clustering toma  como entrada y organiza los \(n\) patrones en \
 \[.\]
 \[.\]
 \[P^N = \{C^N_1, C^N_2, ..., C^N_{kN}\}\]
-donde \(C^i_j\) es el cluster número \(j\) en la partición de datos \(P_i\), la cual tiene \(k_i\) clusters, y \(n^i_j\) es la cardinalidad  \(C^i_j\).
+donde \(C^i_j\) es el cluster número \(j\) en la partición de datos \(P_i\), la cual tiene \(k_i\) clusters, y \(n^i_j\) es la cardinalidad \(C^i_j\).
 
 \bigskip El problema es encontrar la partición de datos “óptima”, \(P^*\), usando la información disponible en \(N\) particiones de datos \(\rm I\!P = \{P^1, P^2, ..., P^N\}\). Definimos \(k^*\), como el número de clusters en \(P^*\). Idealmente, \(P^*\) debe satisfacer las siguientes propiedades:
 
