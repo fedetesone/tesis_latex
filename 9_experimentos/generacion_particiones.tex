@@ -78,9 +78,8 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 \end{table}
 
 Si se piensa el subconjunto de datos de la Tabla \ref{tab:matriz-similaridad} en forma de matriz, en lugar de estructura de tabla, al calcular la distancia de cada una de las filas, se estaría formando una \textit{matriz triangular superior}, en la cual cada uno de los elementos es la distancia entre un par de preguntas:
-\[\begin{bmatrix}0 & similarity\_01 & similarity\_02 & similarity\_03 \\ 0 & 0 & similarity\_12 & similarity\_13 \\ 0 & 0 & 0 & similarity\_23 \\ 0 & 0 & 0 & 0 \end{bmatrix}\]
-
-\bigskip La estructura de tabla, en lugar de una estructura matricial como la anterior, es utilizada por cuestiones de tecnología. Al utilizarse Python, Apache Spark y el sistema de archivos, es posible generar archivos delimitados por comas (archivos CSV) utilizando el soporte nativo que poseen las tecnologías anteriormente mencionadas. Adicionalmente, esto posibilitó crear particiones de datos de manera sencilla y procesarlas de forma distribuida.
+\[\begin{bmatrix}0 & similarity\_01 & similarity\_02 & similarity\_03 \\ 0 & 0 & similarity\_12 & similarity\_13  \\ 0 & 0  & 0 & similarity\_23  \\ 0 & 0 & 0 & 0 \end{bmatrix}.\]
+La estructura de tabla, en lugar de una estructura matricial como la anterior, es utilizada por cuestiones de tecnología. Al utilizarse Python, Apache Spark y el sistema de archivos, es posible generar archivos delimitados por comas (archivos CSV) utilizando el soporte nativo que poseen las tecnologías anteriormente mencionadas. Adicionalmente, esto posibilitó crear particiones de datos de manera sencilla y procesarlas de forma distribuida.
 
 \subsubsection{Clustering y etiquetado}
 Una vez que las similaridades son calculadas en forma distribuida los resultados se almacenan y son colectados para realizar un etiquetado a partir de un análisis de clustering.

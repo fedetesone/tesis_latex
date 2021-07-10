@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="473c5799-2a9f-4442-895a-c6fe2e3f7d84" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/presentacion/1_introduccion/introduccion.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/2_fundamentacion/fundamentacion.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/3_marco_teorico/marco_teorico.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/4_problema_investigacion/problema_investigacion.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/5_experimentos/experimentos.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/6_resultados/resultados.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/7_conclusiones/conclusiones.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/main.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/main.tex" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/presentacion/main.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/10_resultados/otras_observaciones.tex" beforeDir="false" afterPath="$PROJECT_DIR$/10_resultados/otras_observaciones.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/5_introduccion/introduccion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/5_introduccion/introduccion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_marco_teorico/big_data.tex" beforeDir="false" afterPath="$PROJECT_DIR$/7_marco_teorico/big_data.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_marco_teorico/ensamble_de_clustering.tex" beforeDir="false" afterPath="$PROJECT_DIR$/7_marco_teorico/ensamble_de_clustering.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/7_marco_teorico/medidas_distancia.tex" beforeDir="false" afterPath="$PROJECT_DIR$/7_marco_teorico/medidas_distancia.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_problema_investigacion/arquitectura_procesamiento.tex" beforeDir="false" afterPath="$PROJECT_DIR$/8_problema_investigacion/arquitectura_procesamiento.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_problema_investigacion/hipotesis.tex" beforeDir="false" afterPath="$PROJECT_DIR$/8_problema_investigacion/hipotesis.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_problema_investigacion/implementacion_rs.tex" beforeDir="false" afterPath="$PROJECT_DIR$/8_problema_investigacion/implementacion_rs.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_problema_investigacion/metodo_propuesto.tex" beforeDir="false" afterPath="$PROJECT_DIR$/8_problema_investigacion/metodo_propuesto.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/8_problema_investigacion/metodologia_investigacion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/8_problema_investigacion/metodologia_investigacion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_experimentos/ensamble_clustering.tex" beforeDir="false" afterPath="$PROJECT_DIR$/9_experimentos/ensamble_clustering.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_experimentos/generacion_particiones.tex" beforeDir="false" afterPath="$PROJECT_DIR$/9_experimentos/generacion_particiones.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/9_experimentos/validacion.tex" beforeDir="false" afterPath="$PROJECT_DIR$/9_experimentos/validacion.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesis.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/tesis.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesis.tex" beforeDir="false" afterPath="$PROJECT_DIR$/tesis.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tesis.toc" beforeDir="false" afterPath="$PROJECT_DIR$/tesis.toc" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1v8dnVMmtoldRxaPqRVhIWXiiN6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SshConsoleOptionsProvider">
+    <option name="myEncoding" value="UTF-8" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="473c5799-2a9f-4442-895a-c6fe2e3f7d84" name="Default Changelist" comment="" />
+      <created>1625947816746</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625947816746</updated>
+      <workItem from="1625947819696" duration="2114000" />
+      <workItem from="1625950280180" duration="1152000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

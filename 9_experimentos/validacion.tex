@@ -79,10 +79,10 @@ Una matriz de confusión, es una matriz que muestra clasificaciones predichas y 
 
 Los indicadores de desempeño que se evaluaron en los experimentos realizados con fines comparativos, son los siguientes:
 \begin{itemize}
-	\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\)
-	\item \textbf{Error:} \((b+c)/(a+b+c+d)\)
+	\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\).
+	\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
 \end{itemize}
-donde \(a+b+c+d=1\).
+En estos indicadores se cumple la condición \(a+b+c+d=1\).
 
 \paragraph{Preparación de los datos}
 Para evaluar el rendimiento del algoritmo de ensamble, se toma la matriz de co-asociación generada como resultado del proceso total y la muestra de pares de preguntas que se utilizó como entrada para ese proceso. Por ejemplo, se considera la muestra de preguntas de la Tabla \ref{tab:muestra-validacion}, la cual muestra dos pares de preguntas (\(123004\) y \(98776\) - 4 preguntas en total) con su identificador de par y un indicador en la columna \(equal\), que tiene dos valores posibles: 1 (preguntas iguales) y 0 (preguntas distintas). Por otro lado, en la Tabla \ref{tab:coasociacion-validacion}, se muestra la matriz de co-asociación generada, por el método EQuAL, a partir de la Tabla \ref{tab:muestra-validacion}, teniendo en cuenta todas las combinaciones tomadas de a 2 de las 4 preguntas originales, para las cuales se agrega la similaridad entre pares, en la columna similarity. Por último, se filtran solo los pares de preguntas de la matriz de co-asociación que se encuentran en la Tabla \ref{tab:muestra-validacion}, ya que son las únicas con la cual su similaridad puede compararse con fines de validación, es decir, el conjunto de datos mostrado en la Tabla \ref{tab:filtrado-validacion}. Lo que nos deja con un conjunto de pares de preguntas que es posible comparar en su totalidad con la muestra original.
@@ -140,7 +140,7 @@ Ya se realizaron los cálculos de similaridad, los algoritmos de clustering y la
 La problemática que se intenta resolver teniendo en cuenta todas las similaridades obtenidas a partir del ensamble de clustering es ¿Cuándo consideramos a esas preguntas iguales y cuándo no? La respuesta es simple, cuando la similaridad \(S\) entre un par de preguntas (\(q_1,q_2)\) es igual o superior a cierto umbral \(t\) se considera que son iguales (1) y distintas si sucede lo contrario (0), clarificando:
 \[f(x) = \left\{ \begin{array}{lcc} 1 & si & S(q_1, q_2)\geq t
 	\\ 0 & si & S(q_1, q_2) < t
-\end{array} \right.\]
+\end{array} \right..\]
 
 La elección del mejor umbral, se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor rendimiento, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Por ejemplo, tomando valores potenciales de umbral con intervalos \(0.05\) se forma un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\) y se itera cada uno de ellos. Por cada uno de los valores en el arreglo:
 \begin{enumerate}
