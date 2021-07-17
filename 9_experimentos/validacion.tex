@@ -189,7 +189,7 @@ El valor de umbral que arroje la mayor exactitud, será el utilizado para evalua
 \paragraph{Construcción de las matrices de confusión}
 Con el fin de poder ilustrar cómo se construyen las matrices de confusión a partir de la comparación de los conjuntos de datos, se utilizará el siguiente ejemplo. Supongamos que el conjunto de datos de entrada es el que se muestra en la Tabla \ref{tab:validacion-reales}, Y el resultado obtenido luego de la elección del mejor umbral, es la Tabla \ref{tab:validacion-predichos}. Por lo cual, comparando los valores de la columna “equal", obtendremos el resultado de la Tabla \ref{tab:validacion-comparacion}. Sumarizando los resultados, la matriz de confusión derivada se muestra en la Tabla \ref{tab:validacion-confusion-ejemplo}. La exactitud obtenida a partir de este conjunto de datos y la ejecución hipotética del método es \(0.75\) (y por lo tanto, el error es \(0.25\)).
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 	\footnotesize
 	\centering
 	\caption{Ejemplo de conjunto de datos de entrada (reales) para validación.}
@@ -210,7 +210,7 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 	\label{tab:validacion-reales}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 	\footnotesize
 	\centering
 	\caption{Ejemplo de conjunto de datos de predichos por el método EQuAL.}
@@ -231,7 +231,7 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 	\label{tab:validacion-predichos}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 	\footnotesize
 	\centering
 	\caption{Resultado de comparación de las tablas \ref{tab:validacion-reales} y \ref{tab:validacion-predichos} para validación y construcción de matrices de confusión.}
@@ -252,7 +252,7 @@ Con el fin de poder ilustrar cómo se construyen las matrices de confusión a pa
 	\label{tab:validacion-comparacion}
 \end{table}
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 	\footnotesize
 	\centering
 	\caption{Matriz de confusión obtenida a partir de la comparación de las tablas \ref{tab:validacion-reales} y \ref{tab:validacion-predichos}.}
