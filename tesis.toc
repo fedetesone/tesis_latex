@@ -78,14 +78,14 @@
 \contentsline {subsubsection}{\numberline {4.5.1}Arquitectura general}{74}{subsubsection.0.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.2}Procesamiento fuera de línea}{75}{subsubsection.0.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}Consulta de una pregunta existente}{77}{subsubsection.0.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}Agregar una nueva pregunta}{78}{subsubsection.0.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.4}Agregar una nueva pregunta}{79}{subsubsection.0.4.5.4}%
 \contentsline {subparagraph}{Cálculo de similaridad contra todas las preguntas del sitio}{80}{subparagraph*.28}%
-\contentsline {subparagraph}{Búsqueda de vecinos cercanos con representaciones vectoriales}{80}{subparagraph*.29}%
+\contentsline {subparagraph}{Búsqueda de vecinos cercanos con representaciones vectoriales}{81}{subparagraph*.29}%
 \contentsline {subparagraph}{Modelos de scoring}{81}{subparagraph*.30}%
-\contentsline {subsubsection}{\numberline {4.5.5}Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}{81}{subsubsection.0.4.5.5}%
+\contentsline {subsubsection}{\numberline {4.5.5}Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}{82}{subsubsection.0.4.5.5}%
 \contentsline {chapter}{Capitulo 5. Experimentos}{83}{chapter*.31}%
 \contentsline {subsection}{\numberline {5.1}Estado del arte}{83}{subsection.0.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Medidas de desempeño y error}{84}{subsubsection.0.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Medidas de rendimiento y error}{84}{subsubsection.0.5.1.1}%
 \contentsline {subsection}{\numberline {5.2}Preprocesamiento del conjunto de datos}{85}{subsection.0.5.2}%
 \contentsline {subsection}{\numberline {5.3}Muestreo del conjunto de datos}{86}{subsection.0.5.3}%
 \contentsline {subsection}{\numberline {5.4}Generación de particiones}{87}{subsection.0.5.4}%

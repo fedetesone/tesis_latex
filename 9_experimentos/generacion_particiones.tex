@@ -1,6 +1,6 @@
 \subsection{Generación de particiones}
 \subsubsection{Cálculo de similaridades}
-Se generaron particiones desde los subconjuntos de muestreos generados desde el conjunto de datos original. Teniendo en cuenta que se utilizó un algoritmo de clustering para desarrollar el método de este trabajo, fue necesario descomponer la estructura de los archivo de entrada, el cual contiene un identificador por par de preguntas, en preguntas individuales, con el fin de poder identificarlas unívocamente y utilizarlas como los objetos de entrada del análisis de clustering. La estructura de los subconjuntos de muestreo se clarifica en la Tabla \ref{tab:archivo-entrada}. Cada una de las filas contiene un identificador secuencial \(sequence\_id\), el identificador de par de preguntas proveniente del conjunto de datos original \(question\_pair\_id\), y las dos preguntas correspondientes \(question\_1\) y \(question\_2\).
+Se generaron particiones desde los subconjuntos de muestreos generados desde el conjunto de datos original. Teniendo en cuenta que se utilizó un algoritmo de clustering para desarrollar el método de este trabajo, fue necesario descomponer la estructura de los archivos de entrada ---el cual contiene un identificador por cada par de preguntas--- en preguntas individuales, con el fin de poder identificarlas unívocamente y utilizarlas como los objetos de entrada del análisis de clustering. La estructura de los subconjuntos de muestreo se clarifica en la Tabla \ref{tab:archivo-entrada}. Cada una de las filas contiene un identificador secuencial \(sequence\_id\), el identificador de par de preguntas proveniente del conjunto de datos original \(question\_pair\_id\), y las dos preguntas correspondientes \(question\_1\) y \(question\_2\).
 
 \begin{table}[h!]
 	\footnotesize
@@ -18,7 +18,7 @@ Se generaron particiones desde los subconjuntos de muestreos generados desde el 
 
 Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de distancia fue generado de la siguiente forma:
 \begin{enumerate}
-	\item Se crea una matriz con la unión de las columnas \(question\_1\) y \(question\_2\), generando una fila por cada pregunta individual y un número secuencial que las identificará. Como se muestra en la Tabla \ref{tab:preguntas-individuales}.
+	\item Se crea una matriz con la unión de las columnas \(question\_1\) y \(question\_2\), generando una fila por cada pregunta individual y un número secuencial que las identifica, como se muestra en la Tabla \ref{tab:preguntas-individuales}.
 	\item Se realiza una combinación de cada una de las filas contra la matriz en sí misma (eliminando resultados repetidos).
 \end{enumerate}
 
@@ -56,7 +56,7 @@ Luego, el conjunto el subconjunto de preguntas preparado para el cálculo de dis
 	\label{tab:matriz-triangular}
 \end{table}
 
-\bigskip La Tabla \ref{tab:matriz-triangular} muestra en la combinación de todas las preguntas individuales de la muestra, utilizando el identificador de secuencia y el contenido de cada una de ellas. Esta estructura sirve de entrada para el cálculo de similaridad para cada una de las técnicas previamente mencionadas. Consecuentemente, es posible realizar un cálculo de similaridad entre las dos preguntas que pertenecen a una misma fila, y agregar esta información a la estructura de datos anterior. La Tabla \ref{tab:matriz-similaridad} posee la misma estructura que la Tabla \ref{tab:matriz-triangular}, con el agregado del valor de similaridad entre el par de preguntas de cada una de las filas, en la columna \(similarity\).
+\bigskip La Tabla \ref{tab:matriz-triangular} da un ejemplo de la combinación de todas las preguntas individuales de la muestra, utilizando el identificador de secuencia y el contenido de cada una de ellas. Esta estructura sirve de entrada para el cálculo de similaridad para cada una de las técnicas previamente mencionadas. Consecuentemente, es posible realizar un cálculo de similaridad entre las dos preguntas que pertenecen a una misma fila, y agregar esta información a la estructura de datos anterior. La Tabla \ref{tab:matriz-similaridad} posee la misma estructura que la Tabla \ref{tab:matriz-triangular}, con el agregado del valor de similaridad entre el par de preguntas de cada una de las filas, en la columna \(similarity\).
 
 \bigskip
 \begin{table}[h!]

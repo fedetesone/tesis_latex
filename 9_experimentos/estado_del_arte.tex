@@ -1,10 +1,10 @@
 \subsection{Estado del arte}
-El proyecto en el cual se realizaron los experimentos que este trabajo tiene como estado del arte, es un proyecto basado en código Python que se puede encontrar en el siguiente repositorio GitHub \url{https://github.com/Departamento-Sistemas-UTNFRRO/text_comparison}.
+El proyecto en el cual se realizaron los experimentos que este trabajo tiene como principal estado del arte, es un proyecto basado en código Python que se puede encontrar en el siguiente repositorio GitHub \url{https://github.com/Departamento-Sistemas-UTNFRRO/text_comparison}.
 
-\bigskip Tiene como características principales la utilización de los 5 algoritmos de similaridad mencionados anteriormente (y evaluados a continuación) y la ejecución de cada uno de ellos en el marco de un patrón master-worker en un solo microprocesador. Este patrón es utilizado para el procesamiento paralelo, en el cual una tarea es enviada a cada uno de los “workers” para ser procesada. En este caso en particular, la cantidad de “workers” es fija y especificada como un parámetro en tiempo de ejecución.
+\bigskip Este proyecto tiene como características principales la utilización de los 5 algoritmos de similaridad mencionados anteriormente (y evaluados a continuación) y la ejecución de cada uno de ellos en el marco de un patrón master-worker en un solo microprocesador. Este patrón es utilizado para el procesamiento paralelo, en el cual una tarea es enviada a cada uno de los “workers” para ser procesada. En este caso en particular, la cantidad de “workers” es fija y especificada como un parámetro en tiempo de ejecución.
 
-\subsubsection{Medidas de desempeño y error}
-Utilizando cada par de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad, a través del método de validación explicado en la sección \ref{estructurasconfusion}. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
+\subsubsection{Medidas de rendimiento y error}
+Utilizando cada par de preguntas del conjunto de datos original, se calculó la matriz de confusión para cada uno de los algoritmos de similaridad\footnote{El método de validación será explicado con más detalle en la sección \ref{estructurasconfusion}.}. Como se puede ver en la Tabla \ref{tab:desempeno-estado-del-arte}.
 
 \begin{table}[h!]
 	\footnotesize
@@ -94,10 +94,11 @@ Utilizando cada par de preguntas del conjunto de datos original, se calculó la 
 	\label{tab:desempeno-estado-del-arte}
 \end{table}
 
-\bigskip Los resultados porcentuales de las matrices de confusión se muestran en cada intersección de filas y columnas. Los resultados reales se muestran en las filas, siendo los dos posibles 0, cuando las preguntas son distintas y 1 cuando las preguntas son iguales. Los resultados predichos, se muestran en las columnas.
-La exactitud obtenida de las matrices de confusión, que se calcula como la suma de los resultados acertados entre los valores predichos y reales, en todos los casos exceden el \(66\%\), alcanzando un máximo de \(67.97\% \) para Semantic Distance. Por otro lado, con respecto al error promedio, se llega a un valor máximo de \(33.15\%\) en el caso de TF/IDF.
+\bigskip Los resultados porcentuales de las matrices de confusión se muestran en cada intersección de filas y columnas. Los resultados reales se muestran en las filas, siendo \(0\) cuando las preguntas son distintas y \(1\) cuando las preguntas son iguales. Los resultados predichos se muestran en las columnas.
 
-\bigskip Observando las matrices de confusión, se presenta un desbalance en los dos valores tomados para calcular la exactitud, siendo que los resultados obtenidos para la clase “0” considerablemente mejores que para la clase “1”. Por ejemplo, el desbalance más grande se encuentra en la matriz de confusión de FastText, el cual es \(0.5033 – 0.1692 = 0.334\). Este tipo de desbalance puede ser originado por la distribución del conjunto de datos de entrada (\(36.9\%\) pares de preguntas son clase 1 y el \(63.1\%\) restante es clase 0), el cual pretende ser corregido con un método de muestreo explicado más adelante.
+\bigskip La exactitud obtenida a partir de las matrices de confusió ---que se calcula como la suma de los resultados acertados entre los valores predichos y reales--- en todos los casos excede el \(66\%\), alcanzando un máximo de \(67.97\% \) para Semantic Distance. Por otro lado, con respecto al error promedio, se llega a un valor máximo de \(33.15\%\) en el caso de TF/IDF.
+
+\bigskip Observando las matrices de confusión, se presenta un desbalance en los dos valores tomados para calcular la exactitud, siendo que los resultados obtenidos para la clase “0” considerablemente mejores que para la clase “1”. Por ejemplo, el desbalance más grande se encuentra en la matriz de confusión de FastText, el cual es \(0.5033 – 0.1692 = 0.334\). Este tipo de desbalance puede ser originado por la distribución del conjunto de datos de entrada (\(36.9\%\) pares de preguntas son clase 1 y el \(63.1\%\) restante es clase 0), el cual pretende ser corregido con un método de muestreo que será explicado más adelante.
 
 
 

@@ -1,6 +1,6 @@
 \subsection{Preprocesamiento del conjunto de datos}
 
-La calidad de un conjunto de datos del mundo real depende del número de errores que contenga. Los errores de entrada de datos, tanto simples como complejos, son muy frecuentes, más allá de las validaciones que se les hayan realizado a los mismos \citep{maletic2000data}. Además de los errores de datos, que es necesario eliminarlos, también es crucial preprocesar los mismos con el fin de estandarizar algunos factores y así obtener mejores resultados.
+La calidad de un conjunto de datos del mundo real depende del número de errores que contenga. Los errores de entrada de datos, tanto simples como complejos, son muy frecuentes, más allá de las validaciones que se les hayan realizado a los mismos \citep{maletic2000data}. Además de los errores de datos, que es necesario eliminar, también es crucial preprocesar los mismos con el fin de generar un conjunto de datos homogéneo y así obtener mejores resultados.
 
 \bigskip Para el conjunto de datos de preguntas del sitio web Quora, se realizaron los siguientes trabajos de preprocesamiento:
 
@@ -11,7 +11,7 @@ La calidad de un conjunto de datos del mundo real depende del número de errores
 	\item Eliminar caracteres especiales, ya que los datos deben ser uniformes. Un signo de exclamación o de pregunta no cambiaría la semántica de la pregunta (desde la perspectiva del análisis de similaridad) y agregaría ruido al momento de procesarlas.
 \end{enumerate}
 
-Para resumir, cada una de las preguntas, será parámetro de una función que aplica las técnicas anteriormente mencionadas, tal como la que se muestra en el fragmento de codigo \ref{lst:funcion-limpieza}. El fragmento de código, muestra un ejemplo de función de limpieza aplicada en código Python. La misma es definida en la línea 1, con un parámetro “text” de entrada. Este parámetro es enviado a las distintas funciones que realizan cada uno de los trabajos de preprocesamiento: transformación a minúsculas, eliminación de fórmulas, reemplazo de números, y eliminación de caracteres especiales, en las líneas 2, 3, 4, y 5 respectivamente. Luego, en la línea 7 se retorna el resultado con todas las transformaciones aplicadas.
+Para resumir, cada una de las preguntas será parámetro de una función que aplica las técnicas anteriormente mencionadas, tal como la que se muestra en el Fragmento de codigo \ref{lst:funcion-limpieza}. El fragmento de código muestra un ejemplo de función de limpieza aplicada en código Python. La misma es definida en la línea 1, con un parámetro “text” de entrada. Este parámetro es enviado a las distintas funciones que realizan cada uno de los trabajos de preprocesamiento: transformación a minúsculas, eliminación de fórmulas, reemplazo de números, y eliminación de caracteres especiales, en las líneas 2, 3, 4, y 5 respectivamente. Luego, en la línea 7 se retorna el resultado con todas las transformaciones aplicadas.
 
 \bigskip
 
@@ -38,4 +38,4 @@ i: Would you switch from Canon 6D to Leica D-LUX 109?
 o: would you switch from canon six d to leica d-lux one zero nine
 \end{verbatim}
 
-En el primer ejemplo, es posible ver cómo se elimina la fórmula polinómica, mientras que en el segundo, todos los números fueron transformados a letras, con espacios entre ellos. En ambas, se puede ver que el signo de interrogación se elimina y se transforman todas las palabras a minúscula.
+En el primer ejemplo, es posible ver cómo se elimina la fórmula polinómica, mientras que en el segundo, todos los números fueron transformados a letras, con espacios entre ellos. En ambos, se puede ver que el signo de interrogación se elimina y se transforman todas las palabras a minúscula.
