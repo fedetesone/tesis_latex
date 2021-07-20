@@ -84,12 +84,12 @@ La \textit{distancia del coseno} es posiblemente la que se aplica en mayor frecu
 
 \bigskip Particularmente en IR, es de interés el intervalo \([0, 1]\) ya que todos los componentes de un vector que representa a un documento, son no negativos. De esta interpretación, se deriva la definición de la distancia del coseno, restando la medida del coseno de su máximo valor:
 \[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}},\]
-donde \(1 \leq i,j \leq n\). Los símbolos \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) son documentos en forma de vectores y \(d_c\) es la distancia entre ellos.
+donde \(1 \leq i,j \leq n\) siendo \(n\) la cantidad de vectores en el corpus. Los símbolos \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) son documentos en forma de vectores y \(d_c\) es la distancia entre ellos.
 
 \bigskip Para simplificar, y teniendo en cuenta que estamos hablando de documentos en forma de vectores, la distancia del coseno se puede derivar de la fórmula del \textit{producto escalar} (producto punto). Siendo \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) dos documentos en forma de vectores, se define el producto escalar entre ellos, como:
 \[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
 siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos. Entonces:
-\[cos(\theta) = \frac{\vec{D}_i.\vec{D}_j}{\left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|}=\frac{\sum_{i=1}^{n}{{d_i}_i{d_j}_i}}{\sqrt{\sum_{i=1}^{n}{{d_i}_i^{2}}}\sqrt{\sum_{i=1}^{n}{{d_j}_i^{2}}}},\]
+\[cos(\theta) = \frac{\vec{D}_i.\vec{D}_j}{\left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|},\]
 donde \(d_i\) y \(d_j\) son los componentes de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente.
 
 \subsubsection{Term Frequency}
