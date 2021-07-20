@@ -84,10 +84,10 @@ La estructura de tabla, en lugar de una estructura matricial como la anterior, e
 \subsubsection{Clustering y etiquetado}
 Una vez que las similaridades son calculadas en forma distribuida los resultados se almacenan y son colectados para realizar un etiquetado a partir de un análisis de clustering.
 
-\bigskip El algoritmo elegido fue Clustering de Partición Alrededor de Medoids (PAM) como forma de “etiquetar” cada una de las preguntas en un determinado cluster, por cada una de las ejecuciones. El motivo de esta elección es porque los elementos no pueden representarse de forma directa en un espacio dimensional, dado que se comparan elementos de texto. Por esta razón, se usa un método que pueda recibir una matriz de similaridad como entrada, y los medoides son elementos reales que se encuentran en el conjunto de datos original. Se implementó de la forma que se describe a continuación.
+\bigskip El algoritmo elegido fue Clustering de Partición Alrededor de Medoides (PAM) como forma de “etiquetar” cada una de las preguntas como pertenecientes a un determinado cluster, por cada una de las ejecuciones. El motivo de esta elección es porque los elementos no pueden representarse de forma directa en un espacio dimensional, dado que se comparan elementos de texto. Por esta razón, se usa un método que pueda recibir una matriz de similaridad como entrada, y los medoides son elementos reales que se encuentran en el conjunto de datos original. Se implementó de la forma que se describe a continuación.
 
 \paragraph{Entrada y configuración inicial}
-Como entrada fue utilizada la matriz de similaridad resultado del paso anterior, que servirá para obtener las distancias precalculadas entre cada uno de los elementos que participan en el proceso clustering. Además, en otro arreglo en memoria, se utilizó el conjunto de preguntas individuales con un identificador secuencial, con el fin de facilitar el algoritmo, tal como se muestra en la Tabla \ref{tab:preguntas-individuales}.
+Como entrada fue utilizada la matriz de similaridad resultado del paso anterior, que sirve para obtener las distancias precalculadas entre cada uno de los elementos que participan en el proceso de clustering. Además, en otro arreglo en memoria, se utilizó el conjunto de preguntas individuales con un identificador secuencial, con el fin de facilitar el algoritmo, tal como se muestra en la Tabla \ref{tab:preguntas-individuales}.
 
 \bigskip Por cada una de las corridas de clustering (parámetro de configuración) se proporciona un \(k\) inicial, que representa al número de clusters (o medoides) que define el algoritmo, y en los cuales las preguntas son distribuidas (proceso de etiquetado); y además, son identificadas con un identificador único universal (UUID\footnote{Identificador único universal \url{https://es.wikipedia.org/wiki/Identificador\_\%C3\%BAnico_universal}} por sus siglas en inglés) con el fin de poder recuperar cada uno de los resultados cuando se realice el ensamble de Clustering de cada una de estas ejecuciones.
 
@@ -95,7 +95,7 @@ Como entrada fue utilizada la matriz de similaridad resultado del paso anterior,
 Como se mencionó anteriormente, el algoritmo PAM tiene dos etapas, denominadas BUILD y SWAP. Por motivos de rendimiento y simplicidad, los experimentos fueron realizados solo utilizando la etapa BUILD para construir cada uno de los clusters. El algoritmo realiza una cantidad de iteraciones máxima (parámetro configurable), y por cada una de ellas se realiza el proceso descrito a continuación.
 
 \subparagraph{Generación de etiquetas}
-La generación de etiquetas significa asignar un medoide a una pregunta en particular, con el objetivo del armado de clusters.
+La generación de etiquetas significa asignar un medoide a una pregunta en particular, con el objetivo del armado de clusters. Como cada medoide es exclusivamente representativo de un cluster, la asignación de un medoide a una pregunta es equivalente a la asignación de la pregunta al cluster correspondiente.
 \begin{enumerate}
 	\item Se obtiene su similaridad con cada uno de los medoides. Para esto, se busca cada par de preguntas en una de las matrices de similaridad generadas por el paso anterior.
 	\item Se asigna la pregunta al medoide (cluster) en la cual su similaridad es máxima.
