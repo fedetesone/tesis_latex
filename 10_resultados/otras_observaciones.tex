@@ -15,7 +15,7 @@ Por lo mencionado, se plantean estas pruebas de hipótesis para cada variable en
 
 \bigskip El análisis de medias de error a continuación se realizará comparando el método EQuAL contra los métodos del estado del arte (uno a uno), para un tamaño de muestra determinado. Para tal fin, se utiliza el método de Tukey para crear intervalos de confianza para todas las diferencias de medias, en parejas. Por lo anterior, es necesario el énfasis especial es el método EQuAL realizando comparaciones específicas mediante pares, contra cada una de las técnicas del estado del arte \citep{abdi2010tukey}. Filtrando las comparaciones uno a uno en las cuales se encuentra el método EQuAL, es posible saber cómo se comporta. Si las medias de error no tienen diferencias significativas en términos estadísticos, esto significa que no existe una diferencia estadísticamente significativa entre el método EQuAL y los restantes métodos del estado del arte. Con lo cual se concluye que, al menos, el método presentado es apto para la generación de medidas de similaridad a partir del conjunto de datos en estudio, y su consecuente aplicación en RS.
 
-\bigskip A continuación, se muestran los métodos Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\% (\alpha=0.05)\).
+\bigskip A continuación, se muestran los métodos Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\% (\alpha=0.05)\). Cada una de las las salidas de R comparan el método EQuAL (referenciado mediante “ensamble”) contra las medidas del estado del arte. Para cada una de las filas se visualiza: la diferencia de medias (diff), un intervalo de confianza de 95\% (lrw y upr), y los p-valores ajustados (p adj). La interpretación se reduce a que si los intervalos de confianza incluyen al valor \(0\) o \(p{-}adj > \alpha\), la diferencia del par analizado no es significativa.
 
 \paragraph{Tamaño de muestra de 100 pares de preguntas}
 \begin{rc}
@@ -34,7 +34,7 @@ w2v-ensemble     0.013 -0.0539175 0.0799175 0.9923331
 	\label{fig:anova100}
 \end{figure}
 
-\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova100} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 100. En la misma, se puede visualizar que el método EQuAL posee el menor valor de error para una ejecución individual en particular, representado por el bigote inferior.
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\). La Figura \ref{fig:anova100} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 100. En la misma, se puede visualizar que el método EQuAL posee el menor valor de error para una ejecución individual en particular, representado por el bigote inferior.
 
 \bigskip
 \paragraph{Tamaño de muestra de 500 pares de preguntas}
@@ -54,7 +54,7 @@ w2v-ensemble     0.0106 -0.007871384 0.029071384 0.5407045
 	\label{fig:anova500}
 \end{figure}
 
-\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova500} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 500. En la misma, se puede visualizar que el método EQuAL posee el menor valor de error para una ejecución individual en particular, representado por el bigote inferior.
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\). La Figura \ref{fig:anova500} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 500. En la misma, se puede visualizar que el método EQuAL posee el menor valor de error para una ejecución individual en particular, representado por el bigote inferior.
 
 \bigskip
 \paragraph{Tamaño de muestra de 1000 pares de preguntas}
@@ -74,7 +74,7 @@ w2v-ensemble    -0.0155 -0.037161633 0.006161633 0.2956972
 	\label{fig:anova1000}
 \end{figure}
 
-\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova1000} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 1000.
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\). La Figura \ref{fig:anova1000} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 1000.
 
 \bigskip
 \paragraph{Tamaño de muestra de 1500 pares de preguntas}
@@ -94,7 +94,7 @@ w2v-ensemble    -0.0062000000 -2.269419e-02 0.010294187 0.8729702
 	\label{fig:anova1500}
 \end{figure}
 
-\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p-adj > \alpha\). La Figura \ref{fig:anova1500} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 1500.
+\bigskip El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos. En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\). La Figura \ref{fig:anova1500} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 1500.
 
 \bigskip
 \paragraph{Tamaño de muestra de 2000 pares de preguntas}
@@ -114,7 +114,7 @@ w2v-ensemble    -0.00725 -0.021451 0.0069516 0.657185
 	\label{fig:anova2000}
 \end{figure}
 
-\bigskip En este caso, el intervalo de confianza contra el método bow no incluye al cero, ya que este método tuvo muy buenos indicadores en este tamaño de muestra. No obstante, el método EQuAL tiene una diferencia significativa solo con el método bow, no habiendo diferencias significativas con los métodos restantes, ya que en esos casos, los intervalos de confianza incluyen al valor \(0\) y \(p-adj > \alpha\). La Figura \ref{fig:anova2000} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 2000.
+\bigskip En este caso, el intervalo de confianza contra el método bow no incluye al cero, ya que este método tuvo muy buenos indicadores en este tamaño de muestra. No obstante, el método EQuAL tiene una diferencia significativa solo con el método bow, no habiendo diferencias significativas con los métodos restantes, ya que en esos casos, los intervalos de confianza incluyen al valor \(0\) y \(p{-}adj > \alpha\). La Figura \ref{fig:anova2000} muestra un gráfico de caja y bigote para las medias de error en estudio y tamaño de muestra 2000.
 
 \bigskip
 \paragraph{Resumen de resultados del análisis de varianza}
@@ -130,11 +130,11 @@ En el análisis de varianza de las medias de error realizado anteriormente, se p
 \subsubsection{Dependencia de un método de ensamble con sus algoritmos subyacentes}
 Si bien es una medida adimensional y propone mejorar las medidas de rendimiento en ciertos aspectos, los métodos de ensamble de clustering son dependientes de sus algoritmos subyacentes y, por lo tanto, las medidas de desempeño son similares en cuanto a, por ejemplo, el valor de error obtenido. Los análisis de varianza realizados ponen en evidencia la dependencia del método equal con los algoritmos ensamblados. La media de error es estadísticamente similar en la mayoría de los casos, lo cual indica que los valores arrojados por el método de ensamble están fuertemente relacionados con las medias subyacentes, dando la posibilidad de mejorar los indicadores de rendimiento cuando se utilicen algoritmos de similaridad de texto que tengan mejor comportamiento.
 
-\subsubsection{Influencia del conjunto de datos Quora}
+\subsubsection{Comentarios sobre la influencia del conjunto de datos Quora}
 En las secciones anteriores se demostró que el método EQuAL es apto para la utilización en un sistema de recomendación. No obstante, no posee ventajas claras sobre los métodos del estado del arte en algunas medidas de rendimiento en particular.
 
-\bigskip El conjunto de datos Quora y la naturaleza del mismo, no permite realizar un diagrama de dispersión que posibilite ver la forma de los clusters generados. Dicho esto, y sabiendo que la técnica de Ensamble de Clustering es particularmente efectiva en la detección de clusters con formas no convencionales, no es posible identificar fácilmente cuál es la forma de los clusters en cuestión, y verificar si el método EQuAL se adapta perfectamente al conjunto de datos.
+\bigskip Debido a la naturaleza del conjunto de datos Quora, no es posible realizar un diagrama de dispersión que posibilite ver la forma de los clusters generados. Dicho esto, y sabiendo que la técnica de Ensamble de Clustering es particularmente efectiva en la detección de clusters con formas no convencionales, no es posible identificar fácilmente cuál es la forma de los clusters en cuestión, y verificar si el método EQuAL se adapta perfectamente al conjunto de datos.
 
-\bigskip Por otro lado, el conjunto de datos compara preguntas una a una, que generalmente tienen una o más palabras en común. Esto provoca que los métodos como TF o TF-IDF que cuantifican la cantidad de palabras en común, se comporten relativamente bien o arrojen, al menos, un resultado distinto de cero que supera a los métodos “más inteligentes”. Lo contrario ocurriría, si la comparación de texto fuese entre frases cortas que utilicen sinónimos o palabras completamente distintas, donde los algoritmos basados en taxonomías y técnicas de ML tendrían clara ventaja.
+\bigskip Por otro lado, el conjunto de datos compara preguntas una a una, que generalmente tienen una o más palabras en común. Esto provoca que los métodos como TF o TF-IDF que cuantifican la cantidad de palabras en común, se comporten relativamente bien o arrojen, al menos, un resultado distinto de cero que supera a los otros métodos más sofisticados. Lo contrario ocurriría si la comparación de texto fuese entre frases cortas que utilicen sinónimos o palabras completamente distintas, donde los algoritmos basados en taxonomías y técnicas de ML tendrían clara ventaja.
 
-\bigskip El método EQuAL, no es únicamente efectivo para algoritmos subyacentes basados en análisis de texto, sino que también es posible utilizarlo para cualquier conjunto de datos y técnica que generen matrices de distancia como salida. Tal es así, que este método, sobre la arquitectura propuesta, podría funcionar de manera excepcional con conjuntos de datos que puedan ser graficados y tengan clusters identificables visualmente, con formas que sean convenientes para métodos basados en Ensamble de Clustering.
+\bigskip En conclusión, si bien el método EQuAL obtiene medidas de desempeño y rendimiento similares a los métodos del estado del arte, queda como objetivo de interés su prueba en otros contextos con mayor grado de incertidumbre, como por ejemplo con preguntas sin palabras en común, o combinando de forma equilibrada casos de palabras en común conjuntamente con casos de similitud más semántica que léxica, para verificar si las cualidades del método EQuAL pueden mantenerse o incluso mejorarse frente a los métodos del estado del arte.

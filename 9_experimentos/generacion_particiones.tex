@@ -92,9 +92,9 @@ Como entrada fue utilizada la matriz de similaridad resultado del paso anterior,
 \bigskip Por cada una de las corridas de clustering (parámetro de configuración) se proporciona un \(k\) inicial, que representa al número de clusters (o medoides) que define el algoritmo, y en los cuales las preguntas son distribuidas (proceso de etiquetado); y además, son identificadas con un identificador único universal (UUID\footnote{Identificador único universal \url{https://es.wikipedia.org/wiki/Identificador\_\%C3\%BAnico_universal}} por sus siglas en inglés) con el fin de poder recuperar cada uno de los resultados cuando se realice el ensamble de Clustering de cada una de estas ejecuciones.
 
 \paragraph{Proceso de clustering}
-Como se mencionó anteriormente, el algoritmo PAM tiene dos etapas, denominadas BUILD y SWAP. Por motivos de rendimiento y simplicidad, los experimentos fueron realizados solo utilizando la etapa BUILD para construir cada uno de los clusters. El algoritmo realiza una cantidad de iteraciones máxima (parámetro configurable), y por cada una de ellas se realiza el proceso descrito a continuación.
+Como se mencionó anteriormente, el algoritmo PAM tiene dos etapas, denominadas BUILD y SWAP. El algoritmo realiza una cantidad de iteraciones máxima (parámetro configurable), y por cada una de ellas se realiza el proceso descrito a continuación.
 
-\subparagraph{Generación de etiquetas}
+\subparagraph{Generación de etiquetas (BUILD)}
 La generación de etiquetas significa asignar un medoide a una pregunta en particular, con el objetivo del armado de clusters. Como cada medoide es exclusivamente representativo de un cluster, la asignación de un medoide a una pregunta es equivalente a la asignación de la pregunta al cluster correspondiente.
 \begin{enumerate}
 	\item Se obtiene su similaridad con cada uno de los medoides. Para esto, se busca cada par de preguntas en una de las matrices de similaridad generadas por el paso anterior.
@@ -103,13 +103,13 @@ La generación de etiquetas significa asignar un medoide a una pregunta en parti
 	\item Se generan pares (ID pregunta, ID pregunta medoide) que representarán las etiquetas utilizadas por el algoritmo de ensamble.
 \end{enumerate}
 
-\subparagraph{Actualización de medoides}
+\subparagraph{Actualización de medoides (SWAP)}
 Se busca actualizar los medoides con el fin de evaluar si, luego del cambio, se consiguen mejores resultados. Esto es, por cada uno de los clusters, se obtiene la similaridad de las preguntas todas contra todas, de la siguiente manera:
 
 \begin{enumerate}
-	\item Se toma una pregunta \textit{i} de la lista, y se compara la similaridad con todas las preguntas restantes del cluster.
+	\item Se toma una pregunta \(i\) de la lista, y se compara la similaridad con todas las preguntas restantes del cluster.
 	\item Se suman todas las similaridades calculadas.
-	\item Si esta suma es mayor a la suma de las similaridades que obtuvo el medoide actual en el paso anterior, la pregunta \textit{i} pasa a ser el nuevo medoide.
+	\item Si esta suma es mayor a la suma de las similaridades que obtuvo el medoide actual en el paso anterior, la pregunta \(i\) pasa a ser el nuevo medoide.
 	\item Se recalculan las etiquetas \((id\_pregunta, id\_pregunta\_medoide)\)
 \end{enumerate}
 
