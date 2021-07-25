@@ -15,7 +15,7 @@
 \contentsline {subsection}{\numberline {2.4}Importancia socio-económica}{23}{subsection.0.2.4}%
 \contentsline {chapter}{Capitulo 3. Marco teórico}{25}{chapter*.9}%
 \contentsline {subsection}{\numberline {3.1}Sitios de CQA}{25}{subsection.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Sistemas de recomendación}{26}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {3.2}Sistemas de Recomendación}{26}{subsection.0.3.2}%
 \contentsline {subsubsection}{\numberline {3.2.1}Contexto Histórico}{26}{subsubsection.0.3.2.1}%
 \contentsline {subsubsection}{\numberline {3.2.2}Funciones de un Sistema de Recomendación}{27}{subsubsection.0.3.2.2}%
 \contentsline {subsubsection}{\numberline {3.2.3}Técnicas de Recomendación}{28}{subsubsection.0.3.2.3}%
@@ -75,8 +75,8 @@
 \contentsline {subsection}{\numberline {4.4}Arquitectura de procesamiento de datos}{68}{subsection.0.4.4}%
 \contentsline {subsubsection}{\numberline {4.4.1}Escalabilidad horizontal}{70}{subsubsection.0.4.4.1}%
 \contentsline {subsubsection}{\numberline {4.4.2}Escalabilidad y complejidad temporal}{71}{subsubsection.0.4.4.2}%
-\contentsline {subsection}{\numberline {4.5}Ejemplo de implementación en un sistema de recomendación de tiempo real}{73}{subsection.0.4.5}%
-\contentsline {subparagraph}{El proceso completo del sistema de recomendación}{74}{subparagraph*.23}%
+\contentsline {subsection}{\numberline {4.5}Ejemplo de implementación en un Sistema de Recomendación de tiempo real}{73}{subsection.0.4.5}%
+\contentsline {subparagraph}{El proceso completo del Sistema de Recomendación}{74}{subparagraph*.23}%
 \contentsline {subsubsection}{\numberline {4.5.1}Arquitectura general}{75}{subsubsection.0.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.2}Procesamiento fuera de línea}{76}{subsubsection.0.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}Consulta de una pregunta existente}{78}{subsubsection.0.4.5.3}%
@@ -127,4 +127,6 @@
 \contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{126}{subsection.0.7.1}%
 \contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{127}{subsection.0.7.2}%
 \contentsline {chapter}{Anexos}{130}{chapter*.87}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{138}{chapter*.89}%
+\contentsline {subsection}{Anexo 1. Matrices de confusión resultantes en experimentos}{130}{section*.88}%
+\contentsline {subsection}{Anexo 2. Detalles de análisis de rendimiento}{137}{table.0.40}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{138}{chapter*.90}%
