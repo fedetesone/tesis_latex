@@ -5,29 +5,29 @@
 \beamer@subsectionintoc {1}{4}{Objetivos específicos}{13}{0}{1}
 \beamer@sectionintoc {2}{Fundamentación}{18}{0}{2}
 \beamer@subsectionintoc {2}{1}{Motivación de la tesis}{18}{0}{2}
-\beamer@sectionintoc {3}{Marco teórico}{19}{0}{3}
-\beamer@subsectionintoc {3}{1}{Sitios de CQA}{19}{0}{3}
-\beamer@subsectionintoc {3}{2}{Sistemas de recomendación}{20}{0}{3}
-\beamer@subsectionintoc {3}{3}{Big Data y Arquitecturas}{21}{0}{3}
-\beamer@subsectionintoc {3}{4}{Medidas de distancia de texto}{22}{0}{3}
-\beamer@subsectionintoc {3}{5}{Ensamble de Clustering}{24}{0}{3}
-\beamer@sectionintoc {4}{Problema de investigación y propuesta}{26}{0}{4}
-\beamer@subsectionintoc {4}{1}{Hipótesis}{26}{0}{4}
-\beamer@subsectionintoc {4}{2}{El método propuesto}{27}{0}{4}
-\beamer@subsectionintoc {4}{3}{Arquitectura de procesamiento de datos}{28}{0}{4}
-\beamer@subsectionintoc {4}{4}{Implementación en un sistema de recomendación de tiempo real}{29}{0}{4}
-\beamer@sectionintoc {5}{Experimentos}{30}{0}{5}
-\beamer@subsectionintoc {5}{1}{Estado del arte}{30}{0}{5}
-\beamer@subsectionintoc {5}{2}{Preprocesamiento y muestreo del conjunto de datos}{31}{0}{5}
-\beamer@subsectionintoc {5}{3}{Generación de particiones}{32}{0}{5}
-\beamer@subsectionintoc {5}{4}{Ensamble de Clustering}{33}{0}{5}
-\beamer@subsectionintoc {5}{5}{Método de validación}{34}{0}{5}
-\beamer@sectionintoc {6}{Resultados}{35}{0}{6}
-\beamer@subsectionintoc {6}{1}{Análisis del método propuesto}{35}{0}{6}
-\beamer@subsectionintoc {6}{2}{Análisis del método propuesto y algoritmos del estado del arte}{36}{0}{6}
-\beamer@subsectionintoc {6}{3}{Otras observaciones de interés}{37}{0}{6}
-\beamer@subsectionintoc {6}{4}{Análisis de desempeño}{38}{0}{6}
-\beamer@subsectionintoc {6}{5}{Resumen de resultados}{39}{0}{6}
-\beamer@sectionintoc {7}{Conclusiones}{40}{0}{7}
-\beamer@subsectionintoc {7}{1}{Contribuciones realizadas}{40}{0}{7}
-\beamer@subsectionintoc {7}{2}{Futuras investigaciones}{41}{0}{7}
+\beamer@sectionintoc {3}{Marco teórico}{28}{0}{3}
+\beamer@subsectionintoc {3}{1}{Sitios de CQA}{28}{0}{3}
+\beamer@subsectionintoc {3}{2}{Sistemas de recomendación}{32}{0}{3}
+\beamer@subsectionintoc {3}{3}{Sistemas de recomendación}{33}{0}{3}
+\beamer@subsectionintoc {3}{4}{Big Data y Arquitecturas}{39}{0}{3}
+\beamer@subsectionintoc {3}{5}{Medidas de distancia de texto}{43}{0}{3}
+\beamer@sectionintoc {4}{Problema de investigación y propuesta}{51}{0}{4}
+\beamer@subsectionintoc {4}{1}{Hipótesis}{51}{0}{4}
+\beamer@subsectionintoc {4}{2}{El método propuesto}{52}{0}{4}
+\beamer@subsectionintoc {4}{3}{Arquitectura de procesamiento de datos}{53}{0}{4}
+\beamer@subsectionintoc {4}{4}{Implementación en un sistema de recomendación de tiempo real}{54}{0}{4}
+\beamer@sectionintoc {5}{Experimentos}{55}{0}{5}
+\beamer@subsectionintoc {5}{1}{Estado del arte}{55}{0}{5}
+\beamer@subsectionintoc {5}{2}{Preprocesamiento y muestreo del conjunto de datos}{56}{0}{5}
+\beamer@subsectionintoc {5}{3}{Generación de particiones}{57}{0}{5}
+\beamer@subsectionintoc {5}{4}{Ensamble de Clustering}{58}{0}{5}
+\beamer@subsectionintoc {5}{5}{Método de validación}{59}{0}{5}
+\beamer@sectionintoc {6}{Resultados}{60}{0}{6}
+\beamer@subsectionintoc {6}{1}{Análisis del método propuesto}{60}{0}{6}
+\beamer@subsectionintoc {6}{2}{Análisis del método propuesto y algoritmos del estado del arte}{61}{0}{6}
+\beamer@subsectionintoc {6}{3}{Otras observaciones de interés}{62}{0}{6}
+\beamer@subsectionintoc {6}{4}{Análisis de desempeño}{63}{0}{6}
+\beamer@subsectionintoc {6}{5}{Resumen de resultados}{64}{0}{6}
+\beamer@sectionintoc {7}{Conclusiones}{65}{0}{7}
+\beamer@subsectionintoc {7}{1}{Contribuciones realizadas}{65}{0}{7}
+\beamer@subsectionintoc {7}{2}{Futuras investigaciones}{66}{0}{7}

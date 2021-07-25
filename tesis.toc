@@ -29,7 +29,7 @@
 \contentsline {subsubsection}{\numberline {3.3.1}Contexto Histórico}{30}{subsubsection.0.3.3.1}%
 \contentsline {subsubsection}{\numberline {3.3.2}Map-Reduce}{33}{subsubsection.0.3.3.2}%
 \contentsline {paragraph}{\numberline {3.3.2.1}Arquitectura Hadoop}{33}{paragraph.0.3.3.2.1}%
-\contentsline {paragraph}{\numberline {3.3.2.2}Apache Spark}{34}{paragraph.0.3.3.2.2}%
+\contentsline {paragraph}{\numberline {3.3.2.2}Apache Spark}{35}{paragraph.0.3.3.2.2}%
 \contentsline {subsection}{\numberline {3.4}Medidas de distancia de texto}{36}{subsection.0.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}Conceptos básicos}{36}{subsubsection.0.3.4.1}%
 \contentsline {paragraph}{\numberline {3.4.1.1}Information retrieval}{36}{paragraph.0.3.4.1.1}%
@@ -40,12 +40,12 @@
 \contentsline {paragraph}{\numberline {3.4.1.6}Medidas de proximidad}{40}{paragraph.0.3.4.1.6}%
 \contentsline {paragraph}{\numberline {3.4.1.7}Modelo de espacio vectorial}{41}{paragraph.0.3.4.1.7}%
 \contentsline {paragraph}{\numberline {3.4.1.8}Distancia del coseno}{42}{paragraph.0.3.4.1.8}%
-\contentsline {subsubsection}{\numberline {3.4.2}Term Frequency}{42}{subsubsection.0.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2}Term Frequency}{43}{subsubsection.0.3.4.2}%
 \contentsline {subsubsection}{\numberline {3.4.3}Term Frequency/Inverse Document Frequency}{43}{subsubsection.0.3.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.4}Word2Vec}{45}{subsubsection.0.3.4.4}%
 \contentsline {paragraph}{\numberline {3.4.4.1}Motivación de Word2Vec}{45}{paragraph.0.3.4.4.1}%
-\contentsline {paragraph}{\numberline {3.4.4.2}Modelo Skip-Gram}{47}{paragraph.0.3.4.4.2}%
-\contentsline {paragraph}{\numberline {3.4.4.3}Modelo Continuous Bag of Works (CBOW)}{49}{paragraph.0.3.4.4.3}%
+\contentsline {paragraph}{\numberline {3.4.4.2}Modelo Skip-Gram}{46}{paragraph.0.3.4.4.2}%
+\contentsline {paragraph}{\numberline {3.4.4.3}Modelo Continuous Bag of Words (CBOW)}{49}{paragraph.0.3.4.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.5}FastText}{50}{subsubsection.0.3.4.5}%
 \contentsline {paragraph}{\numberline {3.4.5.1}Modelo sub-palabra}{51}{paragraph.0.3.4.5.1}%
 \contentsline {subsubsection}{\numberline {3.4.6}Semantic Distance}{52}{subsubsection.0.3.4.6}%
@@ -58,71 +58,73 @@
 \contentsline {subsubsection}{\numberline {3.5.1}Clustering}{57}{subsubsection.0.3.5.1}%
 \contentsline {paragraph}{\numberline {3.5.1.1}Definición de Cluster}{57}{paragraph.0.3.5.1.1}%
 \contentsline {paragraph}{\numberline {3.5.1.2}Algoritmos de Clustering}{57}{paragraph.0.3.5.1.2}%
-\contentsline {paragraph}{\numberline {3.5.1.3}Particionamiento Alrededor de Medoids (PAM)}{58}{paragraph.0.3.5.1.3}%
-\contentsline {subsubsection}{\numberline {3.5.2}Ensamble de clustering}{59}{subsubsection.0.3.5.2}%
-\contentsline {paragraph}{\numberline {3.5.2.1}Definición formal}{60}{paragraph.0.3.5.2.1}%
-\contentsline {paragraph}{\numberline {3.5.2.2}Acumulación de Evidencias}{61}{paragraph.0.3.5.2.2}%
-\contentsline {subparagraph}{Producir ensambles de Clustering}{62}{subparagraph*.15}%
-\contentsline {subparagraph}{Combinar evidencias}{62}{subparagraph*.16}%
-\contentsline {chapter}{Capitulo 4. Problema de investigación y propuesta}{63}{chapter*.17}%
-\contentsline {subsection}{\numberline {4.1}Hipótesis de trabajo}{63}{subsection.0.4.1}%
-\contentsline {subsection}{\numberline {4.2}Metodología de investigación}{63}{subsection.0.4.2}%
-\contentsline {subsection}{\numberline {4.3}Método propuesto}{65}{subsection.0.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}Generación de conjunto de particiones}{65}{subsubsection.0.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}Construcción de la matriz de co-asociación}{66}{subsubsection.0.4.3.2}%
-\contentsline {subsection}{\numberline {4.4}Arquitectura de procesamiento de datos}{67}{subsection.0.4.4}%
-\contentsline {subsubsection}{\numberline {4.4.1}Escalabilidad horizontal}{69}{subsubsection.0.4.4.1}%
-\contentsline {subsubsection}{\numberline {4.4.2}Escalabilidad y complejidad temporal}{70}{subsubsection.0.4.4.2}%
-\contentsline {subsection}{\numberline {4.5}Ejemplo de implementación en un sistema de recomendación de tiempo real}{72}{subsection.0.4.5}%
-\contentsline {subparagraph}{El proceso completo del sistema de recomendación}{73}{subparagraph*.21}%
-\contentsline {subsubsection}{\numberline {4.5.1}Arquitectura general}{74}{subsubsection.0.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}Procesamiento fuera de línea}{75}{subsubsection.0.4.5.2}%
-\contentsline {subsubsection}{\numberline {4.5.3}Consulta de una pregunta existente}{77}{subsubsection.0.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}Agregar una nueva pregunta}{78}{subsubsection.0.4.5.4}%
-\contentsline {subparagraph}{Cálculo de similaridad contra todas las preguntas del sitio}{80}{subparagraph*.28}%
-\contentsline {subparagraph}{Búsqueda de vecinos cercanos con representaciones vectoriales}{80}{subparagraph*.29}%
-\contentsline {subparagraph}{Modelos de scoring}{81}{subparagraph*.30}%
-\contentsline {subsubsection}{\numberline {4.5.5}Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}{81}{subsubsection.0.4.5.5}%
-\contentsline {chapter}{Capitulo 5. Experimentos}{83}{chapter*.31}%
-\contentsline {subsection}{\numberline {5.1}Estado del arte}{83}{subsection.0.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Medidas de desempeño y error}{84}{subsubsection.0.5.1.1}%
-\contentsline {subsection}{\numberline {5.2}Preprocesamiento del conjunto de datos}{85}{subsection.0.5.2}%
-\contentsline {subsection}{\numberline {5.3}Muestreo del conjunto de datos}{86}{subsection.0.5.3}%
-\contentsline {subsection}{\numberline {5.4}Generación de particiones}{87}{subsection.0.5.4}%
-\contentsline {subsubsection}{\numberline {5.4.1}Cálculo de similaridades}{87}{subsubsection.0.5.4.1}%
-\contentsline {subsubsection}{\numberline {5.4.2}Clustering y etiquetado}{89}{subsubsection.0.5.4.2}%
-\contentsline {paragraph}{\numberline {5.4.2.1}Entrada y configuración inicial}{89}{paragraph.0.5.4.2.1}%
-\contentsline {paragraph}{\numberline {5.4.2.2}Proceso de clustering}{90}{paragraph.0.5.4.2.2}%
-\contentsline {subparagraph}{Generación de etiquetas}{90}{subparagraph*.37}%
-\contentsline {subparagraph}{Actualización de medoides}{90}{subparagraph*.38}%
-\contentsline {paragraph}{\numberline {5.4.2.3}Estructura de los resultados}{91}{paragraph.0.5.4.2.3}%
-\contentsline {subsection}{\numberline {5.5}Ensamble de Clustering}{92}{subsection.0.5.5}%
-\contentsline {subsection}{\numberline {5.6}Método de validación}{95}{subsection.0.5.6}%
-\contentsline {subsubsection}{\numberline {5.6.1}Generación de conjuntos estadísticamente significativos}{95}{subsubsection.0.5.6.1}%
-\contentsline {paragraph}{\numberline {5.6.1.1}Elección de los tamaños de muestra}{95}{paragraph.0.5.6.1.1}%
-\contentsline {paragraph}{\numberline {5.6.1.2}Elección del número de clusters}{96}{paragraph.0.5.6.1.2}%
-\contentsline {subsubsection}{\numberline {5.6.2}Estructura de las matrices de confusión}{97}{subsubsection.0.5.6.2}%
-\contentsline {paragraph}{\numberline {5.6.2.1}Preparación de los datos}{98}{paragraph.0.5.6.2.1}%
-\contentsline {paragraph}{\numberline {5.6.2.2}Construcción y elección del umbral correcto}{99}{paragraph.0.5.6.2.2}%
-\contentsline {paragraph}{\numberline {5.6.2.3}Construcción de las matrices de confusión}{101}{paragraph.0.5.6.2.3}%
-\contentsline {chapter}{Capitulo 6. Resultados}{103}{chapter*.57}%
-\contentsline {subsection}{\numberline {6.1}Análisis del método propuesto}{103}{subsection.0.6.1}%
-\contentsline {subsection}{\numberline {6.2}Análisis del método propuesto y algoritmos del estado del arte}{107}{subsection.0.6.2}%
-\contentsline {subsection}{\numberline {6.3}Otras observaciones de interés}{110}{subsection.0.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}Análisis de varianza del método propuesto}{110}{subsubsection.0.6.3.1}%
-\contentsline {paragraph}{\numberline {6.3.1.1}Tamaño de muestra de 100 pares de preguntas}{112}{paragraph.0.6.3.1.1}%
-\contentsline {paragraph}{\numberline {6.3.1.2}Tamaño de muestra de 500 pares de preguntas}{113}{paragraph.0.6.3.1.2}%
-\contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{113}{paragraph.0.6.3.1.3}%
-\contentsline {paragraph}{\numberline {6.3.1.4}Tamaño de muestra de 1500 pares de preguntas}{114}{paragraph.0.6.3.1.4}%
-\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{114}{paragraph.0.6.3.1.5}%
-\contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{115}{paragraph.0.6.3.1.6}%
-\contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{116}{subsubsection.0.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{116}{subsubsection.0.6.3.3}%
-\contentsline {subsubsection}{\numberline {6.3.4}Influencia del conjunto de datos Quora}{117}{subsubsection.0.6.3.4}%
-\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{117}{subsection.0.6.4}%
-\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{121}{subsection.0.6.5}%
-\contentsline {chapter}{Capitulo 7. Conclusiones}{125}{chapter*.84}%
-\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{125}{subsection.0.7.1}%
-\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{126}{subsection.0.7.2}%
-\contentsline {chapter}{Anexos}{129}{chapter*.85}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{137}{chapter*.87}%
+\contentsline {paragraph}{\numberline {3.5.1.3}Particionamiento Alrededor de Medoides (PAM)}{58}{paragraph.0.3.5.1.3}%
+\contentsline {subparagraph}{Etapa BUILD}{58}{subparagraph*.15}%
+\contentsline {subparagraph}{Etapa SWAP}{59}{subparagraph*.16}%
+\contentsline {subsubsection}{\numberline {3.5.2}Ensamble de clustering}{60}{subsubsection.0.3.5.2}%
+\contentsline {paragraph}{\numberline {3.5.2.1}Definición formal}{61}{paragraph.0.3.5.2.1}%
+\contentsline {paragraph}{\numberline {3.5.2.2}Acumulación de Evidencias}{62}{paragraph.0.3.5.2.2}%
+\contentsline {subparagraph}{Producir ensambles de Clustering}{62}{subparagraph*.17}%
+\contentsline {subparagraph}{Combinar evidencias}{62}{subparagraph*.18}%
+\contentsline {chapter}{Capitulo 4. Problema de investigación y propuesta}{64}{chapter*.19}%
+\contentsline {subsection}{\numberline {4.1}Hipótesis de trabajo}{64}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}Metodología de investigación}{64}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Método propuesto}{66}{subsection.0.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Generación de conjunto de particiones}{66}{subsubsection.0.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Construcción de la matriz de co-asociación}{67}{subsubsection.0.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Arquitectura de procesamiento de datos}{68}{subsection.0.4.4}%
+\contentsline {subsubsection}{\numberline {4.4.1}Escalabilidad horizontal}{70}{subsubsection.0.4.4.1}%
+\contentsline {subsubsection}{\numberline {4.4.2}Escalabilidad y complejidad temporal}{71}{subsubsection.0.4.4.2}%
+\contentsline {subsection}{\numberline {4.5}Ejemplo de implementación en un sistema de recomendación de tiempo real}{73}{subsection.0.4.5}%
+\contentsline {subparagraph}{El proceso completo del sistema de recomendación}{74}{subparagraph*.23}%
+\contentsline {subsubsection}{\numberline {4.5.1}Arquitectura general}{75}{subsubsection.0.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}Procesamiento fuera de línea}{76}{subsubsection.0.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}Consulta de una pregunta existente}{78}{subsubsection.0.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}Agregar una nueva pregunta}{80}{subsubsection.0.4.5.4}%
+\contentsline {subparagraph}{Cálculo de similaridad contra todas las preguntas del sitio}{81}{subparagraph*.30}%
+\contentsline {subparagraph}{Búsqueda de vecinos cercanos con representaciones vectoriales}{82}{subparagraph*.31}%
+\contentsline {subparagraph}{Modelos de scoring}{82}{subparagraph*.32}%
+\contentsline {subsubsection}{\numberline {4.5.5}Condiciones institucionales para el desarrollo de la tesis. Infraestructura y equipamiento}{83}{subsubsection.0.4.5.5}%
+\contentsline {chapter}{Capitulo 5. Experimentos}{84}{chapter*.33}%
+\contentsline {subsection}{\numberline {5.1}Estado del arte}{84}{subsection.0.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Medidas de rendimiento y error}{85}{subsubsection.0.5.1.1}%
+\contentsline {subsection}{\numberline {5.2}Preprocesamiento del conjunto de datos}{86}{subsection.0.5.2}%
+\contentsline {subsection}{\numberline {5.3}Muestreo del conjunto de datos}{87}{subsection.0.5.3}%
+\contentsline {subsection}{\numberline {5.4}Generación de particiones}{88}{subsection.0.5.4}%
+\contentsline {subsubsection}{\numberline {5.4.1}Cálculo de similaridades}{88}{subsubsection.0.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.2}Clustering y etiquetado}{90}{subsubsection.0.5.4.2}%
+\contentsline {paragraph}{\numberline {5.4.2.1}Entrada y configuración inicial}{90}{paragraph.0.5.4.2.1}%
+\contentsline {paragraph}{\numberline {5.4.2.2}Proceso de clustering}{91}{paragraph.0.5.4.2.2}%
+\contentsline {subparagraph}{Generación de etiquetas (BUILD)}{91}{subparagraph*.39}%
+\contentsline {subparagraph}{Actualización de medoides (SWAP)}{91}{subparagraph*.40}%
+\contentsline {paragraph}{\numberline {5.4.2.3}Estructura de los resultados}{92}{paragraph.0.5.4.2.3}%
+\contentsline {subsection}{\numberline {5.5}Ensamble de Clustering}{93}{subsection.0.5.5}%
+\contentsline {subsection}{\numberline {5.6}Método de validación}{96}{subsection.0.5.6}%
+\contentsline {subsubsection}{\numberline {5.6.1}Generación de conjuntos estadísticamente significativos}{96}{subsubsection.0.5.6.1}%
+\contentsline {paragraph}{\numberline {5.6.1.1}Elección de los tamaños de muestra}{97}{paragraph.0.5.6.1.1}%
+\contentsline {paragraph}{\numberline {5.6.1.2}Elección del número de clusters}{97}{paragraph.0.5.6.1.2}%
+\contentsline {subsubsection}{\numberline {5.6.2}Estructura de las matrices de confusión}{99}{subsubsection.0.5.6.2}%
+\contentsline {paragraph}{\numberline {5.6.2.1}Preparación de los datos}{99}{paragraph.0.5.6.2.1}%
+\contentsline {paragraph}{\numberline {5.6.2.2}Construcción y elección del umbral correcto}{101}{paragraph.0.5.6.2.2}%
+\contentsline {paragraph}{\numberline {5.6.2.3}Construcción de las matrices de confusión}{102}{paragraph.0.5.6.2.3}%
+\contentsline {chapter}{Capitulo 6. Resultados}{104}{chapter*.59}%
+\contentsline {subsection}{\numberline {6.1}Análisis del método propuesto}{104}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Análisis del método propuesto y algoritmos del estado del arte}{108}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Otras observaciones de interés}{112}{subsection.0.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}Análisis de varianza del método propuesto}{112}{subsubsection.0.6.3.1}%
+\contentsline {paragraph}{\numberline {6.3.1.1}Tamaño de muestra de 100 pares de preguntas}{113}{paragraph.0.6.3.1.1}%
+\contentsline {paragraph}{\numberline {6.3.1.2}Tamaño de muestra de 500 pares de preguntas}{114}{paragraph.0.6.3.1.2}%
+\contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{114}{paragraph.0.6.3.1.3}%
+\contentsline {paragraph}{\numberline {6.3.1.4}Tamaño de muestra de 1500 pares de preguntas}{115}{paragraph.0.6.3.1.4}%
+\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{115}{paragraph.0.6.3.1.5}%
+\contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{116}{paragraph.0.6.3.1.6}%
+\contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{117}{subsubsection.0.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{117}{subsubsection.0.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Comentarios sobre la influencia del conjunto de datos Quora}{118}{subsubsection.0.6.3.4}%
+\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{119}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {6.5}Resumen de resultados}{122}{subsection.0.6.5}%
+\contentsline {chapter}{Capitulo 7. Conclusiones}{126}{chapter*.86}%
+\contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{126}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{127}{subsection.0.7.2}%
+\contentsline {chapter}{Anexos}{130}{chapter*.87}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{138}{chapter*.89}%
