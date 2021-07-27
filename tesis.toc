@@ -116,7 +116,7 @@
 \contentsline {paragraph}{\numberline {6.3.1.2}Tamaño de muestra de 500 pares de preguntas}{114}{paragraph.0.6.3.1.2}%
 \contentsline {paragraph}{\numberline {6.3.1.3}Tamaño de muestra de 1000 pares de preguntas}{114}{paragraph.0.6.3.1.3}%
 \contentsline {paragraph}{\numberline {6.3.1.4}Tamaño de muestra de 1500 pares de preguntas}{115}{paragraph.0.6.3.1.4}%
-\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{115}{paragraph.0.6.3.1.5}%
+\contentsline {paragraph}{\numberline {6.3.1.5}Tamaño de muestra de 2000 pares de preguntas}{116}{paragraph.0.6.3.1.5}%
 \contentsline {paragraph}{\numberline {6.3.1.6}Resumen de resultados del análisis de varianza}{116}{paragraph.0.6.3.1.6}%
 \contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{117}{subsubsection.0.6.3.2}%
 \contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{117}{subsubsection.0.6.3.3}%
