@@ -9,6 +9,8 @@
 \usepackage{enumerate}
 \usepackage[inline]{enumitem}
 \usepackage{fancyvrb}
+\usepackage{epigraph}
+\usepackage{varwidth}
 %\usepackage{import}
 \graphicspath{{imagenes/}} % Necesario para importar las figuras en PDF.
 % (with an optional formatting specification in square brackets): To change the styles of the counter,
@@ -114,6 +116,14 @@
 \newcommand{\yeafull}{\emph{Saccharomyces cerevisiae}}
 \newcommand{\yea}{\emph{S. cerevisiae}}
 \newcommand{\km}{$k$-medias}
+\usepackage{afterpage}
+
+\def\blankpage{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\null%
+	\clearpage}
 
 \newcommand{\given}{\Big\vert}
 
@@ -266,7 +276,7 @@
 
 	\listoftables
 	\listoffigures
-    \acknowledgements
+	\input{agradecimientos}
 
 	\pagestyle{plain} % Paginas sin encabezado, pero con numero de pagina.
 
