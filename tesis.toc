@@ -121,12 +121,12 @@
 \contentsline {subsubsection}{\numberline {6.3.2}Desempeño con tamaños de muestra pequeños}{117}{subsubsection.0.6.3.2}%
 \contentsline {subsubsection}{\numberline {6.3.3}Dependencia de un método de ensamble con sus algoritmos subyacentes}{117}{subsubsection.0.6.3.3}%
 \contentsline {subsubsection}{\numberline {6.3.4}Comentarios sobre la influencia del conjunto de datos Quora}{118}{subsubsection.0.6.3.4}%
-\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{119}{subsection.0.6.4}%
+\contentsline {subsection}{\numberline {6.4}Análisis de desempeño}{118}{subsection.0.6.4}%
 \contentsline {subsection}{\numberline {6.5}Resumen de resultados}{122}{subsection.0.6.5}%
-\contentsline {chapter}{Capitulo 7. Conclusiones}{126}{chapter*.86}%
+\contentsline {chapter}{Capitulo 7. Conclusiones}{126}{chapter*.91}%
 \contentsline {subsection}{\numberline {7.1}Contribuciones realizadas}{126}{subsection.0.7.1}%
 \contentsline {subsection}{\numberline {7.2}Futuras investigaciones}{127}{subsection.0.7.2}%
-\contentsline {chapter}{Anexos}{130}{chapter*.87}%
-\contentsline {subsection}{Anexo 1. Matrices de confusión resultantes en experimentos}{130}{section*.88}%
+\contentsline {chapter}{Anexos}{130}{chapter*.92}%
+\contentsline {subsection}{Anexo 1. Matrices de confusión resultantes en experimentos}{130}{section*.93}%
 \contentsline {subsection}{Anexo 2. Detalles de análisis de rendimiento}{137}{table.0.40}%
-\contentsline {chapter}{Bibliograf\'{\i }a}{138}{chapter*.90}%
+\contentsline {chapter}{Bibliograf\'{\i }a}{138}{chapter*.95}%

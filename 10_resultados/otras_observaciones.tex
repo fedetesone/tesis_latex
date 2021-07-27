@@ -18,16 +18,18 @@ Por lo mencionado, se plantean estas pruebas de hipótesis para cada variable en
 \bigskip A continuación, se muestran los métodos Tukey aplicados en R para cada uno de los tamaños de muestra tenidos en cuenta en los experimentos, utilizando un nivel de confianza de \(95\% \: (\alpha=0.05)\). Cada una de las las salidas de R comparan el método EQuAL (referenciado mediante “ensamble”) contra las medidas del estado del arte. Para cada una de las filas se visualiza: la diferencia de medias (diff), un intervalo de confianza de 95\% (lrw y upr), y los p-valores ajustados (p adj). La interpretación de esta prueba es que si los intervalos de confianza incluyen al valor \(0\) o \(p{-}adj > \alpha\), la diferencia del par analizado no es significativa.
 
 \paragraph{Tamaño de muestra de 100 pares de preguntas}
-\begin{rc}
-                 diff        lwr       upr     p adj
+\begin{figure}[!htbp]
+	\begin{centerverbatim}
+                  diff        lwr       upr     p adj
 ensemble-bow     0.008 -0.0589175 0.0749175 0.9992360
 ft-ensemble      0.030 -0.0369175 0.0969175 0.7702455
 gtfidf-ensemble  0.007 -0.0599175 0.0739175 0.9996012
 sem-ensemble    -0.003 -0.0699175 0.0639175 0.9999940
 w2v-ensemble     0.013 -0.0539175 0.0799175 0.9923331
-\end{rc}
+	\end{centerverbatim}
+\end{figure}
 
-\begin{figure}[!]
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/anova_100}
 	\caption{Gráfico de caja y bigote para las medias de error de los métodos en estudio para tamaño de muestra de 100 pares de preguntas.}
@@ -38,16 +40,18 @@ w2v-ensemble     0.013 -0.0539175 0.0799175 0.9923331
 
 \bigskip
 \paragraph{Tamaño de muestra de 500 pares de preguntas}
-\begin{rc}
-                  diff          lwr         upr     p adj
+\begin{figure}[!htbp]
+	\begin{centerverbatim}
+                   diff          lwr         upr     p adj
 ensemble-bow     0.0018 -0.016671384 0.020271384 0.9997181
 ft-ensemble      0.0142 -0.004271384 0.032671384 0.2237050
 gtfidf-ensemble  0.0078 -0.010671384 0.026271384 0.8113536
 sem-ensemble     0.0036 -0.014871384 0.022071384 0.9922183
 w2v-ensemble     0.0106 -0.007871384 0.029071384 0.5407045
-\end{rc}
+	\end{centerverbatim}
+\end{figure}
 
-\begin{figure}
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/anova_500}
 	\caption{Gráfico de caja y bigote para las medias de error de los métodos en estudio para tamaño de muestra de 500 pares de preguntas.}
@@ -58,16 +62,20 @@ w2v-ensemble     0.0106 -0.007871384 0.029071384 0.5407045
 
 \bigskip
 \paragraph{Tamaño de muestra de 1000 pares de preguntas}
-\begin{rc}
-                  diff          lwr         upr     p adj
+\begin{figure}[!htbp]
+	\begin{centerverbatim}
+                   diff          lwr         upr     p adj
 ensemble-bow     0.0175 -0.004161633 0.039161633 0.1791584
 ft-ensemble     -0.0049 -0.026561633 0.016761633 0.9846755
 gtfidf-ensemble -0.0072 -0.028861633 0.014461633 0.9217004
 sem-ensemble    -0.0162 -0.037861633 0.005461633 0.2504112
 w2v-ensemble    -0.0155 -0.037161633 0.006161633 0.2956972
-\end{rc}
+	\end{centerverbatim}
+\end{figure}
 
-\begin{figure}
+\bigskip
+
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/anova_1000}
 	\caption{Gráfico de caja y bigote para las medias de error de los métodos en estudio para tamaño de muestra de 1000 pares de preguntas.}
@@ -78,16 +86,18 @@ w2v-ensemble    -0.0155 -0.037161633 0.006161633 0.2956972
 
 \bigskip
 \paragraph{Tamaño de muestra de 1500 pares de preguntas}
-\begin{rc}
-                 diff        lwr         upr     p adj
+\begin{figure}[!htbp]
+	\begin{centerverbatim}
+                 		    diff         lwr       upr     p adj
 ensemble-bow     0.0090667 -7.4275e-03 0.0255608 0.5832109
 ft-ensemble      0.0027333 -1.3761e-02 0.0192275 0.9962642
 gtfidf-ensemble  0.0028667 -1.3628e-02 0.0193608 0.9953275
 sem-ensemble     0.0044667 -1.2028e-02 0.0209608 0.9656207
 w2v-ensemble    -0.0062000 -2.2694e-02 0.0102941 0.8729702
-\end{rc}
+	\end{centerverbatim}
+\end{figure}
 
-\begin{figure}
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/anova_1500}
 	\caption{Gráfico de caja y bigote para las medias de error de los métodos en estudio para tamaño de muestra de 1500 pares de preguntas.}
@@ -98,16 +108,18 @@ w2v-ensemble    -0.0062000 -2.2694e-02 0.0102941 0.8729702
 
 \bigskip
 \paragraph{Tamaño de muestra de 2000 pares de preguntas}
-\begin{rc}
-                  diff       lwr       upr      p adj
+\begin{figure}[!htbp]
+	\begin{centerverbatim}
+                    diff       lwr       upr    p adj
 ensemble-bow     0.01585  0.001648 0.0300516 0.020523
 ft-ensemble      0.00385 -0.010351 0.0180516 0.965462
 gtfidf-ensemble -0.00035 -0.014551 0.0138516 0.999999
 sem-ensemble    -0.00570 -0.019901 0.0085016 0.839375
 w2v-ensemble    -0.00725 -0.021451 0.0069516 0.657185
-\end{rc}
+	\end{centerverbatim}
+\end{figure}
 
-\begin{figure}
+\begin{figure}[!htbp]
 	\centering
 	\includegraphics[width=0.7\linewidth]{10_resultados/imagenes/anova_2000}
 	\caption{Gráfico de caja y bigote para las medias de error de los métodos en estudio para tamaño de muestra de 2000 pares de preguntas.}
