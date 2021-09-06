@@ -1,5 +1,12 @@
 \documentclass{beamer}
 
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{multirow}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{multicol}
+\usepackage{fullpage,graphicx}
+
 \mode<presentation> {
 	\usetheme{Madrid}
 	%\usetheme{Malmoe}
@@ -43,6 +50,59 @@
 \setbeamercovered{invisible}
 \setbeamercovered{again covered={\opaqueness<1->{30}}}
 
+\newenvironment{centerverbatim}{%
+	\par
+	\centering
+	\varwidth{\linewidth}%
+	\verbatim
+}{%
+	\endverbatim
+	\endvarwidth
+	\par
+}
+
+% PYTHON
+% Default fixed font does not support bold face
+%\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+%\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+%
+% Custom colors
+%\usepackage{color}
+%\definecolor{deepblue}{rgb}{0,0,0.5}
+%\definecolor{deepred}{rgb}{0.6,0,0}
+%\definecolor{deepgreen}{rgb}{0,0.5,0}
+%
+% Python style for highlighting
+%\newcommand\pythonstyle{\lstset{
+%		language=Python,
+%		morekeywords={self},              % Add keywords here
+%		keywordstyle=\footnotesize\color{deepblue},
+%		emph={MyClass,__init__},          % Custom highlighting
+%		emphstyle=\footnotesize\color{deepred},    % Custom highlighting style
+%		stringstyle=\color{deepgreen},
+%		frame=tb,                         % Any extra options here
+%		showstringspaces=false,
+%		basicstyle=\footnotesize,
+%		numbers=left,
+%		stepnumber=1
+%}}
+%
+% Python environment
+%\lstnewenvironment{python}[1][]
+%{
+%	\pythonstyle
+%	\lstset{#1}
+%}
+%{}
+%
+% Python for external files
+%\newcommand\pythonexternal[2][]{{
+%		\pythonstyle
+%		\lstinputlisting[#1]{#2}}}
+%
+% Python for inline
+%\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
 \makeatletter
 \newcounter{ftitle}
 \long\def\beamer@@frametitle[#1]#2{%
@@ -72,6 +132,7 @@
 	% textit{john@smith.com} % Your email address
 }
 \date{Fecha pendiente} % Date, can be changed to a custom date
+\setcounter{tocdepth}{1}
 
 \begin{document}
 
@@ -117,109 +178,3 @@
 	\end{frame}
 
 \end{document}
-
-
-%%------------------------------------------------
-%
-%\begin{frame}
-%	\frametitle{Bullet Points}
-%	\begin{itemize}
-%		\item Lorem ipsum dolor sit amet, consectetur adipiscing elit
-%		\item Aliquam blandit faucibus nisi, sit amet dapibus enim tempus eu
-%		\item Nulla commodo, erat quis gravida posuere, elit lacus lobortis est, quis porttitor odio mauris at libero
-%		\item Nam cursus est eget velit posuere pellentesque
-%		\item Vestibulum faucibus velit a augue condimentum quis convallis nulla gravida
-%	\end{itemize}
-%\end{frame}
-%
-%------------------------------------------------
-%
-%\begin{frame}
-%	\frametitle{Blocks of Highlighted Text}
-%	\begin{block}{Block 1}
-%		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-%	\end{block}
-%
-%	\begin{block}{Block 2}
-%		Pellentesque sed tellus purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vestibulum quis magna at risus dictum tempor eu vitae velit.
-%	\end{block}
-%
-%	\begin{block}{Block 3}
-%		Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenatis rutrum, ipsum neque consectetur orci, sed blandit justo nisi ac lacus.
-%	\end{block}
-%\end{frame}
-%
-%------------------------------------------------
-%
-%\begin{frame}
-%	\frametitle{Multiple Columns}
-%	\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
-%
-%		\column{.45\textwidth} % Left column and width
-%		\textbf{Heading}
-%		\begin{enumerate}
-%			\item Statement
-%			\item Explanation
-%			\item Example
-%		\end{enumerate}
-%
-%		\column{.5\textwidth} % Right column and width
-%		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
-%
-%	\end{columns}
-%\end{frame}
-%
-%------------------------------------------------
-%\section{Second Section}
-%------------------------------------------------
-%
-%\begin{frame}
-%	\frametitle{Table}
-%	\begin{table}
-%		\begin{tabular}{l l l}
-%			\toprule
-%			\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-%			\midrule
-%			Treatment 1 & 0.0003262 & 0.562 \\
-%			Treatment 2 & 0.0015681 & 0.910 \\
-%			Treatment 3 & 0.0009271 & 0.296 \\
-%			\bottomrule
-%		\end{tabular}
-%		\caption{Table caption}
-%	\end{table}
-%\end{frame}
-%
-%------------------------------------------------
-%
-%\begin{frame}
-%	\frametitle{Theorem}
-%	\begin{theorem}[Mass--energy equivalence]
-%		$E = mc^2$
-%	\end{theorem}
-%\end{frame}
-%
-%------------------------------------------------
-%
-%\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-%	\frametitle{Verbatim}
-%	\begin{example}[Theorem Slide Code]
-%		\begin{verbatim}
-%			\begin{frame}
-%				\frametitle{Theorem}
-%				\begin{theorem}[Mass--energy equivalence]
-%					$E = mc^2$
-%				\end{theorem}
-%		\end{frame}\end{verbatim}
-%	\end{example}
-%\end{frame}
-%
-%------------------------------------------------
-%
-%\begin{frame}[fragile] % Need to use the fragile option when verbatim is used in the slide
-%	\frametitle{Citation}
-%	An example of the \verb|\cite| command to cite within the presentation:\\~
-%
-%	This statement requires citation \cite{p1}.
-%\end{frame}
-%
-%------------------------------------------------

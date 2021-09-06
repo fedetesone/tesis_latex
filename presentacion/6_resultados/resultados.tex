@@ -3,7 +3,117 @@
 \subsection{Análisis del método propuesto}
 \begin{frame}[allowframebreaks]
 	\frametitle{Análisis del método propuesto}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{table}[h!]
+		\scriptsize
+		\begin{tabularx}{\textwidth}{Xccccccc}
+			\toprule
+			\textbf{k / Tam. muestra} &
+			\textbf{100} &
+			\textbf{500} &
+			\textbf{1000} &
+			\textbf{1500} &
+			\textbf{2000} &
+			\textbf{Media} &
+			\textbf{Varianza} \\ \midrule
+			\textbf{5}  & 0.322 & 0.3366 & 0.3463 & 0.3486 & 0.3407 & 0.33884                         & 0.0004429                         \\
+			\textbf{10} & 0.318 & 0.3254 & 0.3406 & 0.3395 & 0.3389 & 0.33248                         & \cellcolor[HTML]{D9EAD3}0.0004162 \\
+			\textbf{15} & 0.314 & 0.325  & 0.3419 & 0.341  & 0.3354 & 0.33146                         & 0.0005621                       \\
+			\textbf{20} & 0.318 & 0.3192 & 0.3393 & 0.3424 & 0.3375 & 0.33128                         & 0.0005489                        \\
+			\textbf{25} & 0.309 & 0.3226 & 0.3378 & 0.3397 & 0.3354 & 0.3289                          & 0.0006738                           \\
+			\textbf{30} & 0.304 & 0.3218 & 0.3364 & 0.3384 & 0.3353 & 0.32718                         & 0.0008430                        \\
+			\textbf{35} & 0.307 & 0.3188 & 0.3366 & 0.3364 & 0.3315 & 0.32606                         & 0.0006635                       \\
+			\textbf{40} & 0.309 & 0.317  & 0.3397 & 0.3384 & 0.3296 & 0.32674                         & 0.0007216                      \\
+			\textbf{45} & 0.311 & 0.3162 & 0.3361 & 0.335  & 0.3317 & 0.326                           & 0.000536                      \\
+			\textbf{50} & 0.308 & 0.314  & 0.3324 & 0.3293 & 0.3306 & \cellcolor[HTML]{D9EAD3}0.32286 & 0.0004917                         \\
+			\midrule
+			\textbf{Media} &
+			\cellcolor[HTML]{D9EAD3}0.312 &
+			0.32166 &
+			0.33871 &
+			0.33887 &
+			0.33466 &
+			\\
+			\textbf{Varianza} &
+			0.0003 &
+			0.0003736 &
+			0.0001299 &
+			0.0002258 &
+			\cellcolor[HTML]{D9EAD3}0.0001248 &
+			\\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:analisis-error-vs-k}
+	\end{table}
+
+	\framebreak
+
+	\begin{filecontents*}{erroresktamanomuestra.csv}
+		100,0.322,0.318,0.314,0.318,0.309,0.304,0.307,0.309,0.311,0.308
+		500,0.3366,0.3254,0.325,0.3192,0.3226,0.3218,0.3188,0.317,0.3162,0.314
+		1000,0.3463,0.3406,0.3419,0.3393,0.3378,0.3364,0.3366,0.3397,0.3361,0.3324
+		1500,0.3486,0.3395,0.341,0.3424,0.3397,0.3384,0.3364,0.3384,0.335,0.3293
+		2000,0.3407,0.3389,0.3354,0.3375,0.3354,0.3353,0.3315,0.3296,0.3317,0.3306
+	\end{filecontents*}
+
+	\begin{figure}
+		\centering
+		\scriptsize
+		\resizebox{\textwidth}{!}{%
+			\begin{tikzpicture}
+				\begin{axis}[
+					xlabel={Tamaños de muestra},
+					ylabel={Error},
+					xmin=100, xmax=2000,
+					ymin=0.30, ymax=0.36,
+					xtick={100,500,1000,1500,2000},
+					ytick={0.30,0.31,...,0.36},
+					legend pos=north west,
+					ymajorgrids=true,
+					grid style=dashed,
+					]
+
+					\addplot table [mark=square,x index=0, y index=1, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k5}
+					\addplot table [mark=square,x index=0, y index=2, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k10}
+					\addplot table [mark=square,x index=0, y index=3, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k15}
+					\addplot table [mark=square,x index=0, y index=4, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k20}
+					\addplot table [mark=square,x index=0, y index=5, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k25}
+					\addplot table [mark=square,x index=0, y index=5, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k30}
+					\addplot table [mark=square,x index=0, y index=7, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k35}
+					\addplot table [mark=square,x index=0, y index=8, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k40}
+					\addplot table [mark=square,x index=0, y index=9, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k45}
+					\addplot table [mark=square,x index=0, y index=10, col sep=comma] {erroresktamanomuestra.csv};
+					\label{k50}
+				\end{axis}
+
+				% Primer cuadro de leyendas.
+				\node [draw,fill=white] at (rel axis cs: 0.55,0.2) {\scriptsize\shortstack[l]{
+						\ref{k5} $k = 5$ \\
+						\ref{k10} $k = 10$ \\
+						\ref{k15} $k = 15$ \\
+						\ref{k20} $k = 20$ \\
+						\ref{k25} $k = 25$}};
+
+				% Segundo cuadro de leyendas.
+				\node [draw,fill=white] at (rel axis cs: 0.83,0.2) {\scriptsize\shortstack[l]{
+						\ref{k30} $k = 30$ \\
+						\ref{k35} $k = 35$ \\
+						\ref{k40} $k = 40$ \\
+						\ref{k45} $k = 45$ \\
+						\ref{k50} $k = 50$}};
+			\end{tikzpicture}
+		}
+		\caption{Errores de los valores de \(k\) en los distintos tamaños de muestra.}
+		\label{fig:errores-k-tamanos-muestra}
+	\end{figure}
 \end{frame}
 
 \subsection{Análisis del método propuesto y algoritmos del estado del arte}
