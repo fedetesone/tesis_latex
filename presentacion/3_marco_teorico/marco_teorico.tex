@@ -1,20 +1,36 @@
 \section{Marco teórico}
 \subsection{Sitios de CQA}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Sitios de CQA}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Sitios de Community Question Answering]
+		Los sitios de \textit{Community Question Answering} CQA, son un tipo especial de sitios web de \textit{Question Answering} (QA), los cuales permiten a los usuarios registrados responder a preguntas formuladas por otras personas.
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Sitios de CQA}
+	¿Por qué los sitios de CQA todavía no alcanzan a satisfacer las expectativas de los usuarios?
+	\bigskip
+	\begin{itemize} [<+>]
+		\item Baja probabilidad de encontrar al experto.
+		\item Respuestas de baja calidad.
+		\item Preguntas archivadas y poco consultadas: muchas preguntas de los usuarios son similares.
+	\end{itemize}
 \end{frame}
 
 \subsection{Sistemas de recomendación}
-\begin{frame}[allowframebreaks]
-	\frametitle{Sistemas de recomendación}
-	Como se mencionó anteriormente, un RS es un conjunto de herramientas de software que sugiere ítems a un usuario, quien posiblemente utilizará algunos de ellos.
+\begin{frame}
+	\frametitle{Sistemas de Recomendación}
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Sistemas de Recomendación]
+		Un RS es un conjunto de herramientas de software que sugiere ítems a un usuario, quien posiblemente utilizará algunos de ellos.
+	\end{tcolorbox}
 \end{frame}
 
 \subsection{Sistemas de recomendación}
 \begin{frame}
 	\frametitle{Técnicas de Recomendación}
 	Los RS basan sus estrategias de recomendaciones en 6 técnicas básicas (Ricci et al., 2011):
+	\bigskip
 	\begin{itemize} [<+>]
 		\item Basados en contenido.
 		\item FIltrado Colaborativo.
@@ -27,31 +43,125 @@
 
 \subsection{Big Data y Arquitecturas}
 \begin{frame}[allowframebreaks]
-	\frametitle{Sistemas de recomendación}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-\end{frame}
+	\frametitle{Big Data}
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Big Data]
+		``Conjuntos de datos cuyo tamaño está más allá de la habilidad de las herramientas software de base de datos para capturar, almacenar, gestionar y analizar los datos'' (Manyika et al., 2011).
 
-\subsection{Medidas de distancia de texto}
-\begin{frame}[allowframebreaks]
-	\frametitle{Conceptos básicos}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-\end{frame}
+		\bigskip
 
-\begin{frame}[allowframebreaks]
-	\frametitle{Medidas utilizadas en este trabajo}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-\end{frame}
-
-\subsection{Ensamble de Clustering}
-\begin{frame}[allowframebreaks]
-	\frametitle{Clustering}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		``Big Data son activos de información caracterizados por su alto volumen, velocidad y variedad que demandan formas innovadoras y rentables de procesamiento de información para mejorar la compresión y la toma de decisiones'' (consultora Gartner).
+	\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
-	\frametitle{FastText}
+	\frametitle{Big Data II}
+	Conceptos importantes relativos a este trabajo:
+	\bigskip
+
 	\begin{itemize}
-		\scriptsize
+		\item Map-reduce.
+		\item Arquitectura Hadoop (HDFS).
+		\item Apache Spark.
+	\end{itemize}
+\end{frame}
+
+\subsection{Medidas de distancia de texto}
+\begin{frame}
+	\frametitle{Information retrieval}
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Information retrieval]
+		\textit{Information retrieval} (IR), traducido a menudo como ``recuperación de información'', se define la acción de como encontrar material (generalmente documentos) de una naturaleza desestructurada (generalmente texto) que satisfaga una necesidad de información de grandes colecciones (generalmente almacenadas en computadoras) (Schütze et al. 2008).
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Similaridad}
+	Las medidas de similaridad son interés poder cuantificar la relación entre objetos.
+
+	\bigskip
+
+	\begin{enumerate}
+			\item La función de similaridad es definida satisfaciendo las condiciones:
+			\begin{enumerate}[<*>]
+				\item Simetría,
+				\[S(x_i,x_j)=S(x_j,x_i);\]
+
+				\item Positividad,
+				\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j.\]
+			\end{enumerate}
+
+		\item \bigskip
+		Es posible transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), en el intervalo \([0,1]\). Aplicando \(D(x_i,x_j) = 1 - S(x_i,x_j)\).
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Modelo de espacio vectorial}
+	En el modelo de \textit{espacio vectorial}, un texto es representado como un vector de términos. Si las palabras son elegidas como términos, entonces cada palabra del vocabulario sería una \textit{dimensión} independiente en el espacio vectorial (Singhal et al., 2001).
+
+	\bigskip
+
+	Típicamente, el ángulo entre los dos vectores es usado como medida de divergencia entre los mismos, y el coseno del ángulo es usado como similaridad numérica.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Distancia del coseno}
+	Siendo \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) dos documentos en forma de vectores:
+	\[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}}.\]
+
+	\bigskip
+	Particularmente en IR, es de interés el intervalo \([0, 1]\), entonces la distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
+	\[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
+	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos
+\end{frame}
+
+\begin{frame}
+	\frametitle{Term Frequency (TF)}
+	Caracteristicas de Term Frequency:
+	\bigskip
+	\begin{itemize}[<*>]
+		\item También conocido en la literatura como \textit{Bag of words} (bolsa de palabras).
+		\item El orden exacto de los términos es ignorado, pero se basa en el número de ocurrencias de cada uno de ellos en un documento.
+		\item Cada documento corresponde a un vector y cada término a una dimensión.
+		\item Se mide el grado de similaridad de dos documentos utilizando el coseno del ángulo.
+	\end{itemize}
+
+	\bigskip
+	\centering
+	\textit{“Mary is quicker than John”} y \textit{“John is quicker than Mary”}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Term Frequency Inverse Document Frequency (TF-IDF)}
+	Caracteristicas de TF-IDF:
+	\bigskip
+	\begin{itemize}[<*>]
+		\item Se define \textit{document frequency} \(df_t\) como el número de documentos en una colección que contienen el término \(t\).
+		\item \textit{Inverse document frequency}, o IDF, es un indicador basado en la cantidad de documentos que contienen (o son indexados por) un término en cuestión.
+		\item Intuición: si un término de búsqueda se encuentra en muchos documentos, no es un buen discriminador, y se le debe asignar menor peso que a un término que se encuentra en pocos documentos.
+	\end{itemize}
+
+	\centering
+	\[tfidf(t_i, d_j) = tf(t_i, d_j) \cdot idf(t_j)\]
+\end{frame}
+
+\begin{frame}
+	\frametitle{Word2Vec}
+	Caracteristicas de Word2Vec:
+	\bigskip
+	\begin{itemize}[<*>]
+		\item Modelos basados en redes neuronales con una capa oculta para computar representaciones de palabras como vectores continuos en grandes conjuntos de datos.
+		\item Dos modelos: Skip-gram y Continuous Bag of Words.
+		\item Las entradas y salidas de la red neuronal son palabras representadas como \textit{one-hot} vector.
+		\item Los pesos de la capa oculta se van ajustando utilizando un clasificador de regresión Softmax.
+		\item Estos pesos resultantes dan como resultado a la representación vectorial de palabras utilizadas para el cálculo de similaridad de este trabajo.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	Caracteristicas de FastText:
+	\bigskip
+	\frametitle{FastText}
+	\begin{itemize}[<*>]
 		\item Libreria open-source desarrollada por Facebook.
 		\item Basado en Skip-gram pero utilizando un modelo sub-palabra.
 		\item Cada palabra es representada como una bolsa de \textit{n-gramas}.
@@ -59,10 +169,11 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
 	\frametitle{Semantic Distance}
-	\begin{itemize}
-		\scriptsize
+	Caracteristicas de Semantic Distance:
+	\bigskip
+	\begin{itemize}[<*>]
 		\item La distancia semántica usada en este trabajo está basada en \textit{redes semánticas} y \textit{estadísticas de corpus} (Li et al., 2006).
 		\item Enfocado en textos de distancia corta.
 		\item Tiene en cuenta la \textit{información semántica} y la \textit{información del orden} de las palabras implicadas en las frases involucradas.
@@ -73,38 +184,42 @@
 		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/similaridad_sematinca_metodo}
 		\label{fig:similaridadsematincametodo}
 	\end{figure}
-\end{frame}
 
-\begin{frame}
-	\frametitle{Similaridad semántica entre palabras}
+	\framebreak
+
+	\textbf{Similaridad semántica entre palabras}
+	\bigskip
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/taxonomia_semantica}
 		\label{fig:taxonomiasemantica}
 	\end{figure}
-\end{frame}
 
-\begin{frame}
-	\frametitle{Similaridad semántica entre frases}
+	\framebreak
+
+	\textbf{Similaridad semántica entre frases} \\
+	\bigskip
 	Este método semántico usa únicamente vectores semánticos formados por las frases en comparación. El valor de una entrada del vector semántico es calculado de la siguiente forma:
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item \textbf{Caso 1}. Si \(w_i\) aparece en la frase, \(s_i\) es 1.
 		\item \textbf{Caso 2}. Si \(w_i\) no está contenida en \(T_1\), se calcula una similaridad semántica entre \(w_1\) y cada palabra en \(T_1\) utilizando el método de la sección anterior.
 	\end{itemize}
 
-
+	\framebreak
+	\textbf{Similaridad semántica entre frases (cont.)} \\
+	\bigskip
 	Se ponderan cada una de las palabras basadas en su contenido de información:
 	\[s_i = \check{s} \cdot I(w_i) \cdot I(\widetilde{w}_i),\]
 
 	La similaridad semántica entre dos frases es definida como el coeficiente del coseno entre los dos vectores:
 	\[S_s = \frac{s_1. s_2}{||s_1||.||s_2||}.\]
-\end{frame}
 
-\begin{frame}
-	\frametitle{Similaridad de orden entre frases}
+	\framebreak
 
+	\textbf{Similaridad de orden entre frases} \\
+	\bigskip
 	Consideremos dos frases \(T_1\) y \(T_2\), por ejemplo:
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item \textbf{T1}: A quick brown dog jumps over the lazy fox.
 		\item \textbf{T2}. A quick brown fox jumps over the lazy dog.
 	\end{itemize}
@@ -114,13 +229,12 @@
 
 	Se propone entonces una medida de similaridad de orden entre frases de la siguiente manera:
 	\[S_r = 1 - \frac{\left \| r_1 - r_2 \right \|}{\left \| r_1 + r_2 \right \|}.\]
-\end{frame}
 
-\begin{frame}
-	\frametitle{Similaridad total entre frases}
-	Similaridad total:
+	\framebreak
 
+	\textbf{Similaridad total entre frases:} \\
 	\bigskip
+
 	\[S(T_1, T_2)=\delta S_s + (1 - \delta)S_r,\]
 	\[S(T_1, T_2)=\delta \frac{s_1.s_2}{\left \| s_1 \right \|\left \| s_2 \right \|} + (1 - \delta)\frac{\left \|r_1-r_2 \right \|}{\left \| r_1+r_2 \right \|},\]
 
@@ -131,14 +245,16 @@
 \subsection{Ensamble de Clustering}
 \begin{frame}
 	\frametitle{Clustering}
-	\centering
-	El Clustering o \textit{análisis cluster} tiene por objetivo agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos.
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Clustering]
+		El Clustering o \textit{análisis cluster} tiene por objetivo agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos.
+	\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Ensamble de Clustering}
-	\centering
-	El \textit{Ensamble de Clustering} es un método para extraer clusters consistentes dadas particiones variadas de entrada.
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Ensamble de Clustering]
+		El \textit{Ensamble de Clustering} es un método para extraer clusters consistentes dadas particiones variadas de entrada.
+	\end{tcolorbox}
 
  	\bigskip
 

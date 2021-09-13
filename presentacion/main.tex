@@ -1,14 +1,32 @@
 \documentclass{beamer}
 
+\usepackage[spanish]{babel}
 \usepackage{tabularx,ragged2e,booktabs,caption}
 \usepackage{multirow}
 \usepackage{xcolor}
 \usepackage{colortbl}
 \usepackage{multicol}
 \usepackage{fullpage,graphicx}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
+\usepackage{verbatim}
+\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+\usepackage{tcolorbox}
 
 \mode<presentation> {
 	\usetheme{Madrid}
+
+%	\usefonttheme[onlymath]{serif}
+%	\setbeamertemplate{footline}%{miniframes theme}
+%	{%
+%		\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+%			leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+%			{\usebeamerfont{author in head/foot}\insertshortauthor} \hfill   {\insertframenumber/\inserttotalframenumber}%
+%		\end{beamercolorbox}%
+%	}
+%	\setbeamertemplate{mini frames}{}
 	%\usetheme{Malmoe}
 	%\usetheme{Marburg}
 	%\usetheme{Montpellier}
@@ -41,80 +59,61 @@
 	%\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
 	%\setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
 
+  \setbeamertemplate{footline}%{miniframes theme}
+	{%
+		\begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+			leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+			{\usebeamerfont{author in head/foot}\insertshortauthor} \hfill   {\insertframenumber/\inserttotalframenumber}%
+		\end{beamercolorbox}%
+	}
+
 	%\setbeamertemplate{navigation symbols}{} % To remove the navigation symbols from the bottom of all slides uncomment this line
 }
 
-\usepackage{graphicx} % Allows including images
-\usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
+%\newenvironment{centerverbatim}{%
+%	\par
+%	\centering
+%	\varwidth{\linewidth}%
+%	\verbatim
+%}{%
+%	\endverbatim
+%	\endvarwidth
+%	\par
+%}
 
 \setbeamercovered{invisible}
 \setbeamercovered{again covered={\opaqueness<1->{30}}}
 
-\newenvironment{centerverbatim}{%
-	\par
-	\centering
-	\varwidth{\linewidth}%
-	\verbatim
-}{%
-	\endverbatim
-	\endvarwidth
-	\par
+\AtBeginSection[]
+{
+	\begin{frame}
+		\frametitle{Agenda}
+
+		\tableofcontents[currentsection,subsectionstyle = show/hide]
+	\end{frame}
 }
 
-% PYTHON
-% Default fixed font does not support bold face
-%\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
-%\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
-%
-% Custom colors
-%\usepackage{color}
-%\definecolor{deepblue}{rgb}{0,0,0.5}
-%\definecolor{deepred}{rgb}{0.6,0,0}
-%\definecolor{deepgreen}{rgb}{0,0.5,0}
-%
-% Python style for highlighting
-%\newcommand\pythonstyle{\lstset{
-%		language=Python,
-%		morekeywords={self},              % Add keywords here
-%		keywordstyle=\footnotesize\color{deepblue},
-%		emph={MyClass,__init__},          % Custom highlighting
-%		emphstyle=\footnotesize\color{deepred},    % Custom highlighting style
-%		stringstyle=\color{deepgreen},
-%		frame=tb,                         % Any extra options here
-%		showstringspaces=false,
-%		basicstyle=\footnotesize,
-%		numbers=left,
-%		stepnumber=1
-%}}
-%
-% Python environment
-%\lstnewenvironment{python}[1][]
+%\AtBeginSubsection[]
 %{
-%	\pythonstyle
-%	\lstset{#1}
+%	\begin{frame}
+%		\frametitle{Agenda}
+%
+%		\tableofcontents[currentsection,hideothersubsections,currentsubsection,sectionstyle = hide,subsectionstyle=show/hide]
+%	\end{frame}
 %}
-%{}
-%
-% Python for external files
-%\newcommand\pythonexternal[2][]{{
-%		\pythonstyle
-%		\lstinputlisting[#1]{#2}}}
-%
-% Python for inline
-%\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
 
-\makeatletter
-\newcounter{ftitle}
-\long\def\beamer@@frametitle[#1]#2{%
-	\beamer@ifempty{#2}{}{%
-		\gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\space\usebeamertemplate*{frametitle continuation}\fi}}%
-		\gdef\beamer@frametitle{#2}%
-		\stepcounter{ftitle}
-		\expandafter\gdef\csname Frametitle\romannumeral\theftitle\endcsname{#2}
-		\gdef\beamer@shortframetitle{#1}%
-	}%
-}
-\makeatother
+%\makeatletter
+%\newcounter{ftitle}
+%\long\def\beamer@@frametitle[#1]#2{%
+%	\beamer@ifempty{#2}{}{%
+%		\gdef\insertframetitle{{#2\ifnum\beamer@autobreakcount>0\relax{}\space\usebeamertemplate*{frametitle continuation}\fi}}%
+%		\gdef\beamer@frametitle{#2}%
+%		\stepcounter{ftitle}
+%		\expandafter\gdef\csname Frametitle\romannumeral\theftitle\endcsname{#2}
+%		\gdef\beamer@shortframetitle{#1}%
+%	}%
+%}
+%\makeatother
 
 %%%%%%%%%%%%%%%%%%%%%
 
@@ -122,37 +121,66 @@
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\title[]{Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[]{\textsc{Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering}} % The short title appears at the bottom of every slide, the full
+\author{\textsc{Ing. Federico Tesone}} % Your name
+%\institute[UTN] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
+%{
+%	Universidad Tecnológica Nacional Facultad Regional Rosario \\ % Your institution for the title page
+%	\date{\footnotesize{29th June 2016}}
+%	% textit{john@smith.com} % Your email address
+%}
 
-\author{Ing. Federico Tesone} % Your name
-\institute[UTN] % Your institution as it will appear on the bottom of every slide, may be shorthand to save space
-{
-	Universidad Tecnológica Nacional (FRR) \\ % Your institution for the title page
-	\medskip
-	% textit{john@smith.com} % Your email address
-}
-\date{Fecha pendiente} % Date, can be changed to a custom date
+%\hypersetup{
+%	pdfauthor={Ing. Guillermo Leale},
+%	pdftitle={Desarrollo de nuevos algoritmos de clustering \\ para bases de datos biológicas},
+%	pdfsubject={Tesis doctoral. Doctorado en Ingeniería, mención Sistemas de Información},
+%}
+\date{}
+
 \setcounter{tocdepth}{1}
-
 \begin{document}
 
-	\begin{frame}
-		\titlepage
-	\end{frame}
+	%\setbeamertemplate{footline}[frame number]
+	\setbeamertemplate{navigation symbols}{}
 
 	\begin{frame}
-	Aca va el jurado y eso
+		 \titlepage{}
+		 \date{}
+
+		 \vspace{-45px}
+
+ 		\begin{center}
+			{\textsc{\textbf\scriptsize Tesis de Maestría}} \\[-5px]
+			{\textsc{\tiny Maestría en Ingeniería en Sistemas de Información}} \\
+		\end{center}
+
+		\vspace{3px}
+
+		\begin{center}
+			\begin{scriptsize}
+				\begin{tabular}{rl}
+					\textsc{Director:} & \textsc{Dr. Guillermo Leale} \\
+					\textsc{Co-directora:} & \textsc{Dra. Soledad Ayala}
+				\end{tabular}
+			\end{scriptsize}
+		\end{center}
+
+ 		\begin{center}
+			{\tiny \textsc{15 de Octubre de 2021}}
+		\end{center}
 
 		\begin{figure}
 			\includegraphics[width=0.1\linewidth]{../imagenes/portada/logoUTN.png}
 		\end{figure}
 	\end{frame}
 
-	\begin{frame}[allowframebreaks]
-		\frametitle{Tabla de contenidos}
-		\scriptsize
-		\tableofcontents
+	% Tabla de contenidos
+	\begin{frame}[plain]
+		\frametitle{Agenda}
+		\tableofcontents[hideallsubsections]
 	\end{frame}
+
+	\beamerdefaultoverlayspecification{<+>}
 
 	\input{1_introduccion/introduccion}
 	\input{2_fundamentacion/fundamentacion}
@@ -163,18 +191,7 @@
 	\input{7_conclusiones/conclusiones}
 
 	\begin{frame}
-		\frametitle{References}
-		\footnotesize{
-			\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-				\bibitem[Smith, 2012]{p1} John Smith (2012)
-				\newblock Title of the publication
-				\newblock \emph{Journal Name} 12(3), 45 -- 678.
-			\end{thebibliography}
-		}
-	\end{frame}
-
-	\begin{frame}
-		\Huge{\centerline{The End}}
+		\Huge{\centerline{¡Muchas gracias!}}
 	\end{frame}
 
 \end{document}

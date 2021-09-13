@@ -1,34 +1,35 @@
-\beamer@sectionintoc {1}{Introducción}{4}{0}{1}
+\babel@toc {spanish}{}
+\beamer@sectionintoc {1}{Introducción}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Área temática}{4}{0}{1}
 \beamer@subsectionintoc {1}{2}{Tema específico}{9}{0}{1}
 \beamer@subsectionintoc {1}{3}{Objetivo general}{11}{0}{1}
 \beamer@subsectionintoc {1}{4}{Objetivos específicos}{12}{0}{1}
 \beamer@sectionintoc {2}{Fundamentación}{17}{0}{2}
-\beamer@subsectionintoc {2}{1}{Motivación de la tesis}{17}{0}{2}
-\beamer@sectionintoc {3}{Marco teórico}{27}{0}{3}
-\beamer@subsectionintoc {3}{1}{Sitios de CQA}{27}{0}{3}
-\beamer@subsectionintoc {3}{2}{Sistemas de recomendación}{31}{0}{3}
-\beamer@subsectionintoc {3}{3}{Sistemas de recomendación}{32}{0}{3}
-\beamer@subsectionintoc {3}{4}{Big Data y Arquitecturas}{38}{0}{3}
-\beamer@subsectionintoc {3}{5}{Medidas de distancia de texto}{42}{0}{3}
-\beamer@subsectionintoc {3}{6}{Ensamble de Clustering}{55}{0}{3}
-\beamer@sectionintoc {4}{Problema de investigación y propuesta}{58}{0}{4}
-\beamer@subsectionintoc {4}{1}{Hipótesis}{58}{0}{4}
-\beamer@subsectionintoc {4}{2}{El método propuesto}{59}{0}{4}
-\beamer@subsectionintoc {4}{3}{Arquitectura de procesamiento de datos}{60}{0}{4}
-\beamer@subsectionintoc {4}{4}{Implementación en un sistema de recomendación de tiempo real}{61}{0}{4}
-\beamer@sectionintoc {5}{Experimentos}{65}{0}{5}
-\beamer@subsectionintoc {5}{1}{Estado del arte}{65}{0}{5}
-\beamer@subsectionintoc {5}{2}{Preprocesamiento y muestreo del conjunto de datos}{66}{0}{5}
-\beamer@subsectionintoc {5}{3}{Generación de particiones}{67}{0}{5}
-\beamer@subsectionintoc {5}{4}{Ensamble de Clustering}{70}{0}{5}
-\beamer@subsectionintoc {5}{5}{Método de validación}{75}{0}{5}
-\beamer@sectionintoc {6}{Resultados}{83}{0}{6}
-\beamer@subsectionintoc {6}{1}{Análisis del método propuesto}{83}{0}{6}
-\beamer@subsectionintoc {6}{2}{Análisis del método propuesto y algoritmos del estado del arte}{85}{0}{6}
-\beamer@subsectionintoc {6}{3}{Otras observaciones de interés}{86}{0}{6}
-\beamer@subsectionintoc {6}{4}{Análisis de desempeño}{87}{0}{6}
-\beamer@subsectionintoc {6}{5}{Resumen de resultados}{88}{0}{6}
-\beamer@sectionintoc {7}{Conclusiones}{89}{0}{7}
-\beamer@subsectionintoc {7}{1}{Contribuciones realizadas}{89}{0}{7}
-\beamer@subsectionintoc {7}{2}{Futuras investigaciones}{90}{0}{7}
+\beamer@subsectionintoc {2}{1}{Motivación de la tesis}{18}{0}{2}
+\beamer@sectionintoc {3}{Marco teórico}{28}{0}{3}
+\beamer@subsectionintoc {3}{1}{Sitios de CQA}{29}{0}{3}
+\beamer@subsectionintoc {3}{2}{Sistemas de recomendación}{33}{0}{3}
+\beamer@subsectionintoc {3}{3}{Sistemas de recomendación}{34}{0}{3}
+\beamer@subsectionintoc {3}{4}{Big Data y Arquitecturas}{40}{0}{3}
+\beamer@subsectionintoc {3}{5}{Medidas de distancia de texto}{44}{0}{3}
+\beamer@subsectionintoc {3}{6}{Ensamble de Clustering}{59}{0}{3}
+\beamer@sectionintoc {4}{Problema de investigación y propuesta}{64}{0}{4}
+\beamer@subsectionintoc {4}{1}{Hipótesis}{65}{0}{4}
+\beamer@subsectionintoc {4}{2}{El método propuesto}{66}{0}{4}
+\beamer@subsectionintoc {4}{3}{Arquitectura de procesamiento de datos}{67}{0}{4}
+\beamer@subsectionintoc {4}{4}{Implementación en un sistema de recomendación de tiempo real}{68}{0}{4}
+\beamer@sectionintoc {5}{Experimentos}{72}{0}{5}
+\beamer@subsectionintoc {5}{1}{Estado del arte}{73}{0}{5}
+\beamer@subsectionintoc {5}{2}{Preprocesamiento y muestreo del conjunto de datos}{74}{0}{5}
+\beamer@subsectionintoc {5}{3}{Generación de particiones}{80}{0}{5}
+\beamer@subsectionintoc {5}{4}{Ensamble de Clustering}{84}{0}{5}
+\beamer@subsectionintoc {5}{5}{Método de validación}{89}{0}{5}
+\beamer@sectionintoc {6}{Resultados}{97}{0}{6}
+\beamer@subsectionintoc {6}{1}{Análisis del método propuesto}{98}{0}{6}
+\beamer@subsectionintoc {6}{2}{Análisis del método propuesto y algoritmos del estado del arte}{102}{0}{6}
+\beamer@subsectionintoc {6}{3}{Otras observaciones de interés}{105}{0}{6}
+\beamer@subsectionintoc {6}{4}{Análisis de desempeño}{113}{0}{6}
+\beamer@subsectionintoc {6}{5}{Resumen de resultados}{117}{0}{6}
+\beamer@sectionintoc {7}{Conclusiones}{122}{0}{7}
+\beamer@subsectionintoc {7}{1}{Contribuciones realizadas}{123}{0}{7}
+\beamer@subsectionintoc {7}{2}{Futuras investigaciones}{125}{0}{7}
