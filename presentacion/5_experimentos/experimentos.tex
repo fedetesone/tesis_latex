@@ -94,28 +94,34 @@
 \subsection{Preprocesamiento y muestreo del conjunto de datos}
 \begin{frame}
 	\frametitle{Preprocesamiento y muestreo del conjunto de datos}
-	Preprocesamiento:
-	\begin{enumerate}
-		\item Convertir el texto en minúscula.
-		\item Eliminar fórmulas; las cuales están encerradas entre etiquetas [math][/math] y [code][/code].
-		\item Reemplazar números por letras.
-		\item Eliminar caracteres especiales, ya que los datos deben ser uniformes.
-	\end{enumerate}
-
-	\bigskip
-	Muestreo:
 	\begin{itemize}
-		\item Generación pseudoaleatoria con criterios de aceptación.
-		\item Garantizar subconjuntos estadistícamente significativos.
+		\item
+		Preprocesamiento:
+		\begin{enumerate}[<*>]
+			\item Convertir el texto en minúscula.
+			\item Eliminar fórmulas; las cuales están encerradas entre etiquetas [math][/math] y [code][/code].
+			\item Reemplazar números por letras.
+			\item Eliminar caracteres especiales, ya que los datos deben ser uniformes.
+		\end{enumerate}
+
+		\bigskip
+		\item
+		Muestreo:
+		\begin{itemize}[<*>]
+			\item Generación pseudoaleatoria con criterios de aceptación.
+			\item Garantizar subconjuntos estadistícamente significativos.
+		\end{itemize}
 	\end{itemize}
+
 \end{frame}
 
 \subsection{Generación de particiones}
 \begin{frame}[allowframebreaks]
-	\frametitle{Calculo de similaridades}
+	\frametitle{Generación de particiones}
+
+	Ejemplo de la estructura de los subconjuntos de muestreo:
 	\begin{table}[h!]
 		\footnotesize
-		\caption{Ejemplo de la estructura de los subconjuntos de muestreo.}
 		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 			\toprule
 			\textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} \\
@@ -127,9 +133,9 @@
 		\label{tab:archivo-entrada}
 	\end{table}
 
+	Combinación  de todas las preguntas individuales de una muestra:
 	\begin{table}[h!]
 		\footnotesize
-		\caption{Combinación  de todas las preguntas individuales de una muestra.}
 		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 			\toprule
 			\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} \\
@@ -145,9 +151,11 @@
 		\label{tab:matriz-triangular}
 	\end{table}
 
+	\framebreak
+	\textbf{Cálculo de similaridad}
+	Ejemplo de la estructura de matriz de similaridad en formato de tabla.
 	\begin{table}[h!]
 		\footnotesize
-		\caption{Ejemplo de la estructura de matriz de similaridad en formato de tabla.}
 		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 			\toprule
 			\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} & \textbf{similarity} \\
@@ -167,34 +175,36 @@
 	\[\begin{bmatrix}0 & similarity\_01 & similarity\_02 & similarity\_03 \\ 0 & 0 & similarity\_12 & similarity\_13  \\ 0 & 0  & 0 & similarity\_23  \\ 0 & 0 & 0 & 0 \end{bmatrix}.\]
 \end{frame}
 
-\begin{frame}[allowframebreaks]
+\begin{frame}[fragile]
 	\frametitle{Clustering y etiquetado}
 	\begin{itemize}
 		\item Por cada una de las matrices de similaridad se realizan varias ejecuciones de clustering PAM.
-		\item Por cada una de las ejecuciones se proporciona un \(k\) inicial.
-		\item Los resultados poseen la siguiente estructura.
-
-		\begin{table}[h!]
-			\footnotesize
-			\begin{tabularx}{\textwidth}{ccc}
-				\toprule
-				\textbf{run\_uuid}& \textbf{question\_id} & \textbf{assigned\_medoid} \\
-				\midrule
-				63815467136575428551131593057064980770 & 336 & 856 \\
-				63815467136575428551131593057064980770 & 342& 856 \\
-				63815467136575428551131593057064980770 & 26 & 358 \\
-				63815467136575428551131593057064980770 & 1364 & 437 \\
-				\bottomrule
-			\end{tabularx}
-			\label{tab:salida-clustering}
-		\end{table}
+		\item Por cada una de las ejecuciones PAM se proporciona un \(k\) inicial.
+		\item Los resultados poseen la siguiente estructura:
+		\bigskip
+			\begin{table}
+				\footnotesize
+				\begin{tabularx}{\textwidth}{ccc}
+					\toprule
+					\textbf{run\_uuid}& \textbf{question\_id} & \textbf{assigned\_medoid} \\
+					\midrule
+					63815467136575428551131593057064980770 & 336 & 856 \\
+					63815467136575428551131593057064980770 & 342& 856 \\
+					63815467136575428551131593057064980770 & 26 & 358 \\
+					63815467136575428551131593057064980770 & 1364 & 437 \\
+					\bottomrule
+				\end{tabularx}
+				\label{tab:salida-clustering-1}
+			\end{table}
 	\end{itemize}
 \end{frame}
 
 \subsection{Ensamble de Clustering}
 \begin{frame}[allowframebreaks]
 	\frametitle{Ensamble de Clustering}
-	Para explicar el procedimiento, se consideran 3 resultados de ejecuciones ejemplo:
+	\begin{footnotesize}
+	Para explicar el procedimiento de \textbf{Ensamble de Clustering}, se consideran 3 resultados de ejecuciones ejemplo:
+	\end{footnotesize}
 
 	\begin{table}[h!]
 		\footnotesize
@@ -241,7 +251,9 @@
 		\label{tab:run3}
 	\end{table}
 
-	Luego, el resultado de todas las ejecuciones se agrupa por pregunta individual, de la siguiente forma:
+	\begin{footnotesize}
+		Luego, el resultado de todas las ejecuciones se agrupa por pregunta individual, de la siguiente forma:
+	\end{footnotesize}
 
 	\begin{table}[h!]
 		\footnotesize
@@ -276,6 +288,12 @@
 		\label{tab:interseccion}
 	\end{table}
 
+	\begin{footnotesize}
+		Por ejemplo: pregunta 1 = {[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,1),(run\_uuid\_3,3){]} y la pregunta 2 = {[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,2),(run\_uuid\_3,2){]}.
+	\end{footnotesize}
+
+	\framebreak
+
 	Se cuenta la cantidad de veces que una pregunta coincide con otra para una misma ejecución.
 	\[len(set(tuples\_1).intersection(set(tuples\_2))) / total\_runs\]
 
@@ -284,7 +302,7 @@
 
 	\framebreak
 
-	Y generando la siguiente estructura como resultado:
+	Y se genera la siguiente estructura como resultado (\(total\_runs = 3\)):
 	\begin{table}[h!]
 		\footnotesize
 		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
@@ -302,21 +320,27 @@
 		\label{tab:coasociacion}
 	\end{table}
 
+	La estructura resultante es una \textbf{\emph{matriz de co-asociación}}.
 \end{frame}
 
 \subsection{Método de validación}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Método de validación}
+	\textbf{Validando los resultados}
+	\bigskip
 	\begin{itemize}
-		\item Generación de resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate} \item El tamaño de la muestra \item El número de clusters \(k\) \end{enumerate}
+		\item Generación de resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate}[<*>] \item El tamaño de la muestra. \item El número de clusters \(k\). \end{enumerate}
 		\item Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios de 100, 500, 1000, 1500 y 2000 pares de preguntas.
 		\item Para cada tamaño de muestra, se realizaron 10 muestras aleatorias manteniendo un \(k\) fijo.
 		\item Dando un total de \(5 \: (\text{distintos tamaños de muestra}) \times 10 \: (\text{cantidad de ejecuciones por tamaño de muestra}) = 50\) matrices de co-asociación resultado, para cada valor de \(k\) dado.
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Matrices de confusión}
+	\textbf{Matriz de confusión utilizada}
+	\bigskip
+
 	\begin{table}[h!]
 		\footnotesize
 		\centering
@@ -331,10 +355,11 @@
 	\end{table}
 
 	Los indicadores de rendimiento seleccionados para ser evaluados en los experimentos realizados con fines comparativos, son los siguientes:
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\).
 		\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
 	\end{itemize}
+	\bigskip
 	En estos indicadores se cumple la condición \(a+b+c+d=1\).
 \end{frame}
 
@@ -348,7 +373,7 @@
 			\toprule
 			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
 			\midrule
-			0                     & 123004                      & question\_10         & question\_20         & 1              \\
+			0                     & 123004                      & question\_10         & question\_11         & 1              \\
 			1                     & 98776                       & question\_11         & question\_21         & 0              \\
 			\bottomrule
 		\end{tabularx}
@@ -362,10 +387,12 @@
 			\toprule
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
 			\midrule
+			\rowcolor[HTML]{D9EAD3}
 			question\_10 & question\_11 & contenido & contenido & 0.857 \\
 			question\_10 & question\_20 & contenido & contenido & 0.210 \\
 			question\_10 & question\_21 & contenido & contenido & 0.126 \\
 			question\_11 & question\_20 & contenido & contenido & 0.006 \\
+			\rowcolor[HTML]{D9EAD3}
 			question\_11 & question\_21 & contenido & contenido & 0.368 \\
 			question\_20 & question\_21 & contenido & contenido & 0.146 \\
 			\bottomrule
@@ -395,14 +422,15 @@
 		\\ 0 & si & S(q_1, q_2) < t
 	\end{array} \right..\]
 
-	\centering % No funca, arreglar.
-	Cual de los valores de umbral \(t\) tiene mejor rendimiento?
+	\begin{center}
+		\centering	Cual de los valores de umbral \(t\) tiene mejor rendimiento?
+	\end{center}
 
 	\framebreak
 
-	Se toma valores potenciales de umbral con intervalos \(0.05\) se forma un arreglo como \([0.05, 0.1, 0.15, ..., 0.90, 0.95]\) y se itera sobre cada uno de ellos. Por cada uno de los valores en el arreglo:
-	\begin{enumerate}
-		\item Se consideran en cada iteración todos los pares de preguntas tomados para realizar la comparación, provenientes de la matriz de co-asociación.
+	Se toma valores potenciales de umbral con intervalos \(0.05\) y se forma un arreglo como \textbf{\([0.05, 0.1, 0.15, ..., 0.90, 0.95]\)} y se itera sobre cada uno de ellos. Por cada uno de los valores en el arreglo:
+	\begin{enumerate}[<*>]
+		\item Se consideran todos los pares de preguntas tomados para realizar la comparación, provenientes de la matriz de co-asociación.
 		\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
 		\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
 		\item Se calcula la proporción de pares de preguntas asignadas con \textit{true}, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.

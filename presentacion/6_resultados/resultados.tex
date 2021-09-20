@@ -4,7 +4,10 @@
 \begin{frame}[allowframebreaks,fragile]
 	\frametitle{Análisis del método propuesto}
 
-	\begin{itemize}
+	\textbf{Metodología utilizada}
+	\bigskip
+
+	\begin{itemize}[<*>]
 		\item Se comparan distintas ejecuciones del método EQuAL.
 		\item Se varia el tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas.
 		\item Por cada uno de los tamaños de muestra se varia el número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50.
@@ -65,8 +68,6 @@
 		1500,0.3486,0.3395,0.341,0.3424,0.3397,0.3384,0.3364,0.3384,0.335,0.3293
 		2000,0.3407,0.3389,0.3354,0.3375,0.3354,0.3353,0.3315,0.3296,0.3317,0.3306
 	\end{filecontents*}
-
-%	\pgfplotstableread{erroresktamanomuestra.csv}{\Sp}
 
 	Errores de los valores de \(k\) para los distintos tamaños de muestra:
 	\begin{figure}
@@ -188,7 +189,10 @@
 \subsection{Análisis del método propuesto y algoritmos del estado del arte}
 \begin{frame}[allowframebreaks,fragile]
 	\frametitle{Análisis del método propuesto y algoritmos del estado del arte}
-	\begin{itemize}
+	\textbf{Metodología utilizada}
+	\bigskip
+
+	\begin{itemize}[<*>]
 		\item Se realizaron 10 ejecuciones de una muestra aleatoria para cada uno de los algoritmos del estado del arte.
 		\item Se varia el tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas.
 		\item Por cada uno de los tamaños de muestra se varia el número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50.
@@ -276,10 +280,11 @@
 \begin{frame}[allowframebreaks,fragile]
 	\frametitle{Otras observaciones de interés}
 	\textbf{Análisis de varianza del método propuesto.}
+	\bigskip
 
 	Se denomina \(\mu_0\) a la esperanza de los errores del método EQuAL y se denominan \(\mu_i, i = 1,..., 5\) a las esperanzas de los errores de los métodos, TF, TF-IDF, FastText, Word2Vec y Semantic Distance, respectivamente. Se plantean las siguientes hipótesis:
 	\bigskip
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item \textbf{\(H_0\)}: \(\mu_0 - \mu_i = 0, i = 1,..., 5\).
 		\item \textbf{\(H_1\)}: \(\mu_0 - \mu_i \neq 0, i = 1,..., 5\).
 	\end{itemize}
@@ -294,7 +299,7 @@
 		\label{fig:anova100-1}
 	\end{figure}
 
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
 		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
 	\end{itemize}
@@ -308,7 +313,7 @@
 		\label{fig:anova500-1}
 	\end{figure}
 
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
 		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
 	\end{itemize}
@@ -322,7 +327,7 @@
 		\label{fig:anova1000-1}
 	\end{figure}
 
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
 		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
 	\end{itemize}
@@ -336,7 +341,7 @@
 		\label{fig:anova1500-1}
 	\end{figure}
 
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
 		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
 	\end{itemize}
@@ -350,7 +355,7 @@
 		\label{fig:anova2000-1}
 	\end{figure}
 
-	\begin{itemize}
+	\begin{itemize}[<*>]
 		\item El intervalo de confianza contra el método bow no incluye al cero, ya que este método tuvo muy buenos indicadores en este tamaño de muestra.
 		\item En el resto de los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
 	\end{itemize}
@@ -359,8 +364,8 @@
 
 	\normalsize
 	\textbf{Resumen de resultados del análisis de varianza}
-
-	\begin{itemize}
+	\bigskip
+	\begin{itemize}[<*>]
 		\item Se realizaron 25 intervalos de confianza, y en solo uno el método EQuAL se obtuvo una media de error más alta, ya que el método bow fue significativamente mejor al resto.
 		\item El método EQuAL tiene un buen comportamiento en cuanto a medias de error a lo largo de todos los tamaños de muestra.
 		\item Las esperanzas de error no tienen diferencias significativas con los métodos del estado del arte.
@@ -370,8 +375,9 @@
 	\framebreak
 
 	\textbf{Otras observaciones}
-	\begin{itemize}
-		\item El agregado de variabilidad de datos puede ser influyente en tamaños de muestra pequeños: el método EQuAL se comporta muy bien en los tamaños de muestra de 100 y 500 pares de preguntas.
+	\bigskip
+	\begin{itemize}[<*>]
+		\item El agregado de variabilidad de datos puede ser influyente en tamaños de muestra pequeños.
 		\item El método EQuAL es dependiente a los métodos subyacentes.
 		\item Debido a la naturaleza del conjunto de datos utilizado, no es posible identificar fácilmente cuál es la forma de los clusters en cuestión, y verificar si el método EQuAL se adapta perfectamente al conjunto de datos.
 	\end{itemize}
@@ -381,8 +387,9 @@
 \subsection{Análisis de desempeño}
 \begin{frame}[allowframebreaks, fragile]
 	\frametitle{Análisis de desempeño}
-	Se realizó un análisis de desempeño con las siguientes características:
-	\begin{itemize}
+	Se realizó un \textbf{análisis de desempeño} con las siguientes características:
+	\bigskip
+	\begin{itemize}[<*>]
 		\item Cluster Hadoop en localhost.
 		\item Tamaños de muestra 100, 500 y 1000 pares de preguntas.
 		\item En cada una de las ejecuciones, utilizan dos técnicas de similaridad (TF y TFIDF), para luego ensamblarlas.
@@ -533,11 +540,13 @@
 \subsection{Resumen de resultados}
 \begin{frame}
 	\frametitle{Resumen de resultados}
+	\textbf{Resumen de resultados}
+	\bigskip
 	\begin{itemize}
 		\item El método EQuAL tuvo buen rendimiento con tamaños pequeños de muestras y con un alto número de clusters.
 		\item Comparando el método EQuAL con los algoritmos del estado del arte, se concluye que posee indicadores aptos para su aplicación en RS, en cuanto a medias de error y varianza.
-		\item Es altamente probable que arroje buenos resultados si los algoritmos subyacentes también lo hacen, y viceversa.
-		\item Es posible adaptar el método al conjunto de datos y elegir los algoritmos subyacentes adecuados para el mismo.
+		\item Es altamente probable que el método EQuAL arroje buenos resultados si los algoritmos subyacentes también lo hacen, y viceversa.
+		\item Es posible adaptar el método al conjunto de datos y elegir los algoritmos subyacentes adecuados.
 		\item Se desarrolló una arquitectura de software con enfoque Big Data que realiza los cálculos de similaridad y procesamiento del ensamble de clustering de manera escalable y adaptable.
 	\end{itemize}
 \end{frame}
