@@ -1,31 +1,481 @@
 \section{Experimentos}
 
 \subsection{Estado del arte}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Estado del arte}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		\begin{table}
+			\footnotesize
+			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+				\toprule
+				\multicolumn{3}{l}{\multirow{2}{*}{}} &
+				\multicolumn{2}{c}{\textbf{Predicho}} &
+				\multirow{2}{*}{\textbf{Exactitud}} &
+				\multirow{2}{*}{\textbf{Error}} \\ \cmidrule(lr){4-5}
+				\multicolumn{3}{l}{} &
+				\multicolumn{1}{c}{\textbf{0}} &
+				\multicolumn{1}{c}{\textbf{1}} &
+				&
+				\\ \midrule
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF}}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+				\multicolumn{1}{c}{\textbf{0}} &
+				\multicolumn{1}{c}{0.4355} &
+				\multicolumn{1}{c}{0.1953} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.6776}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.3224}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{\textbf{1}} &
+				\multicolumn{1}{c}{0.1271} &
+				\multicolumn{1}{c}{0.2421} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} \\ \midrule
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF/IDF}}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+				\multicolumn{1}{c}{\textbf{0}} &
+				\multicolumn{1}{c}{0.4477} &
+				\multicolumn{1}{c}{0.1831} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.6685}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.3315}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{\textbf{1}} &
+				\multicolumn{1}{c}{0.1484} &
+				\multicolumn{1}{c}{0.2208} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} \\ \midrule
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Word2Vec}}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+				\multicolumn{1}{c}{\textbf{0}} &
+				\multicolumn{1}{c}{0.4343} &
+				\multicolumn{1}{c}{0.1965} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.6788}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.3212}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{\textbf{1}} &
+				\multicolumn{1}{c}{0.1247} &
+				\multicolumn{1}{c}{0.2445} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} \\ \midrule
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{FastText}}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+				\multicolumn{1}{c}{\textbf{0}} &
+				\multicolumn{1}{c}{0.5033} &
+				\multicolumn{1}{c}{0.1275} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.6725}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.3275}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{\textbf{1}} &
+				\multicolumn{1}{c}{0.2} &
+				\multicolumn{1}{c}{0.1692} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} \\ \midrule
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Semantic Distance}}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+				\multicolumn{1}{c}{\textbf{0}} &
+				\multicolumn{1}{c}{0.4877} &
+				\multicolumn{1}{c}{0.1431} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.6797}}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.3203}}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{l}{1} &
+				\multicolumn{1}{l}{0.1772} &
+				\multicolumn{1}{l}{0.192} &
+				\multicolumn{1}{c}{} &
+				\multicolumn{1}{c}{} \\ \bottomrule
+			\end{tabularx}
+			\label{tab:desempeno-estado-del-arte}
+		\end{table}
 \end{frame}
 
 \subsection{Preprocesamiento y muestreo del conjunto de datos}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Preprocesamiento y muestreo del conjunto de datos}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{itemize}
+		\item
+		Preprocesamiento:
+		\begin{enumerate}[<*>]
+			\item Convertir el texto en minúscula.
+			\item Eliminar fórmulas; las cuales están encerradas entre etiquetas [math][/math] y [code][/code].
+			\item Reemplazar números por letras.
+			\item Eliminar caracteres especiales, ya que los datos deben ser uniformes.
+		\end{enumerate}
+
+		\bigskip
+		\item
+		Muestreo:
+		\begin{itemize}[<*>]
+			\item Generación pseudoaleatoria con criterios de aceptación.
+			\item Garantizar subconjuntos estadistícamente significativos.
+		\end{itemize}
+	\end{itemize}
+
 \end{frame}
 
 \subsection{Generación de particiones}
 \begin{frame}[allowframebreaks]
-	\frametitle{Preprocesamiento y muestreo del conjunto de datos}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\frametitle{Generación de particiones}
+
+	Ejemplo de la estructura de los subconjuntos de muestreo:
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} \\
+			\midrule
+			123004                      & question\_0         & question\_2         \\
+			98776                       & question\_1         & question\_3         \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:archivo-entrada}
+	\end{table}
+
+	Combinación  de todas las preguntas individuales de una muestra:
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} \\
+			\midrule
+			0 & question\_0 & 1 & question\_1 \\
+			0 & question\_0 & 2 & question\_2 \\
+			0 & question\_0 & 3 & question\_3 \\
+			1 & question\_1 & 2 & question\_2 \\
+			1 & question\_1 & 3 & question\_3 \\
+			2 & question\_2 & 3 & question\_3 \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:matriz-triangular}
+	\end{table}
+
+	\framebreak
+	\textbf{Cálculo de similaridad}
+	Ejemplo de la estructura de matriz de similaridad en formato de tabla.
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{sequence\_id\_1} & \textbf{question\_id\_1} & \textbf{sequence\_id\_2} & \textbf{question\_id\_2} & \textbf{similarity} \\
+			\midrule
+			0 & question\_0 & 1 & question\_1 & similarity\_01 \\
+			0 & question\_0 & 2 & question\_2 & similarity\_02 \\
+			0 & question\_0 & 3 & question\_3 & similarity\_03 \\
+			1 & question\_1 & 2 & question\_2 & similarity\_12 \\
+			1 & question\_1 & 3 & question\_3 & similarity\_13 \\
+			2 & question\_2 & 3 & question\_3 & similarity\_23 \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:matriz-similaridad}
+	\end{table}
+
+	También se puede ver como una matriz triangular superior:
+	\[\begin{bmatrix}0 & similarity\_01 & similarity\_02 & similarity\_03 \\ 0 & 0 & similarity\_12 & similarity\_13  \\ 0 & 0  & 0 & similarity\_23  \\ 0 & 0 & 0 & 0 \end{bmatrix}.\]
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Clustering y etiquetado}
+	\begin{itemize}
+		\item Por cada una de las matrices de similaridad se realizan varias ejecuciones de clustering PAM.
+		\item Por cada una de las ejecuciones PAM se proporciona un \(k\) inicial.
+		\item Los resultados poseen la siguiente estructura:
+		\bigskip
+			\begin{table}
+				\footnotesize
+				\begin{tabularx}{\textwidth}{ccc}
+					\toprule
+					\textbf{run\_uuid}& \textbf{question\_id} & \textbf{assigned\_medoid} \\
+					\midrule
+					63815467136575428551131593057064980770 & 336 & 856 \\
+					63815467136575428551131593057064980770 & 342& 856 \\
+					63815467136575428551131593057064980770 & 26 & 358 \\
+					63815467136575428551131593057064980770 & 1364 & 437 \\
+					\bottomrule
+				\end{tabularx}
+				\label{tab:salida-clustering-1}
+			\end{table}
+	\end{itemize}
 \end{frame}
 
 \subsection{Ensamble de Clustering}
 \begin{frame}[allowframebreaks]
 	\frametitle{Ensamble de Clustering}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{footnotesize}
+	Para explicar el procedimiento de \textbf{Ensamble de Clustering}, se consideran 3 resultados de ejecuciones ejemplo:
+	\end{footnotesize}
+
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
+			\midrule
+			run\_uuid\_1       & 1                     & 1                    \\
+			run\_uuid\_1       & 2                     & 1                    \\
+			run\_uuid\_1       & 3                     & 1                    \\
+			run\_uuid\_1       & 4                     & 4                    \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:run1}
+	\end{table}
+
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
+			\midrule
+			run\_uuid\_2       & 1                     & 1                    \\
+			run\_uuid\_2       & 2                     & 2                    \\
+			run\_uuid\_2       & 3                     & 1                    \\
+			run\_uuid\_2       & 4                     & 2                    \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:run2}
+	\end{table}
+
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
+			\midrule
+			run\_uuid\_3       & 1                     & 3                    \\
+			run\_uuid\_3       & 2                     & 2                    \\
+			run\_uuid\_3       & 3                     & 3                    \\
+			run\_uuid\_3       & 4                     & 2                    \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:run3}
+	\end{table}
+
+	\begin{footnotesize}
+		Luego, el resultado de todas las ejecuciones se agrupa por pregunta individual, de la siguiente forma:
+	\end{footnotesize}
+
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{10cm}}
+			\toprule
+			\textbf{question\_id} & \textbf{tuples}                                          \\
+			\midrule
+			1                     & {[}(run\_uuid\_1,1),(run\_uuid\_2,1),(run\_uuid\_3,3){]} \\
+			2                     & {[}(run\_uuid\_1,1),(run\_uuid\_2,2),(run\_uuid\_3,2){]} \\
+			3                     & {[}(run\_uuid\_1,1),(run\_uuid\_2,1),(run\_uuid\_3,3){]} \\
+			4                     & {[}(run\_uuid\_1,4),(run\_uuid\_2,2),(run\_uuid\_3,2){]} \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:tuplas}
+	\end{table}
+
+	Se genera un conjunto de datos intermedio con la interseccion de los conjuntos para la combinación de todas las preguntas individuales:
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{2.0cm}>{\centering\arraybackslash}p{2.0cm}>{\centering\arraybackslash}p{7cm}}
+			\toprule
+			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \multicolumn{1}{c|}{\textbf{tuples}}                     \\
+			\midrule
+			1 & 2 & {[}(run\_uuid\_1,1){]} \\
+			1                        & 3                        & {[}(run\_uuid\_1,1),(run\_uuid\_2,1),(run\_uuid\_3,3){]} \\
+			1 & 4 & {[}{]}                 \\
+			2 & 3 & {[}(run\_uuid\_1,1){]} \\
+			2 & 4 & {[}(run\_uuid\_2,2){]} \\
+			3 & 4 & {[}{]}                 \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:interseccion}
+	\end{table}
+
+	\begin{footnotesize}
+		Por ejemplo: pregunta 1 = {[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,1),(run\_uuid\_3,3){]} y la pregunta 2 = {[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,2),(run\_uuid\_3,2){]}.
+	\end{footnotesize}
+
+	\framebreak
+
+	Se cuenta la cantidad de veces que una pregunta coincide con otra para una misma ejecución.
+	\[len(set(tuples\_1).intersection(set(tuples\_2))) / total\_runs\]
+
+	Respondiendo a la formula de Ensamble de Clustering de Acumulación de Evidencias.
+	\[C(i,j)=\frac{n_{ij}}{N}.\]
+
+	\framebreak
+
+	Y se genera la siguiente estructura como resultado (\(total\_runs = 3\)):
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{similarity} \\
+			\midrule
+			1                        & 2                        & 0.3333              \\
+			1                        & 3                        & 1.0                 \\
+			1                        & 4                        & 0                   \\
+			2                        & 3                        & 0.3333              \\
+			2                        & 4                        & 0.3333              \\
+			3                        & 4                        & 0                   \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:coasociacion}
+	\end{table}
+
+	La estructura resultante es una \textbf{\emph{matriz de co-asociación}}.
 \end{frame}
 
 \subsection{Método de validación}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Método de validación}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\textbf{Validando los resultados}
+	\bigskip
+	\begin{itemize}
+		\item Generación de resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate}[<*>] \item El tamaño de la muestra. \item El número de clusters \(k\). \end{enumerate}
+		\item Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios de 100, 500, 1000, 1500 y 2000 pares de preguntas.
+		\item Para cada tamaño de muestra, se realizaron 10 muestras aleatorias manteniendo un \(k\) fijo.
+		\item Dando un total de \(5 \: (\text{distintos tamaños de muestra}) \times 10 \: (\text{cantidad de ejecuciones por tamaño de muestra}) = 50\) matrices de co-asociación resultado, para cada valor de \(k\) dado.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Matrices de confusión}
+	\textbf{Matriz de confusión utilizada}
+	\bigskip
+
+	\begin{table}[h!]
+		\footnotesize
+		\centering
+		\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
+			\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
+			\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{b} \\ \cmidrule(l){2-4}
+			\multicolumn{1}{c}{}  & \textbf{1}  & c                               & d                               \\ \bottomrule
+		\end{tabularx}
+		\label{tab:matriz-confusion}
+	\end{table}
+
+	Los indicadores de rendimiento seleccionados para ser evaluados en los experimentos realizados con fines comparativos, son los siguientes:
+	\begin{itemize}[<*>]
+		\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\).
+		\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
+	\end{itemize}
+	\bigskip
+	En estos indicadores se cumple la condición \(a+b+c+d=1\).
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Preparación de los datos}
+	Muestras de pares de preguntas que se utilizó como entrada del método EQuAL:
+	\begin{table}[h!]
+		\footnotesize
+		\centering
+		\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+			\toprule
+			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+			\midrule
+			0                     & 123004                      & question\_10         & question\_11         & 1              \\
+			1                     & 98776                       & question\_11         & question\_21         & 0              \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:muestra-validacion}
+	\end{table}
+
+	Matriz de co-asociación generada por el proceso EQuAL:
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
+			\midrule
+			\rowcolor[HTML]{D9EAD3}
+			question\_10 & question\_11 & contenido & contenido & 0.857 \\
+			question\_10 & question\_20 & contenido & contenido & 0.210 \\
+			question\_10 & question\_21 & contenido & contenido & 0.126 \\
+			question\_11 & question\_20 & contenido & contenido & 0.006 \\
+			\rowcolor[HTML]{D9EAD3}
+			question\_11 & question\_21 & contenido & contenido & 0.368 \\
+			question\_20 & question\_21 & contenido & contenido & 0.146 \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:coasociacion-validacion}
+	\end{table}
+
+	Se filtra la tabla anterior con los pares de preguntas que se encuentran en el conjunto de datos de entrada:
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
+			\midrule
+			question\_10             & question\_11             & contenido            & contenido            & 0.857               \\
+			question\_11             & question\_21             & contenido            & contenido            & 0.368               \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:filtrado-validacion}
+	\end{table}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Elección del umbral correcto}
+	La similaridad \(S\) entre un par de preguntas (\(q_1,q_2)\) es igual o superior a cierto umbral \(t\) se considera que son iguales (valor \(1\)) y distintas si sucede lo contrario (valor \(0\)). De esta forma
+	\[f(x) = \left\{ \begin{array}{lcc} 1 & si & S(q_1, q_2)\geq t
+		\\ 0 & si & S(q_1, q_2) < t
+	\end{array} \right..\]
+
+	\begin{center}
+		\centering	Cual de los valores de umbral \(t\) tiene mejor rendimiento?
+	\end{center}
+
+	\framebreak
+
+	Se toma valores potenciales de umbral con intervalos \(0.05\) y se forma un arreglo como \textbf{\([0.05, 0.1, 0.15, ..., 0.90, 0.95]\)} y se itera sobre cada uno de ellos. Por cada uno de los valores en el arreglo:
+	\begin{enumerate}[<*>]
+		\item Se consideran todos los pares de preguntas tomados para realizar la comparación, provenientes de la matriz de co-asociación.
+		\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
+		\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
+		\item Se calcula la proporción de pares de preguntas asignadas con \textit{true}, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.
+	\end{enumerate}
+
+	\framebreak
+
+	Ejemplo de comparación de valores reales y predichos para construcción de matrices de confusión:
+	\begin{table}[!htbp]
+		\scriptsize
+		\centering
+		\begin{tabularx}{\textwidth}{*{9}{>{\centering\arraybackslash}c}}
+			\toprule
+			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{real} &  \textbf{predicted} & \textbf{equal}\\
+			\midrule
+			0 & 123004 & question\_10 & question\_20 & 1 & 1 & true \\
+			1 & 98776 & question\_11 & question\_21 & 1 & 1 & true \\
+			2 & 14422 & question\_12 & question\_22 & 1 & 0 & false \\
+			3 & 12321 & question\_13 & question\_23 & 1 & 1 & true \\
+			4 & 999 & question\_14 & question\_24 & 0 & 1 & false \\
+			5 & 7448 & question\_15 & question\_25 & 0 & 0 & true \\
+			6 & 69553 & question\_16 & question\_26 & 0 & 0 & true \\
+			7 & 2447 & question\_17 & question\_27 & 1 & 1 & true \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:validacion-reales}
+	\end{table}
+
+	\framebreak
+	Matriz de confusión obtenida:
+	\begin{table}[!htbp]
+		\footnotesize
+		\centering
+		\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
+			\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
+			\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{0.25} & \multicolumn{1}{c}{0.125} \\ \cmidrule(l){2-4}
+			\multicolumn{1}{c}{}  & \textbf{1}  & 0.125                               & 0.5                               \\ \bottomrule
+		\end{tabularx}
+		\label{tab:validacion-confusion-ejemplo}
+	\end{table}
+
+	\begin{itemize}
+		\item \textbf{Exactitud:} \(0.75\).
+		\item \textbf{Error:} \(0.25\).
+	\end{itemize}
 \end{frame}

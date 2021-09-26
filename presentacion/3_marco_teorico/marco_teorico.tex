@@ -2,13 +2,14 @@
 \subsection{Sitios de CQA}
 \begin{frame}
 	\frametitle{Sitios de CQA}
-	Los servicios de \textit{Community Question Answering} CQA, son un tipo especial de servicios de \textit{Question Answering} (QA), los cuales permiten a los usuarios registrados responder a preguntas formuladas por otras personas.
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Sitios de Community Question Answering]
+		Los sitios de \textit{Community Question Answering} CQA, son un tipo especial de sitios web de \textit{Question Answering} (QA), los cuales permiten a los usuarios registrados responder a preguntas formuladas por otras personas.
+	\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Sitios de CQA}
-	\scriptsize
-	El mecanismo existente por el cual se responden las preguntas en los sitios de CQA todavía no alcanza a satisfacer las expectativas de los usuarios por varias razones:
+	¿Por qué los sitios de CQA todavía no alcanzan a satisfacer las expectativas de los usuarios?
 	\bigskip
 	\begin{itemize} [<+>]
 		\item Baja probabilidad de encontrar al experto.
@@ -19,17 +20,20 @@
 
 \subsection{Sistemas de recomendación}
 \begin{frame}
-	\frametitle{Sistemas de recomendación}
-	Como se mencionó anteriormente, un RS es un conjunto de herramientas de software que sugiere ítems a un usuario, quien posiblemente utilizará algunos de ellos.
+	\frametitle{Sistemas de Recomendación}
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Sistemas de Recomendación]
+		Un RS es un conjunto de herramientas de software que sugiere ítems a un usuario, quien posiblemente utilizará algunos de ellos.
+	\end{tcolorbox}
 \end{frame}
 
 \subsection{Sistemas de recomendación}
 \begin{frame}
 	\frametitle{Técnicas de Recomendación}
 	Los RS basan sus estrategias de recomendaciones en 6 técnicas básicas (Ricci et al., 2011):
+	\bigskip
 	\begin{itemize} [<+>]
 		\item Basados en contenido.
-		\item Basados en contenido.
+		\item FIltrado Colaborativo.
 		\item Demográficos.
 		\item Basados en conocimiento.
 		\item Basados en comunidades (sociales).
@@ -38,20 +42,23 @@
 \end{frame}
 
 \subsection{Big Data y Arquitecturas}
-\begin{frame}
+\begin{frame}[allowframebreaks]
 	\frametitle{Big Data}
-	Conjuntos de datos cuyo tamaño está más allá de la habilidad de las herramientas software de base de datos para capturar, almacenar, gestionar y analizar los datos (Manyika et al., 2011).
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Big Data]
+		``Conjuntos de datos cuyo tamaño está más allá de la habilidad de las herramientas software de base de datos para capturar, almacenar, gestionar y analizar los datos'' (Manyika et al., 2011).
 
-	\bigskip
+		\bigskip
 
-	``Big Data son activos de información caracterizados por su alto volumen, velocidad y variedad que demandan formas innovadoras y rentables de procesamiento de información para mejorar la compresión y la toma de decisiones'' (consultora Gartner).
+		``Big Data son activos de información caracterizados por su alto volumen, velocidad y variedad que demandan formas innovadoras y rentables de procesamiento de información para mejorar la compresión y la toma de decisiones'' (consultora Gartner).
+	\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Big Data}
+	\frametitle{Big Data II}
 	Conceptos importantes relativos a este trabajo:
+	\bigskip
 
-	\begin{itemize} [<+>]
+	\begin{itemize}
 		\item Map-reduce.
 		\item Arquitectura Hadoop (HDFS).
 		\item Apache Spark.
@@ -61,7 +68,9 @@
 \subsection{Medidas de distancia de texto}
 \begin{frame}
 	\frametitle{Information retrieval}
-	\textit{Information retrieval} (IR), traducido a menudo como ``recuperación de información'', se define la acción de como encontrar material (generalmente documentos) de una naturaleza desestructurada (generalmente texto) que satisfaga una necesidad de información de grandes colecciones (generalmente almacenadas en computadoras) (Schütze et al. 2008).
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Information retrieval]
+		\textit{Information retrieval} (IR), traducido a menudo como ``recuperación de información'', se define la acción de como encontrar material (generalmente documentos) de una naturaleza desestructurada (generalmente texto) que satisfaga una necesidad de información de grandes colecciones (generalmente almacenadas en computadoras) (Schütze et al. 2008).
+	\end{tcolorbox}
 \end{frame}
 
 \begin{frame}
@@ -70,17 +79,19 @@
 
 	\bigskip
 
-	La función de similaridad es definida satisfaciendo las condiciones:
 	\begin{enumerate}
-		\item Simetría,
-		\[S(x_i,x_j)=S(x_j,x_i);\]
+			\item La función de similaridad es definida satisfaciendo las condiciones:
+			\begin{enumerate}[<*>]
+				\item Simetría,
+				\[S(x_i,x_j)=S(x_j,x_i);\]
 
-		\item Positividad,
-		\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j.\]
+				\item Positividad,
+				\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j.\]
+			\end{enumerate}
+
+		\item \bigskip
+		Es posible transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), en el intervalo \([0,1]\). Aplicando \(D(x_i,x_j) = 1 - S(x_i,x_j)\).
 	\end{enumerate}
-
-	\bigskip
-	Es posible transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), en el intervalo \([0,1]\). Aplicando \(D(x_i,x_j) = 1 - S(x_i,x_j)\).
 \end{frame}
 
 \begin{frame}
@@ -104,9 +115,23 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Medidas de Similaridad}
+	\textbf{Medidas de similaridad utilizadas}
+	\bigskip
+	\begin{itemize}[<*>]
+		\item Term Frequency (TF)
+		\item Term Frequency - Inverse Docuement Frequency (TF-IDF).
+		\item Word2Vec
+		\item FastText
+		\item Semantic Distance
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Term Frequency (TF)}
-	\begin{itemize}
-		\scriptsize
+	Caracteristicas de Term Frequency:
+	\bigskip
+	\begin{itemize}[<*>]
 		\item También conocido en la literatura como \textit{Bag of words} (bolsa de palabras).
 		\item El orden exacto de los términos es ignorado, pero se basa en el número de ocurrencias de cada uno de ellos en un documento.
 		\item Cada documento corresponde a un vector y cada término a una dimensión.
@@ -119,23 +144,24 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Term Frequency (TF)}
-	\begin{itemize}
-		\scriptsize
+	\frametitle{Term Frequency Inverse Document Frequency (TF-IDF)}
+	Caracteristicas de TF-IDF:
+	\bigskip
+	\begin{itemize}[<*>]
 		\item Se define \textit{document frequency} \(df_t\) como el número de documentos en una colección que contienen el término \(t\).
 		\item \textit{Inverse document frequency}, o IDF, es un indicador basado en la cantidad de documentos que contienen (o son indexados por) un término en cuestión.
 		\item Intuición: si un término de búsqueda se encuentra en muchos documentos, no es un buen discriminador, y se le debe asignar menor peso que a un término que se encuentra en pocos documentos.
 	\end{itemize}
 
-	\bigskip
 	\centering
 	\[tfidf(t_i, d_j) = tf(t_i, d_j) \cdot idf(t_j)\]
 \end{frame}
 
 \begin{frame}
 	\frametitle{Word2Vec}
-	\begin{itemize}
-		\scriptsize
+	Caracteristicas de Word2Vec:
+	\bigskip
+	\begin{itemize}[<*>]
 		\item Modelos basados en redes neuronales con una capa oculta para computar representaciones de palabras como vectores continuos en grandes conjuntos de datos.
 		\item Dos modelos: Skip-gram y Continuous Bag of Words.
 		\item Las entradas y salidas de la red neuronal son palabras representadas como \textit{one-hot} vector.
@@ -145,9 +171,120 @@
 \end{frame}
 
 \begin{frame}
+	Caracteristicas de FastText:
+	\bigskip
 	\frametitle{FastText}
-	\begin{itemize}
-		\scriptsize
-		\item
+	\begin{itemize}[<*>]
+		\item Libreria open-source desarrollada por Facebook.
+		\item Basado en Skip-gram pero utilizando un modelo sub-palabra.
+		\item Cada palabra es representada como una bolsa de \textit{n-gramas}.
+		\item Mayor precisión en diferentes medidas de rendimiento.
 	\end{itemize}
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Semantic Distance}
+	Caracteristicas de Semantic Distance:
+	\bigskip
+	\begin{itemize}[<*>]
+		\item La distancia semántica usada en este trabajo está basada en \textit{redes semánticas} y \textit{estadísticas de corpus} (Li et al., 2006).
+		\item Enfocado en textos de distancia corta.
+		\item Tiene en cuenta la \textit{información semántica} y la \textit{información del orden} de las palabras implicadas en las frases involucradas.
+	\end{itemize}
+
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/similaridad_sematinca_metodo}
+		\label{fig:similaridadsematincametodo}
+	\end{figure}
+
+	\framebreak
+
+	\textbf{Similaridad semántica entre palabras}
+	\bigskip
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/taxonomia_semantica}
+		\label{fig:taxonomiasemantica}
+	\end{figure}
+
+	\framebreak
+
+	\textbf{Similaridad semántica entre frases} \\
+	\bigskip
+	Este método semántico usa únicamente vectores semánticos formados por las frases en comparación. El valor de una entrada del vector semántico es calculado de la siguiente forma:
+	\begin{itemize}[<*>]
+		\item \textbf{Caso 1}. Si \(w_i\) aparece en la frase, \(s_i\) es 1.
+		\item \textbf{Caso 2}. Si \(w_i\) no está contenida en \(T_1\), se calcula una similaridad semántica entre \(w_1\) y cada palabra en \(T_1\) utilizando el método de la sección anterior.
+	\end{itemize}
+
+	\framebreak
+	\textbf{Similaridad semántica entre frases (cont.)} \\
+	\bigskip
+	Se ponderan cada una de las palabras basadas en su contenido de información:
+	\[s_i = \check{s} \cdot I(w_i) \cdot I(\widetilde{w}_i),\]
+
+	La similaridad semántica entre dos frases es definida como el coeficiente del coseno entre los dos vectores:
+	\[S_s = \frac{s_1. s_2}{||s_1||.||s_2||}.\]
+
+	\framebreak
+
+	\textbf{Similaridad de orden entre frases} \\
+	\bigskip
+	Consideremos dos frases \(T_1\) y \(T_2\), por ejemplo:
+	\begin{itemize}[<*>]
+		\item \textbf{T1}: A quick brown dog jumps over the lazy fox.
+		\item \textbf{T2}. A quick brown fox jumps over the lazy dog.
+	\end{itemize}
+
+	\[r_1 = \left \{\;1\;2\;3\;4\;5\;6\;7\;8\;9\;\right \},\]
+	\[r_2 = \left \{\;1\;2\;3\;9\;5\;6\;7\;8\;4\;\right \}.\]
+
+	Se propone entonces una medida de similaridad de orden entre frases de la siguiente manera:
+	\[S_r = 1 - \frac{\left \| r_1 - r_2 \right \|}{\left \| r_1 + r_2 \right \|}.\]
+
+	\framebreak
+
+	\textbf{Similaridad total entre frases:} \\
+	\bigskip
+
+	\[S(T_1, T_2)=\delta S_s + (1 - \delta)S_r,\]
+	\[S(T_1, T_2)=\delta \frac{s_1.s_2}{\left \| s_1 \right \|\left \| s_2 \right \|} + (1 - \delta)\frac{\left \|r_1-r_2 \right \|}{\left \| r_1+r_2 \right \|},\]
+
+	\bigskip
+	donde \(0 \leq \delta \leq 1\) decide la contribución relativa de cada una de las medidas de similaridad.
+\end{frame}
+
+\subsection{Ensamble de Clustering}
+\begin{frame}
+	\frametitle{Clustering}
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Clustering]
+		El Clustering o \textit{análisis cluster} tiene por objetivo agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos.
+	\end{tcolorbox}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ensamble de Clustering}
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Ensamble de Clustering]
+		El \textit{Ensamble de Clustering} es un método para extraer clusters consistentes dadas particiones variadas de entrada.
+	\end{tcolorbox}
+
+ 	\bigskip
+
+	\begin{itemize}
+		\item Combina resultados de distintos algoritmos de Clustering con distintas formas de cluster.
+		\item Aprovecha la variabilidad agregada para encontrar una estructura \textit{inter-patrón}.
+		\item Identificación de clusters subyacentes con formas, tamaños y densidades arbitrarias.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Combinación de Evidencias}
+	Combinar los resultados de múltiples ejecuciones de clustering dentro de una misma partición de datos viendo cada uno de esos resultados como una evidencia independiente de la organización de los mismos.
+
+	\bigskip
+
+	Tomado las co-ocurrencia de pares de patrones en el mismo cluster, las \(N\) particiones de datos para \(n\) patrones, son mapeadas en una \textit{matriz de co-asociación} \(n \times n\):
+	\[C(i,j)=\frac{n_{ij}}{N},\]
+	donde \(n_{ij}\) es el número de veces que el par de patrones \((i,j)\) es asignado al mismo cluster entre las \(N\) particiones de datos.
 \end{frame}
