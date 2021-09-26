@@ -3,24 +3,67 @@
 \subsection{Hipótesis}
 \begin{frame}[allowframebreaks]
 	\frametitle{Hipótesis}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Hipótesis del trabajo de tesis]
+		A partir del relevamiento del estado del arte se establece la hipótesis de que los algoritmos de cálculo de similaridad de texto en sitios de CQA, con el fin de participar del proceso inherente a la aplicación de Sistemas de Recomendación con gran volumen de datos, pueden ser mejorados en cuanto a medidas de rendimiento y de desempeño si se aplica un método de ensamble de clustering mediante una arquitectura Big Data apropiada.
+	\end{tcolorbox}
+
+	\framebreak
+
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Hipótesis del trabajo de tesis (cont.)]
+		\bigskip Por tal motivo, y como respuesta a la hipótesis planteada, se presenta el desarrollo de un nuevo método de cálculo de similaridad de texto basado en una arquitectura Big Data. Este método aprovecha las características de adimensionalidad y variabilidad de datos propias del Ensamble de Clustering. El método se aplica a un gran conjunto de datos reales con el fin de verificar la eficiencia y eficacia del procedimiento. Asimismo, se realiza un análisis comparativo del método presentado con los algoritmos para cálculo de similaridad de texto del estado del arte.
+	\end{tcolorbox}
 \end{frame}
 
 \subsection{El método propuesto}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{El método propuesto}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{../8_problema_investigacion/imagenes/metodo_equal}
+		\label{fig:metodoequal}
+	\end{figure}
 \end{frame}
 
 \subsection{Arquitectura de procesamiento de datos}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Arquitectura de procesamiento de datos}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.9\linewidth]{../8_problema_investigacion/imagenes/equal_distribuido}
+		\label{fig:equaldistribuido}
+	\end{figure}
 \end{frame}
 
-
 \subsection{Implementación en un sistema de recomendación de tiempo real}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Implementación en un sistema de recomendación de tiempo real}
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.55\linewidth]{../8_problema_investigacion/imagenes/implementacion_rs}
+		\label{fig:implementacionrs}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Procesamiento fuera de línea}
+	\begin{figure}
+		\includegraphics[width=0.9\linewidth]{../8_problema_investigacion/imagenes/implementacion_rs_batch}
+		\label{fig:implementacionrsbatch}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Consulta de una pregunta existente}
+	\begin{figure}
+		\includegraphics[width=0.7\linewidth]{../8_problema_investigacion/imagenes/implementacion_rs_consulta}
+		\label{fig:implementacionrsconsulta}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Agregar una nueva pregunta}
+	\begin{figure}
+		\includegraphics[width=0.7\linewidth]{../8_problema_investigacion/imagenes/implementacion_rs_agregar}
+		\label{fig:implementacionrsagregar}
+	\end{figure}
 \end{frame}
