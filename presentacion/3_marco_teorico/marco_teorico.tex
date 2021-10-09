@@ -103,7 +103,7 @@
 	Típicamente, el ángulo entre los dos vectores es usado como medida de divergencia entre los mismos, y el coseno del ángulo es usado como similaridad numérica.
 \end{frame}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
 	\frametitle{Distancia del coseno}
 	Siendo \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) dos documentos en forma de vectores:
 	\[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}}.\]
@@ -111,7 +111,13 @@
 	\bigskip
 	Particularmente en IR, es de interés el intervalo \([0, 1]\), entonces la distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
 	\[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
-	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos
+	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos.
+
+	\framebreak
+
+	Entonces, la similaridad entre dos vectores puede medirse como:
+	\[cos(\theta) = \frac{\vec{D}_i.\vec{D}_j}{\left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|},\]
+	donde \(d_i\) y \(d_j\) son los componentes de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente.
 \end{frame}
 
 \begin{frame}
