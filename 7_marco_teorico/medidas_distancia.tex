@@ -34,8 +34,6 @@ donde \(freq(t)\) es la frecuencia que aparece un concepto, teniendo en cuenta e
 \[I(t)=-\log p(t).\]
 Aplicando el logaritmo negativo a \(p(t)\) se logra que los nodos hoja, siendo conceptos muy específicos, contengan mucha información, y que los nodos más genéricos que se encuentran cerca de la raíz posean un contenido de información que, por el contrario, tiende a cero.
 
-\bigskip En \citep{resnik1995using} se define, dado un conjunto de conceptos \(C\) en una taxonomía \textit{es-un} que permite herencia múltiple, que la similaridad entre dos conceptos es la medida en que ellos comparten información en común, indicado, en este tipo de taxonomías, por el nodo inmediato de más alto nivel que los subsume a ambos, el \textit{subsumidor mínimo} (minimum subsumer o ms por sus siglas en inglés).
-
 \bigskip Los autores en \citep{resnik1995using} definen, en un conjunto de términos \(C\) en una taxonomía con relaciones de tipo \textit{es-un} que permite herencia múltiple, que la similaridad entre dos términos es la medida en que ellos comparten información en común, indicado, en este tipo de taxonomías, por el nodo inmediato de más alto nivel que los subsume a ambos, denominado el \textit{subsumidor mínimo} (\textit{minimum subsumer} o \textit{ms} por sus siglas en inglés).
 
 \bigskip Considerando dos términos \(t_i\) y \(t_j\), y a \(S(t_i, t_j)\) al conjunto de ancestros comunes de \(t_i\) y \(t_j\) en la taxonomía, se define al subsumidor mínimo \(ms(t_i, t_j)\), como al término de \(S(t_i, t_j)\) que contiene el máximo contenido de información:

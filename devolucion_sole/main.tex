@@ -1,0 +1,276 @@
+\documentclass[openright,final,fmstyle]{utnfrrotesis_dev}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[authoryear,datebegin,nonamereplace,sort&compress]{flexbib}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{paralist} % it provides the inparaenum environment
+\usepackage{pgfgantt}
+\usepackage{enumerate}
+\usepackage[inline]{enumitem}
+\usepackage{fancyvrb}
+\usepackage{epigraph}
+\usepackage{varwidth}
+\usepackage{amsfonts}
+%\usepackage{import}
+\graphicspath{{imagenes/}} % Necesario para importar las figuras en PDF.
+% (with an optional formatting specification in square brackets): To change the styles of the counter,
+% tokens A, a, I, i, and 1 can be used in the optional argument to produce the counter with one of the styles
+% \Alph, \alph, \Roman, \roman and \arabic. For example:
+%
+% \begin{inparaenum}[(i)]
+%
+% produces the labels (i), (ii), (iii) ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% paquete para comillas
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{quotmark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% para guionado
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyphenat}
+\usepackage{booktabs}
+\usepackage{bm}
+%\usepackage{bera} % optional: just to have a nice mono-spaced font
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{multicol}
+\usepackage{supertabular}
+\usepackage{multirow}
+\usepackage[english,vlined,linesnumbered]{algorithm2e}
+\usepackage{pdflscape}
+\usepackage{fullpage,graphicx}
+\usepackage{rotating}
+\usepackage[hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
+\usepackage{tabularx,ragged2e,booktabs,caption}
+\usepackage{longtable}
+\usepackage{varwidth}
+
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+
+\hypersetup{
+	pdftitle={Tesis de Maestría en Ingeniería en Sistemas de Información},
+	pdfauthor={Ing. Federico Tesone},
+	pdfsubject={Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering},
+	pdfkeywords={},
+	bookmarksnumbered=true,
+	bookmarksopen=true,
+	bookmarksopenlevel=1,
+	colorlinks=false,
+	pdfstartview=Fit,
+	allcolors=blue
+}
+
+\usepackage{nowidow}
+\widowpenalty=5000
+\clubpenalty=10000
+
+\SetKwIF{If}{ElseIf}{Else}{si}{entonces}{sin\'o, si}{de lo contrario}{fin si}
+\SetKwInput{KwIn}{Entrada}%
+\SetKwInput{KwOut}{Salida}%
+\SetKwInput{KwData}{Datos}%
+\SetKwInput{KwResult}{Resultado}%
+\SetKw{KwTo}{a}%
+\SetKw{KwRet}{devolver}%
+\SetKw{Return}{devolver}%
+\SetKwBlock{Begin}{inicio}{fin}%
+\SetKwRepeat{Repeat}{repetir}{hasta que}%
+\SetKwFor{ForEach}{para cada}{hacer}{fin para cada}
+\SetKwFor{While}{mientras}{hacer}{fin mientras}
+\SetKwFor{For}{para}{hacer}{fin para}%
+
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% para remediar el problema de babel de abreviaciones de teclado para la virgulilla
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\addto\shorthandsspanish{\spanishdeactivate{~}}
+
+%para los nombres a lo largo del documento
+\newcommand{\gss}{$\gamma$-AM}
+\newcommand{\disc}{percentil}
+\newcommand{\Disc}{Percentil}
+\newcommand{\Sim}{\text{Sim}}
+\newcommand{\tfill}{1mm}
+\newcommand{\tffill}{-10mm}
+\newcommand{\tftfill}{-6mm}
+\newcommand{\fffill}{-6mm}
+\newcommand{\bfill}{-10mm}
+\newcommand{\clusteryea}{8}
+\newcommand{\clusterara}{9}
+\newcommand{\geneexampleyea}{POP2}
+\newcommand{\geneexampleara}{AT2G19450}
+\newcommand{\classico}{Rhee \emph{et al.} approach \cite{rhee2008use}}
+\newcommand{\classic}{Rhee \emph{et al.} approach}
+\newcommand{\classi}{Rhee \emph{et al.} \cite{rhee2008use}}
+\newcommand{\arafull}{\emph{Arabidopsis thaliana}}
+\newcommand{\ara}{\emph{A. thaliana}}
+\newcommand{\yeafull}{\emph{Saccharomyces cerevisiae}}
+\newcommand{\yea}{\emph{S. cerevisiae}}
+\newcommand{\km}{$k$-medias}
+\usepackage{afterpage}
+
+\def\blankpage{%
+	\clearpage%
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\null%
+	\clearpage}
+
+\newcommand{\given}{\Big\vert}
+
+\usepackage[a4paper,footskip=.5in]{geometry}
+
+%subsubsub
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+%para quitar de a una línea en algorithm2e
+\makeatletter
+\newcommand{\nosemic}{\renewcommand{\@endalgocfline}{\relax}}% Drop semi-colon ;
+\newcommand{\dosemic}{\renewcommand{\@endalgocfline}{\algocf@endline}}% Reinstate semi-colon ;
+\newcommand{\pushline}{\Indp}% Indent
+\newcommand{\popline}{\Indm\dosemic}% Undent
+\let\oldnl\nl% Store \nl in \oldnl
+\newcommand{\nonl}{\renewcommand{\nl}{\let\nl\oldnl}}% Remove line number for one line
+\makeatother
+
+\title{Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering}
+\author{Ing. Federico Tesone \vspace{-6mm} }
+\degree{Maestría en Ingeniería en Sistemas de Información}
+\advisor{Dr.} {Guillermo Leale}
+\coadvisor{Dra.} {Soledad Ayala}
+\institution{Universidad Tecnológica Nacional}
+\faculty{Facultad Regional Rosario}
+
+\renewcommand\thesection{\arabic{section}}
+\interfootnotelinepenalty=10000 %  Para que las footnote no se pasen a la otra pagina.
+
+% To write JSON files
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{FFFFFF}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+%%%%% LANGUAGES AND SNIPPETS
+\renewcommand{\lstlistingname}{Fragmento de código} % Redefinicion de la palabra "Listing" para caption de snippet the codigo.
+
+% JSON
+\lstdefinelanguage{json}{
+	basicstyle=\footnotesize\ttfamily,
+	showstringspaces=false,
+	breaklines=true,
+	tabsize=2,
+	backgroundcolor=\color{background},
+	literate=
+	*{0}{{{\color{numb}0}}}{1}
+	{1}{{{\color{numb}1}}}{1}
+	{2}{{{\color{numb}2}}}{1}
+	{3}{{{\color{numb}3}}}{1}
+	{4}{{{\color{numb}4}}}{1}
+	{5}{{{\color{numb}5}}}{1}
+	{6}{{{\color{numb}6}}}{1}
+	{7}{{{\color{numb}7}}}{1}
+	{8}{{{\color{numb}8}}}{1}
+	{9}{{{\color{numb}9}}}{1}
+	{:}{{{\color{punct}{:}}}}{1}
+	{,}{{{\color{punct}{,}}}}{1}
+	{\{}{{{\color{delim}{\{}}}}{1}
+	{\}}{{{\color{delim}{\}}}}}{1}
+	{[}{{{\color{delim}{[}}}}{1}
+	{]}{{{\color{delim}{]}}}}{1},
+}
+
+% PYTHON
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% Custom colors
+\usepackage{color}
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% Python style for highlighting
+\newcommand\pythonstyle{\lstset{
+		language=Python,
+		morekeywords={self},              % Add keywords here
+		keywordstyle=\footnotesize\color{deepblue},
+		emph={MyClass,__init__},          % Custom highlighting
+		emphstyle=\footnotesize\color{deepred},    % Custom highlighting style
+		stringstyle=\color{deepgreen},
+		frame=tb,                         % Any extra options here
+		showstringspaces=false,
+  		basicstyle=\footnotesize,
+		numbers=left,
+		stepnumber=1
+}}
+
+% Python environment
+\lstnewenvironment{python}[1][]
+{
+	\pythonstyle
+	\lstset{#1}
+}
+{}
+
+% Python for external files
+\newcommand\pythonexternal[2][]{{
+		\pythonstyle
+		\lstinputlisting[#1]{#2}}}
+
+% Python for inline
+\newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+%%%%%%% R Language
+\lstset{commentstyle=\color{red},keywordstyle=\scriptsize\color{black},showstringspaces=false}
+\lstnewenvironment{rc}[1][]{\lstset{keywordstyle=\scriptsize,language=R}}{}
+\newcommand{\ri}[1]{\lstinline{#1}}  %% Short for 'R inline'
+
+\lstset{keywordstyle=\scriptsize,language=R}             % Set R to default language
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@verbatim}
+{\verbatim@font}
+{\verbatim@font\small}
+{}{}
+\makeatother
+
+\renewcommand\tabularxcolumn[1]{m{#1}}% for vertical centering text in X column
+
+\newenvironment{centerverbatim}{%
+	\par
+	\centering
+	\varwidth{\linewidth}%
+	\verbatim
+}{%
+	\endverbatim
+	\endvarwidth
+	\par
+}
+
+\begin{document}
+	\maketitle
+
+	\newgeometry{left=4.06cm,top=2.54cm,right=2.54cm,bottom=2.54cm}
+
+	\sloppy % Indica a LaTex que debe minimizar el corte de las palabras para pasar de una línea a otra.
+	% \mainmatter % para reiniciar numeración.
+	\input{contenido}
+
+	\bibliographystyle{flexbib}
+	\bibliography{bibliografia/bibliografia}
+\end{document}
