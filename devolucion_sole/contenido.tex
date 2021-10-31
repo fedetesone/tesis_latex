@@ -84,23 +84,52 @@ Con respecto a la consideración de ``candidate selection'', se pueden agregar l
 Uno de los problemas más comentados en lo que se refiere a sistemas que utilizan pares de preguntas de Quora es que muchas de las preguntas que parecen similares, no lo son. Básicamente, la literatura en lo que se refiere al state-of-the-art menciona que pares de preguntas que generan altos valores de similaridad (independientemente de la medida usada para establecer similaridad) pueden referirse a conceptos que en realidad no están relacionados (i.e., el objetivo de las preguntas no es el mismo). Me pregunto si se consideró como puede afectar este problema los distintos casos de uso presentados en la Sección 4.5 de este manuscrito.
 
 \paragraph*{Respuesta}
-Decir que no se considero, pero que se podría resolver de cierta forma.
+En el caso de que la pregunta se refiera a los casos de uso planteados en la sección 4.5:
+
+\begin{quotation}
+	El ejemplo será desarrollado teniendo en cuenta tres casos de uso diferentes: \begin{enumerate*} [label=(\roman*)] \item un proceso fuera de línea ejecutado periódicamente que actualizará la base de datos, caso de uso central de este trabajo y en el cual se sustenta toda la arquitectura propuesta, y que también puede pensarse como una parte integrante de la implementación propuesta en este apartado; \item el punto de vista del usuario que consulta una pregunta en el sitio; y \item el caso (opcional) en que el usuario agrega una nueva pregunta al sitio.\end{enumerate*}
+\end{quotation}
+
+\bigskip
+
+Estos son casos de uso que definen la arquitectura de un RS en su totalidad, utilizando el método EQuAL. Por lo cual, el problema referido aplicaría sólo a cómo el método EQuAL fue construido y los conceptos teóricos que lo sustentan. En este caso, al ser un método basado en Ensamble de Clustering, depende fuertemente de los métodos subyacentes: si los métodos subyacentes fueron entrenados para comportarse muy bien en los casos de falsos positivos, el método EQuAL tenderá a hacerlo también.
+
+\bigskip
+
+Por otro lado, si la pregunta se refiere a los enfoques arquitecturales que se proponen para afrontar el problema del ``cold start'' cuando se agrega una nueva pregunta, se puede mencionar lo siguiente para cada una de las propuestas:
+
+\subparagraph{Cálculo de similaridad contra todas las preguntas del sitio}
+Este método utiliza una algoritmo de Caché de Reemplazo Adaptativo, para minimizar la cantidad de cálculos a realizar en tiempo de ejecución, pero la comparación se hace utilizando el método EQuAL. Por lo cual depende de qué tan bueno sea el método subyacente de cálculo de similaridad (en este caso, el método EQuAL).
+
+\subparagraph{Búsqueda de vecinos cercanos con representaciones vectoriales}
+Este método que utiliza modelos de Machine Learning que producen un salida de representaciones vectoriales de las entidades que se van a devolver como vecinos (en este caso preguntas del sitio Quora), depende de 3 factores para mejorar su exactitud\footnote{Es posible expandir la base teórica de este método si es necesario para entender cada uno de los factores presentados.}:
+\begin{itemize}
+	\item \textbf{El modelo subyacente}. Si el modelo de ML ha sido entrenado teniendo en cuenta casos que producen falsos positivos, para que esas representaciones vectoriales involucradas tengan una distancia considerable en el espacio vectorial, entonces la respuesta será prometedora.
+	\item \textbf{La cantidad de árboles binarios utilizados para la construcción de la infraestructura soporte para \(ANN\) (Approximate nearest neighbors)}. Mientras más árboles binarios sean utilizados para realizar búsquedas en tiempo de ejecución, se retornarán resultados más precisos, a cambio de mayor latencia.
+	\item \textbf{La cantidad de resultados que se desean retornar por cada petición. Este valor es conocido como el valor de \(K\) para algoritmos \(KNN\)}. Mientras más grande sea, más preciso será el cálculo de similaridad en tiempo de ejecución, a cambio de mayor latencia.
+	Modelos de scoring. En este caso, el modelo de Scoring planteado utiliza un enfoque TF-IDF, lo cual, al ser una búsqueda lexicográfica, puede resultar en resultados no favorables para frases muy similares que tienen una semántica diferente.
+\end{itemize}
+
+Se recuerda que estos métodos presentados serán utilizados para obtener preguntas similares a preguntas que no se encuentran todavía en el sistema. Cuando las mismas sean tenidas en cuenta por el proceso fuera de línea, el método EQuAL será el encargado de realizar esta tarea.
+
 
 \subsection*{Comentario 6}
 En la Tabla 3 se muestran matrices de confusión, sería más interesante (y simple visualmente) incluir simplemente Accuracy (Exactitud), False Positives y False Negatives. Error es redundante, ya que es Total – Exactitud, con lo cual va a ayudar a la legibilidad de la tabla de resultados remover esa columna.
 
 \paragraph*{Respuesta}
-Se presenta una nueva tabla, siguiendo las recomendaciones:
+Se presenta la Tabla \ref{tab:desempeno-estado-del-arte} (reemplazo de la Tabla 3 del trabajo de tesis), siguiendo las recomendaciones:
 
-\begin{table}[h!]
+\begin{table}[!htbp]
 	\footnotesize
 	\caption{Matrices de confusión para los cinco algoritmos de medidas de similaridad.}
-	\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 		\toprule
 		\multicolumn{3}{l}{\multirow{2}{*}{}} &
 		\multicolumn{2}{c}{\textbf{Predicho}} &
 		\multirow{2}{*}{\textbf{Exactitud}} &
-		\multirow{2}{*}{\textbf{Error}} \\ \cmidrule(lr){4-5}
+		\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Falsos\\ Positivos\end{tabular}}} &
+		\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Falsos\\ Negativos\end{tabular}}} \\
+		\cmidrule(lr){4-5}
 		\multicolumn{3}{l}{} &
 		\multicolumn{1}{c}{\textbf{0}} &
 		\multicolumn{1}{c}{\textbf{1}} &
@@ -112,7 +141,9 @@ Se presenta una nueva tabla, siguiendo las recomendaciones:
 		\multicolumn{1}{c}{0.4355} &
 		\multicolumn{1}{c}{0.1953} &
 		\multicolumn{1}{c}{\multirow{2}{*}{0.6776}} &
-		\multicolumn{1}{c}{\multirow{2}{*}{0.3224}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1953}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1271}} \\
+		\cmidrule(lr){3-5}
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{\textbf{1}} &
@@ -126,7 +157,8 @@ Se presenta una nueva tabla, siguiendo las recomendaciones:
 		\multicolumn{1}{c}{0.4477} &
 		\multicolumn{1}{c}{0.1831} &
 		\multicolumn{1}{c}{\multirow{2}{*}{0.6685}} &
-		\multicolumn{1}{c}{\multirow{2}{*}{0.3315}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1831}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1484}} \\ \cmidrule(lr){3-5}
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{\textbf{1}} &
@@ -140,7 +172,8 @@ Se presenta una nueva tabla, siguiendo las recomendaciones:
 		\multicolumn{1}{c}{0.4343} &
 		\multicolumn{1}{c}{0.1965} &
 		\multicolumn{1}{c}{\multirow{2}{*}{0.6788}} &
-		\multicolumn{1}{c}{\multirow{2}{*}{0.3212}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1965}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1247}} \\ \cmidrule(lr){3-5}
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{\textbf{1}} &
@@ -154,7 +187,8 @@ Se presenta una nueva tabla, siguiendo las recomendaciones:
 		\multicolumn{1}{c}{0.5033} &
 		\multicolumn{1}{c}{0.1275} &
 		\multicolumn{1}{c}{\multirow{2}{*}{0.6725}} &
-		\multicolumn{1}{c}{\multirow{2}{*}{0.3275}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1275}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.2}} \\ \cmidrule(lr){3-5}
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{\textbf{1}} &
@@ -167,15 +201,18 @@ Se presenta una nueva tabla, siguiendo las recomendaciones:
 		\multicolumn{1}{c}{\textbf{0}} &
 		\multicolumn{1}{c}{0.4877} &
 		\multicolumn{1}{c}{0.1431} &
-		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.6797}}} &
-		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.3203}}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6797}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1431}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1772}} \\ \cmidrule(lr){3-5}
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{c}{} &
 		\multicolumn{1}{l}{1} &
 		\multicolumn{1}{l}{0.1772} &
 		\multicolumn{1}{l}{0.192} &
 		\multicolumn{1}{c}{} &
-		\multicolumn{1}{c}{} \\ \bottomrule
+		\multicolumn{1}{c}{} \\
+
+		\bottomrule
 	\end{tabularx}
 	\label{tab:desempeno-estado-del-arte}
 \end{table}
@@ -184,7 +221,7 @@ Se presenta una nueva tabla, siguiendo las recomendaciones:
 Es también importante mencionar que las medidas reportadas no se definen hasta varias páginas después. Esto es contraproducente, por lo cual sugiero comenzar el capítulo definiendo claramente medidas de evaluación que después se utilizan en el resto de la narrativa.
 
 \paragraph*{Respuesta}
-Se debería mover la sección ``5.6.2.1. Estructura de las matrices de confusió'' al principio del ``Capítulo 5. Experimentos''. De tal forma, cuando se presentan los resultados del trabajo del estado del arte, el lector puede hacer una mejor lectura de los mismos.
+Se debería mover la sección ``5.6.2.1. Estructura de las matrices de confusión'' al principio del ``Capítulo 5. Experimentos''. De tal forma, cuando se presentan los resultados del trabajo del estado del arte, el lector puede hacer una mejor lectura de los mismos.
 
 \subsection*{Comentario 8}
 Siguiendo con los experimentos, proporcionaría contexto a los resultados describir con detalles antes de mostrar la tabla la distribución de pares de preguntas que se utilizan en la evaluación. Es decir: cuántos pares de preguntas están asociadas al rótulo 0 y cuantos al rótulo 1, ya eso impacta la valoración de “Exactitud”.
@@ -200,6 +237,12 @@ En la sección ``5.1.1. Medidas de rendimiento y error'' se detalla la distribuc
 Lo más importante, a los resultados presentados en la Capítulo 5 (y en el análisis descrito en el Capítulo 6) les falta un test de significancia estadística, de lo contrario no es posible establecer la veracidad de las conclusiones. Por ejemplo, en la tabla 3 se señala semantic distance como la mejor medida de similaridad, sin embargo, sin test de significancia estadística no es posible establecer que es realmente la medida más efectiva comparada con las demás. En la tabla 25, se indica que 30 es el valor de K que produce el menor error. Sin embargo, la falta de test de estadística dificulta la posibilidad de concluir definitivamente que por ejemplo K=35 o k=50 no serían alternativas similarmente factibles. En la Sección 6.3.1, se presenta un análisis de varianza del método propuesto. Claramente esto responde en parte a mi pregunta en lo referido a la veracidad de las conclusiones, pero no se menciona sino hasta muy tarde en el manuscrito. Creo que es imperativo que se defina claramente el objetivo de los experimentos, el dataset y las medidas de evaluación y análisis al inicio del Capítulo 5. De esta manera el lector podrá seguir la descripción de los resultados. También sugiero que se mencione explícitamente en los Capítulos 5 y 6 los resultados que son significativos a medida que se introducen, no al finalizar el análisis.
 
 \paragraph*{Respuesta}
+\subparagraph{Medidas de rendimiento y error del estado del arte}
+En esta sección se muestran solo los resultados obtenidos del trabajo “Comparative Analysis on Text Distance Measures Applied to Community Question Answering Data” \citep{gonzalez2017comparative}, sin hacer ningún cambio. En este parrafo, no se intenta demostrar que Semantic Distance es la “mejor” medida entre las analizadas, sino que solo se remarca que la exactitud fue la mas alta entre las medidas analizadas. El trabajo del estado del arte calcula los resultados de exactitud/error para la totalidad del conjunto de datos (sin ningún tipo de muestreo), por lo cual, se llega a un solo valor de exactitud/error. Al obtenerse solo un valor de precision/error para cada una de las tecnicas analizadas, no es posible realizar un analisis de significancia estadistica.
+
+\bigskip
+
+\subparagraph{Metodo propuesto y evaluación de resultados}
 Algunas observaciones sobre esta oportunidad de mejora:
 \begin{itemize}
 	\item La fila resaltada en la Tabla 30, que indica que con un valor de \(k=30\) se obtiene el mejor error, es solo un agregado visual para ayudar a la interpretación de resultados en esa fase de la experimentación. Lo mismo sucede para las tablas 25-30. Adicionalmente, se provee la Figura 15, que permite visualizar cómo los valores de error decrecen a medida que el número de clusters aumenta. Lo cual sugiere, con el fin de agregar valor contextual (sin aportar ventajas comparativas contra los métodos del estado del arte), que el método EQuAL se comporta mejor con valores de k grandes, hasta cierto valor que se considera ``óptimo'' teniendo en cuenta el método del codo.
@@ -208,11 +251,20 @@ Algunas observaciones sobre esta oportunidad de mejora:
 \end{itemize}
 
 \bigskip
+\subparagraph{Objetivo de los experimentos}
+Se podría introducir los objetivos de los experimentos al principio del Capitulo 5, de la siguiente forma:
 
-Cambios propuestos para la mejora de la lectura del trabajo:
+\begin{quotation}
+	En este Capítulo se describiran los resultados obtenidos en el trabajo del estado del arte, como marco teórico y punto de partida a los resultados presentados en el Capitulo 6. Además, se describirá el metodo de experimentación utilizado en este trabajo de tesis de una forma detallada: desde la generación de muestras, preprocesamiento, aplicación del metodo EQuAL, y el metodo de validación. La experimentación se basa en la ejecución del método EQuAL fuera de linea, variando distintos parámetros, con el objetivo de evaluar su rendimiento en cuanto a precisión y a su desempeño sobre una arquitectura Big Data.
+\end{quotation}
+
+\subparagraph{Resumen de cambios}
+En modo de resumen, los siguientes cambios podrian ser introducidos en el inicio del ``Capítulo 5. Experimentos'', y en particular la seccion ``5.1.1. Medidas de rendimiento y error'':
 \begin{itemize}
-	\item Agregar un test de significancia estadística para la tabla 3 (estado del arte).
-	\item Definir los objetivos de los experimentos.
+	\item Corrección de la Tabla 3: Agregado de las columnas ``Falsos Positivos'', ``Falsos Negativos'' y elimnación de la columna ``Error''.
+	\item Mover la sección ``5.6.2.1. Estructura de las matrices de confusión'' al principio del ``Capítulo 5. Experimentos''. Del tal forma, el lector sabrá de antemano como se presentarán los resultados en las tablas y experimentos que se introducen más adelante en el trabajo de tesis.
+	\item Ubicar un apartado que aclare la distribución de preguntas de clase \(0\) y clase \(1\), antes de la Tabla 3 y como influye en el balance de error cada una de las técnicas evaluadas.
+	\item Agregado de los objetivos de los experimentos al principio del ``Capítulo 5. Experimentos''.
 \end{itemize}
 
 \subsection*{Comentario 10}

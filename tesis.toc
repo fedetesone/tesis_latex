@@ -38,9 +38,9 @@
 \contentsline {paragraph}{\numberline {3.4.1.4}Tokenización}{37}{paragraph.0.3.4.1.4}%
 \contentsline {paragraph}{\numberline {3.4.1.5}Similaridad}{38}{paragraph.0.3.4.1.5}%
 \contentsline {paragraph}{\numberline {3.4.1.6}Medidas de proximidad}{40}{paragraph.0.3.4.1.6}%
-\contentsline {paragraph}{\numberline {3.4.1.7}Modelo de espacio vectorial}{41}{paragraph.0.3.4.1.7}%
-\contentsline {paragraph}{\numberline {3.4.1.8}Distancia del coseno}{42}{paragraph.0.3.4.1.8}%
-\contentsline {subsubsection}{\numberline {3.4.2}Term Frequency}{43}{subsubsection.0.3.4.2}%
+\contentsline {paragraph}{\numberline {3.4.1.7}Modelo de espacio vectorial}{40}{paragraph.0.3.4.1.7}%
+\contentsline {paragraph}{\numberline {3.4.1.8}Distancia del coseno}{41}{paragraph.0.3.4.1.8}%
+\contentsline {subsubsection}{\numberline {3.4.2}Term Frequency}{42}{subsubsection.0.3.4.2}%
 \contentsline {subsubsection}{\numberline {3.4.3}Term Frequency/Inverse Document Frequency}{43}{subsubsection.0.3.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.4}Word2Vec}{45}{subsubsection.0.3.4.4}%
 \contentsline {paragraph}{\numberline {3.4.4.1}Motivación de Word2Vec}{45}{paragraph.0.3.4.4.1}%
