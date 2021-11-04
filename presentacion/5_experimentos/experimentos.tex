@@ -1,16 +1,57 @@
 \section{Experimentos}
 
+
+\begin{frame}
+	\frametitle{Objetivos de experimentación}
+	En este capítulo se describirá:
+	\bigskip
+	\begin{itemize}[<*>]
+		\item Resultados obtenidos en el trabajo del estado del arte.
+		\item Método de experimentación en forma de detallada.
+		\item Método de validación y presentación de resultados.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Matrices de confusión}
+	\textbf{Matrices de confusión utilizadas}
+	\bigskip
+
+	\begin{table}[h!]
+		\footnotesize
+		\centering
+		\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
+			\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
+			\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{b} \\ \cmidrule(l){2-4}
+			\multicolumn{1}{c}{}  & \textbf{1}  & c                               & d                               \\ \bottomrule
+		\end{tabularx}
+		\label{tab:matriz-confusion}
+	\end{table}
+
+	Los indicadores de rendimiento seleccionados para ser evaluados en los experimentos realizados con fines comparativos, son los siguientes:
+	\begin{itemize}[<*>]
+		\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\).
+		\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
+	\end{itemize}
+	\bigskip
+	En estos indicadores se cumple la condición \(a+b+c+d=1\).
+\end{frame}
+
 \subsection{Estado del arte}
 \begin{frame}
 	\frametitle{Estado del arte}
-		\begin{table}
+		\begin{table}[!htbp]
 			\footnotesize
-			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
 				\toprule
 				\multicolumn{3}{l}{\multirow{2}{*}{}} &
 				\multicolumn{2}{c}{\textbf{Predicho}} &
 				\multirow{2}{*}{\textbf{Exactitud}} &
-				\multirow{2}{*}{\textbf{Error}} \\ \cmidrule(lr){4-5}
+				\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Falsos\\ Positivos\end{tabular}}} &
+				\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Falsos\\ Negativos\end{tabular}}} \\
+				\cmidrule(lr){4-5}
 				\multicolumn{3}{l}{} &
 				\multicolumn{1}{c}{\textbf{0}} &
 				\multicolumn{1}{c}{\textbf{1}} &
@@ -22,7 +63,9 @@
 				\multicolumn{1}{c}{0.4355} &
 				\multicolumn{1}{c}{0.1953} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6776}} &
-				\multicolumn{1}{c}{\multirow{2}{*}{0.3224}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1953}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1271}} \\
+				\cmidrule(lr){3-5}
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
@@ -36,7 +79,8 @@
 				\multicolumn{1}{c}{0.4477} &
 				\multicolumn{1}{c}{0.1831} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6685}} &
-				\multicolumn{1}{c}{\multirow{2}{*}{0.3315}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1831}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1484}} \\ \cmidrule(lr){3-5}
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
@@ -50,7 +94,8 @@
 				\multicolumn{1}{c}{0.4343} &
 				\multicolumn{1}{c}{0.1965} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6788}} &
-				\multicolumn{1}{c}{\multirow{2}{*}{0.3212}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1965}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1247}} \\ \cmidrule(lr){3-5}
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
@@ -64,7 +109,8 @@
 				\multicolumn{1}{c}{0.5033} &
 				\multicolumn{1}{c}{0.1275} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6725}} &
-				\multicolumn{1}{c}{\multirow{2}{*}{0.3275}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1275}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.2}} \\ \cmidrule(lr){3-5}
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
@@ -77,18 +123,23 @@
 				\multicolumn{1}{c}{\textbf{0}} &
 				\multicolumn{1}{c}{0.4877} &
 				\multicolumn{1}{c}{0.1431} &
-				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.6797}}} &
-				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{0.3203}}} \\ \cmidrule(lr){3-5}
+				\multicolumn{1}{c}{\multirow{2}{*}{0.6797}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1431}} &
+				\multicolumn{1}{c}{\multirow{2}{*}{0.1772}} \\ \cmidrule(lr){3-5}
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{l}{1} &
 				\multicolumn{1}{l}{0.1772} &
 				\multicolumn{1}{l}{0.192} &
 				\multicolumn{1}{c}{} &
-				\multicolumn{1}{c}{} \\ \bottomrule
+				\multicolumn{1}{c}{} \\
+
+				\bottomrule
 			\end{tabularx}
 			\label{tab:desempeno-estado-del-arte}
 		\end{table}
+
+	\textbf{Nota}: el conjunto de datos original tiene \(36, 9\%\) pares de preguntas de clase \(1\) y \(63,1\%\) de clase \(0\).
 \end{frame}
 
 \subsection{Preprocesamiento y muestreo del conjunto de datos}
@@ -336,33 +387,6 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Matrices de confusión}
-	\textbf{Matriz de confusión utilizada}
-	\bigskip
-
-	\begin{table}[h!]
-		\footnotesize
-		\centering
-		\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-			\toprule
-			\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
-			\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
-			\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{b} \\ \cmidrule(l){2-4}
-			\multicolumn{1}{c}{}  & \textbf{1}  & c                               & d                               \\ \bottomrule
-		\end{tabularx}
-		\label{tab:matriz-confusion}
-	\end{table}
-
-	Los indicadores de rendimiento seleccionados para ser evaluados en los experimentos realizados con fines comparativos, son los siguientes:
-	\begin{itemize}[<*>]
-		\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\).
-		\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
-	\end{itemize}
-	\bigskip
-	En estos indicadores se cumple la condición \(a+b+c+d=1\).
-\end{frame}
-
 \begin{frame}[allowframebreaks]
 	\frametitle{Preparación de los datos}
 	Muestras de pares de preguntas que se utilizó como entrada del método EQuAL:
@@ -428,13 +452,29 @@
 
 	\framebreak
 
-	Se toma valores potenciales de umbral con intervalos \(0.05\) y se forma un arreglo como \textbf{\([0.05, 0.1, 0.15, ..., 0.90, 0.95]\)} y se itera sobre cada uno de ellos. Por cada uno de los valores en el arreglo:
+	Consideraciones de la elección del umbral correcto:
+	\bigskip
+	\begin{enumerate}[<*>]
+		\item Un valor de umbral alto, reducirá la cantidad de falsos positivos, ya que menos pares de preguntas van a ser consideradas como iguales (clase 1).
+		\item Además, la cantidad de falsos negativos aumentará, ya que el proceso será restrictivo en cuanto a clasificar una instancia como positiva.
+		\item Por el otro lado, sucederá todo lo contrario en cuanto se reduzca el valor de umbral.
+		\item Por este motivo, es necesario realizar un proceso iterativo para identificar el valor de umbral óptimo \(t*\).
+	\end{enumerate}
+
+	\framebreak
+
+	\textbf{Ejemplo:} Se toma valores potenciales de umbral con intervalos \(0.05\) y se forma un arreglo como \textbf{\([0.05, 0.1, 0.15, ..., 0.90, 0.95]\)} y se itera sobre cada uno de ellos. Por cada uno de los valores en el arreglo:
+	\bigskip
 	\begin{enumerate}[<*>]
 		\item Se consideran todos los pares de preguntas tomados para realizar la comparación, provenientes de la matriz de co-asociación.
 		\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
 		\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
 		\item Se calcula la proporción de pares de preguntas asignadas con \textit{true}, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.
 	\end{enumerate}
+
+	\begin{center}
+		\textbf{Elegir el valor de umbral \(t\) que produzca la matriz con la mayor exactitud.}
+	\end{center}
 
 	\framebreak
 
