@@ -1,0 +1,292 @@
+\chapter*{Contenido}\label{ch:contenido}
+En el dictamen de Maria Soledad Pera PhD. se destacan algunos puntos relativos a ciertos aspectos del trabajo de tesis ``Desarrollo de una medida de similaridad para Sistemas de Recomendación en sitios de Community Question Answering. Análisis desde un enfoque Big Data y usando un método de ensamble de clustering'', con el fin de posicionar de una mejor manera las contribuciones realizadas con respecto al estado del arte. A continuación se detallan las propuestas observadas y se adjuntan, para cada una de ellas, los posibles cambios y/o comentarios que el tesista considera pertinentes para materializar dichas oportunidades de mejora.
+
+\subsection*{Comentario 1}
+En el Capítulo 3 se hace mención al trabajo de Goldberg et al. (1992) como el primer sistema de recomendación, y se usa la citación al trabajo de Schafer el al. (2007) para definir sistemas de recomendación basados en collaborative filtering. En la comunidad, no son esas las citas más conocidas. Sugiero que el candidato considere las citas en este link, en lo que se refiere recommender systems y collaborative filtering: \url{https://paperpile.com/shared/OUBDis}.
+
+\paragraph*{Respuesta}
+Cuando se inicia el marco histórico de los RS, en la sección ``3.2.1. Contexto Histórico'', se menciona y cita a \citep{goldberg1992using}, En el párrafo que menciona el problema de la sobrecarga de información (página 26), podría agregarse lo siguiente:
+
+\begin{quotation}
+En la década de los 90s, fue de gran importancia la contribución de \citep{shardanand1995social} como un enfoque para la resolución de la sobrecarga de información. En particular, se implementa un sistema llamado Ringo, que genera recomendaciones personalizadas para álbumes y artistas musicales. Dicha contribución puede extrapolarse a recomendaciones de cualquier tipo de base de datos basados en similaridades entre usuarios.
+\end{quotation}
+
+\bigskip
+
+Por otro lado, el trabajo de \cite{shardanand1995social} también podría haber sido mencionado en la sección ``3.2.3.5. Basados en comunidades'', ya que la implementación descrita explota similaridades entre los gustos de los distintos usuarios a recomendar, y supone que los gustos no están aleatoriamente distribuidos, sino que se encuentran patrones tanto entre personas como entre grupos sociales de usuarios. Se utilizan los usuarios con perfiles más similares para dirigir recomendaciones personalizadas.
+
+\bigskip
+
+\noindent \textbf{Nota:} Al final de la sección “3.2.1. Contexto Histórico” se menciona lo siguiente:
+\begin{quotation}
+	Aunque las raíces de los RS se remontan a trabajos en ciencia cognitiva \citep{rich1979user}, teoría de aproximación…
+\end{quotation}
+
+El cual es uno de los trabajos oportunamente sugeridos por la Jurado. Una buena adición podría ser dar detalles acerca del contenido de \citep{rich1979user}, ya que es muy bien reconocido por la comunidad y sienta las bases para reconocer y diferenciar distintos tipos de usuarios que utilizar un sistema de información, creando estereotipos para representar con exactitud distintas características de usuarios y, a partir de ellos, recomendar novelas. Para la definición de los estereotipos, se captura información del usuario mediante preguntas personales. Este sistema, llamado Grundy, es pionero en RS basados en conocimiento.
+
+\bigskip
+
+Por otro lado, el artículo sugerido \citep{sarwar2002incremental} aporta un gran valor a este trabajo de tesis. Provee una gran definición para RS de filtrado colaborativo, la cual puede ser incluida en la sección ``3.2.3.2. Filtrado Colaborativo'', en reemplazo de la cita de \citep{schafer2007collaborative}, como:
+\begin{quotation}
+El objetivo de los algoritmos de recomendación basados en filtrado colaborativo es sugerir nuevos productos o predecir la utilidad de cierto producto para un cliente en particular, basándose en las elecciones anteriores del cliente, u opinión de otros clientes con gustos similares \citep{sarwar2002incremental}.
+\end{quotation}
+
+Adicionalmente, el trabajo \citep{sarwar2001item}, que hace foco en filtrado colaborativo basado en ítems, es también de gran valor para este trabajo. El artículo se ubica directamente en el área temática, ya que utiliza una matriz de similaridad para explorar relaciones entre ítems (preguntas en sitios de CQA) y calcular recomendaciones a usuarios. Es un artículo que podría ser aplicado en la fundamentación de este trabajo de tesis. Por otro lado, aporta la distinción de que las opiniones de los usuarios pueden ser obtenidas explícitamente de los usuarios o utilizando algunas medidas implícitas, lo cual puede ser agregado a ``3.2.3.2 Filtrado Colaborativo''.
+
+\bigskip
+
+Finalmente, los trabajos \citep{hill1995recommending} y \citep{resnick1994grouplens} tambien podrian haber sido agregados para ampliar el marco histórico de los Sistemas de Recomendación, y definitivamente hubiesen resultado de gran ayuda para ampliar el marco teórico de RS de filtrado colaborativo.
+
+\subsection*{Comentario 2}
+FastText y Word2Vec son dos representaciones de embeddings. Mientras que la forma de producción de embeddings (proceso) difiere, el objetivo (representación) es común. Me pregunto entonces por qué presentarlos como subsecciones separadas en el Capítulo referente al marco teórico para este trabajo?
+
+\paragraph*{Respuesta}
+Se optó por presentarlos de manera separada por los siguientes motivos:
+\begin{itemize}
+	\item Se encuentran separados en el trabajo tomado como estado de arte. En el trabajo \citep{gonzalez2017comparative}, los autores describen y presentan los resultados de FastText y Word2Vec de forma separada. Esto conllevó a mantener la misma separación con un agregado de profundidad en cada uno de ellos.
+	\item Si bien ambos algoritmos tienen las mismas características (modelos basados en redes neuronales que producen como salida un conjunto de palabras con representación vectorial), también tienen sus diferencias. Considero que la diferencia más importante para este trabajo (además de la implementación) es que FastText introduce el modelo sub-palabra en la cual cada palabra es representada como un conjunto de n-gramas, produciendo vectores con información sub-palabra, que han demostrado lograr mayor precisión en algunos casos.
+	\item La sección ``3.4.5. FastText'' no explica nuevamente implementación del modelo Skip-gram (como sí lo hace la sección ``3.4.4. Word2Vec''), sino que parte del mismo y agrega sus diferenciadores, para evitar redundancia.
+\end{itemize}
+
+Por todo lo anterior, considero la observación completamente válida, no obstante, consideré pertinente para este trabajo tener en cuenta las ideas mencionadas como diferenciadores de los procesos.
+
+\subsection*{Comentario 3}
+En la definición de clustering, por ejemplo, el candidato utiliza (Peña, 2013) como referencia. Lo mismo ocurre en varias oportunidades en lo que se refiere a definir conceptos fundacionales, como Big-O. Es preferible en trabajos de esta envergadura que se utilicen las citaciones originales (o por lo menos a trabajos más reconocidos) para referirse a conceptos ya establecidos en la comunidad científica. Por ejemplo, un buen punto de partida es el libro Machine Learning, escrito por Tom Mitchel, o trabajos como ``Nigam, K., McCallum, A. K., Thrun, S., \& Mitchell, T. (2000). Text classification from labeled and unlabeled documents using EM. Machine learning, 39(2), 103-134.''
+
+\paragraph*{Respuesta}
+Con respecto a la definición de Clustering, adhiero que necesita citas más influyentes dentro de la comunidad. Se propone reemplazar la cita de \citep{pena2013analisis} de la sección ``3.5.1. Clustering'', con lo siguiente:
+
+\begin{quotation}
+	El Clustering o análisis cluster tiene como objetivo descubrir los grupos naturales en un conjunto de patrones, puntos u objetos. Los autores en \citep{jain2010data} definen análisis cluster como ``una técnica de clasificación estadística para descubrir si los individuos de una población caen en diferentes grupos haciendo comparaciones cuantitativas de características múltiples''\footnote{Definición obtenida por Webster [Merriam-Webster Online Dictionary 2008]. \url{https://www.merriam-webster.com/dictionary/cluster\%20analysis}. Último acceso: Octubre 2021.}. Por otro lado, una definición de clustering operativa, es: dada una representación de \(n\) objetos, encontrar \(K\) grupos basados en una medida de similaridad tal que las similaridades entre objetos del mismo grupo son altas mientras que las similaridades entre objetos de diferentes grupos son bajas. Estos métodos se conocen también con el nombre de métodos de clasificación automática o no supervisada. Básicamente, los sistemas de clasificación son supervisados o no supervisados, dependiendo si asignan nuevos objetos de datos a uno o a un número finito de clases supervisadas discretas o categorías no supervisadas, respectivamente \citep{xu2008clustering}. Muchos enfoques han sido propuestos para manejar el problema de aprendizaje en presencia de variables no observadas. El algoritmo EM\footnote{Por sus siglas en inglés de Expectation-Maximization.} es la base para muchos algoritmos de clustering no supervisados (Mitchel, 1997), entrenando un clasificador que utiliza documentos etiquetados, y probabilísticamente etiqueta los documentos no etiquetados. Luego, entrena el clasificador utilizando las etiquetas para todos los documentos, itera y converge \citep{nigam2000text}. En el momento de lidiar con documentos no etiquetados, se puede pensar a EM como un algoritmo de clustering no supervisado.
+\end{quotation}
+
+\bigskip
+
+Por otro lado, se sugiere definir \textit{Big-O} desde el lado de las ciencias de la computación. Para lo cual, se utiliza el libro \citep{cormen2009introduction}, bandera para la definición y desarrollo de algoritmos de computación. Es posible agregar una definición matemática, la cual es fundacional (Paul Bachmann, 1894), como:
+
+\begin{quotation}
+	Siendo \(g,f: \mathbb{N} \rightarrow \mathbb{R}\)  dos funciones de números naturales a reales. Decimos que \(f\) tiene orden de \(g\), y escribimos \(f=O(g)\). Si y sólo si hay una constante positiva \(c\) tal que por todos los suficientemente grandes valores \(n \in N\) para \(n \geq N(c)\), los valores absolutos de las dos funciones satisfacen la siguiente relación \(\left | f(n) \right | \leq c\left | g(n) \right |\) \citep{erk2008theoretische}.
+\end{quotation}
+
+\subsection*{Comentario 4}
+El alumno claramente detalla los inconvenientes que emergen al tener que lidiar con Big Data, me pregunto si se consideró un paso de candidate selection previo al análisis y recomendación, de manera de aminorar las comparaciones necesarias a medida que más preguntas se suman al sistema de CQA. En otras palabras, se asume en este trabajo que todo el conjunto de datos de entrada (pares de preguntas) debe ser analizado para generar clústeres y matrices de coasociación. Me pregunto si se consideró -en mira a la recomendación- que podía ser posible seleccionar un conjunto de preguntas a tratar como candidatas ``on the fly'' y a partir de ahí determinar su similaridad.
+
+\paragraph*{Respuesta}
+Esta es una gran observación que abre muchas puertas a distintos diseños de RSs. Efectivamente, el diseño propuesto por este trabajo considera un proceso fuera de línea que realiza comparaciones de preguntas ``todas contra todas''. Si bien este enfoque no es óptimo computacionalmente, se tomó como base para el desafío de la creación de una nueva arquitectura distribuida. Los experimentos, por otro lado, se realizaron tomando muestras aleatorias con significancia estadística.
+
+\bigskip
+
+Con respecto a la consideración de ``candidate selection'', se pueden agregar las siguientes observaciones:
+\begin{itemize}
+	\item No se consideró ningún proceso especial para la reducción de la cantidad de cálculos de similaridad para cada ejecución de experimentos o para la propuesta del cálculo fuera de línea, lo cual podría haber sido un buen enfoque para la optimización de recursos computacionales. Se dejó esa tarea a cada una de las medidas de similaridad: las comparaciones que arrojaron similaridad 0, fueron descartadas para el proceso de clustering y etiquetado. Se generaron matrices más dispersas para métodos basados en term-frequency (TF y TF-IDF), en comparación con términos basados en representaciones vectoriales (FastText y Word2Vec) o taxonomías (Semantic Distance).
+	\item Por otro lado, se consideraron varios enfoques para el cálculo de similaridad en tiempo de ejecución (agregar una nueva pregunta). La idea de la presentación de los mismos fue intentar resolver el problema de ``cold start''. Se observa que sería posible utilizar estos métodos para realizar un proceso de ``candidate selection'' pero en tiempo real. Por ejemplo, es posible utilizar un método KNN entre las representaciones vectoriales para luego utilizar la respuesta y calcular la similaridad utilizando EQuAL, pero solo entre las preguntas pertenecientes a ese subconjunto.
+\end{itemize}
+
+\subsection*{Comentario 5}
+Uno de los problemas más comentados en lo que se refiere a sistemas que utilizan pares de preguntas de Quora es que muchas de las preguntas que parecen similares, no lo son. Básicamente, la literatura en lo que se refiere al state-of-the-art menciona que pares de preguntas que generan altos valores de similaridad (independientemente de la medida usada para establecer similaridad) pueden referirse a conceptos que en realidad no están relacionados (i.e., el objetivo de las preguntas no es el mismo). Me pregunto si se consideró como puede afectar este problema los distintos casos de uso presentados en la Sección 4.5 de este manuscrito.
+
+\paragraph*{Respuesta}
+Este es un problema muy interesante a resolver en la mayoría de las implementaciones de Sistemas de Recomendación. Se propone explicar las consideraciones tenidas en cuenta con respecto a dos apartados distintos en el trabajo.
+\bigskip
+
+En el caso de que la pregunta se refiera a los casos de uso planteados en la sección ``4.5. Ejemplo de implementación en un Sistema de Recomendación de tiempo real'':
+
+\begin{quotation}
+	El ejemplo será desarrollado teniendo en cuenta tres casos de uso diferentes: \begin{enumerate*} [label=(\roman*)] \item un proceso fuera de línea ejecutado periódicamente que actualizará la base de datos, caso de uso central de este trabajo y en el cual se sustenta toda la arquitectura propuesta, y que también puede pensarse como una parte integrante de la implementación propuesta en este apartado; \item el punto de vista del usuario que consulta una pregunta en el sitio; y \item el caso (opcional) en que el usuario agrega una nueva pregunta al sitio.\end{enumerate*}
+\end{quotation}
+
+Estos son casos de uso que definen la arquitectura de un RS en su totalidad, utilizando el método EQuAL. Por lo cual, el problema referido aplicaría solamente a cómo el método EQuAL fue construido y los conceptos teóricos que lo sustentan. En este caso, al ser un método basado en Ensamble de Clustering, depende fuertemente de los métodos subyacentes: si los métodos subyacentes fueron entrenados para comportarse muy bien en los casos de falsos positivos, el método EQuAL tenderá a hacerlo también.
+
+\bigskip
+
+Por otro lado, si la pregunta se refiere a los enfoques arquitecturales que se proponen para afrontar el problema del ``cold start'' cuando se agrega una nueva pregunta (sección ``4.5.4. Agregar una nueva pregunta''), se puede mencionar lo siguiente para cada una de las propuestas:
+
+\subparagraph{Cálculo de similaridad contra todas las preguntas del sitio}
+Este método utiliza una algoritmo de Caché de Reemplazo Adaptativo, para minimizar la cantidad de cálculos a realizar en tiempo de ejecución, pero la comparación se hace utilizando el método EQuAL. Por lo cual depende de qué tan bueno sea el método subyacente de cálculo de similaridad (en este caso, el método EQuAL).
+
+\subparagraph{Búsqueda de vecinos cercanos con representaciones vectoriales}
+Este método que utiliza modelos de Machine Learning que producen un salida de representaciones vectoriales de las entidades que se van a devolver como vecinos (en este caso preguntas del sitio Quora), depende de 3 factores para mejorar su exactitud\footnote{Es posible expandir la base teórica de este método si es necesario para entender cada uno de los factores presentados.}:
+\begin{itemize}
+	\item El modelo subyacente. Si el modelo de ML ha sido entrenado teniendo en cuenta casos que producen falsos positivos, para que esas representaciones vectoriales involucradas tengan una distancia considerable en el espacio vectorial, entonces la respuesta será prometedora.
+	\item La cantidad de árboles binarios utilizados para la construcción de la infraestructura soporte para \(ANN\) (Approximate nearest neighbors). Mientras más árboles binarios sean utilizados para realizar búsquedas en tiempo de ejecución, se retornarán resultados más precisos, a cambio de mayor latencia.
+	\item La cantidad de resultados que se desean retornar por cada petición. Este valor es conocido como el valor de \(K\) para algoritmos \(KNN\). Mientras más grande sea, más preciso será el cálculo de similaridad en tiempo de ejecución, a cambio de mayor latencia.
+\end{itemize}
+
+\subparagraph{Modelos de scoring}
+En este caso, el modelo de Scoring planteado utiliza un enfoque TF-IDF, lo cual, al ser una búsqueda lexicográfica, puede resultar en resultados no favorables para frases muy similares que tienen una semántica diferente.
+
+\bigskip
+
+Se recuerda que estos métodos presentados serán utilizados para obtener preguntas similares a preguntas que no se encuentran todavía en el sistema. Cuando las mismas sean tenidas en cuenta por el proceso fuera de línea, el método EQuAL será el encargado de realizar esta tarea.
+
+\subsection*{Comentario 6}
+En la Tabla 3 se muestran matrices de confusión, sería más interesante (y simple visualmente) incluir simplemente Accuracy (Exactitud), False Positives y False Negatives. Error es redundante, ya que es Total – Exactitud, con lo cual va a ayudar a la legibilidad de la tabla de resultados remover esa columna.
+
+\paragraph*{Respuesta}
+Se presenta la Tabla \ref{tab:desempeno-estado-del-arte} (reemplazo de la Tabla 3 del trabajo de tesis), siguiendo las recomendaciones:
+
+\begin{table}[!htbp]
+	\footnotesize
+	\caption{Matrices de confusión para los cinco algoritmos de medidas de similaridad.}
+	\begin{tabularx}{\textwidth}{*{8}{>{\centering\arraybackslash}X}}
+		\toprule
+		\multicolumn{3}{l}{\multirow{2}{*}{}} &
+		\multicolumn{2}{c}{\textbf{Predicho}} &
+		\multirow{2}{*}{\textbf{Exactitud}} &
+		\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Falsos\\ Positivos\end{tabular}}} &
+		\multirow{2}{*}{\textbf{\begin{tabular}[c]{@{}c@{}}Falsos\\ Negativos\end{tabular}}} \\
+		\cmidrule(lr){4-5}
+		\multicolumn{3}{l}{} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		&
+		\\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4355} &
+		\multicolumn{1}{c}{0.1953} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6776}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1953}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1271}} \\
+		\cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.1271} &
+		\multicolumn{1}{c}{0.2421} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF/IDF}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4477} &
+		\multicolumn{1}{c}{0.1831} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6685}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1831}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1484}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.1484} &
+		\multicolumn{1}{c}{0.2208} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Word2Vec}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4343} &
+		\multicolumn{1}{c}{0.1965} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6788}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1965}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1247}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.1247} &
+		\multicolumn{1}{c}{0.2445} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{FastText}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.5033} &
+		\multicolumn{1}{c}{0.1275} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6725}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1275}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.2}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{\textbf{1}} &
+		\multicolumn{1}{c}{0.2} &
+		\multicolumn{1}{c}{0.1692} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\ \midrule
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Semantic Distance}}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
+		\multicolumn{1}{c}{\textbf{0}} &
+		\multicolumn{1}{c}{0.4877} &
+		\multicolumn{1}{c}{0.1431} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.6797}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1431}} &
+		\multicolumn{1}{c}{\multirow{2}{*}{0.1772}} \\ \cmidrule(lr){3-5}
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{l}{1} &
+		\multicolumn{1}{l}{0.1772} &
+		\multicolumn{1}{l}{0.192} &
+		\multicolumn{1}{c}{} &
+		\multicolumn{1}{c}{} \\
+
+		\bottomrule
+	\end{tabularx}
+	\label{tab:desempeno-estado-del-arte}
+\end{table}
+
+\subsection*{Comentario 7}
+Es también importante mencionar que las medidas reportadas no se definen hasta varias páginas después. Esto es contraproducente, por lo cual sugiero comenzar el capítulo definiendo claramente medidas de evaluación que después se utilizan en el resto de la narrativa.
+
+\paragraph*{Respuesta}
+La afirmación es correcta. Por lo tanto, propongo mover la sección ``5.6.2.1. Estructura de las matrices de confusión'' al principio del ``Capítulo 5. Experimentos''. De tal forma, cuando se presentan los resultados del trabajo del estado del arte, el lector puede hacer una mejor lectura de los mismos.
+
+\subsection*{Comentario 8}
+Siguiendo con los experimentos, proporcionaría contexto a los resultados describir con detalles antes de mostrar la tabla la distribución de pares de preguntas que se utilizan en la evaluación. Es decir: cuántos pares de preguntas están asociadas al rótulo 0 y cuantos al rótulo 1, ya eso impacta la valoración de “Exactitud”.
+
+\paragraph*{Respuesta}
+En la sección ``5.1.1. Medidas de rendimiento y error'' se detalla la distribución de pares de preguntas de clase 0 y 1 como ``\(36,9\%\) pares de preguntas son clase \(1\) y el \(63,1\%\) restante es clase \(0\)''. Podría haber sido conveniente ubicar esta aclaración antes de la Tabla 3, con el fin de facilitar la interpretación de la misma y comprender la distribución de los resultados.
+
+\bigskip
+
+\textbf{Nota:} cada uno de las ejecuciones realizadas en los experimentos de este trabajo utilizan muestras aleatorias que garantizan que la proporción de preguntas de clase 1 esté entre \(35\% \)y \(65\%\) del total de preguntas del subconjuntos, para dar significancia estadística y poseer una variabilidad de datos que derive en resultados confiables.
+
+\subsection*{Comentario 9}
+Lo más importante, a los resultados presentados en la Capítulo 5 (y en el análisis descrito en el Capítulo 6) les falta un test de significancia estadística, de lo contrario no es posible establecer la veracidad de las conclusiones. Por ejemplo, en la tabla 3 se señala semantic distance como la mejor medida de similaridad, sin embargo, sin test de significancia estadística no es posible establecer que es realmente la medida más efectiva comparada con las demás. En la tabla 25, se indica que 30 es el valor de K que produce el menor error. Sin embargo, la falta de test de estadística dificulta la posibilidad de concluir definitivamente que por ejemplo K=35 o k=50 no serían alternativas similarmente factibles. En la Sección 6.3.1, se presenta un análisis de varianza del método propuesto. Claramente esto responde en parte a mi pregunta en lo referido a la veracidad de las conclusiones, pero no se menciona sino hasta muy tarde en el manuscrito. Creo que es imperativo que se defina claramente el objetivo de los experimentos, el dataset y las medidas de evaluación y análisis al inicio del Capítulo 5. De esta manera el lector podrá seguir la descripción de los resultados. También sugiero que se mencione explícitamente en los Capítulos 5 y 6 los resultados que son significativos a medida que se introducen, no al finalizar el análisis.
+
+\paragraph*{Respuesta}
+Esta importante sugerencia será respondida separándose en distintas temáticas, para luego proponer un conjunto de cambios que podrían ser aplicados para agregar valor al trabajo.
+
+\subparagraph{Medidas de rendimiento y error del estado del arte}
+En esta sección se muestran solamente los resultados obtenidos del trabajo ``Comparative Analysis on Text Distance Measures Applied to Community Question Answering Data'' \citep{gonzalez2017comparative}, sin hacer ningún cambio. En este párrafo, no se intenta demostrar que Semantic Distance es la ``mejor'' medida, sino que solamente se remarca que la exactitud fue la más alta entre las medidas analizadas.
+
+\bigskip
+
+\subparagraph{Metodo propuesto y evaluación de resultados}
+Algunas observaciones sobre esta oportunidad de mejora:
+\begin{itemize}
+	\item La fila resaltada en la Tabla 30, que indica que con un valor de \(k=30\) se obtiene el mejor error, es solo un agregado visual para ayudar a la interpretación de resultados en esa fase de la experimentación. Lo mismo sucede para las tablas 25-30. Adicionalmente, se provee la Figura 15, que permite visualizar cómo los valores de error decrecen a medida que el número de clusters aumenta. Lo cual sugiere, con el fin de agregar valor contextual (sin aportar ventajas comparativas contra los métodos del estado del arte), que el método EQuAL se comporta mejor con valores de k grandes, hasta cierto valor que se considera ``óptimo'' teniendo en cuenta el método del codo.
+	\item La idea del tesista fue introducir la interpretación de resultados a ``bajo nivel'' a medida que se introducen los experimentos en el trabajo de tesis, e intentar resumirlos en un nivel más alto cuando termina la sección.
+\end{itemize}
+
+\subparagraph{Objetivo de los experimentos}
+Se podría introducir los objetivos de los experimentos al principio del Capítulo 5, de la siguiente forma:
+
+\begin{quotation}
+En este Capítulo se describirán los resultados obtenidos en el trabajo del estado del arte, como marco teórico y punto de partida a los resultados presentados en el Capítulo 6. Además, se describe el método de experimentación utilizado en este trabajo de tesis de una forma detallada: desde la generación de muestras, preprocesamiento, aplicación del método EQuAL, y el método de validación. La experimentación se basa en la ejecución del método EQuAL fuera de línea, variando distintos parámetros, con el objetivo de evaluar su rendimiento en cuanto a precisión y a su desempeño sobre una arquitectura Big Data.
+
+\bigskip
+
+En el Capítulo 6, se describirán en detalle los parámetros tomados en cuenta para la ejecución de los experimentos, tales como la cantidad y tamaño de muestras, y el número de clusters \(k\). Para finalizar, se realizará una evaluación de rendimiento con una prueba de significancia estadística para distintos tamaños de muestra, y valores de \(k\) obtenidos por el método del codo y en distintas evaluaciones de error.
+\end{quotation}
+
+\subparagraph{Resumen de cambios}
+A modo de resumen, los siguientes cambios podrían ser introducidos en el inicio del Capítulo 5, y en particular la sección ``5.1.1. Medidas de rendimiento y error'':
+\begin{itemize}
+	\item Corrección de la Tabla 3: Agregado de las columnas ``Falsos Positivos'', ``Falsos Negativos'' y eliminación de la columna ``Error''.
+	\item Mover la sección ``5.6.2.1. Estructura de las matrices de confusión'' al principio del ``Capítulo 5. Experimentos''. De tal forma, el lector sabrá de antemano cómo se presentarán los resultados en las tablas y experimentos que se introducen más adelante en el trabajo de tesis.
+	\item Ubicar un apartado que aclare la distribución de preguntas de clase \(0\) y clase \(1\), antes de la Tabla 3 y como influye en el balance de error cada una de las técnicas evaluadas.
+	\item Agregado de los objetivos de los experimentos al principio del ``Capítulo 5. Experimentos''.
+\end{itemize}
+
+\subsection*{Comentario 10}
+Sería interesante expresar consideraciones en lo que se refiere a mitigación de errores en el Capítulo 6. Es decir, dado a que los umbrales de similaridades pueden generar errores (que es normal cuando umbrales son requeridos), sería interesante que el candidato mencionara como estos umbrales pueden afectar la subsecuente recomendación.
+
+\paragraph*{Respuesta}
+Es posible profundizar como, conceptualmente, los umbrales afectan la subsecuente recomendación. Se considera agregar información a la sección ``5.6.2.2. Construcción y elección del umbral correcto'':
+
+\begin{quotation}
+La elección del mejor umbral se realiza eligiendo valores en el intervalo \((0,1)\) y evaluando cual de ellos conlleva a un mejor rendimiento, es decir, que los valores calculados a partir del umbral coincidan, en una mayor medida, con el valor real proveniente de la muestra de datos. Los valores de umbral tienen impacto en los falsos negativos y falsos positivos. Un valor de umbral alto, reducirá la cantidad de falsos positivos, ya que menos pares de preguntas van a ser consideradas como iguales (rótulo 1). Además, la cantidad de falsos negativos aumentará, ya que el proceso será restrictivo en cuanto a clasificar una instancia como positiva. Por el otro lado, sucederá todo lo contrario en cuanto se reduzca el valor de umbral \citep{fernandez2018learning}. Por este motivo, es necesario realizar un proceso iterativo para identificar el valor de umbral óptimo \(t*\). Dos aspectos en tener en cuenta para este procedimiento:
+\begin{itemize}
+	\item El valor \(t*\) debe minimizar el costo. En nuestro caso, por cada uno de los valores de \(t\) que se configuren como parámetro, la salida será una matriz de confusión. El valor de umbral \(t\) que produzca la matriz con el menor error, será el elegido.
+	\item Es posible utilizar diferentes intervalos entre los valores de \(t\) de entrada. Por ejemplo, si tomamos un intervalo de \(0.05\), obtendremos \(19\) valores de t (\([0.05, 0.1, 0.15, ..., 0.90, 0.95]\)). En cambio, si el intervalo es de \(0.01\) obtendremos \(100\) valores potenciales de \(t\) (\([0.01, 0.02, 0.0.3, ..., 0.98, 0.99]\)). Claramente, mientras más chico sea el intervalo de elección de umbral, tendremos más oportunidades de obtener un error más bajo, a cambio de mayor costo computacional.
+\end{itemize}
+\end{quotation}

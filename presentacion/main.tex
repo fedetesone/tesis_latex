@@ -1,4 +1,4 @@
-\documentclass{beamer}
+\documentclass[10pt]{beamer}
 
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
@@ -17,6 +17,8 @@
 \usepackage{verbatim}
 \usepackage{booktabs} % Allows the use of \toprule, \midrule and \bottomrule in tables
 \usepackage{tcolorbox}
+\usefonttheme{structuresmallcapsserif}
+\usefonttheme[onlymath]{serif}
 
 \mode<presentation> {
 	\usetheme{Madrid}
@@ -72,7 +74,7 @@
 \setcounter{tocdepth}{1}
 \begin{document}
 
-	\begin{frame}
+	\begin{frame}[plain]
 		 \titlepage{}
 		 \date{}
 
@@ -104,7 +106,7 @@
 	\end{frame}
 
 	% Tabla de contenidos
-	\begin{frame}[plain]
+	\begin{frame}
 		\frametitle{Agenda}
 		\tableofcontents[hideallsubsections]
 	\end{frame}

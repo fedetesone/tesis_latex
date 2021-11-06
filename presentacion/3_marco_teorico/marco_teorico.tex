@@ -75,23 +75,28 @@
 
 \begin{frame}
 	\frametitle{Similaridad}
-	Las medidas de similaridad son interés poder cuantificar la relación entre objetos.
-
+	Las medidas de similaridad son de interés para poder cuantificar la relación entre objetos.
 	\bigskip
+	\begin{itemize}
+		\item Se utilizan dos tipos de medidas de similaridad en este trabajo:
+		\begin{enumerate}[<*>]
+			\item Basadas en taxonomías.
+			\item Basadas en espacios vectoriales.
+		\end{enumerate}
 
-	\begin{enumerate}
-			\item La función de similaridad es definida satisfaciendo las condiciones:
-			\begin{enumerate}[<*>]
-				\item Simetría,
-				\[S(x_i,x_j)=S(x_j,x_i);\]
+		\bigskip
+		\item
+		La función de similaridad es definida satisfaciendo las condiciones:
+		\begin{enumerate}[<*>]
+			\item Simetría,
+			\[S(x_i,x_j)=S(x_j,x_i);\]
 
-				\item Positividad,
-				\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j.\]
-			\end{enumerate}
-
-		\item \bigskip
+			\item Positividad,
+			\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j.\]
+		\end{enumerate}
+		\medskip
 		Es posible transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), en el intervalo \([0,1]\). Aplicando \(D(x_i,x_j) = 1 - S(x_i,x_j)\).
-	\end{enumerate}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -103,7 +108,7 @@
 	Típicamente, el ángulo entre los dos vectores es usado como medida de divergencia entre los mismos, y el coseno del ángulo es usado como similaridad numérica.
 \end{frame}
 
-\begin{frame}
+\begin{frame}[allowframebreaks]
 	\frametitle{Distancia del coseno}
 	Siendo \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) dos documentos en forma de vectores:
 	\[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}}.\]
@@ -111,7 +116,13 @@
 	\bigskip
 	Particularmente en IR, es de interés el intervalo \([0, 1]\), entonces la distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
 	\[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
-	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos
+	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos.
+
+	\framebreak
+
+	Entonces, la similaridad entre dos vectores puede medirse como:
+	\[cos(\theta) = \frac{\vec{D}_i.\vec{D}_j}{\left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|},\]
+	donde \(d_i\) y \(d_j\) son los componentes de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente.
 \end{frame}
 
 \begin{frame}
@@ -259,7 +270,13 @@
 \begin{frame}
 	\frametitle{Clustering}
 	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Clustering]
-		El Clustering o \textit{análisis cluster} tiene por objetivo agrupar elementos en grupos homogéneos en función de las similitudes o similaridades entre ellos.
+		El Clustering o \textit{análisis cluster} es una técnica de clasificación estadística para descubrir si los individuos de una población caen en diferentes grupos haciendo comparaciones cuantitativas de características múltiples (Jain, 2010).
+	\end{tcolorbox}
+
+	\bigskip
+
+	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Definición operativa]
+		Dada una representación de \(n\) objetos, encontrar \(K\) grupos basados en una medida de similaridad tal que las similaridades entre objetos del mismo grupo son altas mientras que las similaridades entre objetos de diferentes grupos son bajas
 	\end{tcolorbox}
 \end{frame}
 

@@ -1,24 +1,24 @@
 \babel@toc {spanish}{}
 \beamer@sectionintoc {1}{Introducción}{3}{0}{1}
 \beamer@subsectionintoc {1}{1}{Área temática}{4}{0}{1}
-\beamer@subsectionintoc {1}{2}{Tema específico}{9}{0}{1}
-\beamer@subsectionintoc {1}{3}{Objetivo general}{11}{0}{1}
-\beamer@subsectionintoc {1}{4}{Objetivos específicos}{12}{0}{1}
-\beamer@sectionintoc {2}{Fundamentación}{17}{0}{2}
-\beamer@subsectionintoc {2}{1}{Motivación de la tesis}{18}{0}{2}
-\beamer@sectionintoc {3}{Marco teórico}{28}{0}{3}
-\beamer@subsectionintoc {3}{1}{Sitios de CQA}{29}{0}{3}
-\beamer@subsectionintoc {3}{2}{Sistemas de recomendación}{33}{0}{3}
-\beamer@subsectionintoc {3}{3}{Sistemas de recomendación}{34}{0}{3}
-\beamer@subsectionintoc {3}{4}{Big Data y Arquitecturas}{40}{0}{3}
-\beamer@subsectionintoc {3}{5}{Medidas de distancia de texto}{44}{0}{3}
-\beamer@subsectionintoc {3}{6}{Ensamble de Clustering}{60}{0}{3}
-\beamer@sectionintoc {4}{Problema de investigación y propuesta}{65}{0}{4}
-\beamer@subsectionintoc {4}{1}{Hipótesis}{66}{0}{4}
-\beamer@subsectionintoc {4}{2}{El método propuesto}{68}{0}{4}
-\beamer@subsectionintoc {4}{3}{Arquitectura de procesamiento de datos}{69}{0}{4}
-\beamer@subsectionintoc {4}{4}{Implementación en un sistema de recomendación de tiempo real}{70}{0}{4}
-\beamer@sectionintoc {5}{Experimentos}{74}{0}{5}
+\beamer@subsectionintoc {1}{2}{Tema específico}{5}{0}{1}
+\beamer@subsectionintoc {1}{3}{Objetivo general}{7}{0}{1}
+\beamer@subsectionintoc {1}{4}{Objetivos específicos}{8}{0}{1}
+\beamer@sectionintoc {2}{Fundamentación}{13}{0}{2}
+\beamer@subsectionintoc {2}{1}{Motivación de la tesis}{14}{0}{2}
+\beamer@sectionintoc {3}{Marco teórico}{25}{0}{3}
+\beamer@subsectionintoc {3}{1}{Sitios de CQA}{26}{0}{3}
+\beamer@subsectionintoc {3}{2}{Sistemas de recomendación}{30}{0}{3}
+\beamer@subsectionintoc {3}{3}{Sistemas de recomendación}{31}{0}{3}
+\beamer@subsectionintoc {3}{4}{Big Data y Arquitecturas}{37}{0}{3}
+\beamer@subsectionintoc {3}{5}{Medidas de distancia de texto}{41}{0}{3}
+\beamer@subsectionintoc {3}{6}{Ensamble de Clustering}{58}{0}{3}
+\beamer@sectionintoc {4}{Problema de investigación y propuesta}{63}{0}{4}
+\beamer@subsectionintoc {4}{1}{Hipótesis}{64}{0}{4}
+\beamer@subsectionintoc {4}{2}{El método propuesto}{66}{0}{4}
+\beamer@subsectionintoc {4}{3}{Arquitectura de procesamiento de datos}{67}{0}{4}
+\beamer@subsectionintoc {4}{4}{Implementación en un sistema de recomendación de tiempo real}{68}{0}{4}
+\beamer@sectionintoc {5}{Experimentos}{72}{0}{5}
 \beamer@subsectionintoc {5}{1}{Estado del arte}{75}{0}{5}
 \beamer@subsectionintoc {5}{2}{Preprocesamiento y muestreo del conjunto de datos}{76}{0}{5}
 \beamer@subsectionintoc {5}{3}{Generación de particiones}{78}{0}{5}
