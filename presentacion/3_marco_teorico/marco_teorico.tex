@@ -53,18 +53,6 @@
 	\end{tcolorbox}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Big Data II}
-	Conceptos importantes relativos a este trabajo:
-	\bigskip
-
-	\begin{itemize}
-		\item Map-reduce.
-		\item Arquitectura Hadoop (HDFS).
-		\item Apache Spark.
-	\end{itemize}
-\end{frame}
-
 \subsection{Medidas de distancia de texto}
 \begin{frame}
 	\frametitle{Information retrieval}
@@ -114,7 +102,7 @@
 	\[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}}.\]
 
 	\bigskip
-	Particularmente en IR, es de interés el intervalo \([0, 1]\), entonces la distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
+	La distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
 	\[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
 	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos.
 
@@ -146,7 +134,7 @@
 		\item También conocido en la literatura como \textit{Bag of words} (bolsa de palabras).
 		\item El orden exacto de los términos es ignorado, pero se basa en el número de ocurrencias de cada uno de ellos en un documento.
 		\item Cada documento corresponde a un vector y cada término a una dimensión.
-		\item Se mide el grado de similaridad de dos documentos utilizando el coseno del ángulo.
+		\item Se mide el grado de similaridad de dos documentos utilizando el coseno del ángulo entre dos vectores.
 	\end{itemize}
 
 	\bigskip
@@ -212,12 +200,16 @@
 	\framebreak
 
 	\textbf{Similaridad semántica entre palabras}
-	\bigskip
 	\begin{figure}
 		\centering
 		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/taxonomia_semantica}
 		\label{fig:taxonomiasemantica}
 	\end{figure}
+
+	\begin{scriptsize}
+		La similaridad entre palabras se define como \(S(w_1,w_2)=f(l,h),\)
+		donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumer de las mismas.
+	\end{scriptsize}
 
 	\framebreak
 
@@ -226,7 +218,7 @@
 	Este método semántico usa únicamente vectores semánticos formados por las frases en comparación. El valor de una entrada del vector semántico es calculado de la siguiente forma:
 	\begin{itemize}[<*>]
 		\item \textbf{Caso 1}. Si \(w_i\) aparece en la frase, \(s_i\) es 1.
-		\item \textbf{Caso 2}. Si \(w_i\) no está contenida en \(T_1\), se calcula una similaridad semántica entre \(w_1\) y cada palabra en \(T_1\) utilizando el método de la sección anterior.
+		\item \textbf{Caso 2}. Si \(w_i\) no está contenida en \(T_1\), se calcula una similaridad semántica entre \(w_1\) y cada palabra en \(T_1\) utilizando el método de similaridad entre palabras.
 	\end{itemize}
 
 	\framebreak
@@ -276,7 +268,7 @@
 	\bigskip
 
 	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Definición operativa]
-		Dada una representación de \(n\) objetos, encontrar \(K\) grupos basados en una medida de similaridad tal que las similaridades entre objetos del mismo grupo son altas mientras que las similaridades entre objetos de diferentes grupos son bajas
+		Dada una representación de \(n\) objetos, encontrar \(K\) grupos basados en una medida de similaridad tal que las similaridades entre objetos del mismo grupo son altas mientras que las similaridades entre objetos de diferentes grupos son bajas.
 	\end{tcolorbox}
 \end{frame}
 
@@ -289,7 +281,7 @@
  	\bigskip
 
 	\begin{itemize}
-		\item Combina resultados de distintos algoritmos de Clustering con distintas formas de cluster.
+		\item Combina resultados de distintos algoritmos de Clustering con clusters de distintas formas.
 		\item Aprovecha la variabilidad agregada para encontrar una estructura \textit{inter-patrón}.
 		\item Identificación de clusters subyacentes con formas, tamaños y densidades arbitrarias.
 	\end{itemize}

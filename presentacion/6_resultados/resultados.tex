@@ -11,6 +11,8 @@
 		\item Se comparan distintas ejecuciones del método EQuAL.
 		\item Se varia el tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas.
 		\item Por cada uno de los tamaños de muestra se varia el número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50.
+		\item Se realizaron 10 ejecuciones con una muestra aleatoria distinta para cada una de las combinaciones de \(k\) y tamaño de muestra.
+		\item El resultado de cada una de las ejecuciones es una matriz de confusión.
 	\end{itemize}
 
 	\framebreak
@@ -189,17 +191,6 @@
 \subsection{Análisis del método propuesto y algoritmos del estado del arte}
 \begin{frame}[allowframebreaks,fragile]
 	\frametitle{Análisis del método propuesto y algoritmos del estado del arte}
-	\textbf{Metodología utilizada}
-	\bigskip
-
-	\begin{itemize}[<*>]
-		\item Se realizaron 10 ejecuciones de una muestra aleatoria para cada uno de los algoritmos del estado del arte.
-		\item Se varia el tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas.
-		\item Por cada uno de los tamaños de muestra se varia el número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50.
-	\end{itemize}
-
-	\framebreak
-
 	Error en los algoritmos del estado del arte vs. método EQuAL por tamaño de muestra, media y varianza.
 	\begin{table}[h!]
 		\scriptsize
@@ -545,7 +536,7 @@
 	\begin{itemize}
 		\item El método EQuAL tuvo buen rendimiento con tamaños pequeños de muestras y con un alto número de clusters.
 		\item Comparando el método EQuAL con los algoritmos del estado del arte, se concluye que posee indicadores aptos para su aplicación en RS, en cuanto a medias de error y varianza.
-		\item Es altamente probable que el método EQuAL arroje buenos resultados si los algoritmos subyacentes también lo hacen, y viceversa.
+		\item Es altamente probable que el método EQuAL arroje buenos resultados si los algoritmos subyacentes también lo hacen.
 		\item Es posible adaptar el método al conjunto de datos y elegir los algoritmos subyacentes adecuados.
 		\item Se desarrolló una arquitectura de software con enfoque Big Data que realiza los cálculos de similaridad y procesamiento del ensamble de clustering de manera escalable y adaptable.
 	\end{itemize}

@@ -175,7 +175,7 @@
 		\footnotesize
 		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 			\toprule
-			\textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} \\
+			\textbf{question\_pair\_id} & \textbf{question\_id\_1} & \textbf{question\_id\_2} \\
 			\midrule
 			123004                      & question\_0         & question\_2         \\
 			98776                       & question\_1         & question\_3         \\
@@ -381,9 +381,9 @@
 	\bigskip
 	\begin{itemize}
 		\item Generación de resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate}[<*>] \item El tamaño de la muestra. \item El número de clusters \(k\). \end{enumerate}
-		\item Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios de 100, 500, 1000, 1500 y 2000 pares de preguntas.
-		\item Para cada tamaño de muestra, se realizaron 10 muestras aleatorias manteniendo un \(k\) fijo.
-		\item Dando un total de \(5 \: (\text{distintos tamaños de muestra}) \times 10 \: (\text{cantidad de ejecuciones por tamaño de muestra}) = 50\) matrices de co-asociación resultado, para cada valor de \(k\) dado.
+		\item Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios distintas cantidades de pares de preguntas.
+		\item Para cada tamaño de muestra, se realizaron \(N\) muestras aleatorias manteniendo un \(k\) fijo.
+		\item Por ejemplo, para \(5 \: (\text{distintos tamaños de muestra}) \times 10 \: (\text{cantidad de ejecuciones por tamaño de muestra}) = 50\) matrices de co-asociación resultado, para cada valor de \(k\) dado.
 	\end{itemize}
 \end{frame}
 
@@ -424,7 +424,24 @@
 		\label{tab:coasociacion-validacion}
 	\end{table}
 
-	Se filtra la tabla anterior con los pares de preguntas que se encuentran en el conjunto de datos de entrada:
+	\framebreak
+	Muestra de datos original
+	\begin{table}[h!]
+		\footnotesize
+		\centering
+		\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+			\toprule
+			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+			\midrule
+			0                     & 123004                      & question\_10         & question\_11         & 1              \\
+			1                     & 98776                       & question\_11         & question\_21         & 0              \\
+			\bottomrule
+		\end{tabularx}
+	\end{table}
+
+	\bigskip
+
+	Se filtra la matriz de co-asociación con los pares de preguntas que se encuentran en el conjunto de datos de entrada:
 	\begin{table}[h!]
 		\footnotesize
 		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
@@ -446,19 +463,49 @@
 		\\ 0 & si & S(q_1, q_2) < t
 	\end{array} \right..\]
 
+	\framebreak
+
+	Asignación de resultados utilizando un umbral de \(0.65\):
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2}  & \textbf{similarity} & \textbf{equal} \\
+			\midrule
+			question\_10             & question\_11             & contenido            & contenido            & 0.857  & 1              \\
+			question\_11             & question\_21             & contenido            & contenido            & 0.368  & 0              \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:umbral-validacion-1}
+	\end{table}
+
+	Asignación de resultados utilizando un umbral de \(0.9\):
+	\begin{table}[h!]
+		\footnotesize
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+			\toprule
+			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2}  & \textbf{similarity} & \textbf{equal} \\
+			\midrule
+			question\_10             & question\_11             & contenido            & contenido            & 0.857 & 0              \\
+			question\_11             & question\_21             & contenido            & contenido            & 0.368 & 0              \\
+			\bottomrule
+		\end{tabularx}
+		\label{tab:umbral-validacion-2}
+	\end{table}
+
 	\begin{center}
-		\centering	Cual de los valores de umbral \(t\) tiene mejor rendimiento?
+		\centering	¿Cómo elegimos los valores de umbral \(t\) tienen mejor rendimiento?
 	\end{center}
 
 	\framebreak
 
-	Consideraciones de la elección del umbral correcto:
+	Primero, consideraciones de la elección del umbral correcto:
 	\bigskip
 	\begin{enumerate}[<*>]
 		\item Un valor de umbral alto, reducirá la cantidad de falsos positivos, ya que menos pares de preguntas van a ser consideradas como iguales (clase 1).
 		\item Además, la cantidad de falsos negativos aumentará, ya que el proceso será restrictivo en cuanto a clasificar una instancia como positiva.
 		\item Por el otro lado, sucederá todo lo contrario en cuanto se reduzca el valor de umbral.
-		\item Por este motivo, es necesario realizar un proceso iterativo para identificar el valor de umbral óptimo \(t*\).
+		\item Por este motivo, se realiza un proceso iterativo para identificar el valor de umbral óptimo \(t*\).
 	\end{enumerate}
 
 	\framebreak
