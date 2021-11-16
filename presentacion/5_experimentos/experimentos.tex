@@ -32,11 +32,11 @@
 
 	Los indicadores de rendimiento seleccionados para ser evaluados en los experimentos realizados con fines comparativos, son los siguientes:
 	\begin{itemize}[<*>]
-		\item \textbf{Exactitud:} \((a+d)/(a+b+c+d)\).
+		\item \textbf{Exactitud (accuracy):} \((a+d)/(a+b+c+d)\).
 		\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
 	\end{itemize}
 	\bigskip
-	En estos indicadores se cumple la condición \(a+b+c+d=1\).
+	En estos indicadores se cumplen la condiciones \(a+b+c+d=1\) y \(error = 1 - exactitud\).
 \end{frame}
 
 \subsection{Estado del arte}
@@ -254,60 +254,59 @@
 \begin{frame}[allowframebreaks]
 	\frametitle{Ensamble de Clustering}
 	\begin{footnotesize}
-	Para explicar el procedimiento de \textbf{Ensamble de Clustering}, se consideran 3 resultados de ejecuciones ejemplo:
+		Para explicar el procedimiento de \textbf{Ensamble de Clustering}, se consideran 3 resultados de ejecuciones ejemplo:
 	\end{footnotesize}
 
-	\begin{table}[h!]
-		\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-			\toprule
-			\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
-			\midrule
-			run\_uuid\_1       & 1                     & 1                    \\
-			run\_uuid\_1       & 2                     & 1                    \\
-			run\_uuid\_1       & 3                     & 1                    \\
-			run\_uuid\_1       & 4                     & 4                    \\
-			\bottomrule
-		\end{tabularx}
-		\label{tab:run1}
-	\end{table}
+	\begin{scriptsize}
+		\begin{table}[h!]
+			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+				\toprule
+				\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
+				\midrule
+				run\_uuid\_1       & 1                     & 1                    \\
+				run\_uuid\_1       & 2                     & 1                    \\
+				run\_uuid\_1       & 3                     & 1                    \\
+				run\_uuid\_1       & 4                     & 4                    \\
+				\bottomrule
+			\end{tabularx}
+			\label{tab:run1}
+		\end{table}
 
-	\begin{table}[h!]
-		\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-			\toprule
-			\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
-			\midrule
-			run\_uuid\_2       & 1                     & 1                    \\
-			run\_uuid\_2       & 2                     & 2                    \\
-			run\_uuid\_2       & 3                     & 1                    \\
-			run\_uuid\_2       & 4                     & 2                    \\
-			\bottomrule
-		\end{tabularx}
-		\label{tab:run2}
-	\end{table}
+		\begin{table}[h!]
+			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+				\toprule
+				\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
+				\midrule
+				run\_uuid\_2       & 1                     & 1                    \\
+				run\_uuid\_2       & 2                     & 2                    \\
+				run\_uuid\_2       & 3                     & 1                    \\
+				run\_uuid\_2       & 4                     & 2                    \\
+				\bottomrule
+			\end{tabularx}
+			\label{tab:run2}
+		\end{table}
 
-	\begin{table}[h!]
-		\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-			\toprule
-			\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
-			\midrule
-			run\_uuid\_3       & 1                     & 3                    \\
-			run\_uuid\_3       & 2                     & 2                    \\
-			run\_uuid\_3       & 3                     & 3                    \\
-			run\_uuid\_3       & 4                     & 2                    \\
-			\bottomrule
-		\end{tabularx}
-		\label{tab:run3}
-	\end{table}
+		\begin{table}[h!]
+			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+				\toprule
+				\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
+				\midrule
+				run\_uuid\_3       & 1                     & 3                    \\
+				run\_uuid\_3       & 2                     & 2                    \\
+				run\_uuid\_3       & 3                     & 3                    \\
+				run\_uuid\_3       & 4                     & 2                    \\
+				\bottomrule
+			\end{tabularx}
+			\label{tab:run3}
+		\end{table}
+	\end{scriptsize}
 
 	\begin{footnotesize}
 		Luego, el resultado de todas las ejecuciones se agrupa por pregunta individual, de la siguiente forma:
 	\end{footnotesize}
 
 	\begin{table}[h!]
-		\footnotesize
+		\scriptsize
 		\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{10cm}}
 			\toprule
 			\textbf{question\_id} & \textbf{tuples}                                          \\
@@ -321,9 +320,18 @@
 		\label{tab:tuplas}
 	\end{table}
 
-	Se genera un conjunto de datos intermedio con la interseccion de los conjuntos para la combinación de todas las preguntas individuales:
+	\begin{footnotesize}
+		Se genera un conjunto de datos intermedio con la interseccion de los conjuntos para la combinación de todas las preguntas individuales, por ejemplo:
+		\begin{scriptsize}
+			\begin{itemize}[<*>]
+				\item pregunta 1 = \({[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,1),(run\_uuid\_3,3){]}\),
+				\item pregunta 2 = \({[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,2),(run\_uuid\_3,2){]}\).
+			\end{itemize}
+		\end{scriptsize}
+	\end{footnotesize}
+
 	\begin{table}[h!]
-		\footnotesize
+		\scriptsize
 		\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{2.0cm}>{\centering\arraybackslash}p{2.0cm}>{\centering\arraybackslash}p{7cm}}
 			\toprule
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \multicolumn{1}{c|}{\textbf{tuples}}                     \\
@@ -338,10 +346,6 @@
 		\end{tabularx}
 		\label{tab:interseccion}
 	\end{table}
-
-	\begin{footnotesize}
-		Por ejemplo: pregunta 1 = {[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,1),(run\_uuid\_3,3){]} y la pregunta 2 = {[}\textbf{(run\_uuid\_1,1)},(run\_uuid\_2,2),(run\_uuid\_3,2){]}.
-	\end{footnotesize}
 
 	\framebreak
 
@@ -371,7 +375,9 @@
 		\label{tab:coasociacion}
 	\end{table}
 
-	La estructura resultante es una \textbf{\emph{matriz de co-asociación}}.
+	\begin{center}
+		La estructura resultante es una \textbf{\emph{matriz de co-asociación}}.
+	\end{center}
 \end{frame}
 
 \subsection{Método de validación}
@@ -381,7 +387,6 @@
 	\bigskip
 	\begin{itemize}
 		\item Generación de resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate}[<*>] \item El tamaño de la muestra. \item El número de clusters \(k\). \end{enumerate}
-		\item Como experimentos para este trabajo se realizaron ejecuciones con conjuntos de datos aleatorios distintas cantidades de pares de preguntas.
 		\item Para cada tamaño de muestra, se realizaron \(N\) muestras aleatorias manteniendo un \(k\) fijo.
 		\item Por ejemplo, para \(5 \: (\text{distintos tamaños de muestra}) \times 10 \: (\text{cantidad de ejecuciones por tamaño de muestra}) = 50\) matrices de co-asociación resultado, para cada valor de \(k\) dado.
 	\end{itemize}
@@ -393,9 +398,9 @@
 	\begin{table}[h!]
 		\footnotesize
 		\centering
-		\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 			\toprule
-			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+			\textbf{sequence\_id} & \textbf{question\_pair} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
 			\midrule
 			0                     & 123004                      & question\_10         & question\_11         & 1              \\
 			1                     & 98776                       & question\_11         & question\_21         & 0              \\
@@ -429,9 +434,9 @@
 	\begin{table}[h!]
 		\footnotesize
 		\centering
-		\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}c}}
+		\begin{tabularx}{\textwidth}{*{5}{>{\centering\arraybackslash}X}}
 			\toprule
-			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+			\textbf{sequence\_id} & \textbf{question\_pair} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
 			\midrule
 			0                     & 123004                      & question\_10         & question\_11         & 1              \\
 			1                     & 98776                       & question\_11         & question\_21         & 0              \\
@@ -444,7 +449,7 @@
 	Se filtra la matriz de co-asociación con los pares de preguntas que se encuentran en el conjunto de datos de entrada:
 	\begin{table}[h!]
 		\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\begin{tabularx}{\textwidth}{*{5}{>{\centering\arraybackslash}X}}
 			\toprule
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
 			\midrule
@@ -467,8 +472,8 @@
 
 	Asignación de resultados utilizando un umbral de \(0.65\):
 	\begin{table}[h!]
-		\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\scriptsize
+		\begin{tabularx}{\textwidth}{cccccc}
 			\toprule
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2}  & \textbf{similarity} & \textbf{equal} \\
 			\midrule
@@ -481,8 +486,8 @@
 
 	Asignación de resultados utilizando un umbral de \(0.9\):
 	\begin{table}[h!]
-		\footnotesize
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\scriptsize
+		\begin{tabularx}{\textwidth}{cccccc}
 			\toprule
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2}  & \textbf{similarity} & \textbf{equal} \\
 			\midrule
@@ -507,62 +512,4 @@
 		\item Por el otro lado, sucederá todo lo contrario en cuanto se reduzca el valor de umbral.
 		\item Por este motivo, se realiza un proceso iterativo para identificar el valor de umbral óptimo \(t*\).
 	\end{enumerate}
-
-	\framebreak
-
-	\textbf{Ejemplo:} Se toma valores potenciales de umbral con intervalos \(0.05\) y se forma un arreglo como \textbf{\([0.05, 0.1, 0.15, ..., 0.90, 0.95]\)} y se itera sobre cada uno de ellos. Por cada uno de los valores en el arreglo:
-	\bigskip
-	\begin{enumerate}[<*>]
-		\item Se consideran todos los pares de preguntas tomados para realizar la comparación, provenientes de la matriz de co-asociación.
-		\item Por cada uno de los valores de similaridad, se asigna \(1\) si son mayores o iguales al umbral, \(0\) si pasa lo contrario.
-		\item Si los valores asignados en el paso anterior coinciden con el valor real, se asigna un valor \textit{true} (verdadero), si no coinciden, se asigna \textit{false} (falso).
-		\item Se calcula la proporción de pares de preguntas asignadas con \textit{true}, es decir, que el valor real coincide con el predicho, y se obtiene la \textit{exactitud} del método.
-	\end{enumerate}
-
-	\begin{center}
-		\textbf{Elegir el valor de umbral \(t\) que produzca la matriz con la mayor exactitud.}
-	\end{center}
-
-	\framebreak
-
-	Ejemplo de comparación de valores reales y predichos para construcción de matrices de confusión:
-	\begin{table}[!htbp]
-		\scriptsize
-		\centering
-		\begin{tabularx}{\textwidth}{*{9}{>{\centering\arraybackslash}c}}
-			\toprule
-			\textbf{sequence\_id} & \textbf{question\_pair\_id} & \textbf{question\_1} & \textbf{question\_2} & \textbf{real} &  \textbf{predicted} & \textbf{equal}\\
-			\midrule
-			0 & 123004 & question\_10 & question\_20 & 1 & 1 & true \\
-			1 & 98776 & question\_11 & question\_21 & 1 & 1 & true \\
-			2 & 14422 & question\_12 & question\_22 & 1 & 0 & false \\
-			3 & 12321 & question\_13 & question\_23 & 1 & 1 & true \\
-			4 & 999 & question\_14 & question\_24 & 0 & 1 & false \\
-			5 & 7448 & question\_15 & question\_25 & 0 & 0 & true \\
-			6 & 69553 & question\_16 & question\_26 & 0 & 0 & true \\
-			7 & 2447 & question\_17 & question\_27 & 1 & 1 & true \\
-			\bottomrule
-		\end{tabularx}
-		\label{tab:validacion-reales}
-	\end{table}
-
-	\framebreak
-	Matriz de confusión obtenida:
-	\begin{table}[!htbp]
-		\footnotesize
-		\centering
-		\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-			\toprule
-			\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
-			\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
-			\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{0.25} & \multicolumn{1}{c}{0.125} \\ \cmidrule(l){2-4}
-			\multicolumn{1}{c}{}  & \textbf{1}  & 0.125                               & 0.5                               \\ \bottomrule
-		\end{tabularx}
-		\label{tab:validacion-confusion-ejemplo}
-	\end{table}
-
-	\begin{itemize}
-		\item \textbf{Exactitud:} \(0.75\).
-		\item \textbf{Error:} \(0.25\).
-	\end{itemize}
 \end{frame}

@@ -33,7 +33,7 @@
 	\bigskip
 	\begin{itemize} [<+>]
 		\item Basados en contenido.
-		\item FIltrado Colaborativo.
+		\item Filtrado Colaborativo.
 		\item Demográficos.
 		\item Basados en conocimiento.
 		\item Basados en comunidades (sociales).
@@ -54,13 +54,6 @@
 \end{frame}
 
 \subsection{Medidas de distancia de texto}
-\begin{frame}
-	\frametitle{Information retrieval}
-	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Information retrieval]
-		\textit{Information retrieval} (IR), traducido a menudo como ``recuperación de información'', se define la acción de como encontrar material (generalmente documentos) de una naturaleza desestructurada (generalmente texto) que satisfaga una necesidad de información de grandes colecciones (generalmente almacenadas en computadoras) (Schütze et al. 2008).
-	\end{tcolorbox}
-\end{frame}
-
 \begin{frame}
 	\frametitle{Similaridad}
 	Las medidas de similaridad son de interés para poder cuantificar la relación entre objetos.
@@ -97,7 +90,7 @@
 \end{frame}
 
 \begin{frame}[allowframebreaks]
-	\frametitle{Distancia del coseno}
+	\frametitle{Similaridad del coseno}
 	Siendo \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) dos documentos en forma de vectores:
 	\[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}}.\]
 
@@ -139,7 +132,11 @@
 
 	\bigskip
 	\centering
-	\textit{“Mary is quicker than John”} y \textit{“John is quicker than Mary”}
+	\textit{“Mary is quicker than John”} y \textit{“John is quicker than Mary”} \\
+	\medskip
+	\begin{scriptsize}
+		(``Mary es más rápida que John'' y ``John es más rápido que Mary'')
+	\end{scriptsize}
 \end{frame}
 
 \begin{frame}
@@ -260,19 +257,6 @@
 
 \subsection{Ensamble de Clustering}
 \begin{frame}
-	\frametitle{Clustering}
-	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Clustering]
-		El Clustering o \textit{análisis cluster} es una técnica de clasificación estadística para descubrir si los individuos de una población caen en diferentes grupos haciendo comparaciones cuantitativas de características múltiples (Jain, 2010).
-	\end{tcolorbox}
-
-	\bigskip
-
-	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Definición operativa]
-		Dada una representación de \(n\) objetos, encontrar \(K\) grupos basados en una medida de similaridad tal que las similaridades entre objetos del mismo grupo son altas mientras que las similaridades entre objetos de diferentes grupos son bajas.
-	\end{tcolorbox}
-\end{frame}
-
-\begin{frame}
 	\frametitle{Ensamble de Clustering}
 	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Ensamble de Clustering]
 		El \textit{Ensamble de Clustering} es un método para extraer clusters consistentes dadas particiones variadas de entrada.
@@ -289,11 +273,9 @@
 
 \begin{frame}
 	\frametitle{Combinación de Evidencias}
-	Combinar los resultados de múltiples ejecuciones de clustering dentro de una misma partición de datos viendo cada uno de esos resultados como una evidencia independiente de la organización de los mismos.
-
-	\bigskip
-
 	Tomado las co-ocurrencia de pares de patrones en el mismo cluster, las \(N\) particiones de datos para \(n\) patrones, son mapeadas en una \textit{matriz de co-asociación} \(n \times n\):
+	\medskip
 	\[C(i,j)=\frac{n_{ij}}{N},\]
+	\medskip
 	donde \(n_{ij}\) es el número de veces que el par de patrones \((i,j)\) es asignado al mismo cluster entre las \(N\) particiones de datos.
 \end{frame}
