@@ -7,37 +7,19 @@
 	\end{tcolorbox}
 \end{frame}
 
-\begin{frame}
-	\frametitle{Sitios de CQA}
-	¿Por qué los sitios de CQA todavía no alcanzan a satisfacer las expectativas de los usuarios?
-	\bigskip
-	\begin{itemize} [<+>]
-		\item Baja probabilidad de encontrar al experto.
-		\item Respuestas de baja calidad.
-		\item Preguntas archivadas y poco consultadas: muchas preguntas de los usuarios son similares.
-	\end{itemize}
-\end{frame}
-
 \subsection{Sistemas de recomendación}
 \begin{frame}
 	\frametitle{Sistemas de Recomendación}
 	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Sistemas de Recomendación]
 		Un RS es un conjunto de herramientas de software que sugiere ítems a un usuario, quien posiblemente utilizará algunos de ellos.
 	\end{tcolorbox}
-\end{frame}
 
-\subsection{Sistemas de recomendación}
-\begin{frame}
-	\frametitle{Técnicas de Recomendación}
-	Los RS basan sus estrategias de recomendaciones en 6 técnicas básicas (Ricci et al., 2011):
 	\bigskip
-	\begin{itemize} [<+>]
-		\item Basados en contenido.
-		\item Filtrado Colaborativo.
-		\item Demográficos.
-		\item Basados en conocimiento.
-		\item Basados en comunidades (sociales).
-		\item Sistemas Híbridos.
+
+	\textbf{Funciones de un Sistema de Recomendación}
+	\begin{itemize} [<*>]
+		\item Aumentar el ratio de conversión en un sitio o aplicación.
+		\item Aumentar satisfación y fidelidad del usuario.
 	\end{itemize}
 \end{frame}
 
@@ -61,8 +43,8 @@
 	\begin{itemize}
 		\item Se utilizan dos tipos de medidas de similaridad en este trabajo:
 		\begin{enumerate}[<*>]
-			\item Basadas en taxonomías.
 			\item Basadas en espacios vectoriales.
+			\item Basadas en taxonomías.
 		\end{enumerate}
 
 		\bigskip
@@ -91,19 +73,44 @@
 
 \begin{frame}[allowframebreaks]
 	\frametitle{Similaridad del coseno}
-	Siendo \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) dos documentos en forma de vectores:
-	\[d_c(\vec{D}_i, \vec{D}_j) = 1 - cos(\vec{D}_i, \vec{D}_j) = 1 - \frac{{\vec{D}_i}'\vec{D}_j}{\sqrt{{\vec{D}_i}'\vec{D}_i}\sqrt{{\vec{D}_j}'\vec{D}_j}}.\]
-
-	\bigskip
 	La distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
 	\[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
 	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos.
 
-	\framebreak
+	\bigskip
 
-	Entonces, la similaridad entre dos vectores puede medirse como:
+	La similaridad entre dos vectores puede medirse como:
 	\[cos(\theta) = \frac{\vec{D}_i.\vec{D}_j}{\left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|},\]
 	donde \(d_i\) y \(d_j\) son los componentes de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente.
+\end{frame}
+
+\begin{frame}[allowframebreaks]
+	\frametitle{Similaridad en taxonomías}
+		\begin{figure}
+		\centering
+		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/taxonomia_semantica}
+		\label{fig:taxonomiasemantica}
+	\end{figure}
+
+	\begin{footnotesize}
+		La similaridad entre palabras se define como \(S(w_1,w_2)=f(l,h),\)
+		donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumer de las mismas.
+	\end{footnotesize}
+
+	\framebreak
+
+	Se define \(p(t)\) como la \textbf{probabilidad} de un concepto \(t\), formalizando:
+	\[p(t)=\frac{freq(t)}{N},\]
+
+	\bigskip
+
+	Se define el \textbf{contenido de información} \(I(t) = 0\) como:
+	\[I(t)=-\log p(t).\]
+
+	Entonces la \textbf{similaridad} entre dos términos \((i, j)\) se define como:
+	\[S_R = I(ms(t_i,t_j)),\; (Resnik,\,1995)\]
+
+	\[S_L(t_i, t_j)=\frac{2S_R(t_i,t_j)}{I(t_i)+I(t_j)}.\; (Lin\,et\,al.,\,1998)\]
 \end{frame}
 
 \begin{frame}
@@ -196,36 +203,19 @@
 
 	\framebreak
 
-	\textbf{Similaridad semántica entre palabras}
-	\begin{figure}
-		\centering
-		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/taxonomia_semantica}
-		\label{fig:taxonomiasemantica}
-	\end{figure}
-
-	\begin{scriptsize}
-		La similaridad entre palabras se define como \(S(w_1,w_2)=f(l,h),\)
-		donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumer de las mismas.
-	\end{scriptsize}
-
-	\framebreak
-
 	\textbf{Similaridad semántica entre frases} \\
 	\bigskip
-	Este método semántico usa únicamente vectores semánticos formados por las frases en comparación. El valor de una entrada del vector semántico es calculado de la siguiente forma:
+		Un conjunto de palabras comunes \(T\) es formado por la unión de las dos frases \(T_1\) y \(T_2\) en comparación. Luego, un vector semántico léxico \(\check{s}\) es derivado de este conjunto. Por cada una de las palabras \(w_i\) en \(T\) \textit{(ejemplo para \(T_1\))}:
 	\begin{itemize}[<*>]
-		\item \textbf{Caso 1}. Si \(w_i\) aparece en la frase, \(s_i\) es 1.
+		\item \textbf{Caso 1}. Si \(w_i\) aparece en la \(T_1\), \(s_i\) es 1.
 		\item \textbf{Caso 2}. Si \(w_i\) no está contenida en \(T_1\), se calcula una similaridad semántica entre \(w_1\) y cada palabra en \(T_1\) utilizando el método de similaridad entre palabras.
 	\end{itemize}
 
-	\framebreak
-	\textbf{Similaridad semántica entre frases (cont.)} \\
 	\bigskip
-	Se ponderan cada una de las palabras basadas en su contenido de información:
+	Luego el vector semántico de cada frase es:
 	\[s_i = \check{s} \cdot I(w_i) \cdot I(\widetilde{w}_i),\]
 
-	La similaridad semántica entre dos frases es definida como el coeficiente del coseno entre los dos vectores:
-	\[S_s = \frac{s_1. s_2}{||s_1||.||s_2||}.\]
+	Entonces, la similaridad semántica entre dos frases es definida como el coeficiente del coseno entre los dos vectores.
 
 	\framebreak
 
@@ -237,6 +227,8 @@
 		\item \textbf{T2}. A quick brown fox jumps over the lazy dog.
 	\end{itemize}
 
+	\bigskip
+	Se define un conjunto \(T\) con la union de las palabras en \(T_1\) y \(T_2\) y luego se definen los vectores de orden:
 	\[r_1 = \left \{\;1\;2\;3\;4\;5\;6\;7\;8\;9\;\right \},\]
 	\[r_2 = \left \{\;1\;2\;3\;9\;5\;6\;7\;8\;4\;\right \}.\]
 
