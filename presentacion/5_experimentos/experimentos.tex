@@ -4,40 +4,62 @@
 \begin{frame}
 	\frametitle{Objetivos de experimentación}
 	En este capítulo se describirá:
-	\bigskip
 	\begin{itemize}[<*>]
-		\item Resultados obtenidos en el trabajo del estado del arte.
-		\item Método de experimentación en forma de detallada.
-		\item Método de validación y presentación de resultados.
+		\item \textbf{Resultados obtenidos} en el trabajo del estado del arte.
+		\item \textbf{Método de experimentación} en forma de detallada.
+		\item \textbf{Método de validación y presentación} de resultados.
+	\end{itemize}
+
+	\bigskip
+
+	Los experimentos se realizaron con las siguientes tecnologías:
+	\begin{itemize}[<*>]
+		\item Código de experimentación en \textbf{Python}, con la utilización de \textbf{Apache Spark} y librerías de soporte.
+		\item Validación estadística del método EQuAL en \textbf{R}.
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Matrices de confusión}
 	\textbf{Matrices de confusión utilizadas}
-	\bigskip
-
-	\begin{table}[h!]
-		\footnotesize
+	\begin{figure}[!htb]
 		\centering
-		\begin{tabularx}{0.35\textwidth}{*{7}{>{\centering\arraybackslash}X}}
-			\toprule
-			\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
-			\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
-			\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{b} \\ \cmidrule(l){2-4}
-			\multicolumn{1}{c}{}  & \textbf{1}  & c                               & d                               \\ \bottomrule
-		\end{tabularx}
-		\label{tab:matriz-confusion}
-	\end{table}
+		\begin{minipage}{.45\textwidth}
+			\begin{table}[h!]
+				\footnotesize
+				\centering
+				\begin{tabularx}{0.8\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+					\toprule
+					\multicolumn{2}{l}{\multirow{2}{*}{}} & \multicolumn{2}{c}{\textbf{Predicho}}                             \\ \cmidrule(l){3-4}
+					\multicolumn{2}{l}{}                  & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{\textbf{1}} \\ \midrule
+					\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} & \multicolumn{1}{c}{\textbf{0}} & \multicolumn{1}{c}{a} & \multicolumn{1}{c}{b} \\ \cmidrule(l){2-4}
+					\multicolumn{1}{c}{}  & \textbf{1}  & c                               & d                               \\ \bottomrule
+				\end{tabularx}
+				\label{tab:matriz-confusion}
+			\end{table}
+		\end{minipage}%
+		\begin{minipage}{.45\textwidth}
+			\begin{footnotesize}
+				\begin{center}
+					\begin{itemize}[<*>]
+						\item a =  Verdaderos Negativos.
+						\item b =  Falsos Positivos.
+						\item c =  Falsos Negativos.
+						\item d =  Verdaderos Positivos.
+					\end{itemize}
+				\end{center}
+			\end{footnotesize}
+		\end{minipage}
+	\end{figure}
 
+	\bigskip
 	Los indicadores de rendimiento seleccionados para ser evaluados en los experimentos realizados con fines comparativos, son los siguientes:
 	\begin{itemize}[<*>]
 		\item \textbf{Exactitud (accuracy):} \((a+d)/(a+b+c+d)\).
 		\item \textbf{Error:} \((b+c)/(a+b+c+d)\).
 	\end{itemize}
-	\bigskip
 	En estos indicadores se cumplen la condiciones \(a+b+c+d=1\) y \(error = 1 - exactitud\).
-\end{frame}
+ \end{frame}
 
 \subsection{Estado del arte}
 \begin{frame}
@@ -60,7 +82,7 @@
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF}}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
 				\multicolumn{1}{c}{\textbf{0}} &
-				\multicolumn{1}{c}{0.4355} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{00BFFF}0.4355} &
 				\multicolumn{1}{c}{0.1953} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6776}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.1953}} &
@@ -70,13 +92,13 @@
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
 				\multicolumn{1}{c}{0.1271} &
-				\multicolumn{1}{c}{0.2421} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{FF0000}0.2421} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} \\ \midrule
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{TF/IDF}}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
 				\multicolumn{1}{c}{\textbf{0}} &
-				\multicolumn{1}{c}{0.4477} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{00BFFF}0.4477} &
 				\multicolumn{1}{c}{0.1831} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6685}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.1831}} &
@@ -85,13 +107,13 @@
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
 				\multicolumn{1}{c}{0.1484} &
-				\multicolumn{1}{c}{0.2208} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{FF0000}0.2208} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} \\ \midrule
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Word2Vec}}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
 				\multicolumn{1}{c}{\textbf{0}} &
-				\multicolumn{1}{c}{0.4343} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{00BFFF}0.4343} &
 				\multicolumn{1}{c}{0.1965} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6788}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.1965}} &
@@ -100,13 +122,13 @@
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
 				\multicolumn{1}{c}{0.1247} &
-				\multicolumn{1}{c}{0.2445} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{FF0000}0.2445} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} \\ \midrule
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{FastText}}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
 				\multicolumn{1}{c}{\textbf{0}} &
-				\multicolumn{1}{c}{0.5033} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{00BFFF}0.5033} &
 				\multicolumn{1}{c}{0.1275} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6725}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.1275}} &
@@ -115,13 +137,13 @@
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{\textbf{1}} &
 				\multicolumn{1}{c}{0.2} &
-				\multicolumn{1}{c}{0.1692} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{FF0000}0.1692} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} \\ \midrule
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Semantic Distance}}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{\textbf{Real}}} &
 				\multicolumn{1}{c}{\textbf{0}} &
-				\multicolumn{1}{c}{0.4877} &
+				\multicolumn{1}{c}{\cellcolor[HTML]{00BFFF}0.4877} &
 				\multicolumn{1}{c}{0.1431} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.6797}} &
 				\multicolumn{1}{c}{\multirow{2}{*}{0.1431}} &
@@ -130,7 +152,7 @@
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{l}{1} &
 				\multicolumn{1}{l}{0.1772} &
-				\multicolumn{1}{l}{0.192} &
+				\multicolumn{1}{l}{\cellcolor[HTML]{FF0000}0.192} &
 				\multicolumn{1}{c}{} &
 				\multicolumn{1}{c}{} \\
 
@@ -160,7 +182,7 @@
 		Muestreo:
 		\begin{itemize}[<*>]
 			\item Generación pseudoaleatoria con criterios de aceptación.
-			\item Garantizar subconjuntos estadistícamente significativos.
+			\item Garantizar subconjuntos estadísticamente significativos.
 		\end{itemize}
 	\end{itemize}
 
@@ -222,20 +244,20 @@
 		\label{tab:matriz-similaridad}
 	\end{table}
 
-	También se puede ver como una matriz triangular superior:
+	También se puede ver como una matriz \(N \times N\) triangular superior:
 	\[\begin{bmatrix}0 & similarity\_01 & similarity\_02 & similarity\_03 \\ 0 & 0 & similarity\_12 & similarity\_13  \\ 0 & 0  & 0 & similarity\_23  \\ 0 & 0 & 0 & 0 \end{bmatrix}.\]
 \end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Clustering y etiquetado}
 	\begin{itemize}
-		\item Por cada una de las matrices de similaridad se realizan varias ejecuciones de clustering PAM.
+		\item Por cada una de las matrices de similaridad se realizan varias ejecuciones de clustering PAM (Partición Alrededor de Medoides).
 		\item Por cada una de las ejecuciones PAM se proporciona un \(k\) inicial.
 		\item Los resultados poseen la siguiente estructura:
 		\bigskip
 			\begin{table}
-				\footnotesize
-				\begin{tabularx}{\textwidth}{ccc}
+				\scriptsize
+				\begin{tabularx}{0.9\textwidth}{ccc}
 					\toprule
 					\textbf{run\_uuid}& \textbf{question\_id} & \textbf{assigned\_medoid} \\
 					\midrule
@@ -251,7 +273,7 @@
 \end{frame}
 
 \subsection{Ensamble de Clustering}
-\begin{frame}[allowframebreaks]
+\begin{frame}[allowframebreaks,fragile]
 	\frametitle{Ensamble de Clustering}
 	\begin{footnotesize}
 		Para explicar el procedimiento de \textbf{Ensamble de Clustering}, se consideran 3 resultados de ejecuciones ejemplo:
@@ -350,7 +372,15 @@
 	\framebreak
 
 	Se cuenta la cantidad de veces que una pregunta coincide con otra para una misma ejecución.
-	\[len(set(tuples\_1).intersection(set(tuples\_2))) / total\_runs\]
+	\begin{center}
+		\begin{footnotesize}
+			\begin{verbatim}
+			          	len(set(tuples_1).intersection(set(tuples_2))) / total_runs
+			\end{verbatim}
+		\end{footnotesize}
+	\end{center}
+
+	\bigskip
 
 	Respondiendo a la formula de Ensamble de Clustering de Acumulación de Evidencias.
 	\[C(i,j)=\frac{n_{ij}}{N}.\]
@@ -380,20 +410,8 @@
 	\end{center}
 \end{frame}
 
-\subsection{Método de validación}
-\begin{frame}
-	\frametitle{Método de validación}
-	\textbf{Validando los resultados}
-	\bigskip
-	\begin{itemize}
-		\item Generación de resultados estadísticamente significativos se ejecutó el proceso completo de modo iterativo, variando dos parámetros principales: \begin{enumerate}[<*>] \item El tamaño de la muestra. \item El número de clusters \(k\). \end{enumerate}
-		\item Para cada tamaño de muestra, se realizaron \(N\) muestras aleatorias manteniendo un \(k\) fijo.
-		\item Por ejemplo, para \(5 \: (\text{distintos tamaños de muestra}) \times 10 \: (\text{cantidad de ejecuciones por tamaño de muestra}) = 50\) matrices de co-asociación resultado, para cada valor de \(k\) dado.
-	\end{itemize}
-\end{frame}
-
 \begin{frame}[allowframebreaks]
-	\frametitle{Preparación de los datos}
+	\frametitle{Método de validación}
 	Muestras de pares de preguntas que se utilizó como entrada del método EQuAL:
 	\begin{table}[h!]
 		\footnotesize
@@ -459,6 +477,11 @@
 		\end{tabularx}
 		\label{tab:filtrado-validacion}
 	\end{table}
+
+	\begin{center}
+		¿Cómo sabemos cuando este valor de similaridad nos indica que dos preguntas son iguales (\(1\)) o distintas (\(0\))?
+	\end{center}
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]
@@ -499,17 +522,8 @@
 	\end{table}
 
 	\begin{center}
-		\centering	¿Cómo elegimos los valores de umbral \(t\) tienen mejor rendimiento?
+		¿Cómo elegimos los valores de umbral \(t\) tienen \textbf{mejor rendimiento}? \\
+		\bigskip
+		\textbf{Proceso iterativo} para identificar el valor de \textbf{umbral óptimo} \(t*\).
 	\end{center}
-
-	\framebreak
-
-	Primero, consideraciones de la elección del umbral correcto:
-	\bigskip
-	\begin{enumerate}[<*>]
-		\item Un valor de umbral alto, reducirá la cantidad de falsos positivos, ya que menos pares de preguntas van a ser consideradas como iguales (clase 1).
-		\item Además, la cantidad de falsos negativos aumentará, ya que el proceso será restrictivo en cuanto a clasificar una instancia como positiva.
-		\item Por el otro lado, sucederá todo lo contrario en cuanto se reduzca el valor de umbral.
-		\item Por este motivo, se realiza un proceso iterativo para identificar el valor de umbral óptimo \(t*\).
-	\end{enumerate}
 \end{frame}

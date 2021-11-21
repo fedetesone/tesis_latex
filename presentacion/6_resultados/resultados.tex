@@ -9,8 +9,8 @@
 
 	\begin{itemize}[<*>]
 		\item Se comparan distintas ejecuciones del método EQuAL.
-		\item Se varia el tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas.
-		\item Por cada uno de los tamaños de muestra se varia el número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50.
+		\item Se varía el tamaño de muestra en particular: 100, 500, 1000, 1500 y 2000 pares de preguntas.
+		\item Por cada uno de los tamaños de muestra se varía el número de clusters \(k\) distinto: 5, 10, 15, 20, 25, 30, 35, 40, 45 y 50.
 		\item Se realizaron 10 ejecuciones con una muestra aleatoria distinta para cada una de las combinaciones de \(k\) y tamaño de muestra.
 		\item El resultado de cada una de las ejecuciones es una matriz de confusión.
 	\end{itemize}
@@ -282,97 +282,64 @@
 
 	\framebreak
 
-	\footnotesize
-	Tamaño de muestra de 100 pares de preguntas.
-	\begin{figure}[!htbp]
+	Diagramas de caja y bigote para tamaño de muestra 100, 500, 1000, 1500 y 2000 pares de preguntas (\(\alpha = 0,05\)).
+	\begin{figure}[!htb]
 		\centering
-		\includegraphics[width=0.7\linewidth]{../10_resultados/imagenes/anova_100}
-		\label{fig:anova100-1}
+		\begin{minipage}{.45\textwidth}
+			\begin{tiny}
+			Tamaño de muestra 100 pares de preguntas
+			\end{tiny}
+			\begin{figure}
+				\vspace*{-0.3cm}
+				\centering
+				\includegraphics[width=\textwidth]{../10_resultados/imagenes/anova_100}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{.45\textwidth}
+			\begin{tiny}
+				Tamaño de muestra 500 pares de preguntas
+			\end{tiny}
+			\begin{figure}
+				\vspace*{-0.3cm}
+				\centering
+				\includegraphics[width=\textwidth]{../10_resultados/imagenes/anova_500}
+			\end{figure}
+		\end{minipage}
+		\begin{minipage}{.45\textwidth}
+			\begin{tiny}
+				Tamaño de muestra 1000 pares de preguntas
+			\end{tiny}
+			\begin{figure}
+				\vspace*{-0.3cm}
+				\centering
+				\includegraphics[width=\textwidth]{../10_resultados/imagenes/anova_1000}
+			\end{figure}
+		\end{minipage}
+		\begin{minipage}{.45\textwidth}
+			\begin{tiny}
+				Tamaño de muestra 1500 pares de preguntas
+			\end{tiny}
+			\begin{figure}
+				\vspace*{-0.3cm}
+				\centering
+				\includegraphics[width=\textwidth]{../10_resultados/imagenes/anova_1500}
+			\end{figure}
+		\end{minipage}
+		\begin{minipage}{.45\textwidth}
+			\begin{tiny}
+				Tamaño de muestra 2000 pares de preguntas
+			\end{tiny}
+			\begin{figure}
+				\vspace*{-0.3cm}
+				\centering
+				\includegraphics[width=\textwidth]{../10_resultados/imagenes/anova_2000}
+			\end{figure}
+		\end{minipage}
 	\end{figure}
-
-	\begin{itemize}[<*>]
-		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
-		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
-	\end{itemize}
-
-	\framebreak
-
-	Tamaño de muestra de 500 pares de preguntas.
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=0.7\linewidth]{../10_resultados/imagenes/anova_500}
-		\label{fig:anova500-1}
-	\end{figure}
-
-	\begin{itemize}[<*>]
-		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
-		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
-	\end{itemize}
-
-	\framebreak
-
-	Tamaño de muestra de 1000 pares de preguntas.
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=0.7\linewidth]{../10_resultados/imagenes/anova_1000}
-		\label{fig:anova1000-1}
-	\end{figure}
-
-	\begin{itemize}[<*>]
-		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
-		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
-	\end{itemize}
-
-	\framebreak
-
-	Tamaño de muestra de 1500 pares de preguntas.
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=0.7\linewidth]{../10_resultados/imagenes/anova_1500}
-		\label{fig:anova1500-1}
-	\end{figure}
-
-	\begin{itemize}[<*>]
-		\item En todos los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
-		\item El método EQuAL posee una media de error que no posee diferencias significativas a todos los métodos.
-	\end{itemize}
-
-	\framebreak
-
-	Tamaño de muestra de 2000 pares de preguntas.
-	\begin{figure}[!htbp]
-		\centering
-		\includegraphics[width=0.7\linewidth]{../10_resultados/imagenes/anova_2000}
-		\label{fig:anova2000-1}
-	\end{figure}
-
-	\begin{itemize}[<*>]
-		\item El intervalo de confianza contra el método bow no incluye al cero, ya que este método tuvo muy buenos indicadores en este tamaño de muestra.
-		\item En el resto de los casos, los intervalos de confianza incluyen al valor 0 y \(p{-}adj > \alpha\).
-	\end{itemize}
 
 	\framebreak
 
 	\normalsize
-	\textbf{Resumen de resultados del análisis de varianza}
-	\bigskip
-	\begin{itemize}[<*>]
-		\item Se realizaron 25 intervalos de confianza, y en solo uno el método EQuAL se obtuvo una media de error más alta, ya que el método bow fue significativamente mejor al resto.
-		\item El método EQuAL tiene un buen comportamiento en cuanto a medias de error a lo largo de todos los tamaños de muestra.
-		\item Las esperanzas de error no tienen diferencias significativas con los métodos del estado del arte.
-		\item Se puede concluir que el método EQuAL es apto para su implementación en RS.
-	\end{itemize}
-
-	\framebreak
-
-	\textbf{Otras observaciones}
-	\bigskip
-	\begin{itemize}[<*>]
-		\item El agregado de variabilidad de datos puede ser influyente en tamaños de muestra pequeños.
-		\item El método EQuAL es dependiente a los métodos subyacentes.
-		\item Debido a la naturaleza del conjunto de datos utilizado, no es posible identificar fácilmente cuál es la forma de los clusters en cuestión, y verificar si el método EQuAL se adapta perfectamente al conjunto de datos.
-	\end{itemize}
-
 \end{frame}
 
 \subsection{Análisis de desempeño}
@@ -384,7 +351,7 @@
 		\item Cluster Hadoop en localhost.
 		\item Tamaños de muestra 100, 500 y 1000 pares de preguntas.
 		\item En cada una de las ejecuciones, utilizan dos técnicas de similaridad (TF y TFIDF), para luego ensamblarlas.
-		\item Cantidad de núcleos CPU asignados: 1, 2, 4, 8 y 12.
+		\item Cantidad de núcleos CPU asignados: 1, 2, 4, 8 y 12. Esta configuración puede ser extrapolada fácilmente a un cluster de computadoras para escalar horizontalmente.
 	\end{itemize}
 
 	\framebreak
@@ -397,45 +364,6 @@
 		12,32.336151,5.69793,44.428017
 	\end{filecontents*}
 
-	\footnotesize
-	Tamaño de muestra de 100 pares de preguntas y distintos núcleos de CPU.
-	\begin{figure}[h!]
-		\centering
-		\scriptsize
-		\resizebox{0.7\textwidth}{!}{%
-			\begin{tikzpicture}
-				\begin{axis}[
-					xlabel={Número de núcleos de CPU},
-					ylabel={Tiempo (Seg.)},
-					xmin=0, xmax=13,
-					ymin=0, ymax=100,
-					xtick={1,2,4,8,12},
-					ytick={0,10,...,100},
-					legend pos=north west,
-					ymajorgrids=true,
-					grid style=dashed,
-					]
-
-					\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-100-1.csv};
-					\label{similaridad100}
-					\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-100-1.csv};
-					\label{ensamble100}
-					\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-100-1.csv};
-					\label{total100}
-				\end{axis}
-
-				% Cuadro de leyendas.
-				\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
-						\ref{similaridad100} Cálculo de Similaridad \\
-						\ref{ensamble100} Ensamble de Clustering \\
-						\ref{total100} Total}};
-			\end{tikzpicture}
-		}
-		\label{fig:performance100}
-	\end{figure}
-
-	\framebreak
-
 	\begin{filecontents*}{performance-500-1.csv}
 		1,763.888817,40.430,828.022
 		2,576.668802,25.684,624.102
@@ -443,44 +371,6 @@
 		8,324.825807,18.017,363.617
 		12,328.300206,15.737,362.982
 	\end{filecontents*}
-
-	Tamaño de muestra de 500 pares de preguntas y distintos núcleos de CPU.
-	\begin{figure}[h!]
-		\centering
-		\scriptsize
-		\resizebox{0.7\textwidth}{!}{%
-			\begin{tikzpicture}
-				\begin{axis}[
-					xlabel={Número de núcleos de CPU},
-					ylabel={Tiempo (Seg.)},
-					xmin=0, xmax=13,
-					ymin=0, ymax=1000,
-					xtick={1,2,4,8,12},
-					ytick={0,100,...,1000},
-					legend pos=north west,
-					ymajorgrids=true,
-					grid style=dashed,
-					]
-
-					\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-500-1.csv};
-					\label{similaridad500}
-					\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-500-1.csv};
-					\label{ensamble500}
-					\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-500-1.csv};
-					\label{total500}
-				\end{axis}
-
-				% Cuadro de leyendas.
-				\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
-						\ref{similaridad500} Cálculo de Similaridad \\
-						\ref{ensamble500} Ensamble de Clustering \\
-						\ref{total500} Total}};
-			\end{tikzpicture}
-		}
-		\label{fig:performance500}
-	\end{figure}
-
-	\framebreak
 
 	\begin{filecontents*}{performance-1000-1.csv}
 		1,2950.810,95.886,3106.846134
@@ -490,40 +380,126 @@
 		12,1253.434,43.699182,1370.473092
 	\end{filecontents*}
 
-	Tamaño de muestra de 1000 pares de preguntas y distintos núcleos de CPU.
-	\begin{figure}[h!]
+    \begin{figure}[!htb]
 		\centering
-		\scriptsize
-		\resizebox{0.7\textwidth}{!}{%
-			\begin{tikzpicture}
-				\begin{axis}[
-					xlabel={Número de núcleos de CPU},
-					ylabel={Tiempo (Seg.)},
-					xmin=0, xmax=13,
-					ymin=0, ymax=3500,
-					xtick={1,2,4,8,12},
-					ytick={0,500,...,3500},
-					legend pos=north west,
-					ymajorgrids=true,
-					grid style=dashed,
-					]
+		\begin{minipage}{.3333\textwidth}
+			\begin{tiny}
+		Tamaño de muestra 100.
+		\end{tiny}
+		\begin{figure}
+			\vspace*{-0.5cm}
+			\scriptsize
+				\resizebox{\textwidth}{!}{%
+					\begin{tikzpicture}
+						\begin{axis}[
+							xlabel={Número de núcleos de CPU},
+							ylabel={Tiempo (Seg.)},
+							xmin=0, xmax=13,
+							ymin=0, ymax=100,
+							xtick={1,2,4,8,12},
+							ytick={0,10,...,100},
+							legend pos=north west,
+							ymajorgrids=true,
+							grid style=dashed,
+							]
 
-					\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-1000-1.csv};
-					\label{similaridad1000}
-					\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-1000-1.csv};
-					\label{ensamble1000}
-					\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-1000-1.csv};
-					\label{total1000}
-				\end{axis}
+							\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-100-1.csv};
+							\label{similaridad100}
+							\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-100-1.csv};
+							\label{ensamble100}
+							\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-100-1.csv};
+							\label{total100}
+						\end{axis}
 
-				% Cuadro de leyendas.
-				\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
-						\ref{similaridad1000} Cálculo de Similaridad \\
-						\ref{ensamble1000} Ensamble de Clustering \\
-						\ref{total1000} Total}};
-			\end{tikzpicture}
-		}
-		\label{fig:performance1000}
+						% Cuadro de leyendas.
+						\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
+								\ref{similaridad100} Cálculo de Similaridad \\
+								\ref{ensamble100} Ensamble de Clustering \\
+								\ref{total100} Total}};
+					\end{tikzpicture}
+				}
+				\label{fig:performance100}
+			\end{figure}
+		\end{minipage}%
+		\begin{minipage}{0.3333\textwidth}
+			\begin{tiny}
+				Tamaño de muestra 500.
+			\end{tiny}
+			\begin{figure}
+				\vspace*{-0.5cm}
+				\scriptsize
+				\resizebox{\textwidth}{!}{%
+					\begin{tikzpicture}
+						\begin{axis}[
+							xlabel={Número de núcleos de CPU},
+							ylabel={Tiempo (Seg.)},
+							xmin=0, xmax=13,
+							ymin=0, ymax=1000,
+							xtick={1,2,4,8,12},
+							ytick={0,100,...,1000},
+							legend pos=north west,
+							ymajorgrids=true,
+							grid style=dashed,
+							]
+
+							\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-500-1.csv};
+							\label{similaridad500}
+							\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-500-1.csv};
+							\label{ensamble500}
+							\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-500-1.csv};
+							\label{total500}
+						\end{axis}
+
+						% Cuadro de leyendas.
+						\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
+								\ref{similaridad500} Cálculo de Similaridad \\
+								\ref{ensamble500} Ensamble de Clustering \\
+								\ref{total500} Total}};
+					\end{tikzpicture}
+				}
+				\label{fig:performance500}
+			\end{figure}
+		\end{minipage}
+		\begin{minipage}{.3333\textwidth}
+			\begin{tiny}
+				Tamaño de muestra 1000.
+			\end{tiny}
+			\begin{figure}
+			\vspace*{-0.5cm}
+			\centering
+			\scriptsize
+			\resizebox{\textwidth}{!}{%
+				\begin{tikzpicture}
+					\begin{axis}[
+						xlabel={Número de núcleos de CPU},
+						ylabel={Tiempo (Seg.)},
+						xmin=0, xmax=13,
+						ymin=0, ymax=3500,
+						xtick={1,2,4,8,12},
+						ytick={0,500,...,3500},
+						legend pos=north west,
+						ymajorgrids=true,
+						grid style=dashed,
+						]
+
+						\addplot table [mark=square,x index=0, y index=1, col sep=comma] {performance-1000-1.csv};
+						\label{similaridad1000}
+						\addplot table [mark=square,x index=0, y index=2, col sep=comma] {performance-1000-1.csv};
+						\label{ensamble1000}
+						\addplot table [mark=square,x index=0, y index=3, col sep=comma] {performance-1000-1.csv};
+						\label{total1000}
+					\end{axis}
+
+					% Cuadro de leyendas.
+					\node [draw,fill=white] at (rel axis cs: 0.66,0.85) {\scriptsize\shortstack[l]{
+							\ref{similaridad1000} Cálculo de Similaridad \\
+							\ref{ensamble1000} Ensamble de Clustering \\
+							\ref{total1000} Total}};
+				\end{tikzpicture}
+			}
+			\label{fig:performance1000}
+		\end{figure}
+		\end{minipage}
 	\end{figure}
 
 \end{frame}

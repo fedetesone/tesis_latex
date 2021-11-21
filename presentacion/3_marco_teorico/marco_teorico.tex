@@ -15,24 +15,45 @@
 	\end{tcolorbox}
 
 	\bigskip
+	\begin{itemize}
+		\item
+		\textbf{Ejemplos}
+		\begin{itemize} [<*>]
+			\item Recomendación de preguntas similares en el sitio web Quora.
+			\item Sitios conocidos como Netflix o Amazon.
+		\end{itemize}
 
-	\textbf{Funciones de un Sistema de Recomendación}
-	\begin{itemize} [<*>]
-		\item Aumentar el ratio de conversión en un sitio o aplicación.
-		\item Aumentar satisfación y fidelidad del usuario.
+		\bigskip
+
+		\item
+		\textbf{Funciones de un Sistema de Recomendación}
+		\begin{itemize} [<*>]
+			\item Aumentar el ratio de conversión en un sitio o aplicación.
+			\begin{scriptsize}
+				\begin{itemize} [<*>]
+					\item Aumentar la cantidad de productos que usuario compra en Amazon, sobre la cantidad de visualizados.
+				\end{itemize}
+			\end{scriptsize}
+			\item Aumentar satisfacción y fidelidad del usuario.
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \subsection{Big Data y Arquitecturas}
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Big Data}
-	\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Big Data]
-		``Conjuntos de datos cuyo tamaño está más allá de la habilidad de las herramientas software de base de datos para capturar, almacenar, gestionar y analizar los datos'' (Manyika et al., 2011).
+		\begin{tcolorbox}[colback=blue!5,colframe=blue!40!black,title=Big Data]
+			``Conjuntos de datos cuyo tamaño está más allá de la habilidad de las herramientas software de base de datos para capturar, almacenar, gestionar y analizar los datos'' (Manyika et al., 2011).
 
+			\bigskip
+
+			``Big Data son activos de información caracterizados por su alto volumen, velocidad y variedad que demandan formas innovadoras y rentables de procesamiento de información para mejorar la compresión y la toma de decisiones'' (consultora Gartner).
+		\end{tcolorbox}
 		\bigskip
 
-		``Big Data son activos de información caracterizados por su alto volumen, velocidad y variedad que demandan formas innovadoras y rentables de procesamiento de información para mejorar la compresión y la toma de decisiones'' (consultora Gartner).
-	\end{tcolorbox}
+		\begin{center}
+			Se necesitan \textbf{herramientas de software} que nos permitan procesar este volumen de información de manera eficiente y eficaz.
+		\end{center}
 \end{frame}
 
 \subsection{Medidas de distancia de texto}
@@ -69,19 +90,10 @@
 	\bigskip
 
 	Típicamente, el ángulo entre los dos vectores es usado como medida de divergencia entre los mismos, y el coseno del ángulo es usado como similaridad numérica.
-\end{frame}
 
-\begin{frame}[allowframebreaks]
-	\frametitle{Similaridad del coseno}
-	La distancia del coseno se puede derivar de la fórmula del \textit{producto escalar}:
-	\[\vec{D}_i.\vec{D}_j = \left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|.cos(\theta),\]
-	siendo \(\left \|\overrightarrow{D_i}\right \|\) y \(\left \|\overrightarrow{D_j}\right \|\) los módulos de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente, y $\theta$ el ángulo formado entre ellos.
-
-	\bigskip
-
-	La similaridad entre dos vectores puede medirse como:
 	\[cos(\theta) = \frac{\vec{D}_i.\vec{D}_j}{\left \| \vec{D}_i \right \|.\left \| \vec{D}_j \right \|},\]
-	donde \(d_i\) y \(d_j\) son los componentes de los vectores \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\) respectivamente.
+	\bigskip
+	siendo \(\theta\) el ángulo entre los vectores  \(\overrightarrow{D_i}\) y \(\overrightarrow{D_j}\).
 \end{frame}
 
 \begin{frame}[allowframebreaks]
@@ -94,17 +106,17 @@
 
 	\begin{footnotesize}
 		La similaridad entre palabras se define como \(S(w_1,w_2)=f(l,h),\)
-		donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumer de las mismas.
+		donde \(l\) es el camino más corto entre \(w_1\) y \(w_2\), y \(h\) es la profundidad del subsumidor de las mismas.
 	\end{footnotesize}
 
 	\framebreak
 
-	Se define \(p(t)\) como la \textbf{probabilidad} de un concepto \(t\), formalizando:
+	Se define \(p(t)\) como la \textbf{probabilidad} de un concepto \(t\). Se entiende como:
 	\[p(t)=\frac{freq(t)}{N},\]
 
 	\bigskip
 
-	Se define el \textbf{contenido de información} \(I(t) = 0\) como:
+	Se define el \textbf{contenido de información} \(I(t)\) como:
 	\[I(t)=-\log p(t).\]
 
 	Entonces la \textbf{similaridad} entre dos términos \((i, j)\) se define como:
@@ -119,7 +131,7 @@
 	\bigskip
 	\begin{itemize}[<*>]
 		\item Term Frequency (TF)
-		\item Term Frequency - Inverse Docuement Frequency (TF-IDF).
+		\item Term Frequency - Inverse Document Frequency (TF-IDF).
 		\item Word2Vec
 		\item FastText
 		\item Semantic Distance
@@ -132,8 +144,8 @@
 	\bigskip
 	\begin{itemize}[<*>]
 		\item También conocido en la literatura como \textit{Bag of words} (bolsa de palabras).
-		\item El orden exacto de los términos es ignorado, pero se basa en el número de ocurrencias de cada uno de ellos en un documento.
 		\item Cada documento corresponde a un vector y cada término a una dimensión.
+		\item El orden exacto de los términos es ignorado, pero se basa en el número de ocurrencias de cada uno de ellos en un documento.
 		\item Se mide el grado de similaridad de dos documentos utilizando el coseno del ángulo entre dos vectores.
 	\end{itemize}
 
@@ -152,8 +164,7 @@
 	\bigskip
 	\begin{itemize}[<*>]
 		\item Se define \textit{document frequency} \(df_t\) como el número de documentos en una colección que contienen el término \(t\).
-		\item \textit{Inverse document frequency}, o IDF, es un indicador basado en la cantidad de documentos que contienen (o son indexados por) un término en cuestión.
-		\item Intuición: si un término de búsqueda se encuentra en muchos documentos, no es un buen discriminador, y se le debe asignar menor peso que a un término que se encuentra en pocos documentos.
+		\item \textit{Inverse document frequency}, o IDF: si un término de búsqueda se encuentra en muchos documentos, no es un buen discriminador, y se le debe asignar menor peso que a un término que se encuentra en pocos documentos.
 	\end{itemize}
 
 	\centering
@@ -162,14 +173,13 @@
 
 \begin{frame}
 	\frametitle{Word2Vec}
-	Caracteristicas de Word2Vec:
+	Características de Word2Vec:
 	\bigskip
 	\begin{itemize}[<*>]
-		\item Modelos basados en redes neuronales con una capa oculta para computar representaciones de palabras como vectores continuos en grandes conjuntos de datos.
-		\item Dos modelos: Skip-gram y Continuous Bag of Words.
+		\item Modelos basados en redes neuronales con una capa oculta para computar representaciones de palabras como vectores.
 		\item Las entradas y salidas de la red neuronal son palabras representadas como \textit{one-hot} vector.
 		\item Los pesos de la capa oculta se van ajustando utilizando un clasificador de regresión Softmax.
-		\item Estos pesos resultantes dan como resultado a la representación vectorial de palabras utilizadas para el cálculo de similaridad de este trabajo.
+		\item Estos pesos resultantes dan como resultado a la representación vectorial de las palabras de un vocabulario.
 	\end{itemize}
 \end{frame}
 
@@ -178,8 +188,8 @@
 	\bigskip
 	\frametitle{FastText}
 	\begin{itemize}[<*>]
-		\item Libreria open-source desarrollada por Facebook.
-		\item Basado en Skip-gram pero utilizando un modelo sub-palabra.
+		\item Librería open-source desarrollada por Facebook.
+		\item Utiliza un modelo sub-palabra.
 		\item Cada palabra es representada como una bolsa de \textit{n-gramas}.
 		\item Mayor precisión en diferentes medidas de rendimiento.
 	\end{itemize}
@@ -200,51 +210,6 @@
 		\includegraphics[width=0.7\linewidth]{../7_marco_teorico/imagenes/similaridad_sematinca_metodo}
 		\label{fig:similaridadsematincametodo}
 	\end{figure}
-
-	\framebreak
-
-	\textbf{Similaridad semántica entre frases} \\
-	\bigskip
-		Un conjunto de palabras comunes \(T\) es formado por la unión de las dos frases \(T_1\) y \(T_2\) en comparación. Luego, un vector semántico léxico \(\check{s}\) es derivado de este conjunto. Por cada una de las palabras \(w_i\) en \(T\) \textit{(ejemplo para \(T_1\))}:
-	\begin{itemize}[<*>]
-		\item \textbf{Caso 1}. Si \(w_i\) aparece en la \(T_1\), \(s_i\) es 1.
-		\item \textbf{Caso 2}. Si \(w_i\) no está contenida en \(T_1\), se calcula una similaridad semántica entre \(w_1\) y cada palabra en \(T_1\) utilizando el método de similaridad entre palabras.
-	\end{itemize}
-
-	\bigskip
-	Luego el vector semántico de cada frase es:
-	\[s_i = \check{s} \cdot I(w_i) \cdot I(\widetilde{w}_i),\]
-
-	Entonces, la similaridad semántica entre dos frases es definida como el coeficiente del coseno entre los dos vectores.
-
-	\framebreak
-
-	\textbf{Similaridad de orden entre frases} \\
-	\bigskip
-	Consideremos dos frases \(T_1\) y \(T_2\), por ejemplo:
-	\begin{itemize}[<*>]
-		\item \textbf{T1}: A quick brown dog jumps over the lazy fox.
-		\item \textbf{T2}. A quick brown fox jumps over the lazy dog.
-	\end{itemize}
-
-	\bigskip
-	Se define un conjunto \(T\) con la union de las palabras en \(T_1\) y \(T_2\) y luego se definen los vectores de orden:
-	\[r_1 = \left \{\;1\;2\;3\;4\;5\;6\;7\;8\;9\;\right \},\]
-	\[r_2 = \left \{\;1\;2\;3\;9\;5\;6\;7\;8\;4\;\right \}.\]
-
-	Se propone entonces una medida de similaridad de orden entre frases de la siguiente manera:
-	\[S_r = 1 - \frac{\left \| r_1 - r_2 \right \|}{\left \| r_1 + r_2 \right \|}.\]
-
-	\framebreak
-
-	\textbf{Similaridad total entre frases:} \\
-	\bigskip
-
-	\[S(T_1, T_2)=\delta S_s + (1 - \delta)S_r,\]
-	\[S(T_1, T_2)=\delta \frac{s_1.s_2}{\left \| s_1 \right \|\left \| s_2 \right \|} + (1 - \delta)\frac{\left \|r_1-r_2 \right \|}{\left \| r_1+r_2 \right \|},\]
-
-	\bigskip
-	donde \(0 \leq \delta \leq 1\) decide la contribución relativa de cada una de las medidas de similaridad.
 \end{frame}
 
 \subsection{Ensamble de Clustering}
@@ -258,6 +223,11 @@
 
 	\begin{itemize}
 		\item Combina resultados de distintos algoritmos de Clustering con clusters de distintas formas.
+			\begin{itemize}[<*>]
+				\item Distintos algoritmos de Clustering.
+				\item Distintos parámetros para el mismo algoritmo.
+				\item Distintas medidas de distancia.
+			\end{itemize}
 		\item Aprovecha la variabilidad agregada para encontrar una estructura \textit{inter-patrón}.
 		\item Identificación de clusters subyacentes con formas, tamaños y densidades arbitrarias.
 	\end{itemize}
@@ -265,9 +235,33 @@
 
 \begin{frame}
 	\frametitle{Combinación de Evidencias}
-	Tomado las co-ocurrencia de pares de patrones en el mismo cluster, las \(N\) particiones de datos para \(n\) patrones, son mapeadas en una \textit{matriz de co-asociación} \(n \times n\):
+	Toma la co-ocurrencia de pares de patrones en el mismo cluster a lo largo de las \(N\) particiones de datos para \(n\) patrones, para luego mapearlas a una \textit{matriz de co-asociación} \(n \times n\):
 	\medskip
 	\[C(i,j)=\frac{n_{ij}}{N},\]
 	\medskip
 	donde \(n_{ij}\) es el número de veces que el par de patrones \((i,j)\) es asignado al mismo cluster entre las \(N\) particiones de datos.
+
+	\bigskip
+
+	\textbf{Ejemplo}. \(N = 3\) particiones de datos.
+
+\begin{figure}[!htb]
+	\centering
+	\begin{minipage}{.45\textwidth}
+		\begin{figure}
+			\centering
+			\includegraphics[width=0.9\linewidth]{3_marco_teorico/EAC}
+		\end{figure}
+	\end{minipage}%
+	\begin{minipage}{.45\textwidth}
+		\begin{scriptsize}
+		\[  C(i,j)=\frac{2}{3} \Rightarrow  \begin{bmatrix}
+			n_{11} 	& 	\dots 			   &     &  n_{1n} \\
+			\vdots & 	n_{ij} = 2/3  & 	&  \\
+			\vdots & 				          & \ddots 	&  \\
+			n_{n1} &    					  & 	&  n_{nn}
+		\end{bmatrix}\]
+	\end{scriptsize}
+	\end{minipage}
+\end{figure}
 \end{frame}
