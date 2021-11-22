@@ -35,6 +35,9 @@
 				\end{itemize}
 			\end{scriptsize}
 			\item Aumentar satisfacción y fidelidad del usuario.
+			\begin{itemize} [<*>]
+				\item Una mejor experiencia de usuario provoca que los mismos vuelvan al sitio.
+			\end{itemize}
 		\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -62,13 +65,6 @@
 	Las medidas de similaridad son de interés para poder cuantificar la relación entre objetos.
 	\bigskip
 	\begin{itemize}
-		\item Se utilizan dos tipos de medidas de similaridad en este trabajo:
-		\begin{enumerate}[<*>]
-			\item Basadas en espacios vectoriales.
-			\item Basadas en taxonomías.
-		\end{enumerate}
-
-		\bigskip
 		\item
 		La función de similaridad es definida satisfaciendo las condiciones:
 		\begin{enumerate}[<*>]
@@ -79,7 +75,15 @@
 			\[0 \leq S(x_i,x_j) \leq 1, \quad \forall x_i,x_j.\]
 		\end{enumerate}
 		\medskip
-		Es posible transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), en el intervalo \([0,1]\). Aplicando \(D(x_i,x_j) = 1 - S(x_i,x_j)\).
+		Es posible transformar una medida de similaridad \(S(x_i,x_j)\) en una de distancia \(D(xi,xj)\) que cumpla \(0 \leq D(x_i,x_j) \leq 1\), en el intervalo \([0,1]\). Aplicando \(D(x_i,x_j) = 1 - S(x_i,x_j)\). En este trabajo se utiliza una \textbf{definición relajada de distancia}.
+
+		\bigskip
+
+		\item Se utilizan dos tipos de medidas de similaridad en este trabajo:
+		\begin{enumerate}[<*>]
+			\item Basadas en espacios vectoriales.
+			\item Basadas en taxonomías.
+		\end{enumerate}
 	\end{itemize}
 \end{frame}
 
@@ -195,7 +199,7 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}[allowframebreaks]
+\begin{frame}
 	\frametitle{Semantic Distance}
 	Caracteristicas de Semantic Distance:
 	\bigskip

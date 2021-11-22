@@ -276,11 +276,15 @@
 \begin{frame}[allowframebreaks,fragile]
 	\frametitle{Ensamble de Clustering}
 	\begin{footnotesize}
-		Para explicar el procedimiento de \textbf{Ensamble de Clustering}, se consideran 3 resultados de ejecuciones ejemplo:
+		Se consideran 3 resultados de ejecuciones ejemplo:
 	\end{footnotesize}
 
+	\medskip
+
 	\begin{scriptsize}
+		\textbf{Ejecución 1}
 		\begin{table}[h!]
+			\vspace{-0.3cm}
 			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 				\toprule
 				\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
@@ -294,7 +298,9 @@
 			\label{tab:run1}
 		\end{table}
 
+		\textbf{Ejecución 2}
 		\begin{table}[h!]
+			\vspace{-0.3cm}
 			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 				\toprule
 				\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
@@ -308,7 +314,9 @@
 			\label{tab:run2}
 		\end{table}
 
+		\textbf{Ejecución 3}
 		\begin{table}[h!]
+			\vspace{-0.3cm}
 			\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
 				\toprule
 				\textbf{run\_uuid} & \textbf{question\_id} & \textbf{cluster\_id} \\
@@ -324,9 +332,14 @@
 	\end{scriptsize}
 
 	\begin{footnotesize}
-		Luego, el resultado de todas las ejecuciones se agrupa por pregunta individual, de la siguiente forma:
+		Luego, el resultado de todas las ejecuciones se agrupa por pregunta individual, generando un \textbf{conjunto de tuplas} de la siguiente forma:
+	\[[(id\_de\_ejecución\_1,cluster\_asignado), ...,(id\_de\_ejecución\_N,cluster\_asignado)]\]
 	\end{footnotesize}
 
+	\bigskip
+	\begin{footnotesize}
+	Agrupando las particiones 1, 2 y 3:
+	\end{footnotesize}
 	\begin{table}[h!]
 		\scriptsize
 		\begin{tabularx}{\textwidth}{>{\centering\arraybackslash}p{1.5cm}>{\centering\arraybackslash}p{10cm}}
@@ -342,6 +355,8 @@
 		\label{tab:tuplas}
 	\end{table}
 
+	\framebreak
+
 	\begin{footnotesize}
 		Se genera un conjunto de datos intermedio con la interseccion de los conjuntos para la combinación de todas las preguntas individuales, por ejemplo:
 		\begin{scriptsize}
@@ -351,6 +366,8 @@
 			\end{itemize}
 		\end{scriptsize}
 	\end{footnotesize}
+
+	\bigskip
 
 	\begin{table}[h!]
 		\scriptsize
@@ -416,12 +433,12 @@
 	\begin{table}[h!]
 		\footnotesize
 		\centering
-		\begin{tabularx}{\textwidth}{*{7}{>{\centering\arraybackslash}X}}
+		\begin{tabularx}{\textwidth}{*{6}{>{\centering\arraybackslash}X}}
 			\toprule
-			\textbf{sequence\_id} & \textbf{question\_pair} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+			 \textbf{question\_pair} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
 			\midrule
-			0                     & 123004                      & question\_10         & question\_11         & 1              \\
-			1                     & 98776                       & question\_11         & question\_21         & 0              \\
+			123004                      & question\_10         & question\_11         & 1              \\
+			98776                       & question\_20         & question\_21         & 0              \\
 			\bottomrule
 		\end{tabularx}
 		\label{tab:muestra-validacion}
@@ -439,9 +456,9 @@
 			question\_10 & question\_20 & contenido & contenido & 0.210 \\
 			question\_10 & question\_21 & contenido & contenido & 0.126 \\
 			question\_11 & question\_20 & contenido & contenido & 0.006 \\
+			question\_11 & question\_21 & contenido & contenido & 0.146 \\
 			\rowcolor[HTML]{D9EAD3}
-			question\_11 & question\_21 & contenido & contenido & 0.368 \\
-			question\_20 & question\_21 & contenido & contenido & 0.146 \\
+			question\_20 & question\_21 & contenido & contenido & 0.368 \\
 			\bottomrule
 		\end{tabularx}
 		\label{tab:coasociacion-validacion}
@@ -452,12 +469,12 @@
 	\begin{table}[h!]
 		\footnotesize
 		\centering
-		\begin{tabularx}{\textwidth}{*{5}{>{\centering\arraybackslash}X}}
+		\begin{tabularx}{\textwidth}{*{4}{>{\centering\arraybackslash}X}}
 			\toprule
-			\textbf{sequence\_id} & \textbf{question\_pair} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
+			\textbf{question\_pair} & \textbf{question\_1} & \textbf{question\_2} & \textbf{equal} \\
 			\midrule
-			0                     & 123004                      & question\_10         & question\_11         & 1              \\
-			1                     & 98776                       & question\_11         & question\_21         & 0              \\
+			123004                      & question\_10         & question\_11         & 1              \\
+			98776                       & question\_20         & question\_21         & 0              \\
 			\bottomrule
 		\end{tabularx}
 	\end{table}
@@ -472,7 +489,7 @@
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2} & \textbf{similarity} \\
 			\midrule
 			question\_10             & question\_11             & contenido            & contenido            & 0.857               \\
-			question\_11             & question\_21             & contenido            & contenido            & 0.368               \\
+			question\_20             & question\_21             & contenido            & contenido            & 0.368               \\
 			\bottomrule
 		\end{tabularx}
 		\label{tab:filtrado-validacion}
@@ -501,7 +518,7 @@
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2}  & \textbf{similarity} & \textbf{equal} \\
 			\midrule
 			question\_10             & question\_11             & contenido            & contenido            & 0.857  & 1              \\
-			question\_11             & question\_21             & contenido            & contenido            & 0.368  & 0              \\
+			question\_20             & question\_21             & contenido            & contenido            & 0.368  & 0              \\
 			\bottomrule
 		\end{tabularx}
 		\label{tab:umbral-validacion-1}
@@ -515,7 +532,7 @@
 			\textbf{question\_id\_1} & \textbf{question\_id\_2} & \textbf{question\_1} & \textbf{question\_2}  & \textbf{similarity} & \textbf{equal} \\
 			\midrule
 			question\_10             & question\_11             & contenido            & contenido            & 0.857 & 0              \\
-			question\_11             & question\_21             & contenido            & contenido            & 0.368 & 0              \\
+			question\_20             & question\_21             & contenido            & contenido            & 0.368 & 0              \\
 			\bottomrule
 		\end{tabularx}
 		\label{tab:umbral-validacion-2}
