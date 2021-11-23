@@ -22,12 +22,12 @@
 \beamer@subsectionintoc {5}{2}{Preprocesamiento y muestreo del conjunto de datos}{55}{0}{5}
 \beamer@subsectionintoc {5}{3}{Generación de particiones}{57}{0}{5}
 \beamer@subsectionintoc {5}{4}{Ensamble de Clustering}{62}{0}{5}
-\beamer@sectionintoc {6}{Resultados}{70}{0}{6}
-\beamer@subsectionintoc {6}{1}{Análisis del método propuesto}{71}{0}{6}
-\beamer@subsectionintoc {6}{2}{Análisis del método propuesto y algoritmos del estado del arte}{75}{0}{6}
-\beamer@subsectionintoc {6}{3}{Otras observaciones de interés}{77}{0}{6}
-\beamer@subsectionintoc {6}{4}{Análisis de desempeño}{79}{0}{6}
-\beamer@subsectionintoc {6}{5}{Resumen de resultados}{81}{0}{6}
-\beamer@sectionintoc {7}{Conclusiones}{86}{0}{7}
-\beamer@subsectionintoc {7}{1}{Contribuciones realizadas}{87}{0}{7}
-\beamer@subsectionintoc {7}{2}{Futuras investigaciones}{89}{0}{7}
+\beamer@sectionintoc {6}{Resultados}{71}{0}{6}
+\beamer@subsectionintoc {6}{1}{Análisis del método propuesto}{72}{0}{6}
+\beamer@subsectionintoc {6}{2}{Análisis del método propuesto y algoritmos del estado del arte}{76}{0}{6}
+\beamer@subsectionintoc {6}{3}{Otras observaciones de interés}{78}{0}{6}
+\beamer@subsectionintoc {6}{4}{Análisis de desempeño}{80}{0}{6}
+\beamer@subsectionintoc {6}{5}{Resumen de resultados}{82}{0}{6}
+\beamer@sectionintoc {7}{Conclusiones}{87}{0}{7}
+\beamer@subsectionintoc {7}{1}{Contribuciones realizadas}{88}{0}{7}
+\beamer@subsectionintoc {7}{2}{Futuras investigaciones}{90}{0}{7}
